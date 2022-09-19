@@ -46,7 +46,7 @@ func decode(r io.Reader, configOnly bool) (image.Image, image.Config, error) {
 
 		b := image.Rect(0, 0, int(pixels.Width), int(pixels.Height))
 		out := image.NewRGBA(b)
-		out.Pix = unsafe.Slice((*byte)(pixels.Data), pixels.Height*pixels.Stride+pixels.Width)
+		out.Pix = unsafe.Slice((*byte)(pixels.Data), pixels.Height*pixels.Stride)
 		out.Stride = int(pixels.Stride)
 
 		ret = j40.Error(&img)

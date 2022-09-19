@@ -51,7 +51,7 @@ func decode(r io.Reader, configOnly bool) (image.Image, image.Config, error) {
 
 		b := image.Rect(0, 0, int(pixels.Width), int(pixels.Height))
 		out := image.NewRGBA(b)
-		out.Pix = libc.GoBytes(pixels.Data, int(pixels.Height*pixels.Stride_bytes+pixels.Width))
+		out.Pix = libc.GoBytes(pixels.Data, int(pixels.Height*pixels.Stride_bytes))
 		out.Stride = int(pixels.Stride_bytes)
 
 		ret = j40.J40_error(tls, imgptr)
