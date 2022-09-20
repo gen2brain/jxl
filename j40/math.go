@@ -7,12 +7,7 @@ import (
 )
 
 func ldexpf(tls *libc.TLS, a float32, b int32) float32 {
-	return float32(math.Ldexp(float64(int32(a)&0x3ff|func() int32 {
-		if b > 0 {
-			return 0x400
-		}
-		return 0
-	}()), int(b-25)))
+	return float32(math.Ldexp(float64(a), int(b)))
 }
 
 func powf(tls *libc.TLS, a, b float32) float32 {
