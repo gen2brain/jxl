@@ -20,456 +20,444 @@ var _ *libc.TLS
 var _ types.Size_t
 
 const (
-	AIO_PRIO_DELTA_MAX                   = 20                     // local_lim.h:78:1:
-	BC_BASE_MAX                          = 99                     // posix2_lim.h:63:1:
-	BC_DIM_MAX                           = 2048                   // posix2_lim.h:66:1:
-	BC_SCALE_MAX                         = 99                     // posix2_lim.h:69:1:
-	BC_STRING_MAX                        = 1000                   // posix2_lim.h:72:1:
-	BIG_ENDIAN                           = 4321                   // endian.h:28:1:
-	BUFSIZ                               = 8192                   // stdio.h:99:1:
-	BYTE_ORDER                           = 1234                   // endian.h:30:1:
-	CHARCLASS_NAME_MAX                   = 2048                   // posix2_lim.h:84:1:
-	CHAR_BIT                             = 8                      // limits.h:64:1:
-	CHAR_MAX                             = 127                    // limits.h:99:1:
-	CHAR_MIN                             = -128                   // limits.h:97:1:
-	COLL_WEIGHTS_MAX                     = 255                    // posix2_lim.h:75:1:
-	DELAYTIMER_MAX                       = 2147483647             // local_lim.h:84:1:
-	E2BIG                                = 7                      // errno-base.h:11:1:
-	EACCES                               = 13                     // errno-base.h:17:1:
-	EADDRINUSE                           = 98                     // errno.h:81:1:
-	EADDRNOTAVAIL                        = 99                     // errno.h:82:1:
-	EADV                                 = 68                     // errno.h:51:1:
-	EAFNOSUPPORT                         = 97                     // errno.h:80:1:
-	EAGAIN                               = 11                     // errno-base.h:15:1:
-	EALREADY                             = 114                    // errno.h:97:1:
-	EBADE                                = 52                     // errno.h:33:1:
-	EBADF                                = 9                      // errno-base.h:13:1:
-	EBADFD                               = 77                     // errno.h:60:1:
-	EBADMSG                              = 74                     // errno.h:57:1:
-	EBADR                                = 53                     // errno.h:34:1:
-	EBADRQC                              = 56                     // errno.h:37:1:
-	EBADSLT                              = 57                     // errno.h:38:1:
-	EBFONT                               = 59                     // errno.h:42:1:
-	EBUSY                                = 16                     // errno-base.h:20:1:
-	ECANCELED                            = 125                    // errno.h:109:1:
-	ECHILD                               = 10                     // errno-base.h:14:1:
-	ECHRNG                               = 44                     // errno.h:25:1:
-	ECOMM                                = 70                     // errno.h:53:1:
-	ECONNABORTED                         = 103                    // errno.h:86:1:
-	ECONNREFUSED                         = 111                    // errno.h:94:1:
-	ECONNRESET                           = 104                    // errno.h:87:1:
-	EDEADLK                              = 35                     // errno.h:7:1:
-	EDEADLOCK                            = 35                     // errno.h:40:1:
-	EDESTADDRREQ                         = 89                     // errno.h:72:1:
-	EDOM                                 = 33                     // errno-base.h:37:1:
-	EDOTDOT                              = 73                     // errno.h:56:1:
-	EDQUOT                               = 122                    // errno.h:105:1:
-	EEXIST                               = 17                     // errno-base.h:21:1:
-	EFAULT                               = 14                     // errno-base.h:18:1:
-	EFBIG                                = 27                     // errno-base.h:31:1:
-	EHOSTDOWN                            = 112                    // errno.h:95:1:
-	EHOSTUNREACH                         = 113                    // errno.h:96:1:
-	EHWPOISON                            = 133                    // errno.h:121:1:
-	EIDRM                                = 43                     // errno.h:24:1:
-	EILSEQ                               = 84                     // errno.h:67:1:
-	EINPROGRESS                          = 115                    // errno.h:98:1:
-	EINTR                                = 4                      // errno-base.h:8:1:
-	EINVAL                               = 22                     // errno-base.h:26:1:
-	EIO                                  = 5                      // errno-base.h:9:1:
-	EISCONN                              = 106                    // errno.h:89:1:
-	EISDIR                               = 21                     // errno-base.h:25:1:
-	EISNAM                               = 120                    // errno.h:103:1:
-	EKEYEXPIRED                          = 127                    // errno.h:111:1:
-	EKEYREJECTED                         = 129                    // errno.h:113:1:
-	EKEYREVOKED                          = 128                    // errno.h:112:1:
-	EL2HLT                               = 51                     // errno.h:32:1:
-	EL2NSYNC                             = 45                     // errno.h:26:1:
-	EL3HLT                               = 46                     // errno.h:27:1:
-	EL3RST                               = 47                     // errno.h:28:1:
-	ELIBACC                              = 79                     // errno.h:62:1:
-	ELIBBAD                              = 80                     // errno.h:63:1:
-	ELIBEXEC                             = 83                     // errno.h:66:1:
-	ELIBMAX                              = 82                     // errno.h:65:1:
-	ELIBSCN                              = 81                     // errno.h:64:1:
-	ELNRNG                               = 48                     // errno.h:29:1:
-	ELOOP                                = 40                     // errno.h:21:1:
-	EMEDIUMTYPE                          = 124                    // errno.h:108:1:
-	EMFILE                               = 24                     // errno-base.h:28:1:
-	EMLINK                               = 31                     // errno-base.h:35:1:
-	EMSGSIZE                             = 90                     // errno.h:73:1:
-	EMULTIHOP                            = 72                     // errno.h:55:1:
-	ENAMETOOLONG                         = 36                     // errno.h:8:1:
-	ENAVAIL                              = 119                    // errno.h:102:1:
-	ENETDOWN                             = 100                    // errno.h:83:1:
-	ENETRESET                            = 102                    // errno.h:85:1:
-	ENETUNREACH                          = 101                    // errno.h:84:1:
-	ENFILE                               = 23                     // errno-base.h:27:1:
-	ENOANO                               = 55                     // errno.h:36:1:
-	ENOBUFS                              = 105                    // errno.h:88:1:
-	ENOCSI                               = 50                     // errno.h:31:1:
-	ENODATA                              = 61                     // errno.h:44:1:
-	ENODEV                               = 19                     // errno-base.h:23:1:
-	ENOENT                               = 2                      // errno-base.h:6:1:
-	ENOEXEC                              = 8                      // errno-base.h:12:1:
-	ENOKEY                               = 126                    // errno.h:110:1:
-	ENOLCK                               = 37                     // errno.h:9:1:
-	ENOLINK                              = 67                     // errno.h:50:1:
-	ENOMEDIUM                            = 123                    // errno.h:107:1:
-	ENOMEM                               = 12                     // errno-base.h:16:1:
-	ENOMSG                               = 42                     // errno.h:23:1:
-	ENONET                               = 64                     // errno.h:47:1:
-	ENOPKG                               = 65                     // errno.h:48:1:
-	ENOPROTOOPT                          = 92                     // errno.h:75:1:
-	ENOSPC                               = 28                     // errno-base.h:32:1:
-	ENOSR                                = 63                     // errno.h:46:1:
-	ENOSTR                               = 60                     // errno.h:43:1:
-	ENOSYS                               = 38                     // errno.h:18:1:
-	ENOTBLK                              = 15                     // errno-base.h:19:1:
-	ENOTCONN                             = 107                    // errno.h:90:1:
-	ENOTDIR                              = 20                     // errno-base.h:24:1:
-	ENOTEMPTY                            = 39                     // errno.h:20:1:
-	ENOTNAM                              = 118                    // errno.h:101:1:
-	ENOTRECOVERABLE                      = 131                    // errno.h:117:1:
-	ENOTSOCK                             = 88                     // errno.h:71:1:
-	ENOTSUP                              = 95                     // errno.h:30:1:
-	ENOTTY                               = 25                     // errno-base.h:29:1:
-	ENOTUNIQ                             = 76                     // errno.h:59:1:
-	ENXIO                                = 6                      // errno-base.h:10:1:
-	EOF                                  = -1                     // stdio.h:104:1:
-	EOPNOTSUPP                           = 95                     // errno.h:78:1:
-	EOVERFLOW                            = 75                     // errno.h:58:1:
-	EOWNERDEAD                           = 130                    // errno.h:116:1:
-	EPERM                                = 1                      // errno-base.h:5:1:
-	EPFNOSUPPORT                         = 96                     // errno.h:79:1:
-	EPIPE                                = 32                     // errno-base.h:36:1:
-	EPROTO                               = 71                     // errno.h:54:1:
-	EPROTONOSUPPORT                      = 93                     // errno.h:76:1:
-	EPROTOTYPE                           = 91                     // errno.h:74:1:
-	ERANGE                               = 34                     // errno-base.h:38:1:
-	EREMCHG                              = 78                     // errno.h:61:1:
-	EREMOTE                              = 66                     // errno.h:49:1:
-	EREMOTEIO                            = 121                    // errno.h:104:1:
-	ERESTART                             = 85                     // errno.h:68:1:
-	ERFKILL                              = 132                    // errno.h:119:1:
-	EROFS                                = 30                     // errno-base.h:34:1:
-	ESHUTDOWN                            = 108                    // errno.h:91:1:
-	ESOCKTNOSUPPORT                      = 94                     // errno.h:77:1:
-	ESPIPE                               = 29                     // errno-base.h:33:1:
-	ESRCH                                = 3                      // errno-base.h:7:1:
-	ESRMNT                               = 69                     // errno.h:52:1:
-	ESTALE                               = 116                    // errno.h:99:1:
-	ESTRPIPE                             = 86                     // errno.h:69:1:
-	ETIME                                = 62                     // errno.h:45:1:
-	ETIMEDOUT                            = 110                    // errno.h:93:1:
-	ETOOMANYREFS                         = 109                    // errno.h:92:1:
-	ETXTBSY                              = 26                     // errno-base.h:30:1:
-	EUCLEAN                              = 117                    // errno.h:100:1:
-	EUNATCH                              = 49                     // errno.h:30:1:
-	EUSERS                               = 87                     // errno.h:70:1:
-	EWOULDBLOCK                          = 11                     // errno.h:22:1:
-	EXDEV                                = 18                     // errno-base.h:22:1:
-	EXFULL                               = 54                     // errno.h:35:1:
-	EXIT_FAILURE                         = 1                      // stdlib.h:92:1:
-	EXIT_SUCCESS                         = 0                      // stdlib.h:93:1:
-	EXPR_NEST_MAX                        = 32                     // posix2_lim.h:78:1:
-	FD_SETSIZE                           = 1024                   // select.h:73:1:
-	FILENAME_MAX                         = 4096                   // stdio_lim.h:27:1:
-	FOPEN_MAX                            = 16                     // stdio_lim.h:37:1:
-	FP_ILOGB0                            = -2147483648            // math.h:207:1:
-	FP_ILOGBNAN                          = -2147483648            // math.h:212:1:
-	FP_INFINITE1                         = 1                      // math.h:940:1:
-	FP_NAN1                              = 0                      // math.h:937:1:
-	FP_NORMAL1                           = 4                      // math.h:949:1:
-	FP_SUBNORMAL1                        = 3                      // math.h:946:1:
-	FP_ZERO1                             = 2                      // math.h:943:1:
-	HOST_NAME_MAX                        = 64                     // local_lim.h:93:1:
-	INT16_MAX                            = 32767                  // stdint.h:122:1:
-	INT16_MIN                            = -32768                 // stdint.h:117:1:
-	INT32_MAX                            = 2147483647             // stdint.h:123:1:
-	INT32_MIN                            = -2147483648            // stdint.h:118:1:
-	INT64_MAX                            = 9223372036854775807    // stdint.h:124:1:
-	INT64_MIN                            = -9223372036854775808   // stdint.h:119:1:
-	INT8_MAX                             = 127                    // stdint.h:121:1:
-	INT8_MIN                             = -128                   // stdint.h:116:1:
-	INTMAX_MAX                           = 9223372036854775807    // stdint.h:199:1:
-	INTMAX_MIN                           = -9223372036854775808   // stdint.h:197:1:
-	INTPTR_MAX                           = 9223372036854775807    // stdint.h:187:1:
-	INTPTR_MIN                           = -9223372036854775808   // stdint.h:186:1:
-	INT_FAST16_MAX                       = 9223372036854775807    // stdint.h:164:1:
-	INT_FAST16_MIN                       = -9223372036854775808   // stdint.h:154:1:
-	INT_FAST32_MAX                       = 9223372036854775807    // stdint.h:165:1:
-	INT_FAST32_MIN                       = -9223372036854775808   // stdint.h:155:1:
-	INT_FAST64_MAX                       = 9223372036854775807    // stdint.h:170:1:
-	INT_FAST64_MIN                       = -9223372036854775808   // stdint.h:160:1:
-	INT_FAST8_MAX                        = 127                    // stdint.h:162:1:
-	INT_FAST8_MIN                        = -128                   // stdint.h:152:1:
-	INT_LEAST16_MAX                      = 32767                  // stdint.h:140:1:
-	INT_LEAST16_MIN                      = -32768                 // stdint.h:135:1:
-	INT_LEAST32_MAX                      = 2147483647             // stdint.h:141:1:
-	INT_LEAST32_MIN                      = -2147483648            // stdint.h:136:1:
-	INT_LEAST64_MAX                      = 9223372036854775807    // stdint.h:142:1:
-	INT_LEAST64_MIN                      = -9223372036854775808   // stdint.h:137:1:
-	INT_LEAST8_MAX                       = 127                    // stdint.h:139:1:
-	INT_LEAST8_MIN                       = -128                   // stdint.h:134:1:
-	INT_MAX                              = 2147483647             // limits.h:120:1:
-	INT_MIN                              = -2147483648            // limits.h:118:1:
-	J40_API                              = 0                      // j40.h:145:2:
-	J40_FILENAME                         = "j40.h"                // j40.h:87:1:
-	J40_IMPLEMENTATION                   = 0                      // j40.c:1:1:
-	J40_RGBA                             = 0x1755                 // j40.h:215:1:
-	J40_U8X4                             = 0x0f33                 // j40.h:189:1:
-	J40_VERSION                          = 2270                   // j40.h:78:1:
-	J40__CLANG_VER                       = 0                      // j40.h:316:2:
-	J40__COEFFS_ALIGN                    = 64                     // j40.h:6203:2:
-	J40__ERRBUF_LEN                      = 256                    // j40.h:7855:2:
-	J40__EXPOSE_INTERNALS                = 0                      // j40.h:104:3:
-	J40__GCC_VER                         = 786944                 // j40.h:308:2:
-	J40__INITIAL_BUFSIZE                 = 0x10000                // j40.h:1574:1:
-	J40__MAX_DIST_MULT                   = 2097152                // j40.h:2420:1:
-	J40__PIXELS_ALIGN                    = 32                     // j40.h:937:1:
-	J40__RECURSING                       = 9999                   // j40.h:8305:1:
-	J40__SQRT2                           = 1.4142135623730951     // j40.h:5575:1:
-	LINE_MAX                             = 2048                   // posix2_lim.h:81:1:
-	LITTLE_ENDIAN                        = 1234                   // endian.h:27:1:
-	LLONG_MAX                            = 9223372036854775807    // limits.h:142:1:
-	LLONG_MIN                            = -9223372036854775808   // limits.h:140:1:
-	LOGIN_NAME_MAX                       = 256                    // local_lim.h:90:1:
-	LONG_MAX                             = 9223372036854775807    // limits.h:131:1:
-	LONG_MIN                             = -9223372036854775808   // limits.h:129:1:
-	L_ctermid                            = 9                      // stdio_lim.h:30:1:
-	L_tmpnam                             = 20                     // stdio_lim.h:25:1:
-	MATH_ERREXCEPT                       = 2                      // math.h:1036:1:
-	MATH_ERRNO                           = 1                      // math.h:1035:1:
-	MAX_CANON                            = 255                    // limits.h:10:1:
-	MAX_INPUT                            = 255                    // limits.h:11:1:
-	MB_LEN_MAX                           = 16                     // limits.h:32:1:
-	MQ_PRIO_MAX                          = 32768                  // local_lim.h:96:1:
-	M_1_PI                               = 0.31830988618379067154 // math.h:1154:1:
-	M_2_PI                               = 0.63661977236758134308 // math.h:1155:1:
-	M_2_SQRTPI                           = 1.12837916709551257390 // math.h:1156:1:
-	M_E                                  = 2.7182818284590452354  // math.h:1146:1:
-	M_LN10                               = 2.30258509299404568402 // math.h:1150:1:
-	M_LN2                                = 0.69314718055994530942 // math.h:1149:1:
-	M_LOG10E                             = 0.43429448190325182765 // math.h:1148:1:
-	M_LOG2E                              = 1.4426950408889634074  // math.h:1147:1:
-	M_PI                                 = 3.14159265358979323846 // math.h:1151:1:
-	M_PI_2                               = 1.57079632679489661923 // math.h:1152:1:
-	M_PI_4                               = 0.78539816339744830962 // math.h:1153:1:
-	M_SQRT1_2                            = 0.70710678118654752440 // math.h:1158:1:
-	M_SQRT2                              = 1.41421356237309504880 // math.h:1157:1:
-	NAME_MAX                             = 255                    // limits.h:12:1:
-	NGROUPS_MAX                          = 65536                  // limits.h:7:1:
-	PATH_MAX                             = 4096                   // limits.h:13:1:
-	PDP_ENDIAN                           = 3412                   // endian.h:29:1:
-	PIPE_BUF                             = 4096                   // limits.h:14:1:
-	PTHREAD_DESTRUCTOR_ITERATIONS        = 4                      // local_lim.h:69:1:
-	PTHREAD_KEYS_MAX                     = 1024                   // local_lim.h:64:1:
-	PTHREAD_STACK_MIN                    = 16384                  // pthread_stack_min.h:20:1:
-	PTRDIFF_MAX                          = 9223372036854775807    // stdint.h:210:1:
-	PTRDIFF_MIN                          = -9223372036854775808   // stdint.h:209:1:
-	P_tmpdir                             = "/tmp"                 // stdio.h:120:1:
-	RAND_MAX                             = 2147483647             // stdlib.h:87:1:
-	RE_DUP_MAX                           = 32767                  // posix2_lim.h:88:1:
-	RTSIG_MAX                            = 32                     // limits.h:19:1:
-	SCHAR_MAX                            = 127                    // limits.h:75:1:
-	SCHAR_MIN                            = -128                   // limits.h:73:1:
-	SEEK_CUR                             = 1                      // stdio.h:110:1:
-	SEEK_END                             = 2                      // stdio.h:111:1:
-	SEEK_SET                             = 0                      // stdio.h:109:1:
-	SEM_VALUE_MAX                        = 2147483647             // local_lim.h:99:1:
-	SHRT_MAX                             = 32767                  // limits.h:106:1:
-	SHRT_MIN                             = -32768                 // limits.h:104:1:
-	SIG_ATOMIC_MAX                       = 2147483647             // stdint.h:223:1:
-	SIG_ATOMIC_MIN                       = -2147483648            // stdint.h:222:1:
-	SIZE_MAX                             = 18446744073709551615   // stdint.h:227:1:
-	SSIZE_MAX                            = 9223372036854775807    // posix1_lim.h:169:1:
-	TMP_MAX                              = 238328                 // stdio_lim.h:26:1:
-	TTY_NAME_MAX                         = 32                     // local_lim.h:87:1:
-	UCHAR_MAX                            = 255                    // limits.h:82:1:
-	UINT16_MAX                           = 65535                  // stdint.h:128:1:
-	UINT32_MAX                           = 4294967295             // stdint.h:129:1:
-	UINT64_MAX                           = 18446744073709551615   // stdint.h:130:1:
-	UINT8_MAX                            = 255                    // stdint.h:127:1:
-	UINTMAX_MAX                          = 18446744073709551615   // stdint.h:202:1:
-	UINTPTR_MAX                          = 18446744073709551615   // stdint.h:188:1:
-	UINT_FAST16_MAX                      = 18446744073709551615   // stdint.h:175:1:
-	UINT_FAST32_MAX                      = 18446744073709551615   // stdint.h:176:1:
-	UINT_FAST64_MAX                      = 18446744073709551615   // stdint.h:181:1:
-	UINT_FAST8_MAX                       = 255                    // stdint.h:173:1:
-	UINT_LEAST16_MAX                     = 65535                  // stdint.h:146:1:
-	UINT_LEAST32_MAX                     = 4294967295             // stdint.h:147:1:
-	UINT_LEAST64_MAX                     = 18446744073709551615   // stdint.h:148:1:
-	UINT_LEAST8_MAX                      = 255                    // stdint.h:145:1:
-	UINT_MAX                             = 4294967295             // limits.h:124:1:
-	ULLONG_MAX                           = 18446744073709551615   // limits.h:146:1:
-	ULONG_MAX                            = 18446744073709551615   // limits.h:135:1:
-	USHRT_MAX                            = 65535                  // limits.h:113:1:
-	WCHAR_MAX                            = 2147483647             // stdint.h:240:1:
-	WCHAR_MIN                            = -2147483648            // stdint.h:239:1:
-	WCONTINUED                           = 8                      // waitflags.h:32:1:
-	WEXITED                              = 4                      // waitflags.h:31:1:
-	WINT_MAX                             = 4294967295             // stdint.h:245:1:
-	WINT_MIN                             = 0                      // stdint.h:244:1:
-	WNOHANG                              = 1                      // waitflags.h:25:1:
-	WNOWAIT                              = 0x01000000             // waitflags.h:33:1:
-	WSTOPPED                             = 2                      // waitflags.h:30:1:
-	WUNTRACED                            = 2                      // waitflags.h:26:1:
-	XATTR_LIST_MAX                       = 65536                  // limits.h:17:1:
-	XATTR_NAME_MAX                       = 255                    // limits.h:15:1:
-	XATTR_SIZE_MAX                       = 65536                  // limits.h:16:1:
-	X_ALLOCA_H                           = 1                      // alloca.h:19:1:
-	X_ANSI_STDDEF_H                      = 0                      // stddef.h:42:1:
-	X_ASM_GENERIC_ERRNO_BASE_H           = 0                      // errno-base.h:3:1:
-	X_ASM_GENERIC_ERRNO_H                = 0                      // errno.h:3:1:
-	X_ATFILE_SOURCE                      = 1                      // features.h:351:1:
-	X_BITS_ATOMIC_WIDE_COUNTER_H         = 0                      // atomic_wide_counter.h:20:1:
-	X_BITS_BYTESWAP_H                    = 1                      // byteswap.h:24:1:
-	X_BITS_ENDIANNESS_H                  = 1                      // endianness.h:2:1:
-	X_BITS_ENDIAN_H                      = 1                      // endian.h:20:1:
-	X_BITS_ERRNO_H                       = 1                      // errno.h:20:1:
-	X_BITS_FLOATN_COMMON_H               = 0                      // floatn-common.h:21:1:
-	X_BITS_FLOATN_H                      = 0                      // floatn.h:20:1:
-	X_BITS_LIBM_SIMD_DECL_STUBS_H        = 1                      // libm-simd-decl-stubs.h:34:1:
-	X_BITS_POSIX1_LIM_H                  = 1                      // posix1_lim.h:25:1:
-	X_BITS_POSIX2_LIM_H                  = 1                      // posix2_lim.h:23:1:
-	X_BITS_PTHREADTYPES_ARCH_H           = 1                      // pthreadtypes-arch.h:19:1:
-	X_BITS_PTHREADTYPES_COMMON_H         = 1                      // pthreadtypes.h:20:1:
-	X_BITS_STDINT_INTN_H                 = 1                      // stdint-intn.h:20:1:
-	X_BITS_STDINT_UINTN_H                = 1                      // stdint-uintn.h:20:1:
-	X_BITS_STDIO_LIM_H                   = 1                      // stdio_lim.h:19:1:
-	X_BITS_TIME64_H                      = 1                      // time64.h:24:1:
-	X_BITS_TYPESIZES_H                   = 1                      // typesizes.h:24:1:
-	X_BITS_TYPES_H                       = 1                      // types.h:24:1:
-	X_BITS_TYPES_LOCALE_T_H              = 1                      // locale_t.h:20:1:
-	X_BITS_TYPES___LOCALE_T_H            = 1                      // __locale_t.h:20:1:
-	X_BITS_UINTN_IDENTITY_H              = 1                      // uintn-identity.h:24:1:
-	X_BITS_WCHAR_H                       = 1                      // wchar.h:20:1:
-	X_BSD_PTRDIFF_T_                     = 0                      // stddef.h:137:1:
-	X_BSD_SIZE_T_                        = 0                      // stddef.h:193:1:
-	X_BSD_SIZE_T_DEFINED_                = 0                      // stddef.h:196:1:
-	X_DEFAULT_SOURCE                     = 1                      // features.h:236:1:
-	X_ENDIAN_H                           = 1                      // endian.h:19:1:
-	X_ERRNO_H                            = 1                      // errno.h:23:1:
-	X_FEATURES_H                         = 1                      // features.h:19:1:
-	X_FILE_OFFSET_BITS                   = 64                     // <builtin>:25:1:
-	X_GCC_LIMITS_H_                      = 0                      // limits.h:30:1:
-	X_GCC_MAX_ALIGN_T                    = 0                      // stddef.h:420:1:
-	X_GCC_PTRDIFF_T                      = 0                      // stddef.h:139:1:
-	X_GCC_SIZE_T                         = 0                      // stddef.h:200:1:
-	X_GCC_WCHAR_T                        = 0                      // stddef.h:280:1:
-	X_GCC_WRAP_STDINT_H                  = 0                      // stdint.h:13:1:
-	X_IOFBF                              = 0                      // stdio.h:93:1:
-	X_IOLBF                              = 1                      // stdio.h:94:1:
-	X_IONBF                              = 2                      // stdio.h:95:1:
-	X_IO_EOF_SEEN                        = 0x0010                 // struct_FILE.h:111:1:
-	X_IO_ERR_SEEN                        = 0x0020                 // struct_FILE.h:114:1:
-	X_IO_USER_LOCK                       = 0x8000                 // struct_FILE.h:117:1:
-	X_LIBC_LIMITS_H_                     = 1                      // limits.h:23:1:
-	X_LIMITS_H___                        = 0                      // limits.h:60:1:
-	X_LINUX_LIMITS_H                     = 0                      // limits.h:3:1:
-	X_LP64                               = 1                      // <predefined>:313:1:
-	X_MATH_H                             = 1                      // math.h:24:1:
-	X_POSIX2_BC_BASE_MAX                 = 99                     // posix2_lim.h:27:1:
-	X_POSIX2_BC_DIM_MAX                  = 2048                   // posix2_lim.h:30:1:
-	X_POSIX2_BC_SCALE_MAX                = 99                     // posix2_lim.h:33:1:
-	X_POSIX2_BC_STRING_MAX               = 1000                   // posix2_lim.h:36:1:
-	X_POSIX2_CHARCLASS_NAME_MAX          = 14                     // posix2_lim.h:55:1:
-	X_POSIX2_COLL_WEIGHTS_MAX            = 2                      // posix2_lim.h:40:1:
-	X_POSIX2_EXPR_NEST_MAX               = 32                     // posix2_lim.h:44:1:
-	X_POSIX2_LINE_MAX                    = 2048                   // posix2_lim.h:47:1:
-	X_POSIX2_RE_DUP_MAX                  = 255                    // posix2_lim.h:51:1:
-	X_POSIX_AIO_LISTIO_MAX               = 2                      // posix1_lim.h:32:1:
-	X_POSIX_AIO_MAX                      = 1                      // posix1_lim.h:35:1:
-	X_POSIX_ARG_MAX                      = 4096                   // posix1_lim.h:38:1:
-	X_POSIX_CHILD_MAX                    = 25                     // posix1_lim.h:42:1:
-	X_POSIX_CLOCKRES_MIN                 = 20000000               // posix1_lim.h:157:1:
-	X_POSIX_C_SOURCE                     = 200809                 // features.h:290:1:
-	X_POSIX_DELAYTIMER_MAX               = 32                     // posix1_lim.h:48:1:
-	X_POSIX_HOST_NAME_MAX                = 255                    // posix1_lim.h:52:1:
-	X_POSIX_LINK_MAX                     = 8                      // posix1_lim.h:55:1:
-	X_POSIX_LOGIN_NAME_MAX               = 9                      // posix1_lim.h:58:1:
-	X_POSIX_MAX_CANON                    = 255                    // posix1_lim.h:61:1:
-	X_POSIX_MAX_INPUT                    = 255                    // posix1_lim.h:65:1:
-	X_POSIX_MQ_OPEN_MAX                  = 8                      // posix1_lim.h:68:1:
-	X_POSIX_MQ_PRIO_MAX                  = 32                     // posix1_lim.h:71:1:
-	X_POSIX_NAME_MAX                     = 14                     // posix1_lim.h:74:1:
-	X_POSIX_NGROUPS_MAX                  = 8                      // posix1_lim.h:78:1:
-	X_POSIX_OPEN_MAX                     = 20                     // posix1_lim.h:85:1:
-	X_POSIX_PATH_MAX                     = 256                    // posix1_lim.h:97:1:
-	X_POSIX_PIPE_BUF                     = 512                    // posix1_lim.h:100:1:
-	X_POSIX_RE_DUP_MAX                   = 255                    // posix1_lim.h:104:1:
-	X_POSIX_RTSIG_MAX                    = 8                      // posix1_lim.h:107:1:
-	X_POSIX_SEM_NSEMS_MAX                = 256                    // posix1_lim.h:110:1:
-	X_POSIX_SEM_VALUE_MAX                = 32767                  // posix1_lim.h:113:1:
-	X_POSIX_SIGQUEUE_MAX                 = 32                     // posix1_lim.h:116:1:
-	X_POSIX_SOURCE                       = 1                      // features.h:288:1:
-	X_POSIX_SSIZE_MAX                    = 32767                  // posix1_lim.h:119:1:
-	X_POSIX_STREAM_MAX                   = 8                      // posix1_lim.h:122:1:
-	X_POSIX_SYMLINK_MAX                  = 255                    // posix1_lim.h:125:1:
-	X_POSIX_SYMLOOP_MAX                  = 8                      // posix1_lim.h:129:1:
-	X_POSIX_THREAD_DESTRUCTOR_ITERATIONS = 4                      // local_lim.h:67:1:
-	X_POSIX_THREAD_KEYS_MAX              = 128                    // local_lim.h:62:1:
-	X_POSIX_THREAD_THREADS_MAX           = 64                     // local_lim.h:72:1:
-	X_POSIX_TIMER_MAX                    = 32                     // posix1_lim.h:132:1:
-	X_POSIX_TTY_NAME_MAX                 = 9                      // posix1_lim.h:135:1:
-	X_POSIX_TZNAME_MAX                   = 6                      // posix1_lim.h:139:1:
-	X_PTRDIFF_T                          = 0                      // stddef.h:132:1:
-	X_PTRDIFF_T_                         = 0                      // stddef.h:136:1:
-	X_PTRDIFF_T_DECLARED                 = 0                      // stddef.h:140:1:
-	X_RWLOCK_INTERNAL_H                  = 0                      // struct_rwlock.h:21:1:
-	X_SIZET_                             = 0                      // stddef.h:201:1:
-	X_SIZE_T                             = 0                      // stddef.h:187:1:
-	X_SIZE_T_                            = 0                      // stddef.h:192:1:
-	X_SIZE_T_DECLARED                    = 0                      // stddef.h:197:1:
-	X_SIZE_T_DEFINED                     = 0                      // stddef.h:195:1:
-	X_SIZE_T_DEFINED_                    = 0                      // stddef.h:194:1:
-	X_STDC_PREDEF_H                      = 1                      // <predefined>:175:1:
-	X_STDDEF_H                           = 0                      // stddef.h:39:1:
-	X_STDDEF_H_                          = 0                      // stddef.h:40:1:
-	X_STDINT_H                           = 1                      // stdint.h:23:1:
-	X_STDIO_H                            = 1                      // stdio.h:24:1:
-	X_STDLIB_H                           = 1                      // stdlib.h:36:1:
-	X_STRINGS_H                          = 1                      // strings.h:19:1:
-	X_STRING_H                           = 1                      // string.h:23:1:
-	X_STRUCT_TIMESPEC                    = 1                      // struct_timespec.h:3:1:
-	X_SYS_CDEFS_H                        = 1                      // cdefs.h:20:1:
-	X_SYS_SELECT_H                       = 1                      // select.h:22:1:
-	X_SYS_SIZE_T_H                       = 0                      // stddef.h:188:1:
-	X_SYS_TYPES_H                        = 1                      // types.h:23:1:
-	X_THREAD_MUTEX_INTERNAL_H            = 1                      // struct_mutex.h:20:1:
-	X_THREAD_SHARED_TYPES_H              = 1                      // thread-shared-types.h:20:1:
-	X_T_PTRDIFF                          = 0                      // stddef.h:134:1:
-	X_T_PTRDIFF_                         = 0                      // stddef.h:133:1:
-	X_T_SIZE                             = 0                      // stddef.h:190:1:
-	X_T_SIZE_                            = 0                      // stddef.h:189:1:
-	X_T_WCHAR                            = 0                      // stddef.h:271:1:
-	X_T_WCHAR_                           = 0                      // stddef.h:270:1:
-	X_VA_LIST_DEFINED                    = 0                      // stdio.h:53:1:
-	X_WCHAR_T                            = 0                      // stddef.h:269:1:
-	X_WCHAR_T_                           = 0                      // stddef.h:273:1:
-	X_WCHAR_T_DECLARED                   = 0                      // stddef.h:281:1:
-	X_WCHAR_T_DEFINED                    = 0                      // stddef.h:276:1:
-	X_WCHAR_T_DEFINED_                   = 0                      // stddef.h:275:1:
-	X_WCHAR_T_H                          = 0                      // stddef.h:277:1:
-	Linux                                = 1                      // <predefined>:256:1:
-	Math_errhandling                     = 3                      // math.h:1048:1:
-	Unix                                 = 1                      // <predefined>:192:1:
+	AIO_PRIO_DELTA_MAX                   = 20
+	BC_BASE_MAX                          = 99
+	BC_DIM_MAX                           = 2048
+	BC_SCALE_MAX                         = 99
+	BC_STRING_MAX                        = 1000
+	BIG_ENDIAN                           = 4321
+	BUFSIZ                               = 8192
+	BYTE_ORDER                           = 1234
+	CHARCLASS_NAME_MAX                   = 2048
+	CHAR_BIT                             = 8
+	CHAR_MAX                             = 127
+	CHAR_MIN                             = -128
+	COLL_WEIGHTS_MAX                     = 255
+	DELAYTIMER_MAX                       = 2147483647
+	E2BIG                                = 7
+	EACCES                               = 13
+	EADDRINUSE                           = 98
+	EADDRNOTAVAIL                        = 99
+	EADV                                 = 68
+	EAFNOSUPPORT                         = 97
+	EAGAIN                               = 11
+	EALREADY                             = 114
+	EBADE                                = 52
+	EBADF                                = 9
+	EBADFD                               = 77
+	EBADMSG                              = 74
+	EBADR                                = 53
+	EBADRQC                              = 56
+	EBADSLT                              = 57
+	EBFONT                               = 59
+	EBUSY                                = 16
+	ECANCELED                            = 125
+	ECHILD                               = 10
+	ECHRNG                               = 44
+	ECOMM                                = 70
+	ECONNABORTED                         = 103
+	ECONNREFUSED                         = 111
+	ECONNRESET                           = 104
+	EDEADLK                              = 35
+	EDEADLOCK                            = 35
+	EDESTADDRREQ                         = 89
+	EDOM                                 = 33
+	EDOTDOT                              = 73
+	EDQUOT                               = 122
+	EEXIST                               = 17
+	EFAULT                               = 14
+	EFBIG                                = 27
+	EHOSTDOWN                            = 112
+	EHOSTUNREACH                         = 113
+	EHWPOISON                            = 133
+	EIDRM                                = 43
+	EILSEQ                               = 84
+	EINPROGRESS                          = 115
+	EINTR                                = 4
+	EINVAL                               = 22
+	EIO                                  = 5
+	EISCONN                              = 106
+	EISDIR                               = 21
+	EISNAM                               = 120
+	EKEYEXPIRED                          = 127
+	EKEYREJECTED                         = 129
+	EKEYREVOKED                          = 128
+	EL2HLT                               = 51
+	EL2NSYNC                             = 45
+	EL3HLT                               = 46
+	EL3RST                               = 47
+	ELIBACC                              = 79
+	ELIBBAD                              = 80
+	ELIBEXEC                             = 83
+	ELIBMAX                              = 82
+	ELIBSCN                              = 81
+	ELNRNG                               = 48
+	ELOOP                                = 40
+	EMEDIUMTYPE                          = 124
+	EMFILE                               = 24
+	EMLINK                               = 31
+	EMSGSIZE                             = 90
+	EMULTIHOP                            = 72
+	ENAMETOOLONG                         = 36
+	ENAVAIL                              = 119
+	ENETDOWN                             = 100
+	ENETRESET                            = 102
+	ENETUNREACH                          = 101
+	ENFILE                               = 23
+	ENOANO                               = 55
+	ENOBUFS                              = 105
+	ENOCSI                               = 50
+	ENODATA                              = 61
+	ENODEV                               = 19
+	ENOENT                               = 2
+	ENOEXEC                              = 8
+	ENOKEY                               = 126
+	ENOLCK                               = 37
+	ENOLINK                              = 67
+	ENOMEDIUM                            = 123
+	ENOMEM                               = 12
+	ENOMSG                               = 42
+	ENONET                               = 64
+	ENOPKG                               = 65
+	ENOPROTOOPT                          = 92
+	ENOSPC                               = 28
+	ENOSR                                = 63
+	ENOSTR                               = 60
+	ENOSYS                               = 38
+	ENOTBLK                              = 15
+	ENOTCONN                             = 107
+	ENOTDIR                              = 20
+	ENOTEMPTY                            = 39
+	ENOTNAM                              = 118
+	ENOTRECOVERABLE                      = 131
+	ENOTSOCK                             = 88
+	ENOTSUP                              = 95
+	ENOTTY                               = 25
+	ENOTUNIQ                             = 76
+	ENXIO                                = 6
+	EOF                                  = -1
+	EOPNOTSUPP                           = 95
+	EOVERFLOW                            = 75
+	EOWNERDEAD                           = 130
+	EPERM                                = 1
+	EPFNOSUPPORT                         = 96
+	EPIPE                                = 32
+	EPROTO                               = 71
+	EPROTONOSUPPORT                      = 93
+	EPROTOTYPE                           = 91
+	ERANGE                               = 34
+	EREMCHG                              = 78
+	EREMOTE                              = 66
+	EREMOTEIO                            = 121
+	ERESTART                             = 85
+	ERFKILL                              = 132
+	EROFS                                = 30
+	ESHUTDOWN                            = 108
+	ESOCKTNOSUPPORT                      = 94
+	ESPIPE                               = 29
+	ESRCH                                = 3
+	ESRMNT                               = 69
+	ESTALE                               = 116
+	ESTRPIPE                             = 86
+	ETIME                                = 62
+	ETIMEDOUT                            = 110
+	ETOOMANYREFS                         = 109
+	ETXTBSY                              = 26
+	EUCLEAN                              = 117
+	EUNATCH                              = 49
+	EUSERS                               = 87
+	EWOULDBLOCK                          = 11
+	EXDEV                                = 18
+	EXFULL                               = 54
+	EXIT_FAILURE                         = 1
+	EXIT_SUCCESS                         = 0
+	EXPR_NEST_MAX                        = 32
+	FD_SETSIZE                           = 1024
+	FILENAME_MAX                         = 4096
+	FOPEN_MAX                            = 16
+	FP_ILOGB0                            = -2147483648
+	FP_ILOGBNAN                          = -2147483648
+	FP_INFINITE1                         = 1
+	FP_NAN1                              = 0
+	FP_NORMAL1                           = 4
+	FP_SUBNORMAL1                        = 3
+	FP_ZERO1                             = 2
+	HOST_NAME_MAX                        = 64
+	INT16_MAX                            = 32767
+	INT16_MIN                            = -32768
+	INT32_MAX                            = 2147483647
+	INT32_MIN                            = -2147483648
+	INT64_MAX                            = 9223372036854775807
+	INT64_MIN                            = -9223372036854775808
+	INT8_MAX                             = 127
+	INT8_MIN                             = -128
+	INTMAX_MAX                           = 9223372036854775807
+	INTMAX_MIN                           = -9223372036854775808
+	INTPTR_MAX                           = 9223372036854775807
+	INTPTR_MIN                           = -9223372036854775808
+	INT_FAST16_MAX                       = 9223372036854775807
+	INT_FAST16_MIN                       = -9223372036854775808
+	INT_FAST32_MAX                       = 9223372036854775807
+	INT_FAST32_MIN                       = -9223372036854775808
+	INT_FAST64_MAX                       = 9223372036854775807
+	INT_FAST64_MIN                       = -9223372036854775808
+	INT_FAST8_MAX                        = 127
+	INT_FAST8_MIN                        = -128
+	INT_LEAST16_MAX                      = 32767
+	INT_LEAST16_MIN                      = -32768
+	INT_LEAST32_MAX                      = 2147483647
+	INT_LEAST32_MIN                      = -2147483648
+	INT_LEAST64_MAX                      = 9223372036854775807
+	INT_LEAST64_MIN                      = -9223372036854775808
+	INT_LEAST8_MAX                       = 127
+	INT_LEAST8_MIN                       = -128
+	INT_MAX                              = 2147483647
+	INT_MIN                              = -2147483648
+	J40_API                              = 0
+	J40_FILENAME                         = "j40.h"
+	J40_IMPLEMENTATION                   = 0
+	J40_RGBA                             = 0x1755
+	J40_U8X4                             = 0x0f33
+	J40_VERSION                          = 2270
+	J40__CLANG_VER                       = 0
+	J40__COEFFS_ALIGN                    = 64
+	J40__ERRBUF_LEN                      = 256
+	J40__EXPOSE_INTERNALS                = 0
+	J40__GCC_VER                         = 786944
+	J40__INITIAL_BUFSIZE                 = 0x10000
+	J40__MAX_DIST_MULT                   = 2097152
+	J40__PIXELS_ALIGN                    = 32
+	J40__RECURSING                       = 9999
+	J40__SQRT2                           = 1.4142135623730951
+	LINE_MAX                             = 2048
+	LITTLE_ENDIAN                        = 1234
+	LLONG_MAX                            = 9223372036854775807
+	LLONG_MIN                            = -9223372036854775808
+	LOGIN_NAME_MAX                       = 256
+	LONG_MAX                             = 9223372036854775807
+	LONG_MIN                             = -9223372036854775808
+	L_ctermid                            = 9
+	L_tmpnam                             = 20
+	MATH_ERREXCEPT                       = 2
+	MATH_ERRNO                           = 1
+	MAX_CANON                            = 255
+	MAX_INPUT                            = 255
+	MB_LEN_MAX                           = 16
+	MQ_PRIO_MAX                          = 32768
+	M_1_PI                               = 0.31830988618379067154
+	M_2_PI                               = 0.63661977236758134308
+	M_2_SQRTPI                           = 1.12837916709551257390
+	M_E                                  = 2.7182818284590452354
+	M_LN10                               = 2.30258509299404568402
+	M_LN2                                = 0.69314718055994530942
+	M_LOG10E                             = 0.43429448190325182765
+	M_LOG2E                              = 1.4426950408889634074
+	M_PI                                 = 3.14159265358979323846
+	M_PI_2                               = 1.57079632679489661923
+	M_PI_4                               = 0.78539816339744830962
+	M_SQRT1_2                            = 0.70710678118654752440
+	M_SQRT2                              = 1.41421356237309504880
+	NAME_MAX                             = 255
+	NGROUPS_MAX                          = 65536
+	PATH_MAX                             = 4096
+	PDP_ENDIAN                           = 3412
+	PIPE_BUF                             = 4096
+	PTHREAD_DESTRUCTOR_ITERATIONS        = 4
+	PTHREAD_KEYS_MAX                     = 1024
+	PTHREAD_STACK_MIN                    = 16384
+	PTRDIFF_MAX                          = 9223372036854775807
+	PTRDIFF_MIN                          = -9223372036854775808
+	P_tmpdir                             = "/tmp"
+	RAND_MAX                             = 2147483647
+	RE_DUP_MAX                           = 32767
+	RTSIG_MAX                            = 32
+	SCHAR_MAX                            = 127
+	SCHAR_MIN                            = -128
+	SEEK_CUR                             = 1
+	SEEK_END                             = 2
+	SEEK_SET                             = 0
+	SEM_VALUE_MAX                        = 2147483647
+	SHRT_MAX                             = 32767
+	SHRT_MIN                             = -32768
+	SIG_ATOMIC_MAX                       = 2147483647
+	SIG_ATOMIC_MIN                       = -2147483648
+	SIZE_MAX                             = 18446744073709551615
+	SSIZE_MAX                            = 9223372036854775807
+	TMP_MAX                              = 238328
+	TTY_NAME_MAX                         = 32
+	UCHAR_MAX                            = 255
+	UINT16_MAX                           = 65535
+	UINT32_MAX                           = 4294967295
+	UINT64_MAX                           = 18446744073709551615
+	UINT8_MAX                            = 255
+	UINTMAX_MAX                          = 18446744073709551615
+	UINTPTR_MAX                          = 18446744073709551615
+	UINT_FAST16_MAX                      = 18446744073709551615
+	UINT_FAST32_MAX                      = 18446744073709551615
+	UINT_FAST64_MAX                      = 18446744073709551615
+	UINT_FAST8_MAX                       = 255
+	UINT_LEAST16_MAX                     = 65535
+	UINT_LEAST32_MAX                     = 4294967295
+	UINT_LEAST64_MAX                     = 18446744073709551615
+	UINT_LEAST8_MAX                      = 255
+	UINT_MAX                             = 4294967295
+	ULLONG_MAX                           = 18446744073709551615
+	ULONG_MAX                            = 18446744073709551615
+	USHRT_MAX                            = 65535
+	WCHAR_MAX                            = 2147483647
+	WCHAR_MIN                            = -2147483648
+	WCONTINUED                           = 8
+	WEXITED                              = 4
+	WINT_MAX                             = 4294967295
+	WINT_MIN                             = 0
+	WNOHANG                              = 1
+	WNOWAIT                              = 0x01000000
+	WSTOPPED                             = 2
+	WUNTRACED                            = 2
+	XATTR_LIST_MAX                       = 65536
+	XATTR_NAME_MAX                       = 255
+	XATTR_SIZE_MAX                       = 65536
+	X_ALLOCA_H                           = 1
+	X_ANSI_STDDEF_H                      = 0
+	X_ASM_GENERIC_ERRNO_BASE_H           = 0
+	X_ASM_GENERIC_ERRNO_H                = 0
+	X_ATFILE_SOURCE                      = 1
+	X_BITS_ATOMIC_WIDE_COUNTER_H         = 0
+	X_BITS_BYTESWAP_H                    = 1
+	X_BITS_ENDIANNESS_H                  = 1
+	X_BITS_ENDIAN_H                      = 1
+	X_BITS_ERRNO_H                       = 1
+	X_BITS_FLOATN_COMMON_H               = 0
+	X_BITS_FLOATN_H                      = 0
+	X_BITS_LIBM_SIMD_DECL_STUBS_H        = 1
+	X_BITS_POSIX1_LIM_H                  = 1
+	X_BITS_POSIX2_LIM_H                  = 1
+	X_BITS_PTHREADTYPES_ARCH_H           = 1
+	X_BITS_PTHREADTYPES_COMMON_H         = 1
+	X_BITS_STDINT_INTN_H                 = 1
+	X_BITS_STDINT_UINTN_H                = 1
+	X_BITS_STDIO_LIM_H                   = 1
+	X_BITS_TIME64_H                      = 1
+	X_BITS_TYPESIZES_H                   = 1
+	X_BITS_TYPES_H                       = 1
+	X_BITS_TYPES_LOCALE_T_H              = 1
+	X_BITS_TYPES___LOCALE_T_H            = 1
+	X_BITS_UINTN_IDENTITY_H              = 1
+	X_BITS_WCHAR_H                       = 1
+	X_BSD_PTRDIFF_T_                     = 0
+	X_BSD_SIZE_T_                        = 0
+	X_BSD_SIZE_T_DEFINED_                = 0
+	X_DEFAULT_SOURCE                     = 1
+	X_ENDIAN_H                           = 1
+	X_ERRNO_H                            = 1
+	X_FEATURES_H                         = 1
+	X_FILE_OFFSET_BITS                   = 64
+	X_GCC_LIMITS_H_                      = 0
+	X_GCC_MAX_ALIGN_T                    = 0
+	X_GCC_PTRDIFF_T                      = 0
+	X_GCC_SIZE_T                         = 0
+	X_GCC_WCHAR_T                        = 0
+	X_GCC_WRAP_STDINT_H                  = 0
+	X_IOFBF                              = 0
+	X_IOLBF                              = 1
+	X_IONBF                              = 2
+	X_IO_EOF_SEEN                        = 0x0010
+	X_IO_ERR_SEEN                        = 0x0020
+	X_IO_USER_LOCK                       = 0x8000
+	X_LIBC_LIMITS_H_                     = 1
+	X_LIMITS_H___                        = 0
+	X_LINUX_LIMITS_H                     = 0
+	X_LP64                               = 1
+	X_MATH_H                             = 1
+	X_POSIX2_BC_BASE_MAX                 = 99
+	X_POSIX2_BC_DIM_MAX                  = 2048
+	X_POSIX2_BC_SCALE_MAX                = 99
+	X_POSIX2_BC_STRING_MAX               = 1000
+	X_POSIX2_CHARCLASS_NAME_MAX          = 14
+	X_POSIX2_COLL_WEIGHTS_MAX            = 2
+	X_POSIX2_EXPR_NEST_MAX               = 32
+	X_POSIX2_LINE_MAX                    = 2048
+	X_POSIX2_RE_DUP_MAX                  = 255
+	X_POSIX_AIO_LISTIO_MAX               = 2
+	X_POSIX_AIO_MAX                      = 1
+	X_POSIX_ARG_MAX                      = 4096
+	X_POSIX_CHILD_MAX                    = 25
+	X_POSIX_CLOCKRES_MIN                 = 20000000
+	X_POSIX_C_SOURCE                     = 200809
+	X_POSIX_DELAYTIMER_MAX               = 32
+	X_POSIX_HOST_NAME_MAX                = 255
+	X_POSIX_LINK_MAX                     = 8
+	X_POSIX_LOGIN_NAME_MAX               = 9
+	X_POSIX_MAX_CANON                    = 255
+	X_POSIX_MAX_INPUT                    = 255
+	X_POSIX_MQ_OPEN_MAX                  = 8
+	X_POSIX_MQ_PRIO_MAX                  = 32
+	X_POSIX_NAME_MAX                     = 14
+	X_POSIX_NGROUPS_MAX                  = 8
+	X_POSIX_OPEN_MAX                     = 20
+	X_POSIX_PATH_MAX                     = 256
+	X_POSIX_PIPE_BUF                     = 512
+	X_POSIX_RE_DUP_MAX                   = 255
+	X_POSIX_RTSIG_MAX                    = 8
+	X_POSIX_SEM_NSEMS_MAX                = 256
+	X_POSIX_SEM_VALUE_MAX                = 32767
+	X_POSIX_SIGQUEUE_MAX                 = 32
+	X_POSIX_SOURCE                       = 1
+	X_POSIX_SSIZE_MAX                    = 32767
+	X_POSIX_STREAM_MAX                   = 8
+	X_POSIX_SYMLINK_MAX                  = 255
+	X_POSIX_SYMLOOP_MAX                  = 8
+	X_POSIX_THREAD_DESTRUCTOR_ITERATIONS = 4
+	X_POSIX_THREAD_KEYS_MAX              = 128
+	X_POSIX_THREAD_THREADS_MAX           = 64
+	X_POSIX_TIMER_MAX                    = 32
+	X_POSIX_TTY_NAME_MAX                 = 9
+	X_POSIX_TZNAME_MAX                   = 6
+	X_PTRDIFF_T                          = 0
+	X_PTRDIFF_T_                         = 0
+	X_PTRDIFF_T_DECLARED                 = 0
+	X_RWLOCK_INTERNAL_H                  = 0
+	X_SIZET_                             = 0
+	X_SIZE_T                             = 0
+	X_SIZE_T_                            = 0
+	X_SIZE_T_DECLARED                    = 0
+	X_SIZE_T_DEFINED                     = 0
+	X_SIZE_T_DEFINED_                    = 0
+	X_STDC_PREDEF_H                      = 1
+	X_STDDEF_H                           = 0
+	X_STDDEF_H_                          = 0
+	X_STDINT_H                           = 1
+	X_STDIO_H                            = 1
+	X_STDLIB_H                           = 1
+	X_STRINGS_H                          = 1
+	X_STRING_H                           = 1
+	X_STRUCT_TIMESPEC                    = 1
+	X_SYS_CDEFS_H                        = 1
+	X_SYS_SELECT_H                       = 1
+	X_SYS_SIZE_T_H                       = 0
+	X_SYS_TYPES_H                        = 1
+	X_THREAD_MUTEX_INTERNAL_H            = 1
+	X_THREAD_SHARED_TYPES_H              = 1
+	X_T_PTRDIFF                          = 0
+	X_T_PTRDIFF_                         = 0
+	X_T_SIZE                             = 0
+	X_T_SIZE_                            = 0
+	X_T_WCHAR                            = 0
+	X_T_WCHAR_                           = 0
+	X_VA_LIST_DEFINED                    = 0
+	X_WCHAR_T                            = 0
+	X_WCHAR_T_                           = 0
+	X_WCHAR_T_DECLARED                   = 0
+	X_WCHAR_T_DEFINED                    = 0
+	X_WCHAR_T_DEFINED_                   = 0
+	X_WCHAR_T_H                          = 0
+	Linux                                = 1
+	Math_errhandling                     = 3
+	Unix                                 = 1
 )
 
-// Depending on the type of TG_ARG, call an appropriately suffixed
-//    version of FUNC with arguments (including parentheses) ARGS.
-//    Suffixed functions may not exist for long double if it has the same
-//    format as double, or for other types with the same format as float,
-//    double or long double.  The behavior is undefined if the argument
-//    does not have a real floating type.  The definition may use a
-//    conditional expression, so all suffixed versions of FUNC must
-//    return the same type (FUNC may include a cast if necessary rather
-//    than being a single identifier).
-
-// ISO C99 defines some generic macros which work on any data type.
-
 // All floating-point numbers can be put in one of these categories.
-const ( /* math.h:934:1: */
+const (
 	FP_NAN       = 0
 	FP_INFINITE  = 1
 	FP_ZERO      = 2
@@ -477,87 +465,52 @@ const ( /* math.h:934:1: */
 	FP_NORMAL    = 4
 )
 
-// a prefix code tree is represented by max_len (max code length), fast_len (explained below),
-// and an int32_t table either statically or dynamically constructed.
-// table[0] .. table[(1 << fast_len) - 1] are a lookup table for first fast_len bits.
-// each entry is either a direct entry (positive),
-// or an index to the first overflow entry (negative, the actual index is -table[i]).
-//
-// subsequent overflow entries are used for codes with the length > fast_len;
-// the decoder reads overflow entries in the order, stopping at the first match.
-// the last overflow entry is implicit so the table is constructed to ensure the match.
-//
-// a direct or overflow entry format:
-// - bits 0..3: codeword length - fast_len
-// - bits 4..15: codeword, skipping first fast_len bits, ordered like st->bits.bits (overflow only)
-// - bits 16..30: corresponding alphabet
-
-const ( /* j40.h:1958:1: */
+const (
 	J40__MAX_TYPICAL_FAST_LEN = 7
-)       // limit fast_len for typical cases
-const ( /* j40.h:1959:1: */
+)
+const (
 	J40__MAX_TABLE_GROWTH = 2
 )
 
-////////////////////////////////////////////////////////////////////////////////
-// rANS alias table
-
-const ( /* j40.h:2247:1: */
+const (
 	J40__DIST_BITS      = 12
 	J40__ANS_INIT_STATE = 1245184
 )
 
-////////////////////////////////////////////////////////////////////////////////
-// image header & metadata
-
-const ( /* j40.h:2809:1: */
+const (
 	J40__CHROMA_WHITE = 0
 	J40__CHROMA_RED   = 1
 	J40__CHROMA_GREEN = 2
 	J40__CHROMA_BLUE  = 3
 )
 
-////////////////////////////////////////////////////////////////////////////////
-// MA tree
-
-const ( /* j40.h:3288:1: */
+const (
 	J40__NUM_PRED = 14
 )
 
-////////////////////////////////////////////////////////////////////////////////
-// dequantization matrix and coefficient orders
-
-const ( /* j40.h:4367:1: */
-	J40__NUM_DCT_SELECT = 27 // the number of all possible varblock types (DctSelect)
-	J40__NUM_DCT_PARAMS = 17 // the number of parameters, some shared by multiple DctSelects
+const (
+	J40__NUM_DCT_SELECT = 27
+	J40__NUM_DCT_PARAMS = 17
 	J40__NUM_ORDERS     = 13
 )
 
-////////////////////////////////////////////////////////////////////////////////
-// frame context
-
-const ( /* j40.h:4859:1: */
+const (
 	J40__MAX_PASSES = 11
 )
 
-const ( /* j40.h:4863:1: */
-	J40__BLEND_REPLACE = 0 // new
-	J40__BLEND_ADD     = 1 // old + new
-	J40__BLEND_BLEND   = 2 // new + old * (1 - new alpha) or equivalent, optionally clamped
-	J40__BLEND_MUL_ADD = 3 // old + new * alpha or equivalent, optionally clamped
+const (
+	J40__BLEND_REPLACE = 0
+	J40__BLEND_ADD     = 1
+	J40__BLEND_BLEND   = 2
+	J40__BLEND_MUL_ADD = 3
 	J40__BLEND_MUL     = 4
 )
 
-////////////////////////////////////////////////////////////////////////////////
-// API utilities
-
-// we don't trust callers and do the basic check ourselves
-
-const ( /* j40.h:7802:1: */ // each API defines its origin value; they don't have to be stable
+const (
 	J40__ORIGIN_NONE           = 0
-	J40__ORIGIN_NEXT           = 1 // for j40_free; the next call will be the actual origin
+	J40__ORIGIN_NEXT           = 1
 	J40__ORIGIN_from_file      = 2
-	J40__ORIGIN_from_memory    = 3 /* the last origin that can use alternative magic numbers, see J40__ORIGIN_LAST_ALT_MAGIC */
+	J40__ORIGIN_from_memory    = 3
 	J40__ORIGIN_output_format  = 4
 	J40__ORIGIN_next_frame     = 5
 	J40__ORIGIN_current_frame  = 6
@@ -568,10 +521,7 @@ const ( /* j40.h:7802:1: */ // each API defines its origin value; they don't hav
 	J40__ORIGIN_LAST_ALT_MAGIC = 3
 )
 
-////////////////////////////////////////////////////////////////////////////////
-// plane
-
-const ( /* j40.h:928:1: */
+const (
 	J40__PLANE_U8  = 32
 	J40__PLANE_U16 = 33
 	J40__PLANE_I16 = 65
@@ -580,33 +530,29 @@ const ( /* j40.h:928:1: */
 	J40__PLANE_F32 = 98
 )
 
-const ( /* j40.h:965:1: */
+const (
 	J40__PLANE_CLEAR = 1
-	// for public facing planes, we always add padding to prevent misconception
+
 	J40__PLANE_FORCE_PAD = 2
 )
 
-type Ptrdiff_t = int64 /* <builtin>:3:26 */
+type Ptrdiff_t = int64
 
-type Size_t = uint64 /* <builtin>:9:23 */
+type Size_t = uint64
 
-type Wchar_t = int32 /* <builtin>:15:24 */
+type Wchar_t = int32
 
 type X__int128_t = struct {
 	Lo int64
 	Hi int64
-} /* <builtin>:21:43 */ // must match modernc.org/mathutil.Int128
+}
 type X__uint128_t = struct {
 	Lo uint64
 	Hi uint64
-} /* <builtin>:22:44 */ // must match modernc.org/mathutil.Int128
+}
 
-type X__builtin_va_list = uintptr /* <builtin>:46:14 */
-type X__float128 = float64        /* <builtin>:47:21 */
-
-// A null pointer constant.
-
-// Offset of member MEMBER in a struct of type TYPE.
+type X__builtin_va_list = uintptr
+type X__float128 = float64
 
 // Type whose alignment is supported in every context and is at least
 //
@@ -615,1903 +561,238 @@ type X__float128 = float64        /* <builtin>:47:21 */
 type Max_align_t = struct {
 	X__max_align_ll int64
 	X__max_align_ld float64
-} /* stddef.h:435:3 */
-
-// Copyright (C) 1997-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-//	ISO C99: 7.18 Integer types <stdint.h>
-
-// Handle feature test macros at the start of a header.
-//    Copyright (C) 2016-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// This header is internal to glibc and should not be included outside
-//    of glibc headers.  Headers including it must define
-//    __GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATION first.  This header
-//    cannot have multiple include guards because ISO C feature test
-//    macros depend on the definition of the macro when an affected
-//    header is included, not when the first system header is
-//    included.
-
-// Copyright (C) 1991-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// These are defined by the user (or the compiler)
-//    to specify the desired environment:
-//
-//    __STRICT_ANSI__	ISO Standard C.
-//    _ISOC99_SOURCE	Extensions to ISO C89 from ISO C99.
-//    _ISOC11_SOURCE	Extensions to ISO C99 from ISO C11.
-//    _ISOC2X_SOURCE	Extensions to ISO C99 from ISO C2X.
-//    __STDC_WANT_LIB_EXT2__
-// 			Extensions to ISO C99 from TR 27431-2:2010.
-//    __STDC_WANT_IEC_60559_BFP_EXT__
-// 			Extensions to ISO C11 from TS 18661-1:2014.
-//    __STDC_WANT_IEC_60559_FUNCS_EXT__
-// 			Extensions to ISO C11 from TS 18661-4:2015.
-//    __STDC_WANT_IEC_60559_TYPES_EXT__
-// 			Extensions to ISO C11 from TS 18661-3:2015.
-//    __STDC_WANT_IEC_60559_EXT__
-// 			ISO C2X interfaces defined only in Annex F.
-//
-//    _POSIX_SOURCE	IEEE Std 1003.1.
-//    _POSIX_C_SOURCE	If ==1, like _POSIX_SOURCE; if >=2 add IEEE Std 1003.2;
-// 			if >=199309L, add IEEE Std 1003.1b-1993;
-// 			if >=199506L, add IEEE Std 1003.1c-1995;
-// 			if >=200112L, all of IEEE 1003.1-2004
-// 			if >=200809L, all of IEEE 1003.1-2008
-//    _XOPEN_SOURCE	Includes POSIX and XPG things.  Set to 500 if
-// 			Single Unix conformance is wanted, to 600 for the
-// 			sixth revision, to 700 for the seventh revision.
-//    _XOPEN_SOURCE_EXTENDED XPG things and X/Open Unix extensions.
-//    _LARGEFILE_SOURCE	Some more functions for correct standard I/O.
-//    _LARGEFILE64_SOURCE	Additional functionality from LFS for large files.
-//    _FILE_OFFSET_BITS=N	Select default filesystem interface.
-//    _ATFILE_SOURCE	Additional *at interfaces.
-//    _DYNAMIC_STACK_SIZE_SOURCE Select correct (but non compile-time constant)
-// 			MINSIGSTKSZ, SIGSTKSZ and PTHREAD_STACK_MIN.
-//    _GNU_SOURCE		All of the above, plus GNU extensions.
-//    _DEFAULT_SOURCE	The default set of features (taking precedence over
-// 			__STRICT_ANSI__).
-//
-//    _FORTIFY_SOURCE	Add security hardening to many library functions.
-// 			Set to 1 or 2; 2 performs stricter checks than 1.
-//
-//    _REENTRANT, _THREAD_SAFE
-// 			Obsolete; equivalent to _POSIX_C_SOURCE=199506L.
-//
-//    The `-ansi' switch to the GNU C compiler, and standards conformance
-//    options such as `-std=c99', define __STRICT_ANSI__.  If none of
-//    these are defined, or if _DEFAULT_SOURCE is defined, the default is
-//    to have _POSIX_SOURCE set to one and _POSIX_C_SOURCE set to
-//    200809L, as well as enabling miscellaneous functions from BSD and
-//    SVID.  If more than one of these are defined, they accumulate.  For
-//    example __STRICT_ANSI__, _POSIX_SOURCE and _POSIX_C_SOURCE together
-//    give you ISO C, 1003.1, and 1003.2, but nothing else.
-//
-//    These are defined by this file and are used by the
-//    header files to decide what to declare or define:
-//
-//    __GLIBC_USE (F)	Define things from feature set F.  This is defined
-// 			to 1 or 0; the subsequent macros are either defined
-// 			or undefined, and those tests should be moved to
-// 			__GLIBC_USE.
-//    __USE_ISOC11		Define ISO C11 things.
-//    __USE_ISOC99		Define ISO C99 things.
-//    __USE_ISOC95		Define ISO C90 AMD1 (C95) things.
-//    __USE_ISOCXX11	Define ISO C++11 things.
-//    __USE_POSIX		Define IEEE Std 1003.1 things.
-//    __USE_POSIX2		Define IEEE Std 1003.2 things.
-//    __USE_POSIX199309	Define IEEE Std 1003.1, and .1b things.
-//    __USE_POSIX199506	Define IEEE Std 1003.1, .1b, .1c and .1i things.
-//    __USE_XOPEN		Define XPG things.
-//    __USE_XOPEN_EXTENDED	Define X/Open Unix things.
-//    __USE_UNIX98		Define Single Unix V2 things.
-//    __USE_XOPEN2K        Define XPG6 things.
-//    __USE_XOPEN2KXSI     Define XPG6 XSI things.
-//    __USE_XOPEN2K8       Define XPG7 things.
-//    __USE_XOPEN2K8XSI    Define XPG7 XSI things.
-//    __USE_LARGEFILE	Define correct standard I/O things.
-//    __USE_LARGEFILE64	Define LFS things with separate names.
-//    __USE_FILE_OFFSET64	Define 64bit interface as default.
-//    __USE_MISC		Define things from 4.3BSD or System V Unix.
-//    __USE_ATFILE		Define *at interfaces and AT_* constants for them.
-//    __USE_DYNAMIC_STACK_SIZE Define correct (but non compile-time constant)
-// 			MINSIGSTKSZ, SIGSTKSZ and PTHREAD_STACK_MIN.
-//    __USE_GNU		Define GNU extensions.
-//    __USE_FORTIFY_LEVEL	Additional security measures used, according to level.
-//
-//    The macros `__GNU_LIBRARY__', `__GLIBC__', and `__GLIBC_MINOR__' are
-//    defined by this file unconditionally.  `__GNU_LIBRARY__' is provided
-//    only for compatibility.  All new code should use the other symbols
-//    to test for features.
-//
-//    All macros listed above as possibly being defined by this file are
-//    explicitly undefined if they are not explicitly defined.
-//    Feature-test macros that are not defined by the user or compiler
-//    but are implied by the other feature-test macros defined (or by the
-//    lack of any definitions) are defined by the file.
-//
-//    ISO C feature test macros depend on the definition of the macro
-//    when an affected header is included, not when the first system
-//    header is included, and so they are handled in
-//    <bits/libc-header-start.h>, which does not have a multiple include
-//    guard.  Feature test macros that can be handled from the first
-//    system header included are handled here.
-
-// Undefine everything, so we get a clean slate.
-
-// Suppress kernel-name space pollution unless user expressedly asks
-//    for it.
-
-// Convenience macro to test the version of gcc.
-//    Use like this:
-//    #if __GNUC_PREREQ (2,8)
-//    ... code requiring gcc 2.8 or later ...
-//    #endif
-//    Note: only works for GCC 2.0 and later, because __GNUC_MINOR__ was
-//    added in 2.0.
-
-// Similarly for clang.  Features added to GCC after version 4.2 may
-//    or may not also be available in clang, and clang's definitions of
-//    __GNUC(_MINOR)__ are fixed at 4 and 2 respectively.  Not all such
-//    features can be queried via __has_extension/__has_feature.
-
-// Whether to use feature set F.
-
-// _BSD_SOURCE and _SVID_SOURCE are deprecated aliases for
-//    _DEFAULT_SOURCE.  If _DEFAULT_SOURCE is present we do not
-//    issue a warning; the expectation is that the source is being
-//    transitioned to use the new macro.
-
-// If _GNU_SOURCE was defined by the user, turn on all the other features.
-
-// If nothing (other than _GNU_SOURCE and _DEFAULT_SOURCE) is defined,
-//    define _DEFAULT_SOURCE.
-
-// This is to enable the ISO C2X extension.
-
-// This is to enable the ISO C11 extension.
-
-// This is to enable the ISO C99 extension.
-
-// This is to enable the ISO C90 Amendment 1:1995 extension.
-
-// If none of the ANSI/POSIX macros are defined, or if _DEFAULT_SOURCE
-//    is defined, use POSIX.1-2008 (or another version depending on
-//    _XOPEN_SOURCE).
-
-// Some C libraries once required _REENTRANT and/or _THREAD_SAFE to be
-//    defined in all multithreaded code.  GNU libc has not required this
-//    for many years.  We now treat them as compatibility synonyms for
-//    _POSIX_C_SOURCE=199506L, which is the earliest level of POSIX with
-//    comprehensive support for multithreaded code.  Using them never
-//    lowers the selected level of POSIX conformance, only raises it.
-
-// Features part to handle 64-bit time_t support.
-//    Copyright (C) 2021-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// We need to know the word size in order to check the time size.
-// Determine the wordsize from the preprocessor defines.
-
-// Both x86-64 and x32 use the 64-bit system call interface.
-// Bit size of the time_t type at glibc build time, x86-64 and x32 case.
-//    Copyright (C) 2018-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Determine the wordsize from the preprocessor defines.
-
-// Both x86-64 and x32 use the 64-bit system call interface.
-
-// For others, time size is word size.
-
-// The function 'gets' existed in C89, but is impossible to use
-//    safely.  It has been removed from ISO C11 and ISO C++14.  Note: for
-//    compatibility with various implementations of <cstdio>, this test
-//    must consider only the value of __cplusplus when compiling C++.
-
-// GNU formerly extended the scanf functions with modified format
-//    specifiers %as, %aS, and %a[...] that allocate a buffer for the
-//    input using malloc.  This extension conflicts with ISO C99, which
-//    defines %a as a standalone format specifier that reads a floating-
-//    point number; moreover, POSIX.1-2008 provides the same feature
-//    using the modifier letter 'm' instead (%ms, %mS, %m[...]).
-//
-//    We now follow C99 unless GNU extensions are active and the compiler
-//    is specifically in C89 or C++98 mode (strict or not).  For
-//    instance, with GCC, -std=gnu11 will have C99-compliant scanf with
-//    or without -D_GNU_SOURCE, but -std=c89 -D_GNU_SOURCE will have the
-//    old extension.
-
-// Get definitions of __STDC_* predefined macros, if the compiler has
-//    not preincluded this header automatically.
-// Copyright (C) 1991-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// This macro indicates that the installed library is the GNU C Library.
-//    For historic reasons the value now is 6 and this will stay from now
-//    on.  The use of this variable is deprecated.  Use __GLIBC__ and
-//    __GLIBC_MINOR__ now (see below) when you want to test for a specific
-//    GNU C library version and use the values in <gnu/lib-names.h> to get
-//    the sonames of the shared libraries.
-
-// Major and minor version number of the GNU C library package.  Use
-//    these macros to test for features in specific releases.
-
-// This is here only because every header file already includes this one.
-// Copyright (C) 1992-2022 Free Software Foundation, Inc.
-//    Copyright The GNU Toolchain Authors.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// We are almost always included from features.h.
-
-// The GNU libc does not support any K&R compilers or the traditional mode
-//    of ISO C compilers anymore.  Check for some of the combinations not
-//    supported anymore.
-
-// Some user header file might have defined this before.
-
-// Compilers that lack __has_attribute may object to
-//        #if defined __has_attribute && __has_attribute (...)
-//    even though they do not need to evaluate the right-hand side of the &&.
-//    Similarly for __has_builtin, etc.
-
-// All functions, except those with callbacks or those that
-//    synchronize memory, are leaf functions.
-
-// GCC can always grok prototypes.  For C++ programs we add throw()
-//    to help it optimize the function calls.  But this only works with
-//    gcc 2.8.x and egcs.  For gcc 3.4 and up we even mark C functions
-//    as non-throwing using a function attribute since programs can use
-//    the -fexceptions options for C code as well.
-
-// These two macros are not used in glibc anymore.  They are kept here
-//    only because some other projects expect the macros to be defined.
-
-// For these things, GCC behaves the ANSI way normally,
-//    and the non-ANSI way under -traditional.
-
-// This is not a typedef so `const __ptr_t' does the right thing.
-
-// C++ needs to know that types and declarations are C, not C++.
-
-// Fortify support.
-
-// Use __builtin_dynamic_object_size at _FORTIFY_SOURCE=3 when available.
-
-// Compile time conditions to choose between the regular, _chk and _chk_warn
-//    variants.  These conditions should get evaluated to constant and optimized
-//    away.
-
-// Length is known to be safe at compile time if the __L * __S <= __OBJSZ
-//    condition can be folded to a constant and if it is true, or unknown (-1)
-
-// Conversely, we know at compile time that the length is unsafe if the
-//    __L * __S <= __OBJSZ condition can be folded to a constant and if it is
-//    false.
-
-// Fortify function f.  __f_alias, __f_chk and __f_chk_warn must be
-//    declared.
-
-// Fortify function f, where object size argument passed to f is the number of
-//    elements and not total size.
-
-// Support for flexible arrays.
-//    Headers that should use flexible arrays only if they're "real"
-//    (e.g. only if they won't affect sizeof()) should test
-//    #if __glibc_c99_flexarr_available.
-
-// __asm__ ("xyz") is used throughout the headers to rename functions
-//    at the assembly language level.  This is wrapped by the __REDIRECT
-//    macro, in order to support compilers that can do this some other
-//    way.  When compilers don't support asm-names at all, we have to do
-//    preprocessor tricks instead (which don't have exactly the right
-//    semantics, but it's the best we can do).
-//
-//    Example:
-//    int __REDIRECT(setpgrp, (__pid_t pid, __pid_t pgrp), setpgid);
-
-//
-// #elif __SOME_OTHER_COMPILER__
-//
-// # define __REDIRECT(name, proto, alias) name proto; 	_Pragma("let " #name " = " #alias)
-
-// GCC and clang have various useful declarations that can be made with
-//    the '__attribute__' syntax.  All of the ways we use this do fine if
-//    they are omitted for compilers that don't understand it.
-
-// At some point during the gcc 2.96 development the `malloc' attribute
-//    for functions was introduced.  We don't want to use it unconditionally
-//    (although this would be possible) since it generates warnings.
-
-// Tell the compiler which arguments to an allocation function
-//    indicate the size of the allocation.
-
-// Tell the compiler which argument to an allocation function
-//    indicates the alignment of the allocation.
-
-// At some point during the gcc 2.96 development the `pure' attribute
-//    for functions was introduced.  We don't want to use it unconditionally
-//    (although this would be possible) since it generates warnings.
-
-// This declaration tells the compiler that the value is constant.
-
-// At some point during the gcc 3.1 development the `used' attribute
-//    for functions was introduced.  We don't want to use it unconditionally
-//    (although this would be possible) since it generates warnings.
-
-// Since version 3.2, gcc allows marking deprecated functions.
-
-// Since version 4.5, gcc also allows one to specify the message printed
-//    when a deprecated function is used.  clang claims to be gcc 4.2, but
-//    may also support this feature.
-
-// At some point during the gcc 2.8 development the `format_arg' attribute
-//    for functions was introduced.  We don't want to use it unconditionally
-//    (although this would be possible) since it generates warnings.
-//    If several `format_arg' attributes are given for the same function, in
-//    gcc-3.0 and older, all but the last one are ignored.  In newer gccs,
-//    all designated arguments are considered.
-
-// At some point during the gcc 2.97 development the `strfmon' format
-//    attribute for functions was introduced.  We don't want to use it
-//    unconditionally (although this would be possible) since it
-//    generates warnings.
-
-// The nonnull function attribute marks pointer parameters that
-//    must not be NULL.  This has the name __nonnull in glibc,
-//    and __attribute_nonnull__ in files shared with Gnulib to avoid
-//    collision with a different __nonnull in DragonFlyBSD 5.9.
-
-// The returns_nonnull function attribute marks the return type of the function
-//    as always being non-null.
-
-// If fortification mode, we warn about unused results of certain
-//    function calls which can lead to problems.
-
-// Forces a function to be always inlined.
-// The Linux kernel defines __always_inline in stddef.h (283d7573), and
-//    it conflicts with this definition.  Therefore undefine it first to
-//    allow either header to be included first.
-
-// Associate error messages with the source location of the call site rather
-//    than with the source location inside the function.
-
-// GCC 4.3 and above with -std=c99 or -std=gnu99 implements ISO C99
-//    inline semantics, unless -fgnu89-inline is used.  Using __GNUC_STDC_INLINE__
-//    or __GNUC_GNU_INLINE is not a good enough check for gcc because gcc versions
-//    older than 4.3 may define these macros and still not guarantee GNU inlining
-//    semantics.
-//
-//    clang++ identifies itself as gcc-4.2, but has support for GNU inlining
-//    semantics, that can be checked for by using the __GNUC_STDC_INLINE_ and
-//    __GNUC_GNU_INLINE__ macro definitions.
-
-// GCC 4.3 and above allow passing all anonymous arguments of an
-//    __extern_always_inline function to some other vararg function.
-
-// It is possible to compile containing GCC extensions even if GCC is
-//    run in pedantic mode if the uses are carefully marked using the
-//    `__extension__' keyword.  But this is not generally available before
-//    version 2.8.
-
-// __restrict is known in EGCS 1.2 and above, and in clang.
-//    It works also in C++ mode (outside of arrays), but only when spelled
-//    as '__restrict', not 'restrict'.
-
-// ISO C99 also allows to declare arrays as non-overlapping.  The syntax is
-//      array_name[restrict]
-//    GCC 3.1 and clang support this.
-//    This syntax is not usable in C++ mode.
-
-// Describes a char array whose address can safely be passed as the first
-//    argument to strncpy and strncat, as the char array is not necessarily
-//    a NUL-terminated string.
-
-// Undefine (also defined in libc-symbols.h).
-// Copies attributes from the declaration or type referenced by
-//    the argument.
-
-// Gnulib avoids including these, as they don't work on non-glibc or
-//    older glibc platforms.
-// Determine the wordsize from the preprocessor defines.
-
-// Both x86-64 and x32 use the 64-bit system call interface.
-// Properties of long double type.  ldbl-96 version.
-//    Copyright (C) 2016-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License  published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// long double is distinct from double, so there is nothing to
-//    define here.
-
-// __glibc_macro_warning (MESSAGE) issues warning MESSAGE.  This is
-//    intended for use in preprocessor macros.
-//
-//    Note: MESSAGE must be a _single_ string; concatenation of string
-//    literals is not supported.
-
-// Generic selection (ISO C11) is a C-only feature, available in GCC
-//    since version 4.9.  Previous versions do not provide generic
-//    selection, even though they might set __STDC_VERSION__ to 201112L,
-//    when in -std=c11 mode.  Thus, we must check for !defined __GNUC__
-//    when testing __STDC_VERSION__ for generic selection support.
-//    On the other hand, Clang also defines __GNUC__, so a clang-specific
-//    check is required to enable the use of generic selection.
-
-// Designates a 1-based positional argument ref-index of pointer type
-//    that can be used to access size-index elements of the pointed-to
-//    array according to access mode, or at least one element when
-//    size-index is not provided:
-//      access (access-mode, <ref-index> [, <size-index>])
-// For _FORTIFY_SOURCE == 3 we use __builtin_dynamic_object_size, which may
-//    use the access attribute to get object sizes from function definition
-//    arguments, so we can't use them on functions we fortify.  Drop the object
-//    size hints for such functions.
-
-// Designates dealloc as a function to call to deallocate objects
-//    allocated by the declared function.
-
-// Specify that a function such as setjmp or vfork may return
-//    twice.
-
-// If we don't have __REDIRECT, prototypes will be missing if
-//    __USE_FILE_OFFSET64 but not __USE_LARGEFILE[64].
-
-// Decide whether we can define 'extern inline' functions in headers.
-
-// This is here only because every header file already includes this one.
-//    Get the definitions of all the appropriate `__stub_FUNCTION' symbols.
-//    <gnu/stubs.h> contains `#define __stub_FUNCTION' when FUNCTION is a stub
-//    that will always return failure (and set errno to ENOSYS).
-// This file is automatically generated.
-//    This file selects the right generated file of `__stub_FUNCTION' macros
-//    based on the architecture being compiled for.
-
-// This file is automatically generated.
-//    It defines a symbol `__stub_FUNCTION' for each function
-//    in the C library which is a stub, meaning it will fail
-//    every time called, usually setting errno to ENOSYS.
-
-// ISO/IEC TR 24731-2:2010 defines the __STDC_WANT_LIB_EXT2__
-//    macro.
-
-// ISO/IEC TS 18661-1:2014 defines the __STDC_WANT_IEC_60559_BFP_EXT__
-//    macro.  Most but not all symbols enabled by that macro in TS
-//    18661-1 are enabled unconditionally in C2X.  In C2X, the symbols in
-//    Annex F still require a new feature test macro
-//    __STDC_WANT_IEC_60559_EXT__ instead (C2X does not define
-//    __STDC_WANT_IEC_60559_BFP_EXT__), while a few features from TS
-//    18661-1 are not included in C2X (and thus should depend on
-//    __STDC_WANT_IEC_60559_BFP_EXT__ even when C2X features are
-//    enabled).
-//
-//    __GLIBC_USE (IEC_60559_BFP_EXT) controls those features from TS
-//    18661-1 not included in C2X.
-//
-//    __GLIBC_USE (IEC_60559_BFP_EXT_C2X) controls those features from TS
-//    18661-1 that are also included in C2X (with no feature test macro
-//    required in C2X).
-//
-//    __GLIBC_USE (IEC_60559_EXT) controls those features from TS 18661-1
-//    that are included in C2X but conditional on
-//    __STDC_WANT_IEC_60559_EXT__.  (There are currently no features
-//    conditional on __STDC_WANT_IEC_60559_EXT__ that are not in TS
-//    18661-1.)
-
-// ISO/IEC TS 18661-4:2015 defines the
-//    __STDC_WANT_IEC_60559_FUNCS_EXT__ macro.  Other than the reduction
-//    functions, the symbols from this TS are enabled unconditionally in
-//    C2X.
-
-// ISO/IEC TS 18661-3:2015 defines the
-//    __STDC_WANT_IEC_60559_TYPES_EXT__ macro.
-// bits/types.h -- definitions of __*_t types underlying *_t types.
-//    Copyright (C) 2002-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Never include this file directly; use <sys/types.h> instead.
-
-// Copyright (C) 1991-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Determine the wordsize from the preprocessor defines.
-
-// Both x86-64 and x32 use the 64-bit system call interface.
-// Bit size of the time_t type at glibc build time, x86-64 and x32 case.
-//    Copyright (C) 2018-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Determine the wordsize from the preprocessor defines.
-
-// Both x86-64 and x32 use the 64-bit system call interface.
-
-// For others, time size is word size.
+}
 
 // Convenience types.
-type X__u_char = uint8   /* types.h:31:23 */
-type X__u_short = uint16 /* types.h:32:28 */
-type X__u_int = uint32   /* types.h:33:22 */
-type X__u_long = uint64  /* types.h:34:27 */
+type X__u_char = uint8
+type X__u_short = uint16
+type X__u_int = uint32
+type X__u_long = uint64
 
 // Fixed-size types, underlying types depend on word size and compiler.
-type X__int8_t = int8     /* types.h:37:21 */
-type X__uint8_t = uint8   /* types.h:38:23 */
-type X__int16_t = int16   /* types.h:39:26 */
-type X__uint16_t = uint16 /* types.h:40:28 */
-type X__int32_t = int32   /* types.h:41:20 */
-type X__uint32_t = uint32 /* types.h:42:22 */
-type X__int64_t = int64   /* types.h:44:25 */
-type X__uint64_t = uint64 /* types.h:45:27 */
+type X__int8_t = int8
+type X__uint8_t = uint8
+type X__int16_t = int16
+type X__uint16_t = uint16
+type X__int32_t = int32
+type X__uint32_t = uint32
+type X__int64_t = int64
+type X__uint64_t = uint64
 
 // Smallest types with at least a given width.
-type X__int_least8_t = X__int8_t     /* types.h:52:18 */
-type X__uint_least8_t = X__uint8_t   /* types.h:53:19 */
-type X__int_least16_t = X__int16_t   /* types.h:54:19 */
-type X__uint_least16_t = X__uint16_t /* types.h:55:20 */
-type X__int_least32_t = X__int32_t   /* types.h:56:19 */
-type X__uint_least32_t = X__uint32_t /* types.h:57:20 */
-type X__int_least64_t = X__int64_t   /* types.h:58:19 */
-type X__uint_least64_t = X__uint64_t /* types.h:59:20 */
+type X__int_least8_t = X__int8_t
+type X__uint_least8_t = X__uint8_t
+type X__int_least16_t = X__int16_t
+type X__uint_least16_t = X__uint16_t
+type X__int_least32_t = X__int32_t
+type X__uint_least32_t = X__uint32_t
+type X__int_least64_t = X__int64_t
+type X__uint_least64_t = X__uint64_t
 
 // quad_t is also 64 bits.
-type X__quad_t = int64    /* types.h:63:18 */
-type X__u_quad_t = uint64 /* types.h:64:27 */
+type X__quad_t = int64
+type X__u_quad_t = uint64
 
 // Largest integral types.
-type X__intmax_t = int64   /* types.h:72:18 */
-type X__uintmax_t = uint64 /* types.h:73:27 */
+type X__intmax_t = int64
+type X__uintmax_t = uint64
 
-// The machine-dependent file <bits/typesizes.h> defines __*_T_TYPE
-//    macros for each of the OS types we define below.  The definitions
-//    of those macros must use the following macros for underlying types.
-//    We define __S<SIZE>_TYPE and __U<SIZE>_TYPE for the signed and unsigned
-//    variants of each of the following integer types on this machine.
-//
-// 	16		-- "natural" 16-bit type (always short)
-// 	32		-- "natural" 32-bit type (always int)
-// 	64		-- "natural" 64-bit type (long or long long)
-// 	LONG32		-- 32-bit type, traditionally long
-// 	QUAD		-- 64-bit type, traditionally long long
-// 	WORD		-- natural type of __WORDSIZE bits (int or long)
-// 	LONGWORD	-- type of __WORDSIZE bits, traditionally long
-//
-//    We distinguish WORD/LONGWORD, 32/LONG32, and 64/QUAD so that the
-//    conventional uses of `long' or `long long' type modifiers match the
-//    types we define, even when a less-adorned type would be the same size.
-//    This matters for (somewhat) portably writing printf/scanf formats for
-//    these types, where using the appropriate l or ll format modifiers can
-//    make the typedefs and the formats match up across all GNU platforms.  If
-//    we used `long' when it's 64 bits where `long long' is expected, then the
-//    compiler would warn about the formats not matching the argument types,
-//    and the programmer changing them to shut up the compiler would break the
-//    program's portability.
-//
-//    Here we assume what is presently the case in all the GCC configurations
-//    we support: long long is always 64 bits, long is always word/address size,
-//    and int is always 32 bits.
+type X__dev_t = uint64
+type X__uid_t = uint32
+type X__gid_t = uint32
+type X__ino_t = uint64
+type X__ino64_t = uint64
+type X__mode_t = uint32
+type X__nlink_t = uint64
+type X__off_t = int64
+type X__off64_t = int64
+type X__pid_t = int32
+type X__fsid_t = struct{ X__val [2]int32 }
+type X__clock_t = int64
+type X__rlim_t = uint64
+type X__rlim64_t = uint64
+type X__id_t = uint32
+type X__time_t = int64
+type X__useconds_t = uint32
+type X__suseconds_t = int64
+type X__suseconds64_t = int64
 
-// No need to mark the typedef with __extension__.
-// bits/typesizes.h -- underlying types for *_t.  Linux/x86-64 version.
-//    Copyright (C) 2012-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// See <bits/types.h> for the meaning of these macros.  This file exists so
-//    that <bits/types.h> need not vary across different GNU platforms.
-
-// X32 kernel interface is 64-bit.
-
-// Tell the libc code that off_t and off64_t are actually the same type
-//    for all ABI purposes, even if possibly expressed as different base types
-//    for C type-checking purposes.
-
-// Same for ino_t and ino64_t.
-
-// And for __rlim_t and __rlim64_t.
-
-// And for fsblkcnt_t, fsblkcnt64_t, fsfilcnt_t and fsfilcnt64_t.
-
-// And for getitimer, setitimer and rusage
-
-// Number of descriptors that can fit in an `fd_set'.
-
-// bits/time64.h -- underlying types for __time64_t.  Generic version.
-//    Copyright (C) 2018-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Define __TIME64_T_TYPE so that it is always a 64-bit type.
-
-// If we already have 64-bit time type then use it.
-
-type X__dev_t = uint64                     /* types.h:145:25 */ // Type of device numbers.
-type X__uid_t = uint32                     /* types.h:146:25 */ // Type of user identifications.
-type X__gid_t = uint32                     /* types.h:147:25 */ // Type of group identifications.
-type X__ino_t = uint64                     /* types.h:148:25 */ // Type of file serial numbers.
-type X__ino64_t = uint64                   /* types.h:149:27 */ // Type of file serial numbers (LFS).
-type X__mode_t = uint32                    /* types.h:150:26 */ // Type of file attribute bitmasks.
-type X__nlink_t = uint64                   /* types.h:151:27 */ // Type of file link counts.
-type X__off_t = int64                      /* types.h:152:25 */ // Type of file sizes and offsets.
-type X__off64_t = int64                    /* types.h:153:27 */ // Type of file sizes and offsets (LFS).
-type X__pid_t = int32                      /* types.h:154:25 */ // Type of process identifications.
-type X__fsid_t = struct{ X__val [2]int32 } /* types.h:155:26 */ // Type of file system IDs.
-type X__clock_t = int64                    /* types.h:156:27 */ // Type of CPU usage counts.
-type X__rlim_t = uint64                    /* types.h:157:26 */ // Type for resource measurement.
-type X__rlim64_t = uint64                  /* types.h:158:28 */ // Type for resource measurement (LFS).
-type X__id_t = uint32                      /* types.h:159:24 */ // General type for IDs.
-type X__time_t = int64                     /* types.h:160:26 */ // Seconds since the Epoch.
-type X__useconds_t = uint32                /* types.h:161:30 */ // Count of microseconds.
-type X__suseconds_t = int64                /* types.h:162:31 */ // Signed count of microseconds.
-type X__suseconds64_t = int64              /* types.h:163:33 */
-
-type X__daddr_t = int32 /* types.h:165:27 */ // The type of a disk address.
-type X__key_t = int32   /* types.h:166:25 */ // Type of an IPC key.
+type X__daddr_t = int32
+type X__key_t = int32
 
 // Clock ID used in clock and timer functions.
-type X__clockid_t = int32 /* types.h:169:29 */
+type X__clockid_t = int32
 
 // Timer ID returned by `timer_create'.
-type X__timer_t = uintptr /* types.h:172:12 */
+type X__timer_t = uintptr
 
 // Type to represent block size.
-type X__blksize_t = int64 /* types.h:175:29 */
-
-// Types from the Large File Support interface.
+type X__blksize_t = int64
 
 // Type to count number of disk blocks.
-type X__blkcnt_t = int64   /* types.h:180:28 */
-type X__blkcnt64_t = int64 /* types.h:181:30 */
+type X__blkcnt_t = int64
+type X__blkcnt64_t = int64
 
 // Type to count file system blocks.
-type X__fsblkcnt_t = uint64   /* types.h:184:30 */
-type X__fsblkcnt64_t = uint64 /* types.h:185:32 */
+type X__fsblkcnt_t = uint64
+type X__fsblkcnt64_t = uint64
 
 // Type to count file system nodes.
-type X__fsfilcnt_t = uint64   /* types.h:188:30 */
-type X__fsfilcnt64_t = uint64 /* types.h:189:32 */
+type X__fsfilcnt_t = uint64
+type X__fsfilcnt64_t = uint64
 
 // Type of miscellaneous file system fields.
-type X__fsword_t = int64 /* types.h:192:28 */
+type X__fsword_t = int64
 
-type X__ssize_t = int64 /* types.h:194:27 */ // Type of a byte count, or error.
+type X__ssize_t = int64
 
 // Signed long type used in system calls.
-type X__syscall_slong_t = int64 /* types.h:197:33 */
+type X__syscall_slong_t = int64
+
 // Unsigned long type used in system calls.
-type X__syscall_ulong_t = uint64 /* types.h:199:33 */
+type X__syscall_ulong_t = uint64
 
 // These few don't really vary by system, they always correspond
 //
 //	to one of the other defined types.
-type X__loff_t = X__off64_t /* types.h:203:19 */ // Type of file sizes and offsets (LFS).
-type X__caddr_t = uintptr   /* types.h:204:14 */
+type X__loff_t = X__off64_t
+type X__caddr_t = uintptr
 
 // Duplicates info from stdint.h but this is used in unistd.h.
-type X__intptr_t = int64 /* types.h:207:25 */
+type X__intptr_t = int64
 
 // Duplicate info from sys/socket.h.
-type X__socklen_t = uint32 /* types.h:210:23 */
+type X__socklen_t = uint32
 
 // C99: An integer type that can be accessed as an atomic entity,
 //
 //	even in the presence of asynchronous interrupts.
 //	It is not currently necessary for this to be machine-specific.
-type X__sig_atomic_t = int32 /* types.h:215:13 */
+type X__sig_atomic_t = int32
 
-// Seconds since the Epoch, visible to user code when time_t is too
-//    narrow only for consistency with the old way of widening too-narrow
-//    types.  User code should never use __time64_t.
+type Int8_t = X__int8_t
+type Int16_t = X__int16_t
+type Int32_t = X__int32_t
+type Int64_t = X__int64_t
 
-// wchar_t type related definitions.
-//    Copyright (C) 2000-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// The fallback definitions, for when __WCHAR_MAX__ or __WCHAR_MIN__
-//    are not defined, give the right value and type as long as both int
-//    and wchar_t are 32-bit types.  Adding L'\0' to a constant value
-//    ensures that the type is correct; it is necessary to use (L'\0' +
-//    0) rather than just L'\0' so that the type in C++ is the promoted
-//    version of wchar_t rather than the distinct wchar_t type itself.
-//    Because wchar_t in preprocessor #if expressions is treated as
-//    intmax_t or uintmax_t, the expression (L'\0' - 1) would have the
-//    wrong value for WCHAR_MAX in such expressions and so cannot be used
-//    to define __WCHAR_MAX in the unsigned case.
-
-// Determine the wordsize from the preprocessor defines.
-
-// Both x86-64 and x32 use the 64-bit system call interface.
-
-// Exact integral types.
+type Uint8_t = X__uint8_t
+type Uint16_t = X__uint16_t
+type Uint32_t = X__uint32_t
+type Uint64_t = X__uint64_t
 
 // Signed.
-// Define intN_t types.
-//    Copyright (C) 2017-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// bits/types.h -- definitions of __*_t types underlying *_t types.
-//    Copyright (C) 2002-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Never include this file directly; use <sys/types.h> instead.
-
-type Int8_t = X__int8_t   /* stdint-intn.h:24:18 */
-type Int16_t = X__int16_t /* stdint-intn.h:25:19 */
-type Int32_t = X__int32_t /* stdint-intn.h:26:19 */
-type Int64_t = X__int64_t /* stdint-intn.h:27:19 */
+type Int_least8_t = X__int_least8_t
+type Int_least16_t = X__int_least16_t
+type Int_least32_t = X__int_least32_t
+type Int_least64_t = X__int_least64_t
 
 // Unsigned.
-// Define uintN_t types.
-//    Copyright (C) 2017-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// bits/types.h -- definitions of __*_t types underlying *_t types.
-//    Copyright (C) 2002-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Never include this file directly; use <sys/types.h> instead.
-
-type Uint8_t = X__uint8_t   /* stdint-uintn.h:24:19 */
-type Uint16_t = X__uint16_t /* stdint-uintn.h:25:20 */
-type Uint32_t = X__uint32_t /* stdint-uintn.h:26:20 */
-type Uint64_t = X__uint64_t /* stdint-uintn.h:27:20 */
-
-// Small types.
+type Uint_least8_t = X__uint_least8_t
+type Uint_least16_t = X__uint_least16_t
+type Uint_least32_t = X__uint_least32_t
+type Uint_least64_t = X__uint_least64_t
 
 // Signed.
-type Int_least8_t = X__int_least8_t   /* stdint.h:43:24 */
-type Int_least16_t = X__int_least16_t /* stdint.h:44:25 */
-type Int_least32_t = X__int_least32_t /* stdint.h:45:25 */
-type Int_least64_t = X__int_least64_t /* stdint.h:46:25 */
+type Int_fast8_t = int8
+type Int_fast16_t = int64
+type Int_fast32_t = int64
+type Int_fast64_t = int64
 
 // Unsigned.
-type Uint_least8_t = X__uint_least8_t   /* stdint.h:49:25 */
-type Uint_least16_t = X__uint_least16_t /* stdint.h:50:26 */
-type Uint_least32_t = X__uint_least32_t /* stdint.h:51:26 */
-type Uint_least64_t = X__uint_least64_t /* stdint.h:52:26 */
-
-// Fast types.
-
-// Signed.
-type Int_fast8_t = int8   /* stdint.h:58:22 */
-type Int_fast16_t = int64 /* stdint.h:60:19 */
-type Int_fast32_t = int64 /* stdint.h:61:19 */
-type Int_fast64_t = int64 /* stdint.h:62:19 */
-
-// Unsigned.
-type Uint_fast8_t = uint8   /* stdint.h:71:24 */
-type Uint_fast16_t = uint64 /* stdint.h:73:27 */
-type Uint_fast32_t = uint64 /* stdint.h:74:27 */
-type Uint_fast64_t = uint64 /* stdint.h:75:27 */
+type Uint_fast8_t = uint8
+type Uint_fast16_t = uint64
+type Uint_fast32_t = uint64
+type Uint_fast64_t = uint64
 
 // Types for `void *' pointers.
-type Intptr_t = int64   /* stdint.h:87:19 */
-type Uintptr_t = uint64 /* stdint.h:90:27 */
+type Intptr_t = int64
+type Uintptr_t = uint64
 
 // Largest integral types.
-type Intmax_t = X__intmax_t   /* stdint.h:101:21 */
-type Uintmax_t = X__uintmax_t /* stdint.h:102:22 */
-
-// Limits of integral types.
-
-// Minimum of signed integral types.
-// Maximum of signed integral types.
-
-// Maximum of unsigned integral types.
-
-// Minimum of signed integral types having a minimum size.
-// Maximum of signed integral types having a minimum size.
-
-// Maximum of unsigned integral types having a minimum size.
-
-// Minimum of fast signed integral types having a minimum size.
-// Maximum of fast signed integral types having a minimum size.
-
-// Maximum of fast unsigned integral types having a minimum size.
-
-// Values to test for integral types holding `void *' pointer.
-
-// Minimum for largest signed integral type.
-// Maximum for largest signed integral type.
-
-// Maximum for largest unsigned integral type.
-
-// Limits of other integer types.
-
-// Limits of `ptrdiff_t' type.
-
-// Limits of `sig_atomic_t'.
-
-// Limit of `size_t' type.
-
-// Limits of `wchar_t'.
-// These constants might also be defined in <wchar.h>.
-
-// Limits of `wint_t'.
-
-// Signed.
-
-// Unsigned.
-
-// Maximal type.
-
-// Copyright (C) 1991-2022 Free Software Foundation, Inc.
-//    Copyright The GNU Toolchain Authors.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-//	ISO C99 Standard: 7.20 General utilities	<stdlib.h>
-
-// Handle feature test macros at the start of a header.
-//    Copyright (C) 2016-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// This header is internal to glibc and should not be included outside
-//    of glibc headers.  Headers including it must define
-//    __GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATION first.  This header
-//    cannot have multiple include guards because ISO C feature test
-//    macros depend on the definition of the macro when an affected
-//    header is included, not when the first system header is
-//    included.
-
-// Copyright (C) 1991-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// ISO/IEC TR 24731-2:2010 defines the __STDC_WANT_LIB_EXT2__
-//    macro.
-
-// ISO/IEC TS 18661-1:2014 defines the __STDC_WANT_IEC_60559_BFP_EXT__
-//    macro.  Most but not all symbols enabled by that macro in TS
-//    18661-1 are enabled unconditionally in C2X.  In C2X, the symbols in
-//    Annex F still require a new feature test macro
-//    __STDC_WANT_IEC_60559_EXT__ instead (C2X does not define
-//    __STDC_WANT_IEC_60559_BFP_EXT__), while a few features from TS
-//    18661-1 are not included in C2X (and thus should depend on
-//    __STDC_WANT_IEC_60559_BFP_EXT__ even when C2X features are
-//    enabled).
-//
-//    __GLIBC_USE (IEC_60559_BFP_EXT) controls those features from TS
-//    18661-1 not included in C2X.
-//
-//    __GLIBC_USE (IEC_60559_BFP_EXT_C2X) controls those features from TS
-//    18661-1 that are also included in C2X (with no feature test macro
-//    required in C2X).
-//
-//    __GLIBC_USE (IEC_60559_EXT) controls those features from TS 18661-1
-//    that are included in C2X but conditional on
-//    __STDC_WANT_IEC_60559_EXT__.  (There are currently no features
-//    conditional on __STDC_WANT_IEC_60559_EXT__ that are not in TS
-//    18661-1.)
-
-// ISO/IEC TS 18661-4:2015 defines the
-//    __STDC_WANT_IEC_60559_FUNCS_EXT__ macro.  Other than the reduction
-//    functions, the symbols from this TS are enabled unconditionally in
-//    C2X.
-
-// ISO/IEC TS 18661-3:2015 defines the
-//    __STDC_WANT_IEC_60559_TYPES_EXT__ macro.
-
-// Get size_t, wchar_t and NULL from <stddef.h>.
-// Copyright (C) 1989-2022 Free Software Foundation, Inc.
-//
-// This file is part of GCC.
-//
-// GCC is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 3, or (at your option)
-// any later version.
-//
-// GCC is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// Under Section 7 of GPL version 3, you are granted additional
-// permissions described in the GCC Runtime Library Exception, version
-// 3.1, as published by the Free Software Foundation.
-//
-// You should have received a copy of the GNU General Public License and
-// a copy of the GCC Runtime Library Exception along with this program;
-// see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
-// <http://www.gnu.org/licenses/>.
-
-// ISO C Standard:  7.17  Common definitions  <stddef.h>
-
-// Any one of these symbols __need_* means that GNU libc
-//    wants us just to define one data type.  So don't define
-//    the symbols that indicate this file's entire job has been done.
-
-// This avoids lossage on SunOS but only if stdtypes.h comes first.
-//    There's no way to win with the other order!  Sun lossage.
-
-// Sequent's header files use _PTRDIFF_T_ in some conflicting way.
-//    Just ignore it.
-
-// On VxWorks, <type/vxTypesBase.h> may have defined macros like
-//    _TYPE_size_t which will typedef size_t.  fixincludes patched the
-//    vxTypesBase.h so that this macro is only defined if _GCC_SIZE_T is
-//    not defined, and so that defining this macro defines _GCC_SIZE_T.
-//    If we find that the macros are still defined at this point, we must
-//    invoke them so that the type is defined as expected.
-
-// In case nobody has defined these types, but we aren't running under
-//    GCC 2.00, make sure that __PTRDIFF_TYPE__, __SIZE_TYPE__, and
-//    __WCHAR_TYPE__ have reasonable values.  This can happen if the
-//    parts of GCC is compiled by an older compiler, that actually
-//    include gstddef.h, such as collect2.
-
-// Signed type of difference of two pointers.
-
-// Define this type if we are doing the whole job,
-//    or if we want this type in particular.
-
-// If this symbol has done its job, get rid of it.
-
-// Unsigned type of `sizeof' something.
-
-// Define this type if we are doing the whole job,
-//    or if we want this type in particular.
-
-// Wide character type.
-//    Locale-writers should change this as necessary to
-//    be big enough to hold unique values not between 0 and 127,
-//    and not (wchar_t) -1, for each defined multibyte character.
-
-// Define this type if we are doing the whole job,
-//    or if we want this type in particular.
-
-// A null pointer constant.
-
-// Offset of member MEMBER in a struct of type TYPE.
-
-// XPG requires a few symbols from <sys/wait.h> being defined.
-// Definitions of flag bits for `waitpid' et al.
-//    Copyright (C) 1992-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Bits in the third argument to `waitpid'.
-
-// Bits in the fourth argument to `waitid'.
-
-// Definitions of status bits for `wait' et al.
-//    Copyright (C) 1992-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Everything extant so far uses these same bits.
-
-// If WIFEXITED(STATUS), the low-order 8 bits of the status.
-
-// If WIFSIGNALED(STATUS), the terminating signal.
-
-// If WIFSTOPPED(STATUS), the signal that stopped the child.
-
-// Nonzero if STATUS indicates normal termination.
-
-// Nonzero if STATUS indicates termination by a signal.
-
-// Nonzero if STATUS indicates the child is stopped.
-
-// Nonzero if STATUS indicates the child continued after a stop.  We only
-//    define this if <bits/waitflags.h> provides the WCONTINUED flag bit.
-
-// Nonzero if STATUS indicates the child dumped core.
-
-// Macros for constructing status values.
-
-// Define the macros <sys/wait.h> also would define this way.
-
-// _FloatN API tests for enablement.
-// Macros to control TS 18661-3 glibc features on x86.
-//    Copyright (C) 2017-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Copyright (C) 1991-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Defined to 1 if the current compiler invocation provides a
-//    floating-point type with the IEEE 754 binary128 format, and this
-//    glibc includes corresponding *f128 interfaces for it.  The required
-//    libgcc support was added some time after the basic compiler
-//    support, for x86_64 and x86.
-
-// Defined to 1 if __HAVE_FLOAT128 is 1 and the type is ABI-distinct
-//    from the default float, double and long double types in this glibc.
-
-// Defined to 1 if the current compiler invocation provides a
-//    floating-point type with the right format for _Float64x, and this
-//    glibc includes corresponding *f64x interfaces for it.
-
-// Defined to 1 if __HAVE_FLOAT64X is 1 and _Float64x has the format
-//    of long double.  Otherwise, if __HAVE_FLOAT64X is 1, _Float64x has
-//    the format of _Float128, which must be different from that of long
-//    double.
-
-// Defined to concatenate the literal suffix to be used with _Float128
-//    types, if __HAVE_FLOAT128 is 1.
-
-// Defined to a complex binary128 type if __HAVE_FLOAT128 is 1.
-
-// The remaining of this file provides support for older compilers.
-
-// The type _Float128 exists only since GCC 7.0.
-
-// __builtin_huge_valf128 doesn't exist before GCC 7.0.
-
-// Older GCC has only a subset of built-in functions for _Float128 on
-//    x86, and __builtin_infq is not usable in static initializers.
-//    Converting a narrower sNaN to _Float128 produces a quiet NaN, so
-//    attempts to use _Float128 sNaNs will not work properly with older
-//    compilers.
-
-// In math/math.h, __MATH_TG will expand signbit to __builtin_signbit*,
-//    e.g.: __builtin_signbitf128, before GCC 6.  However, there has never
-//    been a __builtin_signbitf128 in GCC and the type-generic builtin is
-//    only available since GCC 6.
-
-// Macros to control TS 18661-3 glibc features where the same
-//    definitions are appropriate for all platforms.
-//    Copyright (C) 2017-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Copyright (C) 1991-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Properties of long double type.  ldbl-96 version.
-//    Copyright (C) 2016-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License  published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// long double is distinct from double, so there is nothing to
-//    define here.
-
-// This header should be included at the bottom of each bits/floatn.h.
-//    It defines the following macros for each _FloatN and _FloatNx type,
-//    where the same definitions, or definitions based only on the macros
-//    in bits/floatn.h, are appropriate for all glibc configurations.
-
-// Defined to 1 if the current compiler invocation provides a
-//    floating-point type with the right format for this type, and this
-//    glibc includes corresponding *fN or *fNx interfaces for it.
-
-// Defined to 1 if the corresponding __HAVE_<type> macro is 1 and the
-//    type is the first with its format in the sequence of (the default
-//    choices for) float, double, long double, _Float16, _Float32,
-//    _Float64, _Float128, _Float32x, _Float64x, _Float128x for this
-//    glibc; that is, if functions present once per floating-point format
-//    rather than once per type are present for this type.
-//
-//    All configurations supported by glibc have _Float32 the same format
-//    as float, _Float64 and _Float32x the same format as double, the
-//    _Float64x the same format as either long double or _Float128.  No
-//    configurations support _Float128x or, as of GCC 7, have compiler
-//    support for a type meeting the requirements for _Float128x.
-
-// Defined to 1 if the corresponding _FloatN type is not binary compatible
-//    with the corresponding ISO C type in the current compilation unit as
-//    opposed to __HAVE_DISTINCT_FLOATN, which indicates the default types built
-//    in glibc.
-
-// Defined to 1 if any _FloatN or _FloatNx types that are not
-//    ABI-distinct are however distinct types at the C language level (so
-//    for the purposes of __builtin_types_compatible_p and _Generic).
-
-// Defined to concatenate the literal suffix to be used with _FloatN
-//    or _FloatNx types, if __HAVE_<type> is 1.  The corresponding
-//    literal suffixes exist since GCC 7, for C only.
-
-// Defined to a complex type if __HAVE_<type> is 1.
-
-// The remaining of this file provides support for older compilers.
-
-// If double, long double and _Float64 all have the same set of
-//    values, TS 18661-3 requires the usual arithmetic conversions on
-//    long double and _Float64 to produce _Float64.  For this to be the
-//    case when building with a compiler without a distinct _Float64
-//    type, _Float64 must be a typedef for long double, not for
-//    double.
+type Intmax_t = X__intmax_t
+type Uintmax_t = X__uintmax_t
 
 // Returned by `div'.
 type Div_t = struct {
 	Quot int32
 	Rem  int32
-} /* stdlib.h:63:5 */
+}
 
 // Returned by `ldiv'.
 type Ldiv_t = struct {
 	Quot int64
 	Rem  int64
-} /* stdlib.h:71:5 */
+}
 
 // Returned by `lldiv'.
 type Lldiv_t = struct {
 	Quot int64
 	Rem  int64
-} /* stdlib.h:81:5 */
+}
 
-// Copyright (C) 1991-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
+type U_char = X__u_char
+type U_short = X__u_short
+type U_int = X__u_int
+type U_long = X__u_long
+type Quad_t = X__quad_t
+type U_quad_t = X__u_quad_t
+type Fsid_t = X__fsid_t
+type Loff_t = X__loff_t
 
-//	POSIX Standard: 2.6 Primitive System Data Types	<sys/types.h>
+type Ino_t = X__ino64_t
 
-// Copyright (C) 1991-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
+type Dev_t = X__dev_t
 
-// bits/types.h -- definitions of __*_t types underlying *_t types.
-//    Copyright (C) 2002-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
+type Gid_t = X__gid_t
 
-// Never include this file directly; use <sys/types.h> instead.
+type Mode_t = X__mode_t
 
-type U_char = X__u_char     /* types.h:33:18 */
-type U_short = X__u_short   /* types.h:34:19 */
-type U_int = X__u_int       /* types.h:35:17 */
-type U_long = X__u_long     /* types.h:36:18 */
-type Quad_t = X__quad_t     /* types.h:37:18 */
-type U_quad_t = X__u_quad_t /* types.h:38:20 */
-type Fsid_t = X__fsid_t     /* types.h:39:18 */
-type Loff_t = X__loff_t     /* types.h:42:18 */
+type Nlink_t = X__nlink_t
 
-type Ino_t = X__ino64_t /* types.h:49:19 */
+type Uid_t = X__uid_t
 
-type Dev_t = X__dev_t /* types.h:59:17 */
+type Off_t = X__off64_t
 
-type Gid_t = X__gid_t /* types.h:64:17 */
+type Pid_t = X__pid_t
 
-type Mode_t = X__mode_t /* types.h:69:18 */
+type Id_t = X__id_t
 
-type Nlink_t = X__nlink_t /* types.h:74:19 */
+type Ssize_t = X__ssize_t
 
-type Uid_t = X__uid_t /* types.h:79:17 */
+type Daddr_t = X__daddr_t
+type Caddr_t = X__caddr_t
 
-type Off_t = X__off64_t /* types.h:87:19 */
-
-type Pid_t = X__pid_t /* types.h:97:17 */
-
-type Id_t = X__id_t /* types.h:103:16 */
-
-type Ssize_t = X__ssize_t /* types.h:108:19 */
-
-type Daddr_t = X__daddr_t /* types.h:114:19 */
-type Caddr_t = X__caddr_t /* types.h:115:19 */
-
-type Key_t = X__key_t /* types.h:121:17 */
-
-// bits/types.h -- definitions of __*_t types underlying *_t types.
-//    Copyright (C) 2002-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Never include this file directly; use <sys/types.h> instead.
+type Key_t = X__key_t
 
 // Returned by `clock'.
-type Clock_t = X__clock_t /* clock_t.h:7:19 */
-
-// bits/types.h -- definitions of __*_t types underlying *_t types.
-//    Copyright (C) 2002-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Never include this file directly; use <sys/types.h> instead.
+type Clock_t = X__clock_t
 
 // Clock ID used in clock and timer functions.
-type Clockid_t = X__clockid_t /* clockid_t.h:7:21 */
-
-// bits/types.h -- definitions of __*_t types underlying *_t types.
-//    Copyright (C) 2002-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Never include this file directly; use <sys/types.h> instead.
+type Clockid_t = X__clockid_t
 
 // Returned by `time'.
-type Time_t = X__time_t /* time_t.h:10:18 */
-
-// bits/types.h -- definitions of __*_t types underlying *_t types.
-//    Copyright (C) 2002-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Never include this file directly; use <sys/types.h> instead.
+type Time_t = X__time_t
 
 // Timer ID returned by `timer_create'.
-type Timer_t = X__timer_t /* timer_t.h:7:19 */
-
-// Copyright (C) 1989-2022 Free Software Foundation, Inc.
-//
-// This file is part of GCC.
-//
-// GCC is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 3, or (at your option)
-// any later version.
-//
-// GCC is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// Under Section 7 of GPL version 3, you are granted additional
-// permissions described in the GCC Runtime Library Exception, version
-// 3.1, as published by the Free Software Foundation.
-//
-// You should have received a copy of the GNU General Public License and
-// a copy of the GCC Runtime Library Exception along with this program;
-// see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
-// <http://www.gnu.org/licenses/>.
-
-// ISO C Standard:  7.17  Common definitions  <stddef.h>
-
-// Any one of these symbols __need_* means that GNU libc
-//    wants us just to define one data type.  So don't define
-//    the symbols that indicate this file's entire job has been done.
-
-// This avoids lossage on SunOS but only if stdtypes.h comes first.
-//    There's no way to win with the other order!  Sun lossage.
-
-// Sequent's header files use _PTRDIFF_T_ in some conflicting way.
-//    Just ignore it.
-
-// On VxWorks, <type/vxTypesBase.h> may have defined macros like
-//    _TYPE_size_t which will typedef size_t.  fixincludes patched the
-//    vxTypesBase.h so that this macro is only defined if _GCC_SIZE_T is
-//    not defined, and so that defining this macro defines _GCC_SIZE_T.
-//    If we find that the macros are still defined at this point, we must
-//    invoke them so that the type is defined as expected.
-
-// In case nobody has defined these types, but we aren't running under
-//    GCC 2.00, make sure that __PTRDIFF_TYPE__, __SIZE_TYPE__, and
-//    __WCHAR_TYPE__ have reasonable values.  This can happen if the
-//    parts of GCC is compiled by an older compiler, that actually
-//    include gstddef.h, such as collect2.
-
-// Signed type of difference of two pointers.
-
-// Define this type if we are doing the whole job,
-//    or if we want this type in particular.
-
-// If this symbol has done its job, get rid of it.
-
-// Unsigned type of `sizeof' something.
-
-// Define this type if we are doing the whole job,
-//    or if we want this type in particular.
-
-// Wide character type.
-//    Locale-writers should change this as necessary to
-//    be big enough to hold unique values not between 0 and 127,
-//    and not (wchar_t) -1, for each defined multibyte character.
-
-// Define this type if we are doing the whole job,
-//    or if we want this type in particular.
-
-// A null pointer constant.
-
-// Offset of member MEMBER in a struct of type TYPE.
+type Timer_t = X__timer_t
 
 // Old compatibility names for C types.
-type Ulong = uint64  /* types.h:148:27 */
-type Ushort = uint16 /* types.h:149:28 */
-type Uint = uint32   /* types.h:150:22 */
-
-// These size-specific names are used by some of the inet code.
-
-// Define intN_t types.
-//    Copyright (C) 2017-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
+type Ulong = uint64
+type Ushort = uint16
+type Uint = uint32
 
 // These were defined by ISO C without the first `_'.
-type U_int8_t = X__uint8_t   /* types.h:158:19 */
-type U_int16_t = X__uint16_t /* types.h:159:20 */
-type U_int32_t = X__uint32_t /* types.h:160:20 */
-type U_int64_t = X__uint64_t /* types.h:161:20 */
+type U_int8_t = X__uint8_t
+type U_int16_t = X__uint16_t
+type U_int32_t = X__uint32_t
+type U_int64_t = X__uint64_t
 
-type Register_t = int32 /* types.h:164:13 */
+type Register_t = int32
 
-// It also defines `fd_set' and the FD_* macros for `select'.
-// `fd_set' type and related macros, and `select'/`pselect' declarations.
-//    Copyright (C) 1996-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-//	POSIX 1003.1g: 6.2 Select from File Descriptor Sets <sys/select.h>
-
-// Copyright (C) 1991-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Get definition of needed basic types.
-// bits/types.h -- definitions of __*_t types underlying *_t types.
-//    Copyright (C) 2002-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Never include this file directly; use <sys/types.h> instead.
-
-// Get __FD_* definitions.
-// Copyright (C) 1997-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// We don't use `memset' because this would require a prototype and
-//    the array isn't too big.
-
-// Get sigset_t.
-
-type X__sigset_t = struct{ X__val [16]uint64 } /* __sigset_t.h:8:3 */
+type X__sigset_t = struct{ X__val [16]uint64 }
 
 // A set of signals to be blocked, unblocked, or waited for.
-type Sigset_t = X__sigset_t /* sigset_t.h:7:20 */
-
-// Get definition of timer specification structures.
-
-// bits/types.h -- definitions of __*_t types underlying *_t types.
-//    Copyright (C) 2002-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Never include this file directly; use <sys/types.h> instead.
+type Sigset_t = X__sigset_t
 
 // A time value that is accurate to the nearest
 //
@@ -2519,47 +800,7 @@ type Sigset_t = X__sigset_t /* sigset_t.h:7:20 */
 type Timeval = struct {
 	Tv_sec  X__time_t
 	Tv_usec X__suseconds_t
-} /* struct_timeval.h:8:1 */
-
-// NB: Include guard matches what <linux/time.h> uses.
-
-// bits/types.h -- definitions of __*_t types underlying *_t types.
-//    Copyright (C) 2002-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Never include this file directly; use <sys/types.h> instead.
-
-// Endian macros for string.h functions
-//    Copyright (C) 1992-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <http://www.gnu.org/licenses/>.
+}
 
 // POSIX.1b structure for a time value.  This is like a `struct timeval' but
 //
@@ -2567,184 +808,42 @@ type Timeval = struct {
 type Timespec = struct {
 	Tv_sec  X__time_t
 	Tv_nsec X__syscall_slong_t
-} /* struct_timespec.h:11:1 */
+}
 
-type Suseconds_t = X__suseconds_t /* select.h:43:23 */
+type Suseconds_t = X__suseconds_t
 
 // The fd_set member is required to be an array of longs.
-type X__fd_mask = int64 /* select.h:49:18 */
-
-// Some versions of <linux/posix_types.h> define this macros.
-// It's easier to assume 8-bit bytes than to get CHAR_BIT.
+type X__fd_mask = int64
 
 // fd_set for select and pselect.
-type Fd_set = struct{ X__fds_bits [16]X__fd_mask } /* select.h:70:5 */
-
-// Maximum number of file descriptors in `fd_set'.
+type Fd_set = struct{ X__fds_bits [16]X__fd_mask }
 
 // Sometimes the fd_set member is assumed to have this type.
-type Fd_mask = X__fd_mask /* select.h:77:19 */
+type Fd_mask = X__fd_mask
 
-// Define some inlines helping to catch common problems.
-
-type Blksize_t = X__blksize_t /* types.h:185:21 */
+type Blksize_t = X__blksize_t
 
 // Types from the Large File Support interface.
-type Blkcnt_t = X__blkcnt64_t     /* types.h:205:22 */ // Type to count number of disk blocks.
-type Fsblkcnt_t = X__fsblkcnt64_t /* types.h:209:24 */ // Type to count file system blocks.
-type Fsfilcnt_t = X__fsfilcnt64_t /* types.h:213:24 */ // Type to count file system inodes.
-
-// Now add the thread types.
-// Declaration of common pthread types for all architectures.
-//    Copyright (C) 2017-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// For internal mutex and condition variable definitions.
-// Common threading primitives definitions for both POSIX and C11.
-//    Copyright (C) 2017-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Arch-specific definitions.  Each architecture must define the following
-//    macros to define the expected sizes of pthread data types:
-//
-//    __SIZEOF_PTHREAD_ATTR_T        - size of pthread_attr_t.
-//    __SIZEOF_PTHREAD_MUTEX_T       - size of pthread_mutex_t.
-//    __SIZEOF_PTHREAD_MUTEXATTR_T   - size of pthread_mutexattr_t.
-//    __SIZEOF_PTHREAD_COND_T        - size of pthread_cond_t.
-//    __SIZEOF_PTHREAD_CONDATTR_T    - size of pthread_condattr_t.
-//    __SIZEOF_PTHREAD_RWLOCK_T      - size of pthread_rwlock_t.
-//    __SIZEOF_PTHREAD_RWLOCKATTR_T  - size of pthread_rwlockattr_t.
-//    __SIZEOF_PTHREAD_BARRIER_T     - size of pthread_barrier_t.
-//    __SIZEOF_PTHREAD_BARRIERATTR_T - size of pthread_barrierattr_t.
-//
-//    The additional macro defines any constraint for the lock alignment
-//    inside the thread structures:
-//
-//    __LOCK_ALIGNMENT - for internal lock/futex usage.
-//
-//    Same idea but for the once locking primitive:
-//
-//    __ONCE_ALIGNMENT - for pthread_once_t/once_flag definition.
-
-// Copyright (C) 2002-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Determine the wordsize from the preprocessor defines.
-
-// Both x86-64 and x32 use the 64-bit system call interface.
-
-// Monotonically increasing wide counters (at least 62 bits).
-//    Copyright (C) 2016-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
+type Blkcnt_t = X__blkcnt64_t
+type Fsblkcnt_t = X__fsblkcnt64_t
+type Fsfilcnt_t = X__fsfilcnt64_t
 
 // Counter that is monotonically increasing (by less than 2**31 per
 //
 //	increment), with a single writer, and an arbitrary number of
 //	readers.
-type X__atomic_wide_counter = struct{ X__value64 uint64 } /* atomic_wide_counter.h:33:3 */
-
-// Common definition of pthread_mutex_t.
+type X__atomic_wide_counter = struct{ X__value64 uint64 }
 
 type X__pthread_internal_list = struct {
 	X__prev uintptr
 	X__next uintptr
-} /* thread-shared-types.h:51:9 */
+}
 
-// Common definition of pthread_mutex_t.
+type X__pthread_list_t = X__pthread_internal_list
 
-type X__pthread_list_t = X__pthread_internal_list /* thread-shared-types.h:55:3 */
+type X__pthread_internal_slist = struct{ X__next uintptr }
 
-type X__pthread_internal_slist = struct{ X__next uintptr } /* thread-shared-types.h:57:9 */
-
-type X__pthread_slist_t = X__pthread_internal_slist /* thread-shared-types.h:60:3 */
-
-// Arch-specific mutex definitions.  A generic implementation is provided
-//    by sysdeps/nptl/bits/struct_mutex.h.  If required, an architecture
-//    can override it by defining:
-//
-//    1. struct __pthread_mutex_s (used on both pthread_mutex_t and mtx_t
-//       definition).  It should contains at least the internal members
-//       defined in the generic version.
-//
-//    2. __LOCK_ALIGNMENT for any extra attribute for internal lock used with
-//       atomic operations.
-//
-//    3. The macro __PTHREAD_MUTEX_INITIALIZER used for static initialization.
-//       It should initialize the mutex internal flag.
-
-// x86 internal mutex struct definitions.
-//    Copyright (C) 2019-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <http://www.gnu.org/licenses/>.
+type X__pthread_slist_t = X__pthread_internal_slist
 
 type X__pthread_mutex_s = struct {
 	X__lock    int32
@@ -2755,37 +854,7 @@ type X__pthread_mutex_s = struct {
 	X__spins   int16
 	X__elision int16
 	X__list    X__pthread_list_t
-} /* struct_mutex.h:22:1 */
-
-// Arch-sepecific read-write lock definitions.  A generic implementation is
-//    provided by struct_rwlock.h.  If required, an architecture can override it
-//    by defining:
-//
-//    1. struct __pthread_rwlock_arch_t (used on pthread_rwlock_t definition).
-//       It should contain at least the internal members defined in the
-//       generic version.
-//
-//    2. The macro __PTHREAD_RWLOCK_INITIALIZER used for static initialization.
-//       It should initialize the rwlock internal type.
-
-// x86 internal rwlock struct definitions.
-//    Copyright (C) 2019-2022 Free Software Foundation, Inc.
-//
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <http://www.gnu.org/licenses/>.
+}
 
 type X__pthread_rwlock_arch_t = struct {
 	X__readers       uint32
@@ -2801,9 +870,7 @@ type X__pthread_rwlock_arch_t = struct {
 	X__pad2          uint64
 	X__flags         uint32
 	__ccgo_pad1      [4]byte
-} /* struct_rwlock.h:23:1 */
-
-// Common definition of pthread_cond_t.
+}
 
 type X__pthread_cond_s = struct {
 	X__wseq         X__atomic_wide_counter
@@ -2813,17 +880,17 @@ type X__pthread_cond_s = struct {
 	X__g1_orig_size uint32
 	X__wrefs        uint32
 	X__g_signals    [2]uint32
-} /* thread-shared-types.h:94:1 */
+}
 
-type X__tss_t = uint32  /* thread-shared-types.h:105:22 */
-type X__thrd_t = uint64 /* thread-shared-types.h:106:27 */
+type X__tss_t = uint32
+type X__thrd_t = uint64
 
-type X__once_flag = struct{ X__data int32 } /* thread-shared-types.h:111:3 */
+type X__once_flag = struct{ X__data int32 }
 
 // Thread identifiers.  The structure of the attribute type is not
 //
 //	exposed on purpose.
-type Pthread_t = uint64 /* pthreadtypes.h:27:27 */
+type Pthread_t = uint64
 
 // Data structures for mutex handling.  The structure of the attribute
 //
@@ -2831,7 +898,7 @@ type Pthread_t = uint64 /* pthreadtypes.h:27:27 */
 type Pthread_mutexattr_t = struct {
 	__ccgo_pad1 [0]uint32
 	X__size     [4]int8
-} /* pthreadtypes.h:36:3 */
+}
 
 // Data structure for condition variable handling.  The structure of
 //
@@ -2839,37 +906,37 @@ type Pthread_mutexattr_t = struct {
 type Pthread_condattr_t = struct {
 	__ccgo_pad1 [0]uint32
 	X__size     [4]int8
-} /* pthreadtypes.h:45:3 */
+}
 
 // Keys for thread-specific data
-type Pthread_key_t = uint32 /* pthreadtypes.h:49:22 */
+type Pthread_key_t = uint32
 
 // Once-only execution
-type Pthread_once_t = int32 /* pthreadtypes.h:53:30 */
+type Pthread_once_t = int32
 
 type Pthread_attr_t1 = struct {
 	__ccgo_pad1 [0]uint64
 	X__size     [56]int8
-} /* pthreadtypes.h:56:1 */
+}
 
-type Pthread_attr_t = Pthread_attr_t1 /* pthreadtypes.h:62:30 */
+type Pthread_attr_t = Pthread_attr_t1
 
-type Pthread_mutex_t = struct{ X__data X__pthread_mutex_s } /* pthreadtypes.h:72:3 */
+type Pthread_mutex_t = struct{ X__data X__pthread_mutex_s }
 
-type Pthread_cond_t = struct{ X__data X__pthread_cond_s } /* pthreadtypes.h:80:3 */
+type Pthread_cond_t = struct{ X__data X__pthread_cond_s }
 
 // Data structure for reader-writer lock variable handling.  The
 //
 //	structure of the attribute type is deliberately not exposed.
-type Pthread_rwlock_t = struct{ X__data X__pthread_rwlock_arch_t } /* pthreadtypes.h:91:3 */
+type Pthread_rwlock_t = struct{ X__data X__pthread_rwlock_arch_t }
 
 type Pthread_rwlockattr_t = struct {
 	__ccgo_pad1 [0]uint64
 	X__size     [8]int8
-} /* pthreadtypes.h:97:3 */
+}
 
 // POSIX spinlock data type.
-type Pthread_spinlock_t = int32 /* pthreadtypes.h:103:22 */
+type Pthread_spinlock_t = int32
 
 // POSIX barriers data type.  The structure of the type is
 //
@@ -2877,16 +944,12 @@ type Pthread_spinlock_t = int32 /* pthreadtypes.h:103:22 */
 type Pthread_barrier_t = struct {
 	__ccgo_pad1 [0]uint64
 	X__size     [32]int8
-} /* pthreadtypes.h:112:3 */
+}
 
 type Pthread_barrierattr_t = struct {
 	__ccgo_pad1 [0]uint32
 	X__size     [4]int8
-} /* pthreadtypes.h:118:3 */
-
-// Reentrant versions of the `random' family of functions.
-//    These functions all use the following data structure to contain
-//    state, rather than global state variables.
+}
 
 type Random_data = struct {
 	Fptr        uintptr
@@ -2897,7 +960,7 @@ type Random_data = struct {
 	Rand_sep    int32
 	__ccgo_pad1 [4]byte
 	End_ptr     uintptr
-} /* stdlib.h:424:1 */
+}
 
 // Data structure for communication with thread safe versions.  This
 //
@@ -2909,52 +972,10 @@ type Drand48_data = struct {
 	X__c     uint16
 	X__init  uint16
 	X__a     uint64
-} /* stdlib.h:491:1 */
+}
 
 // Shorthand for type of comparison functions.
-type X__compar_fn_t = uintptr /* stdlib.h:816:13 */
-
-// POSIX.1-2008 extended locale interface (see locale.h).
-// Definition of locale_t.
-//    Copyright (C) 2017-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Definition of struct __locale_struct and __locale_t.
-//    Copyright (C) 1997-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// POSIX.1-2008: the locale_t type, representing a locale context
-//    (implementation-namespace version).  This type should be treated
-//    as opaque by applications; some details are exposed for the sake of
-//    efficiency in e.g. ctype functions.
+type X__compar_fn_t = uintptr
 
 type X__locale_struct = struct {
 	X__locales       [13]uintptr
@@ -2962,220 +983,11 @@ type X__locale_struct = struct {
 	X__ctype_tolower uintptr
 	X__ctype_toupper uintptr
 	X__names         [13]uintptr
-} /* __locale_t.h:27:1 */
+}
 
-type X__locale_t = uintptr /* __locale_t.h:41:32 */
+type X__locale_t = uintptr
 
-type Locale_t = X__locale_t /* locale_t.h:24:20 */
-
-// Declarations for math functions.
-//    Copyright (C) 1991-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-//	ISO C99 Standard: 7.12 Mathematics	<math.h>
-
-// Handle feature test macros at the start of a header.
-//    Copyright (C) 2016-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// This header is internal to glibc and should not be included outside
-//    of glibc headers.  Headers including it must define
-//    __GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATION first.  This header
-//    cannot have multiple include guards because ISO C feature test
-//    macros depend on the definition of the macro when an affected
-//    header is included, not when the first system header is
-//    included.
-
-// Copyright (C) 1991-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// ISO/IEC TR 24731-2:2010 defines the __STDC_WANT_LIB_EXT2__
-//    macro.
-
-// ISO/IEC TS 18661-1:2014 defines the __STDC_WANT_IEC_60559_BFP_EXT__
-//    macro.  Most but not all symbols enabled by that macro in TS
-//    18661-1 are enabled unconditionally in C2X.  In C2X, the symbols in
-//    Annex F still require a new feature test macro
-//    __STDC_WANT_IEC_60559_EXT__ instead (C2X does not define
-//    __STDC_WANT_IEC_60559_BFP_EXT__), while a few features from TS
-//    18661-1 are not included in C2X (and thus should depend on
-//    __STDC_WANT_IEC_60559_BFP_EXT__ even when C2X features are
-//    enabled).
-//
-//    __GLIBC_USE (IEC_60559_BFP_EXT) controls those features from TS
-//    18661-1 not included in C2X.
-//
-//    __GLIBC_USE (IEC_60559_BFP_EXT_C2X) controls those features from TS
-//    18661-1 that are also included in C2X (with no feature test macro
-//    required in C2X).
-//
-//    __GLIBC_USE (IEC_60559_EXT) controls those features from TS 18661-1
-//    that are included in C2X but conditional on
-//    __STDC_WANT_IEC_60559_EXT__.  (There are currently no features
-//    conditional on __STDC_WANT_IEC_60559_EXT__ that are not in TS
-//    18661-1.)
-
-// ISO/IEC TS 18661-4:2015 defines the
-//    __STDC_WANT_IEC_60559_FUNCS_EXT__ macro.  Other than the reduction
-//    functions, the symbols from this TS are enabled unconditionally in
-//    C2X.
-
-// ISO/IEC TS 18661-3:2015 defines the
-//    __STDC_WANT_IEC_60559_TYPES_EXT__ macro.
-
-// Get definitions of __intmax_t and __uintmax_t.
-// bits/types.h -- definitions of __*_t types underlying *_t types.
-//    Copyright (C) 2002-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Never include this file directly; use <sys/types.h> instead.
-
-// Get machine-dependent vector math functions declarations.
-// Platform-specific SIMD declarations of math functions.
-//    Copyright (C) 2014-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Get default empty definitions for simd declarations.
-// Empty definitions required for __MATHCALL_VEC unfolding in mathcalls.h.
-//    Copyright (C) 2014-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Needed definitions could be generated with:
-//    for func in $(grep __MATHCALL_VEC math/bits/mathcalls.h |		 sed -r "s|__MATHCALL_VEC.?\(||; s|,.*||"); do
-//      echo "#define __DECL_SIMD_${func}";
-//      echo "#define __DECL_SIMD_${func}f";
-//      echo "#define __DECL_SIMD_${func}l";
-//    done
-//
-
-// Gather machine dependent type support.
-// Macros to control TS 18661-3 glibc features on x86.
-//    Copyright (C) 2017-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Value returned on overflow.  With IEEE 754 floating point, this is
-//    +Infinity, otherwise the largest representable positive value.
-
-// IEEE positive infinity.
-
-// IEEE Not A Number.
-
-// Get __GLIBC_FLT_EVAL_METHOD.
-// Define __GLIBC_FLT_EVAL_METHOD.  x86 version.
-//    Copyright (C) 2016-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
+type Locale_t = X__locale_t
 
 // Define the following typedefs.
 //
@@ -3183,260 +995,16 @@ type Locale_t = X__locale_t /* locale_t.h:24:20 */
 //			to evaluate `float' expressions
 //	    double_t	floating-point type at least as wide as `double' used
 //			to evaluate `double' expressions
-type Float_t = float32  /* math.h:163:15 */
-type Double_t = float64 /* math.h:164:16 */
+type Float_t = float32
+type Double_t = float64
 
-// Define ISO C stdio on top of C++ iostreams.
-//    Copyright (C) 1991-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-//	ISO C99 Standard: 7.19 Input/output	<stdio.h>
-
-// Handle feature test macros at the start of a header.
-//    Copyright (C) 2016-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// This header is internal to glibc and should not be included outside
-//    of glibc headers.  Headers including it must define
-//    __GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATION first.  This header
-//    cannot have multiple include guards because ISO C feature test
-//    macros depend on the definition of the macro when an affected
-//    header is included, not when the first system header is
-//    included.
-
-// Copyright (C) 1991-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// ISO/IEC TR 24731-2:2010 defines the __STDC_WANT_LIB_EXT2__
-//    macro.
-
-// ISO/IEC TS 18661-1:2014 defines the __STDC_WANT_IEC_60559_BFP_EXT__
-//    macro.  Most but not all symbols enabled by that macro in TS
-//    18661-1 are enabled unconditionally in C2X.  In C2X, the symbols in
-//    Annex F still require a new feature test macro
-//    __STDC_WANT_IEC_60559_EXT__ instead (C2X does not define
-//    __STDC_WANT_IEC_60559_BFP_EXT__), while a few features from TS
-//    18661-1 are not included in C2X (and thus should depend on
-//    __STDC_WANT_IEC_60559_BFP_EXT__ even when C2X features are
-//    enabled).
-//
-//    __GLIBC_USE (IEC_60559_BFP_EXT) controls those features from TS
-//    18661-1 not included in C2X.
-//
-//    __GLIBC_USE (IEC_60559_BFP_EXT_C2X) controls those features from TS
-//    18661-1 that are also included in C2X (with no feature test macro
-//    required in C2X).
-//
-//    __GLIBC_USE (IEC_60559_EXT) controls those features from TS 18661-1
-//    that are included in C2X but conditional on
-//    __STDC_WANT_IEC_60559_EXT__.  (There are currently no features
-//    conditional on __STDC_WANT_IEC_60559_EXT__ that are not in TS
-//    18661-1.)
-
-// ISO/IEC TS 18661-4:2015 defines the
-//    __STDC_WANT_IEC_60559_FUNCS_EXT__ macro.  Other than the reduction
-//    functions, the symbols from this TS are enabled unconditionally in
-//    C2X.
-
-// ISO/IEC TS 18661-3:2015 defines the
-//    __STDC_WANT_IEC_60559_TYPES_EXT__ macro.
-
-// Copyright (C) 1989-2022 Free Software Foundation, Inc.
-//
-// This file is part of GCC.
-//
-// GCC is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 3, or (at your option)
-// any later version.
-//
-// GCC is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// Under Section 7 of GPL version 3, you are granted additional
-// permissions described in the GCC Runtime Library Exception, version
-// 3.1, as published by the Free Software Foundation.
-//
-// You should have received a copy of the GNU General Public License and
-// a copy of the GCC Runtime Library Exception along with this program;
-// see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
-// <http://www.gnu.org/licenses/>.
-
-// ISO C Standard:  7.17  Common definitions  <stddef.h>
-
-// Any one of these symbols __need_* means that GNU libc
-//    wants us just to define one data type.  So don't define
-//    the symbols that indicate this file's entire job has been done.
-
-// This avoids lossage on SunOS but only if stdtypes.h comes first.
-//    There's no way to win with the other order!  Sun lossage.
-
-// Sequent's header files use _PTRDIFF_T_ in some conflicting way.
-//    Just ignore it.
-
-// On VxWorks, <type/vxTypesBase.h> may have defined macros like
-//    _TYPE_size_t which will typedef size_t.  fixincludes patched the
-//    vxTypesBase.h so that this macro is only defined if _GCC_SIZE_T is
-//    not defined, and so that defining this macro defines _GCC_SIZE_T.
-//    If we find that the macros are still defined at this point, we must
-//    invoke them so that the type is defined as expected.
-
-// In case nobody has defined these types, but we aren't running under
-//    GCC 2.00, make sure that __PTRDIFF_TYPE__, __SIZE_TYPE__, and
-//    __WCHAR_TYPE__ have reasonable values.  This can happen if the
-//    parts of GCC is compiled by an older compiler, that actually
-//    include gstddef.h, such as collect2.
-
-// Signed type of difference of two pointers.
-
-// Define this type if we are doing the whole job,
-//    or if we want this type in particular.
-
-// If this symbol has done its job, get rid of it.
-
-// Unsigned type of `sizeof' something.
-
-// Define this type if we are doing the whole job,
-//    or if we want this type in particular.
-
-// Wide character type.
-//    Locale-writers should change this as necessary to
-//    be big enough to hold unique values not between 0 and 127,
-//    and not (wchar_t) -1, for each defined multibyte character.
-
-// Define this type if we are doing the whole job,
-//    or if we want this type in particular.
-
-// A null pointer constant.
-
-// Offset of member MEMBER in a struct of type TYPE.
-
-// Copyright (C) 1989-2022 Free Software Foundation, Inc.
-//
-// This file is part of GCC.
-//
-// GCC is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 3, or (at your option)
-// any later version.
-//
-// GCC is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// Under Section 7 of GPL version 3, you are granted additional
-// permissions described in the GCC Runtime Library Exception, version
-// 3.1, as published by the Free Software Foundation.
-//
-// You should have received a copy of the GNU General Public License and
-// a copy of the GCC Runtime Library Exception along with this program;
-// see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
-// <http://www.gnu.org/licenses/>.
-
-// ISO C Standard:  7.15  Variable arguments  <stdarg.h>
-
-// Define __gnuc_va_list.
-
-type X__gnuc_va_list = X__builtin_va_list /* stdarg.h:40:27 */
-
-// Define the standard macros for the user,
-//    if this invocation was from the user program.
-
-// bits/types.h -- definitions of __*_t types underlying *_t types.
-//    Copyright (C) 2002-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Never include this file directly; use <sys/types.h> instead.
-
-// bits/types.h -- definitions of __*_t types underlying *_t types.
-//    Copyright (C) 2002-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Never include this file directly; use <sys/types.h> instead.
-
-// Integral type unchanged by default argument promotions that can
-//    hold any value corresponding to members of the extended character
-//    set, as well as at least one value that does not correspond to any
-//    member of the extended character set.
+type X__gnuc_va_list = X__builtin_va_list
 
 // Conversion state information.
 type X__mbstate_t = struct {
 	X__count int32
 	X__value struct{ X__wch uint32 }
-} /* __mbstate_t.h:21:3 */
+}
 
 // The tag name of this struct is _G_fpos_t to preserve historic
 //
@@ -3445,33 +1013,13 @@ type X__mbstate_t = struct {
 type X_G_fpos_t = struct {
 	X__pos   X__off_t
 	X__state X__mbstate_t
-} /* __fpos_t.h:10:9 */
+}
 
 // The tag name of this struct is _G_fpos_t to preserve historic
 //
 //	C++ mangled names for functions taking fpos_t arguments.
 //	That name should not be used in new code.
-type X__fpos_t = X_G_fpos_t /* __fpos_t.h:14:3 */
-
-// bits/types.h -- definitions of __*_t types underlying *_t types.
-//    Copyright (C) 2002-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Never include this file directly; use <sys/types.h> instead.
+type X__fpos_t = X_G_fpos_t
 
 // The tag name of this struct is _G_fpos64_t to preserve historic
 //
@@ -3480,33 +1028,13 @@ type X__fpos_t = X_G_fpos_t /* __fpos_t.h:14:3 */
 type X_G_fpos64_t = struct {
 	X__pos   X__off64_t
 	X__state X__mbstate_t
-} /* __fpos64_t.h:10:9 */
-
-// bits/types.h -- definitions of __*_t types underlying *_t types.
-//    Copyright (C) 2002-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-// Never include this file directly; use <sys/types.h> instead.
+}
 
 // The tag name of this struct is _G_fpos64_t to preserve historic
 //
 //	C++ mangled names for functions taking fpos_t and/or fpos64_t
 //	arguments.  That name should not be used in new code.
-type X__fpos64_t = X_G_fpos64_t /* __fpos64_t.h:14:3 */
+type X__fpos64_t = X_G_fpos64_t
 
 type X_IO_FILE = struct {
 	X_flags          int32
@@ -3540,61 +1068,22 @@ type X_IO_FILE = struct {
 	X__pad5          Size_t
 	X_mode           int32
 	X_unused2        [20]int8
-} /* __FILE.h:4:1 */
+}
 
-type X__FILE = X_IO_FILE /* __FILE.h:5:25 */
+type X__FILE = X_IO_FILE
 
 // The opaque type of streams.  This is the definition used elsewhere.
-type FILE = X_IO_FILE /* FILE.h:7:25 */
+type FILE = X_IO_FILE
 
-// These macros are used by bits/stdio.h and internal headers.
-
-// Many more flag bits are defined internally.
-
-type Va_list = X__gnuc_va_list /* stdio.h:52:24 */
+type Va_list = X__gnuc_va_list
 
 // The type of the second argument to `fgetpos' and `fsetpos'.
-type Fpos_t = X__fpos64_t /* stdio.h:86:20 */
-
-// If we are compiling with optimizing read this file.  It contains
-//    several optimizing inline functions and macros.
-
-// Macros to control TS 18661-3 glibc features on x86.
-//    Copyright (C) 2017-2022 Free Software Foundation, Inc.
-//    This file is part of the GNU C Library.
-//
-//    The GNU C Library is free software; you can redistribute it and/or
-//    modify it under the terms of the GNU Lesser General Public
-//    License as published by the Free Software Foundation; either
-//    version 2.1 of the License, or (at your option) any later version.
-//
-//    The GNU C Library is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//    Lesser General Public License for more details.
-//
-//    You should have received a copy of the GNU Lesser General Public
-//    License along with the GNU C Library; if not, see
-//    <https://www.gnu.org/licenses/>.
-
-////////////////////////////////////////////////////////////////////////////////
-// public platform macros
-
-// just in case:
-
-// just in case again, because it is still possible for them to have padding bits (that we needn't):
-//J40_STATIC_ASSERT(sizeof(uint8_t) == 1, uint8_t_should_have_no_padding_bits);
-//J40_STATIC_ASSERT(sizeof(uint16_t) == 2, uint16_t_should_have_no_padding_bits);
-//J40_STATIC_ASSERT(sizeof(uint32_t) == 4, uint32_t_should_have_no_padding_bits);
-//J40_STATIC_ASSERT(sizeof(uint64_t) == 8, uint64_t_should_have_no_padding_bits);
-
-////////////////////////////////////////////////////////////////////////////////
-// public API
+type Fpos_t = X__fpos64_t
 
 // an internal error type. non-zero indicates a different error condition.
 // user callbacks can also emit error codes, which should not exceed `J40_MIN_RESERVED_ERR`.
 // it can be interpreted as a four-letter code, but such encoding is not guaranteed.
-type J40_err = Uint32_t /* j40.h:158:18 */
+type J40_err = Uint32_t
 
 type J40__inner1 = struct {
 	Magic        Uint32_t
@@ -3759,26 +1248,23 @@ type J40__inner1 = struct {
 	Rendered      int32
 	__ccgo_pad1   [4]byte
 	Rendered_rgba J40__plane
-} /* j40.h:165:3 */
+}
 
 type J40_image = struct {
 	Magic       Uint32_t
 	__ccgo_pad1 [4]byte
 	U           struct{ Inner uintptr }
-} /* j40.h:169:3 */
+}
 
 type J40_frame = struct {
 	Magic    Uint32_t
 	Reserved Uint32_t
 	Inner    uintptr
-} /* j40.h:175:3 */
+}
 
-type J40_memory_free_func = uintptr /* j40.h:177:14 */
+type J40_memory_free_func = uintptr
 
-type J40_u8x4 = [4]Uint8_t /* j40.h:240:34 */
-//typedef uint16_t j40_u16x3[3], j40_u16x4[4];
-//typedef uint32_t j40_u32x3[3], j40_u32x4[4];
-//typedef float j40_f32x3[3], j40_f32x4[4];
+type J40_u8x4 = [4]Uint8_t
 
 // J40__DEFINE_PIXELS(uint8_t, u8);      // j40_pixels_u8, j40_frame_pixels_u8, j40_row_u8
 // J40__DEFINE_PIXELS(uint16_t, u16);    // j40_pixels_u16, j40_frame_pixels_u16, j40_row_u16
@@ -3795,27 +1281,7 @@ type J40_pixels_u8x4 = struct {
 	Stride_bytes Int32_t
 	__ccgo_pad1  [4]byte
 	Data         uintptr
-} /* j40.h:254:1 */
-
-////////////////////////////////////////////////////////////////////////////////
-//////////////////////// internal code starts from here ////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-// comment convention:
-// "SPEC" comments are used for incorrect, ambiguous or misleading specification issues.
-// "TODO spec" comments are roughly same, but not yet fully confirmed & reported.
-
-////////////////////////////////////////////////////////////////////////////////
-// private platform macros
-
-// clang (among many others) fakes GCC version by default, but we handle clang separately
-
-// this is stronger than [[nodiscard]] in that it's much harder to suppress; we're okay with that
-
-// rule of thumb: sparingly use them, except for the obvious error cases
-
-////////////////////////////////////////////////////////////////////////////////
-// state
+}
 
 // bit and logical buffer. this is most frequently accessed and thus available without indirection.
 //
@@ -3833,27 +1299,7 @@ type J40__bits_st1 = struct {
 	Bits        Uint64_t
 	Ptr         uintptr
 	End         uintptr
-} /* j40.h:165:3 */
-
-////////////////////////////////////////////////////////////////////////////////
-//////////////////////// internal code starts from here ////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-// comment convention:
-// "SPEC" comments are used for incorrect, ambiguous or misleading specification issues.
-// "TODO spec" comments are roughly same, but not yet fully confirmed & reported.
-
-////////////////////////////////////////////////////////////////////////////////
-// private platform macros
-
-// clang (among many others) fakes GCC version by default, but we handle clang separately
-
-// this is stronger than [[nodiscard]] in that it's much harder to suppress; we're okay with that
-
-// rule of thumb: sparingly use them, except for the obvious error cases
-
-////////////////////////////////////////////////////////////////////////////////
-// state
+}
 
 // bit and logical buffer. this is most frequently accessed and thus available without indirection.
 //
@@ -3865,7 +1311,7 @@ type J40__bits_st1 = struct {
 // when the bit buffer has been exhausted the next byte from the logical buffer is consumed and
 // appended at the *top* of the bit buffer. when the logical buffer has been exhausted
 // higher layers (first backing buffer, then container, and finally source) should be consulted.
-type J40__bits_st = J40__bits_st1 /* j40.h:419:3 */
+type J40__bits_st = J40__bits_st1
 
 // a common context ("state") for all internal functions.
 // this bears a strong similarity with `struct j40__inner` type in the API layer which would be
@@ -3881,7 +1327,7 @@ type J40__source_st1 = struct {
 	Data          uintptr
 	Fileoff       Int64_t
 	Fileoff_limit Int64_t
-} /* j40.h:165:3 */
+}
 
 // a common context ("state") for all internal functions.
 // this bears a strong similarity with `struct j40__inner` type in the API layer which would be
@@ -3896,7 +1342,7 @@ type J40__container_st1 = struct {
 	Map         uintptr
 	Nmap        Int32_t
 	Map_cap     Int32_t
-} /* j40.h:165:3 */
+}
 
 // a common context ("state") for all internal functions.
 // this bears a strong similarity with `struct j40__inner` type in the API layer which would be
@@ -3912,7 +1358,7 @@ type J40__buffer_st1 = struct {
 	Next_codeoff  Int64_t
 	Codeoff_limit Int64_t
 	Checkpoint    J40__bits_st
-} /* j40.h:165:3 */
+}
 
 // a common context ("state") for all internal functions.
 // this bears a strong similarity with `struct j40__inner` type in the API layer which would be
@@ -3953,7 +1399,7 @@ type J40__image_st1 = struct {
 	Quant_bias            [3]float32
 	Quant_bias_num        float32
 	Want_icc              int32
-} /* j40.h:165:3 */
+}
 
 // a common context ("state") for all internal functions.
 // this bears a strong similarity with `struct j40__inner` type in the API layer which would be
@@ -4048,7 +1494,7 @@ type J40__frame_st1 = struct {
 	__ccgo_pad9       [4]byte
 	Orders            [11][13][3]uintptr
 	Coeff_codespec    [11]J40__code_spec
-} /* j40.h:165:3 */
+}
 
 // a common context ("state") for all internal functions.
 // this bears a strong similarity with `struct j40__inner` type in the API layer which would be
@@ -4085,7 +1531,7 @@ type J40__lf_group_st1 = struct {
 	Lfindices       J40__plane
 	Loaded          int32
 	__ccgo_pad3     [4]byte
-} /* j40.h:165:3 */
+}
 
 // a common context ("state") for all internal functions.
 // this bears a strong similarity with `struct j40__inner` type in the API layer which would be
@@ -4108,7 +1554,7 @@ type J40__limits1 = struct {
 	Tree_depth                  Int32_t
 	__ccgo_pad1                 [4]byte
 	Zf_pixels                   Int64_t
-} /* j40.h:441:8 */
+}
 
 // a common context ("state") for all internal functions.
 // this bears a strong similarity with `struct j40__inner` type in the API layer which would be
@@ -4130,9 +1576,9 @@ type J40__st = struct {
 	Frame        uintptr
 	Lf_group     uintptr
 	Limits       uintptr
-} /* j40.h:442:3 */
+}
 
-func j40__set_error(tls *libc.TLS, st uintptr, err J40_err) J40_err { /* j40.h:496:20: */
+func j40__set_error(tls *libc.TLS, st uintptr, err J40_err) J40_err {
 	if err != Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts))))<<24|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 1))))<<16|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2))))<<8|Uint32_t(*(*int8)(unsafe.Pointer(ts + 3))) {
 		(*J40__st)(unsafe.Pointer(st)).Cannot_retry = 1
 	}
@@ -4142,15 +1588,15 @@ func j40__set_error(tls *libc.TLS, st uintptr, err J40_err) J40_err { /* j40.h:4
 	return err
 }
 
-func j40__malloc(tls *libc.TLS, size Size_t) uintptr { /* j40.h:502:17: */
+func j40__malloc(tls *libc.TLS, size Size_t) uintptr {
 	return libc.Xmalloc(tls, size)
 }
 
-func j40__calloc(tls *libc.TLS, num Size_t, size Size_t) uintptr { /* j40.h:503:17: */
+func j40__calloc(tls *libc.TLS, num Size_t, size Size_t) uintptr {
 	return libc.Xcalloc(tls, num, size)
 }
 
-func j40__realloc32(tls *libc.TLS, st uintptr, ptr uintptr, itemsize Size_t, len Int32_t, cap uintptr) uintptr { /* j40.h:505:17: */
+func j40__realloc32(tls *libc.TLS, st uintptr, ptr uintptr, itemsize Size_t, len Int32_t, cap uintptr) uintptr {
 	var newptr uintptr
 	var newcap Uint32_t
 	var newsize Size_t
@@ -4230,7 +1676,7 @@ J40__ON_ERROR:
 	return uintptr(0)
 }
 
-func j40__realloc64(tls *libc.TLS, st uintptr, ptr uintptr, itemsize Size_t, len Int64_t, cap uintptr) uintptr { /* j40.h:523:17: */
+func j40__realloc64(tls *libc.TLS, st uintptr, ptr uintptr, itemsize Size_t, len Int64_t, cap uintptr) uintptr {
 	var newptr uintptr
 	var newcap Uint64_t
 	var newsize Size_t
@@ -4310,11 +1756,11 @@ J40__ON_ERROR:
 	return uintptr(0)
 }
 
-func j40__free(tls *libc.TLS, ptr uintptr) { /* j40.h:541:17: */
+func j40__free(tls *libc.TLS, ptr uintptr) {
 	libc.Xfree(tls, ptr)
 }
 
-func J40__unpack_signed(tls *libc.TLS, x Int32_t) Int32_t { /* j40.h:570:27: */
+func J40__unpack_signed(tls *libc.TLS, x Int32_t) Int32_t {
 	return func() int32 {
 		if x&1 != 0 {
 			return -(x/2 + 1)
@@ -4323,7 +1769,7 @@ func J40__unpack_signed(tls *libc.TLS, x Int32_t) Int32_t { /* j40.h:570:27: */
 	}()
 }
 
-func J40__unpack_signed64(tls *libc.TLS, x Int64_t) Int64_t { /* j40.h:573:27: */
+func J40__unpack_signed64(tls *libc.TLS, x Int64_t) Int64_t {
 	return func() int64 {
 		if x&int64(1) != 0 {
 			return -(x/int64(2) + int64(1))
@@ -4333,15 +1779,15 @@ func J40__unpack_signed64(tls *libc.TLS, x Int64_t) Int64_t { /* j40.h:573:27: *
 }
 
 // equivalent to ceil(x / y)
-func J40__ceil_div32(tls *libc.TLS, x Int32_t, y Int32_t) Int32_t { /* j40.h:578:27: */
+func J40__ceil_div32(tls *libc.TLS, x Int32_t, y Int32_t) Int32_t {
 	return (x + y - 1) / y
 }
 
-func J40__ceil_div64(tls *libc.TLS, x Int64_t, y Int64_t) Int64_t { /* j40.h:579:27: */
+func J40__ceil_div64(tls *libc.TLS, x Int64_t, y Int64_t) Int64_t {
 	return (x + y - int64(1)) / y
 }
 
-func J40__minf(tls *libc.TLS, x float32, y float32) float32 { /* j40.h:581:25: */
+func J40__minf(tls *libc.TLS, x float32, y float32) float32 {
 	return func() float32 {
 		if x < y {
 			return x
@@ -4350,7 +1796,7 @@ func J40__minf(tls *libc.TLS, x float32, y float32) float32 { /* j40.h:581:25: *
 	}()
 }
 
-func J40__maxf(tls *libc.TLS, x float32, y float32) float32 { /* j40.h:582:25: */
+func J40__maxf(tls *libc.TLS, x float32, y float32) float32 {
 	return func() float32 {
 		if x > y {
 			return x
@@ -4360,18 +1806,17 @@ func J40__maxf(tls *libc.TLS, x float32, y float32) float32 { /* j40.h:582:25: *
 }
 
 // used to guard against division by zero
-func J40__surely_nonzero(tls *libc.TLS, x float32) int32 { /* j40.h:585:23: */
-	//return isfinite(x) && fabs(x) >= 1e-8f;
+func J40__surely_nonzero(tls *libc.TLS, x float32) int32 {
 	return libc.Bool32(!(libc.X__builtin_isnan(tls, float64(x-x)) != 0) && libc.Xfabs(tls, float64(x)) >= 1e-8)
 }
 
 // same to `(a + b) >> 1` but doesn't overflow, useful for tight loops with autovectorization
 // https://devblogs.microsoft.com/oldnewthing/20220207-00/?p=106223
-func J40__floor_avg16(tls *libc.TLS, x Int16_t, y Int16_t) Int16_t { /* j40.h:632:29: */
+func J40__floor_avg16(tls *libc.TLS, x Int16_t, y Int16_t) Int16_t {
 	return Int16_t(int32(x)/2 + int32(y)/2 + int32(x)&int32(y)&1)
 }
 
-func J40__abs16(tls *libc.TLS, x Int16_t) Int16_t { /* j40.h:636:29: */
+func J40__abs16(tls *libc.TLS, x Int16_t) Int16_t {
 	return func() int16 {
 		if int32(x) < 0 {
 			return int16(-int32(x))
@@ -4380,7 +1825,7 @@ func J40__abs16(tls *libc.TLS, x Int16_t) Int16_t { /* j40.h:636:29: */
 	}()
 }
 
-func J40__min16(tls *libc.TLS, x Int16_t, y Int16_t) Int16_t { /* j40.h:639:29: */
+func J40__min16(tls *libc.TLS, x Int16_t, y Int16_t) Int16_t {
 	return func() int16 {
 		if int32(x) < int32(y) {
 			return x
@@ -4389,7 +1834,7 @@ func J40__min16(tls *libc.TLS, x Int16_t, y Int16_t) Int16_t { /* j40.h:639:29: 
 	}()
 }
 
-func J40__max16(tls *libc.TLS, x Int16_t, y Int16_t) Int16_t { /* j40.h:642:29: */
+func J40__max16(tls *libc.TLS, x Int16_t, y Int16_t) Int16_t {
 	return func() int16 {
 		if int32(x) > int32(y) {
 			return x
@@ -4398,23 +1843,19 @@ func J40__max16(tls *libc.TLS, x Int16_t, y Int16_t) Int16_t { /* j40.h:642:29: 
 	}()
 }
 
-func J40__add16(tls *libc.TLS, x Int16_t, y Int16_t, out uintptr) int32 { /* j40.h:646:23: */
-	// gcc/clang extension uses an opposite convention, which is unnatural to use with J40__SHOULD
-	//return !J40_ADD_OVERFLOW(x, y, out);
+func J40__add16(tls *libc.TLS, x Int16_t, y Int16_t, out uintptr) int32 {
 	return 1 - libc.X__builtin_add_overflowInt64(tls, int64(x), int64(y), out)
 }
 
-func J40__sub16(tls *libc.TLS, x Int16_t, y Int16_t, out uintptr) int32 { /* j40.h:656:23: */
-	//return !J40_SUB_OVERFLOW(x, y, out);
+func J40__sub16(tls *libc.TLS, x Int16_t, y Int16_t, out uintptr) int32 {
 	return 1 - libc.X__builtin_sub_overflowInt64(tls, int64(x), int64(y), out)
 }
 
-func J40__mul16(tls *libc.TLS, x Int16_t, y Int16_t, out uintptr) int32 { /* j40.h:665:23: */
-	//return !J40_MUL_OVERFLOW(x, y, out);
+func J40__mul16(tls *libc.TLS, x Int16_t, y Int16_t, out uintptr) int32 {
 	return 1 - libc.X__builtin_mul_overflowInt64(tls, int64(x), int64(y), out)
 }
 
-func J40__add_fallback16(tls *libc.TLS, x Int16_t, y Int16_t, out uintptr) int32 { /* j40.h:674:23: */
+func J40__add_fallback16(tls *libc.TLS, x Int16_t, y Int16_t, out uintptr) int32 {
 	if libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32(x) > 0 && int32(y) > 32767-int32(x) || int32(x) < 0 && int32(y) < -32767-1-int32(x))), int64(0)) != 0 {
 		return 0
 	} else {
@@ -4424,7 +1865,7 @@ func J40__add_fallback16(tls *libc.TLS, x Int16_t, y Int16_t, out uintptr) int32
 	return int32(0)
 }
 
-func J40__sub_fallback16(tls *libc.TLS, x Int16_t, y Int16_t, out uintptr) int32 { /* j40.h:683:23: */
+func J40__sub_fallback16(tls *libc.TLS, x Int16_t, y Int16_t, out uintptr) int32 {
 	if libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32(y) < 0 && int32(x) > 32767+int32(y) || int32(y) > 0 && int32(x) < -32767-1+int32(y))), int64(0)) != 0 {
 		return 0
 	} else {
@@ -4434,7 +1875,7 @@ func J40__sub_fallback16(tls *libc.TLS, x Int16_t, y Int16_t, out uintptr) int32
 	return int32(0)
 }
 
-func J40__mul_fallback16(tls *libc.TLS, x Int16_t, y Int16_t, out uintptr) int32 { /* j40.h:692:23: */
+func J40__mul_fallback16(tls *libc.TLS, x Int16_t, y Int16_t, out uintptr) int32 {
 	if libc.X__builtin_expect(tls, libc.BoolInt64(!!(func() int32 {
 		if int32(x) > 0 {
 			return func() int32 {
@@ -4459,37 +1900,33 @@ func J40__mul_fallback16(tls *libc.TLS, x Int16_t, y Int16_t, out uintptr) int32
 	return int32(0)
 }
 
-func J40__clamp_add16(tls *libc.TLS, x Int16_t, y Int16_t) Int16_t { /* j40.h:705:29: */
+func J40__clamp_add16(tls *libc.TLS, x Int16_t, y Int16_t) Int16_t {
 	bp := tls.Alloc(2)
 	defer tls.Free(2)
 
-	// var out Int16_t at bp, 2
-
 	if J40__add16(tls, x, y, bp) != 0 {
-		return *(*Int16_t)(unsafe.Pointer(bp /* out */))
+		return *(*Int16_t)(unsafe.Pointer(bp))
 	}
 	return int16(32767)
 }
 
-func J40__clamp_mul16(tls *libc.TLS, x Int16_t, y Int16_t) Int16_t { /* j40.h:710:29: */
+func J40__clamp_mul16(tls *libc.TLS, x Int16_t, y Int16_t) Int16_t {
 	bp := tls.Alloc(2)
 	defer tls.Free(2)
 
-	// var out Int16_t at bp, 2
-
 	if J40__mul16(tls, x, y, bp) != 0 {
-		return *(*Int16_t)(unsafe.Pointer(bp /* out */))
+		return *(*Int16_t)(unsafe.Pointer(bp))
 	}
 	return int16(32767)
 }
 
 // same to `(a + b) >> 1` but doesn't overflow, useful for tight loops with autovectorization
 // https://devblogs.microsoft.com/oldnewthing/20220207-00/?p=106223
-func J40__floor_avg32(tls *libc.TLS, x Int32_t, y Int32_t) Int32_t { /* j40.h:632:29: */
+func J40__floor_avg32(tls *libc.TLS, x Int32_t, y Int32_t) Int32_t {
 	return x/2 + y/2 + x&y&1
 }
 
-func J40__abs32(tls *libc.TLS, x Int32_t) Int32_t { /* j40.h:636:29: */
+func J40__abs32(tls *libc.TLS, x Int32_t) Int32_t {
 	return func() int32 {
 		if x < 0 {
 			return -x
@@ -4498,7 +1935,7 @@ func J40__abs32(tls *libc.TLS, x Int32_t) Int32_t { /* j40.h:636:29: */
 	}()
 }
 
-func J40__min32(tls *libc.TLS, x Int32_t, y Int32_t) Int32_t { /* j40.h:639:29: */
+func J40__min32(tls *libc.TLS, x Int32_t, y Int32_t) Int32_t {
 	return func() int32 {
 		if x < y {
 			return x
@@ -4507,7 +1944,7 @@ func J40__min32(tls *libc.TLS, x Int32_t, y Int32_t) Int32_t { /* j40.h:639:29: 
 	}()
 }
 
-func J40__max32(tls *libc.TLS, x Int32_t, y Int32_t) Int32_t { /* j40.h:642:29: */
+func J40__max32(tls *libc.TLS, x Int32_t, y Int32_t) Int32_t {
 	return func() int32 {
 		if x > y {
 			return x
@@ -4516,23 +1953,19 @@ func J40__max32(tls *libc.TLS, x Int32_t, y Int32_t) Int32_t { /* j40.h:642:29: 
 	}()
 }
 
-func J40__add32(tls *libc.TLS, x Int32_t, y Int32_t, out uintptr) int32 { /* j40.h:646:23: */
-	// gcc/clang extension uses an opposite convention, which is unnatural to use with J40__SHOULD
-	//return !J40_ADD_OVERFLOW(x, y, out);
+func J40__add32(tls *libc.TLS, x Int32_t, y Int32_t, out uintptr) int32 {
 	return 1 - libc.X__builtin_add_overflowInt64(tls, int64(x), int64(y), out)
 }
 
-func J40__sub32(tls *libc.TLS, x Int32_t, y Int32_t, out uintptr) int32 { /* j40.h:656:23: */
-	//return !J40_SUB_OVERFLOW(x, y, out);
+func J40__sub32(tls *libc.TLS, x Int32_t, y Int32_t, out uintptr) int32 {
 	return 1 - libc.X__builtin_sub_overflowInt64(tls, int64(x), int64(y), out)
 }
 
-func J40__mul32(tls *libc.TLS, x Int32_t, y Int32_t, out uintptr) int32 { /* j40.h:665:23: */
-	//return !J40_MUL_OVERFLOW(x, y, out);
+func J40__mul32(tls *libc.TLS, x Int32_t, y Int32_t, out uintptr) int32 {
 	return 1 - libc.X__builtin_mul_overflowInt64(tls, int64(x), int64(y), out)
 }
 
-func J40__add_fallback32(tls *libc.TLS, x Int32_t, y Int32_t, out uintptr) int32 { /* j40.h:674:23: */
+func J40__add_fallback32(tls *libc.TLS, x Int32_t, y Int32_t, out uintptr) int32 {
 	if libc.X__builtin_expect(tls, libc.BoolInt64(!!(x > 0 && y > 2147483647-x || x < 0 && y < -2147483647-1-x)), int64(0)) != 0 {
 		return 0
 	} else {
@@ -4542,7 +1975,7 @@ func J40__add_fallback32(tls *libc.TLS, x Int32_t, y Int32_t, out uintptr) int32
 	return int32(0)
 }
 
-func J40__sub_fallback32(tls *libc.TLS, x Int32_t, y Int32_t, out uintptr) int32 { /* j40.h:683:23: */
+func J40__sub_fallback32(tls *libc.TLS, x Int32_t, y Int32_t, out uintptr) int32 {
 	if libc.X__builtin_expect(tls, libc.BoolInt64(!!(y < 0 && x > 2147483647+y || y > 0 && x < -2147483647-1+y)), int64(0)) != 0 {
 		return 0
 	} else {
@@ -4552,7 +1985,7 @@ func J40__sub_fallback32(tls *libc.TLS, x Int32_t, y Int32_t, out uintptr) int32
 	return int32(0)
 }
 
-func J40__mul_fallback32(tls *libc.TLS, x Int32_t, y Int32_t, out uintptr) int32 { /* j40.h:692:23: */
+func J40__mul_fallback32(tls *libc.TLS, x Int32_t, y Int32_t, out uintptr) int32 {
 	if libc.X__builtin_expect(tls, libc.BoolInt64(!!(func() int32 {
 		if x > 0 {
 			return func() int32 {
@@ -4577,37 +2010,33 @@ func J40__mul_fallback32(tls *libc.TLS, x Int32_t, y Int32_t, out uintptr) int32
 	return int32(0)
 }
 
-func J40__clamp_add32(tls *libc.TLS, x Int32_t, y Int32_t) Int32_t { /* j40.h:705:29: */
+func J40__clamp_add32(tls *libc.TLS, x Int32_t, y Int32_t) Int32_t {
 	bp := tls.Alloc(4)
 	defer tls.Free(4)
 
-	// var out Int32_t at bp, 4
-
 	if J40__add32(tls, x, y, bp) != 0 {
-		return *(*Int32_t)(unsafe.Pointer(bp /* out */))
+		return *(*Int32_t)(unsafe.Pointer(bp))
 	}
 	return 2147483647
 }
 
-func J40__clamp_mul32(tls *libc.TLS, x Int32_t, y Int32_t) Int32_t { /* j40.h:710:29: */
+func J40__clamp_mul32(tls *libc.TLS, x Int32_t, y Int32_t) Int32_t {
 	bp := tls.Alloc(4)
 	defer tls.Free(4)
 
-	// var out Int32_t at bp, 4
-
 	if J40__mul32(tls, x, y, bp) != 0 {
-		return *(*Int32_t)(unsafe.Pointer(bp /* out */))
+		return *(*Int32_t)(unsafe.Pointer(bp))
 	}
 	return 2147483647
 }
 
 // both requires x to be > 0
-func J40__floor_lg32(tls *libc.TLS, x Uint32_t) int32 { /* j40.h:732:24: */
+func J40__floor_lg32(tls *libc.TLS, x Uint32_t) int32 {
 	return 32 - 1 - libc.X__builtin_clz(tls, x)
 
 }
 
-func J40__ceil_lg32(tls *libc.TLS, x Uint32_t) int32 { /* j40.h:735:24: */
+func J40__ceil_lg32(tls *libc.TLS, x Uint32_t) int32 {
 	if x > Uint32_t(1) {
 		return 32 - libc.X__builtin_clz(tls, x-Uint32_t(1))
 	}
@@ -4617,11 +2046,11 @@ func J40__ceil_lg32(tls *libc.TLS, x Uint32_t) int32 { /* j40.h:735:24: */
 
 // same to `(a + b) >> 1` but doesn't overflow, useful for tight loops with autovectorization
 // https://devblogs.microsoft.com/oldnewthing/20220207-00/?p=106223
-func J40__floor_avg64(tls *libc.TLS, x Int64_t, y Int64_t) Int64_t { /* j40.h:632:29: */
+func J40__floor_avg64(tls *libc.TLS, x Int64_t, y Int64_t) Int64_t {
 	return x/int64(2) + y/int64(2) + x&y&int64(1)
 }
 
-func J40__abs64(tls *libc.TLS, x Int64_t) Int64_t { /* j40.h:636:29: */
+func J40__abs64(tls *libc.TLS, x Int64_t) Int64_t {
 	return func() int64 {
 		if x < int64(0) {
 			return -x
@@ -4630,7 +2059,7 @@ func J40__abs64(tls *libc.TLS, x Int64_t) Int64_t { /* j40.h:636:29: */
 	}()
 }
 
-func J40__min64(tls *libc.TLS, x Int64_t, y Int64_t) Int64_t { /* j40.h:639:29: */
+func J40__min64(tls *libc.TLS, x Int64_t, y Int64_t) Int64_t {
 	return func() int64 {
 		if x < y {
 			return x
@@ -4639,7 +2068,7 @@ func J40__min64(tls *libc.TLS, x Int64_t, y Int64_t) Int64_t { /* j40.h:639:29: 
 	}()
 }
 
-func J40__max64(tls *libc.TLS, x Int64_t, y Int64_t) Int64_t { /* j40.h:642:29: */
+func J40__max64(tls *libc.TLS, x Int64_t, y Int64_t) Int64_t {
 	return func() int64 {
 		if x > y {
 			return x
@@ -4648,23 +2077,19 @@ func J40__max64(tls *libc.TLS, x Int64_t, y Int64_t) Int64_t { /* j40.h:642:29: 
 	}()
 }
 
-func J40__add64(tls *libc.TLS, x Int64_t, y Int64_t, out uintptr) int32 { /* j40.h:646:23: */
-	// gcc/clang extension uses an opposite convention, which is unnatural to use with J40__SHOULD
-	//return !J40_ADD_OVERFLOW(x, y, out);
+func J40__add64(tls *libc.TLS, x Int64_t, y Int64_t, out uintptr) int32 {
 	return 1 - libc.X__builtin_add_overflowInt64(tls, x, y, out)
 }
 
-func J40__sub64(tls *libc.TLS, x Int64_t, y Int64_t, out uintptr) int32 { /* j40.h:656:23: */
-	//return !J40_SUB_OVERFLOW(x, y, out);
+func J40__sub64(tls *libc.TLS, x Int64_t, y Int64_t, out uintptr) int32 {
 	return 1 - libc.X__builtin_sub_overflowInt64(tls, x, y, out)
 }
 
-func J40__mul64(tls *libc.TLS, x Int64_t, y Int64_t, out uintptr) int32 { /* j40.h:665:23: */
-	//return !J40_MUL_OVERFLOW(x, y, out);
+func J40__mul64(tls *libc.TLS, x Int64_t, y Int64_t, out uintptr) int32 {
 	return 1 - libc.X__builtin_mul_overflowInt64(tls, x, y, out)
 }
 
-func J40__add_fallback64(tls *libc.TLS, x Int64_t, y Int64_t, out uintptr) int32 { /* j40.h:674:23: */
+func J40__add_fallback64(tls *libc.TLS, x Int64_t, y Int64_t, out uintptr) int32 {
 	if libc.X__builtin_expect(tls, libc.BoolInt64(!!(x > int64(0) && y > 9223372036854775807-x || x < int64(0) && y < -9223372036854775807-int64(1)-x)), int64(0)) != 0 {
 		return 0
 	} else {
@@ -4674,7 +2099,7 @@ func J40__add_fallback64(tls *libc.TLS, x Int64_t, y Int64_t, out uintptr) int32
 	return int32(0)
 }
 
-func J40__sub_fallback64(tls *libc.TLS, x Int64_t, y Int64_t, out uintptr) int32 { /* j40.h:683:23: */
+func J40__sub_fallback64(tls *libc.TLS, x Int64_t, y Int64_t, out uintptr) int32 {
 	if libc.X__builtin_expect(tls, libc.BoolInt64(!!(y < int64(0) && x > 9223372036854775807+y || y > int64(0) && x < -9223372036854775807-int64(1)+y)), int64(0)) != 0 {
 		return 0
 	} else {
@@ -4684,7 +2109,7 @@ func J40__sub_fallback64(tls *libc.TLS, x Int64_t, y Int64_t, out uintptr) int32
 	return int32(0)
 }
 
-func J40__mul_fallback64(tls *libc.TLS, x Int64_t, y Int64_t, out uintptr) int32 { /* j40.h:692:23: */
+func J40__mul_fallback64(tls *libc.TLS, x Int64_t, y Int64_t, out uintptr) int32 {
 	if libc.X__builtin_expect(tls, libc.BoolInt64(!!(func() int32 {
 		if x > int64(0) {
 			return func() int32 {
@@ -4709,37 +2134,33 @@ func J40__mul_fallback64(tls *libc.TLS, x Int64_t, y Int64_t, out uintptr) int32
 	return int32(0)
 }
 
-func J40__clamp_add64(tls *libc.TLS, x Int64_t, y Int64_t) Int64_t { /* j40.h:705:29: */
+func J40__clamp_add64(tls *libc.TLS, x Int64_t, y Int64_t) Int64_t {
 	bp := tls.Alloc(8)
 	defer tls.Free(8)
 
-	// var out Int64_t at bp, 8
-
 	if J40__add64(tls, x, y, bp) != 0 {
-		return *(*Int64_t)(unsafe.Pointer(bp /* out */))
+		return *(*Int64_t)(unsafe.Pointer(bp))
 	}
 	return 9223372036854775807
 }
 
-func J40__clamp_mul64(tls *libc.TLS, x Int64_t, y Int64_t) Int64_t { /* j40.h:710:29: */
+func J40__clamp_mul64(tls *libc.TLS, x Int64_t, y Int64_t) Int64_t {
 	bp := tls.Alloc(8)
 	defer tls.Free(8)
 
-	// var out Int64_t at bp, 8
-
 	if J40__mul64(tls, x, y, bp) != 0 {
-		return *(*Int64_t)(unsafe.Pointer(bp /* out */))
+		return *(*Int64_t)(unsafe.Pointer(bp))
 	}
 	return 9223372036854775807
 }
 
 // both requires x to be > 0
-func J40__floor_lg64(tls *libc.TLS, x Uint64_t) int32 { /* j40.h:732:24: */
+func J40__floor_lg64(tls *libc.TLS, x Uint64_t) int32 {
 	return 64 - 1 - libc.X__builtin_clzl(tls, x)
 
 }
 
-func J40__ceil_lg64(tls *libc.TLS, x Uint64_t) int32 { /* j40.h:735:24: */
+func J40__ceil_lg64(tls *libc.TLS, x Uint64_t) int32 {
 	if x > uint64(1) {
 		return 64 - libc.X__builtin_clzl(tls, x-uint64(1))
 	}
@@ -4768,30 +2189,26 @@ func J40__ceil_lg64(tls *libc.TLS, x Uint64_t) int32 { /* j40.h:735:24: */
 // free(ptr); // important: do not use j40_free!
 // }
 // #else
-func J40__alloc_aligned(tls *libc.TLS, sz Size_t, align Size_t, outmisalign uintptr) uintptr { /* j40.h:795:28: */
+func J40__alloc_aligned(tls *libc.TLS, sz Size_t, align Size_t, outmisalign uintptr) uintptr {
 	return J40__alloc_aligned_fallback(tls, sz, align, outmisalign)
 
 }
 
-func J40__free_aligned(tls *libc.TLS, ptr uintptr, align Size_t, misalign Size_t) { /* j40.h:798:28: */
+func J40__free_aligned(tls *libc.TLS, ptr uintptr, align Size_t, misalign Size_t) {
 	J40__free_aligned_fallback(tls, ptr, align, misalign)
 
 }
 
-//#endif
-
 // a fallback implementation; the caller should store the misalign amount [0, align) separately.
 // used when the platform doesn't provide aligned malloc at all, or the platform implementation
 // is not necessarily better; e.g. MSVC _aligned_malloc has the same amount of overhead as of Win10
-func J40__alloc_aligned_fallback(tls *libc.TLS, sz Size_t, align Size_t, outmisalign uintptr) uintptr { /* j40.h:806:34: */
-	// while this is almost surely an overestimate (can be improved if we know the malloc alignment)
-	// there is no standard way to compute a better estimate in C99 so this is inevitable.
+func J40__alloc_aligned_fallback(tls *libc.TLS, sz Size_t, align Size_t, outmisalign uintptr) uintptr {
 	var maxmisalign Size_t = align - uint64(1)
 	var misalign Size_t
 	var ptr uintptr
 	if sz > libc.Uint64(18446744073709551615)-maxmisalign {
 		return uintptr(0)
-	} // overflow
+	}
 	ptr = j40__malloc(tls, sz+maxmisalign)
 	if !(ptr != 0) {
 		return uintptr(0)
@@ -4804,7 +2221,7 @@ func J40__alloc_aligned_fallback(tls *libc.TLS, sz Size_t, align Size_t, outmisa
 	return uintptr(Uintptr_t(ptr) + misalign)
 }
 
-func J40__free_aligned_fallback(tls *libc.TLS, ptr uintptr, align Size_t, misalign Size_t) { /* j40.h:820:41: */
+func J40__free_aligned_fallback(tls *libc.TLS, ptr uintptr, align Size_t, misalign Size_t) {
 	if !(ptr != 0) {
 		return
 	}
@@ -4812,33 +2229,28 @@ func J40__free_aligned_fallback(tls *libc.TLS, ptr uintptr, align Size_t, misali
 	j40__free(tls, uintptr(Uintptr_t(ptr)-misalign))
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// two-dimensional view
-
 type J40__view_f32 = struct {
 	Logw Int32_t
 	Logh Int32_t
 	Ptr  uintptr
-} /* j40.h:831:65 */
+}
 
-func J40__make_view_f32(tls *libc.TLS, logw Int32_t, logh Int32_t, ptr uintptr) J40__view_f32 { /* j40.h:844:33: */
+func J40__make_view_f32(tls *libc.TLS, logw Int32_t, logh Int32_t, ptr uintptr) J40__view_f32 {
 	var ret = J40__view_f32{Logw: logw, Logh: logh, Ptr: ptr}
 	return ret
 }
 
-func J40__adapt_view_f32(tls *libc.TLS, outv uintptr, logw Int32_t, logh Int32_t) { /* j40.h:849:24: */
-
+func J40__adapt_view_f32(tls *libc.TLS, outv uintptr, logw Int32_t, logh Int32_t) {
 	(*J40__view_f32)(unsafe.Pointer(outv)).Logw = logw
 	(*J40__view_f32)(unsafe.Pointer(outv)).Logh = logh
 }
 
-func J40__reshape_view_f32(tls *libc.TLS, outv uintptr, logw Int32_t, logh Int32_t) { /* j40.h:855:24: */
-
+func J40__reshape_view_f32(tls *libc.TLS, outv uintptr, logw Int32_t, logh Int32_t) {
 	(*J40__view_f32)(unsafe.Pointer(outv)).Logw = logw
 	(*J40__view_f32)(unsafe.Pointer(outv)).Logh = logh
 }
 
-func J40__copy_view_f32(tls *libc.TLS, outv uintptr, inv J40__view_f32) { /* j40.h:861:24: */
+func J40__copy_view_f32(tls *libc.TLS, outv uintptr, inv J40__view_f32) {
 	var x Int32_t
 	var y Int32_t
 	var outptr uintptr = (*J40__view_f32)(unsafe.Pointer(outv)).Ptr
@@ -4850,7 +2262,7 @@ func J40__copy_view_f32(tls *libc.TLS, outv uintptr, inv J40__view_f32) { /* j40
 	}
 }
 
-func J40__transpose_view_f32(tls *libc.TLS, outv uintptr, inv J40__view_f32) { /* j40.h:870:24: */
+func J40__transpose_view_f32(tls *libc.TLS, outv uintptr, inv J40__view_f32) {
 	var x Int32_t
 	var y Int32_t
 	var outptr uintptr = (*J40__view_f32)(unsafe.Pointer(outv)).Ptr
@@ -4863,7 +2275,7 @@ func J40__transpose_view_f32(tls *libc.TLS, outv uintptr, inv J40__view_f32) { /
 }
 
 // shuffles columns 01234567 into 02461357 and so on
-func J40__oddeven_columns_to_halves_f32(tls *libc.TLS, outv uintptr, inv J40__view_f32) { /* j40.h:880:24: */
+func J40__oddeven_columns_to_halves_f32(tls *libc.TLS, outv uintptr, inv J40__view_f32) {
 	var x Int32_t
 	var y Int32_t
 	var outptr uintptr = (*J40__view_f32)(unsafe.Pointer(outv)).Ptr
@@ -4878,7 +2290,7 @@ func J40__oddeven_columns_to_halves_f32(tls *libc.TLS, outv uintptr, inv J40__vi
 }
 
 // shuffles rows 01234567 into 02461357 and so on
-func J40__oddeven_rows_to_halves_f32(tls *libc.TLS, outv uintptr, inv J40__view_f32) { /* j40.h:892:24: */
+func J40__oddeven_rows_to_halves_f32(tls *libc.TLS, outv uintptr, inv J40__view_f32) {
 	var x Int32_t
 	var y Int32_t
 	var outptr uintptr = (*J40__view_f32)(unsafe.Pointer(outv)).Ptr
@@ -4892,7 +2304,7 @@ func J40__oddeven_rows_to_halves_f32(tls *libc.TLS, outv uintptr, inv J40__view_
 	}
 }
 
-func J40__print_view_f32(tls *libc.TLS, v J40__view_f32, name uintptr, file uintptr, line Int32_t) { /* j40.h:911:34: */
+func J40__print_view_f32(tls *libc.TLS, v J40__view_f32, name uintptr, file uintptr, line Int32_t) {
 	bp := tls.Alloc(72)
 	defer tls.Free(72)
 
@@ -4917,18 +2329,17 @@ type J40__plane = struct {
 	Height       Int32_t
 	Stride_bytes Int32_t
 	Pixels       Uintptr_t
-} /* j40.h:946:3 */
+}
 
-func j40__init_plane(tls *libc.TLS, st uintptr, type1 Uint8_t, width Int32_t, height Int32_t, flags uint32, out uintptr) J40_err { /* j40.h:981:29: */
+func j40__init_plane(tls *libc.TLS, st uintptr, type1 Uint8_t, width Int32_t, height Int32_t, flags uint32, out uintptr) J40_err {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
 
 	var pixel_size Int32_t
 	var pixels uintptr
-	// var stride_bytes Int32_t at bp, 4
 
 	var total Size_t
-	// var misalign Size_t at bp+8, 8
+
 	pixel_size = int32(1) << (int32(type1) & 31)
 
 	(*J40__plane)(unsafe.Pointer(out)).Type = Uint8_t(0)
@@ -5049,13 +2460,12 @@ __23:
 	goto __24
 __24:
 	;
-
-	(*J40__plane)(unsafe.Pointer(out)).Stride_bytes = *(*Int32_t)(unsafe.Pointer(bp /* stride_bytes */))
+	(*J40__plane)(unsafe.Pointer(out)).Stride_bytes = *(*Int32_t)(unsafe.Pointer(bp))
 	(*J40__plane)(unsafe.Pointer(out)).Width = width
 	(*J40__plane)(unsafe.Pointer(out)).Height = height
 	(*J40__plane)(unsafe.Pointer(out)).Type = type1
 	(*J40__plane)(unsafe.Pointer(out)).Vshift = libc.AssignPtrInt8(out+3, int8(0))
-	(*J40__plane)(unsafe.Pointer(out)).Misalign = Uint8_t(*(*Size_t)(unsafe.Pointer(bp + 8 /* misalign */)))
+	(*J40__plane)(unsafe.Pointer(out)).Misalign = Uint8_t(*(*Size_t)(unsafe.Pointer(bp + 8)))
 	(*J40__plane)(unsafe.Pointer(out)).Pixels = Uintptr_t(pixels)
 	if !(int32(flags)&J40__PLANE_CLEAR != 0) {
 		goto __27
@@ -5063,24 +2473,23 @@ __24:
 	libc.Xmemset(tls, pixels, 0, total)
 __27:
 	;
-
 J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__plane_all_equal_sized(tls *libc.TLS, begin uintptr, end uintptr) int32 { /* j40.h:1014:16: */
+func j40__plane_all_equal_sized(tls *libc.TLS, begin uintptr, end uintptr) int32 {
 	var c J40__plane
 	var shift_should_match int32
 	if begin >= end {
 		return 0
-	} // do not allow edge cases
+	}
 	c = *(*J40__plane)(unsafe.Pointer(begin))
 	shift_should_match = libc.Bool32(int32((*J40__plane)(unsafe.Pointer(begin)).Vshift) >= 0 && int32((*J40__plane)(unsafe.Pointer(begin)).Hshift) >= 0)
 	for libc.PreIncUintptr(&begin, 24) < end {
 		if c.Width != (*J40__plane)(unsafe.Pointer(begin)).Width || c.Height != (*J40__plane)(unsafe.Pointer(begin)).Height {
 			return 0
 		}
-		// even though the sizes match, different shifts can't be mixed as per the spec
+
 		if shift_should_match != 0 {
 			if int32(c.Vshift) >= 0 && int32(c.Hshift) >= 0 && (int32(c.Vshift) != int32((*J40__plane)(unsafe.Pointer(begin)).Vshift) || int32(c.Hshift) != int32((*J40__plane)(unsafe.Pointer(begin)).Hshift)) {
 				return 0
@@ -5090,7 +2499,7 @@ func j40__plane_all_equal_sized(tls *libc.TLS, begin uintptr, end uintptr) int32
 	return 1
 }
 
-func j40__plane_all_equal_typed(tls *libc.TLS, begin uintptr, end uintptr) Uint8_t { /* j40.h:1030:20: */
+func j40__plane_all_equal_typed(tls *libc.TLS, begin uintptr, end uintptr) Uint8_t {
 	var type1 Uint8_t
 	if begin >= end {
 		return Uint8_t(0)
@@ -5104,9 +2513,7 @@ func j40__plane_all_equal_typed(tls *libc.TLS, begin uintptr, end uintptr) Uint8
 	return type1
 }
 
-func j40__free_plane(tls *libc.TLS, plane uintptr) { /* j40.h:1040:17: */
-	// we don't touch pixels if plane is zero-initialized via memset, because while `plane->type` is
-	// definitely zero in this case `(void*) plane->pixels` might NOT be a null pointer!
+func j40__free_plane(tls *libc.TLS, plane uintptr) {
 	if (*J40__plane)(unsafe.Pointer(plane)).Type != 0 {
 		J40__free_aligned(tls, uintptr((*J40__plane)(unsafe.Pointer(plane)).Pixels), uint64(J40__PIXELS_ALIGN), uint64((*J40__plane)(unsafe.Pointer(plane)).Misalign))
 	}
@@ -5117,37 +2524,24 @@ func j40__free_plane(tls *libc.TLS, plane uintptr) { /* j40.h:1040:17: */
 	(*J40__plane)(unsafe.Pointer(plane)).Pixels = Uintptr_t(uintptr(0))
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// limits
+type J40__limits = J40__limits1
 
-type J40__limits = J40__limits1 /* j40.h:1069:3 */
+var sJ40__MAIN_LV5_LIMITS = J40__limits{Pixels: int64(int32(1) << 28), Width: int32(1) << 18, Height: int32(1) << 18, Icc_output_size: uint64(uint32(1) << 22), Bpp: 16, Num_extra_channels: 4, Needs_modular_16bit_buffers: 1, Nb_transforms: 8, Nb_channels_tr: 256, Tree_depth: 64, Zf_pixels: int64(int32(1) << 28)}
 
-var sJ40__MAIN_LV5_LIMITS = J40__limits{Pixels: int64(int32(1) << 28), Width: int32(1) << 18, Height: int32(1) << 18, Icc_output_size: uint64(uint32(1) << 22), Bpp: 16, Num_extra_channels: 4, Needs_modular_16bit_buffers: 1, Nb_transforms: 8, Nb_channels_tr: 256, Tree_depth: 64, Zf_pixels: int64(int32(1) << 28)} /* j40.h:1075:26 */
+type J40_source_read_func = uintptr
+type J40_source_seek_func = uintptr
+type J40_source_free_func = uintptr
 
-//
-// static j40__limits J40__MAIN_LV10_LIMITS = {
-// 	.pixels = (int64_t) 1 << 40, .width = 1 << 30, .height = 1 << 30, .icc_output_size = 1u << 28,
-// 	.bpp = 32, .ec_black_allowed = 1, .num_extra_channels = 256, .needs_modular_16bit_buffers = 0,
-// 	.nb_transforms = 512, .nb_channels_tr = 1 << 16, .tree_depth = 2048, .zf_pixels = 0,
-// };
+type J40__source_st = J40__source_st1
 
-////////////////////////////////////////////////////////////////////////////////
-// input source
-
-type J40_source_read_func = uintptr /* j40.h:1094:13 */
-type J40_source_seek_func = uintptr /* j40.h:1095:13 */
-type J40_source_free_func = uintptr /* j40.h:1096:14 */ // intentionally same to j40_memory_free_func
-
-type J40__source_st = J40__source_st1 /* j40.h:1106:3 */
-
-func j40__memory_source_read(tls *libc.TLS, buf uintptr, fileoff Int64_t, maxsize Size_t, size uintptr, data uintptr) int32 { /* j40.h:1121:16: */
+func j40__memory_source_read(tls *libc.TLS, buf uintptr, fileoff Int64_t, maxsize Size_t, size uintptr, data uintptr) int32 {
 	var mem uintptr = data
 	libc.Xmemcpy(tls, buf, mem+uintptr(fileoff), maxsize)
 	*(*Size_t)(unsafe.Pointer(size)) = maxsize
 	return 0
 }
 
-func j40__init_memory_source(tls *libc.TLS, st uintptr, buf uintptr, size Size_t, freefunc J40_memory_free_func, source uintptr) J40_err { /* j40.h:1128:29: */
+func j40__init_memory_source(tls *libc.TLS, st uintptr, buf uintptr, size Size_t, freefunc J40_memory_free_func, source uintptr) J40_err {
 __1:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __4
@@ -5182,7 +2576,7 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__file_source_read(tls *libc.TLS, buf uintptr, fileoff Int64_t, maxsize Size_t, size uintptr, data uintptr) int32 { /* j40.h:1142:16: */
+func j40__file_source_read(tls *libc.TLS, buf uintptr, fileoff Int64_t, maxsize Size_t, size uintptr, data uintptr) int32 {
 	var fp uintptr = data
 	var read Size_t
 
@@ -5191,16 +2585,14 @@ func j40__file_source_read(tls *libc.TLS, buf uintptr, fileoff Int64_t, maxsize 
 	if read > uint64(0) {
 		*(*Size_t)(unsafe.Pointer(size)) = read
 		return 0
-		//} else if (feof(fp)) {
-		//*size = 0;
-		//return 0;
+
 	} else {
 		return 1
 	}
 	return int32(0)
 }
 
-func j40__file_source_seek(tls *libc.TLS, fileoff Int64_t, data uintptr) int32 { /* j40.h:1159:16: */
+func j40__file_source_seek(tls *libc.TLS, fileoff Int64_t, data uintptr) int32 {
 	var fp uintptr = data
 	if fileoff < int64(0) {
 		return 1
@@ -5227,12 +2619,12 @@ func j40__file_source_seek(tls *libc.TLS, fileoff Int64_t, data uintptr) int32 {
 	return 0
 }
 
-func j40__file_source_free(tls *libc.TLS, data uintptr) { /* j40.h:1176:17: */
+func j40__file_source_free(tls *libc.TLS, data uintptr) {
 	var fp uintptr = data
 	libc.Xfclose(tls, fp)
 }
 
-func j40__init_file_source(tls *libc.TLS, st uintptr, path uintptr, source uintptr) J40_err { /* j40.h:1181:29: */
+func j40__init_file_source(tls *libc.TLS, st uintptr, path uintptr, source uintptr) J40_err {
 	var fp uintptr
 	var saved_errno int32
 
@@ -5291,22 +2683,20 @@ __6:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__try_read_from_source(tls *libc.TLS, st uintptr, buf uintptr, minsize Int64_t, maxsize Int64_t, size uintptr) J40_err { /* j40.h:1208:29: */
+func j40__try_read_from_source(tls *libc.TLS, st uintptr, buf uintptr, minsize Int64_t, maxsize Int64_t, size uintptr) J40_err {
 	bp := tls.Alloc(8)
 	defer tls.Free(8)
 
 	var source uintptr
 	var read_size Int64_t
 	var saved_errno int32
-	// var added_size Size_t at bp, 8
+
 	source = (*J40__st)(unsafe.Pointer(st)).Source
 	read_size = int64(0)
 	saved_errno = *(*int32)(unsafe.Pointer(libc.X__errno_location(tls)))
 	*(*int32)(unsafe.Pointer(libc.X__errno_location(tls))) = 0
 	*(*Int64_t)(unsafe.Pointer(size)) = int64(0)
 
-	// clamp maxsize if fileoff_limit is set
-	// so maxsize fits in size_t
 	if !(maxsize > (*J40__source_st)(unsafe.Pointer(source)).Fileoff_limit-(*J40__source_st)(unsafe.Pointer(source)).Fileoff) {
 		goto __1
 	}
@@ -5332,10 +2722,9 @@ __3:
 	}
 	goto __4
 __4:
-	; // `minsize` bytes can't be read due to virtual EOF
+	;
 __1:
 	;
-
 __7:
 	if !(read_size < maxsize) {
 		goto __8
@@ -5370,7 +2759,7 @@ __9:
 	}
 	goto __8
 __14:
-	; // EOF or blocking condition
+	;
 __15:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __18
@@ -5419,7 +2808,6 @@ __22:
 	goto __7
 __8:
 	;
-
 __25:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __28
@@ -5448,16 +2836,14 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__read_from_source(tls *libc.TLS, st uintptr, buf uintptr, size Int64_t) J40_err { /* j40.h:1249:29: */
+func j40__read_from_source(tls *libc.TLS, st uintptr, buf uintptr, size Int64_t) J40_err {
 	bp := tls.Alloc(8)
 	defer tls.Free(8)
-
-	// var read_size Int64_t at bp, 8
 
 	return j40__try_read_from_source(tls, st, buf, size, size, bp)
 }
 
-func j40__seek_from_source(tls *libc.TLS, st uintptr, fileoff Int64_t) J40_err { /* j40.h:1254:29: */
+func j40__seek_from_source(tls *libc.TLS, st uintptr, fileoff Int64_t) J40_err {
 	var source uintptr
 	var saved_errno int32
 	source = (*J40__st)(unsafe.Pointer(st)).Source
@@ -5468,10 +2854,8 @@ func j40__seek_from_source(tls *libc.TLS, st uintptr, fileoff Int64_t) J40_err {
 	return J40_err(0)
 __1:
 	;
-
 	fileoff = J40__min64(tls, fileoff, (*J40__source_st)(unsafe.Pointer(source)).Fileoff_limit)
 
-	// for the memory source read always have the current fileoff so seek is a no-op
 	if !((*J40__source_st)(unsafe.Pointer(source)).Seek_func != 0) {
 		goto __2
 	}
@@ -5503,17 +2887,15 @@ __7:
 	;
 __3:
 	;
-
 	*(*int32)(unsafe.Pointer(libc.X__errno_location(tls))) = saved_errno
 __2:
 	;
-
 	(*J40__source_st)(unsafe.Pointer(source)).Fileoff = fileoff
 J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__free_source(tls *libc.TLS, source uintptr) { /* j40.h:1281:17: */
+func j40__free_source(tls *libc.TLS, source uintptr) {
 	if (*J40__source_st)(unsafe.Pointer(source)).Free_func != 0 {
 		(*struct{ f func(*libc.TLS, uintptr) })(unsafe.Pointer(&struct{ uintptr }{(*J40__source_st)(unsafe.Pointer(source)).Free_func})).f(tls, (*J40__source_st)(unsafe.Pointer(source)).Data)
 	}
@@ -5523,51 +2905,39 @@ func j40__free_source(tls *libc.TLS, source uintptr) { /* j40.h:1281:17: */
 	(*J40__source_st)(unsafe.Pointer(source)).Data = uintptr(0)
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// container
-
 type J40__map = struct {
 	Codeoff Int64_t
 	Fileoff Int64_t
-} /* j40.h:1294:46 */
+}
 
-const ( /* j40.h:1296:1: */
-	// if set, initial jxl & ftyp boxes have been read
+const (
 	J40__CONTAINER_CONFIRMED = 1
 
-	// currently seen box types, as they have a cardinality and positional requirement
-	J40__SEEN_JXLL = 2  // at most once, before jxlc/jxlp
-	J40__SEEN_JXLI = 4  // at most once
-	J40__SEEN_JXLC = 8  // precludes jxlp, at most once
-	J40__SEEN_JXLP = 16 // precludes jxlc
+	J40__SEEN_JXLL = 2
+	J40__SEEN_JXLI = 4
+	J40__SEEN_JXLC = 8
+	J40__SEEN_JXLP = 16
 
-	// if set, no more jxlc/jxlp boxes are allowed (and map no longer changes)
 	J40__NO_MORE_CODESTREAM_BOX = 32
 
-	// if set, there is an implied entry for `map[nmap]`. this is required when the last
-	// codestream box has an unknown length and thus it extends to the (unknown) end of file.
 	J40__IMPLIED_LAST_MAP_ENTRY = 64
 
-	// if set, there is no more box past `map[nmap-1]` (or an implied `map[nmap]` if any)
 	J40__NO_MORE_BOX = 128
 )
 
-type J40__container_st = J40__container_st1 /* j40.h:1328:3 */
+type J40__container_st = J40__container_st1
 
-func J40__u32be(tls *libc.TLS, p uintptr) Uint32_t { /* j40.h:1339:28: */
+func J40__u32be(tls *libc.TLS, p uintptr) Uint32_t {
 	return Uint32_t(*(*Uint8_t)(unsafe.Pointer(p)))<<24 | Uint32_t(*(*Uint8_t)(unsafe.Pointer(p + 1)))<<16 | Uint32_t(*(*Uint8_t)(unsafe.Pointer(p + 2)))<<8 | Uint32_t(*(*Uint8_t)(unsafe.Pointer(p + 3)))
 }
 
 // size is < 0 if EOF, or INT64_MAX if the box extends indefinitely until the end of file
-func j40__box_header(tls *libc.TLS, st uintptr, type1 uintptr, size uintptr) J40_err { /* j40.h:1344:29: */
+func j40__box_header(tls *libc.TLS, st uintptr, type1 uintptr, size uintptr) J40_err {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
 
-	// var buf [8]Uint8_t at bp, 8
-
 	var size32 Uint32_t
 	var size64 Uint64_t
-	// var headersize Int64_t at bp+8, 8
 
 __1:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__try_read_from_source(tls, st, bp, int64(0), int64(8), bp+8) != 0)), int64(0)) != 0) {
@@ -5612,8 +2982,7 @@ __7:
 	}
 	goto __8
 __8:
-	; // if not EOF, the full header should have been read
-
+	;
 	size32 = J40__u32be(tls, bp)
 	*(*Uint32_t)(unsafe.Pointer(type1)) = J40__u32be(tls, bp+uintptr(4))
 	if !(size32 == Uint32_t(0)) {
@@ -5715,7 +3084,6 @@ __14:
 	;
 __12:
 	;
-
 J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
@@ -5723,18 +3091,14 @@ J40__ON_ERROR:
 // scans as many boxes as required to map given codestream offset (i.e. the inclusive limit).
 // this is done in the best effort basis, so even after this
 // `j40__map_codestream_offset(st, wanted_codeoff)` may still fail.
-func j40__container(tls *libc.TLS, st uintptr, wanted_codeoff Int64_t) J40_err { /* j40.h:1379:29: */
+func j40__container(tls *libc.TLS, st uintptr, wanted_codeoff Int64_t) J40_err {
 	bp := tls.Alloc(48)
 	defer tls.Free(48)
 
 	var source uintptr
 	var c uintptr
-	// var buf [32]Uint8_t at bp, 32
 
 	var newptr uintptr
-	// var type1 Uint32_t at bp+32, 4
-
-	// var size Int64_t at bp+40, 8
 
 	var codestream_box int32
 	source = (*J40__st)(unsafe.Pointer(st)).Source
@@ -5767,11 +3131,9 @@ __3:
 	goto __4
 __4:
 	;
-	(*J40__map)(unsafe.Pointer((*J40__container_st)(unsafe.Pointer(c)).Map)).Codeoff = libc.AssignPtrInt64((*J40__container_st)(unsafe.Pointer(c)).Map+8, int64(0)) // fileoff will be updated
+	(*J40__map)(unsafe.Pointer((*J40__container_st)(unsafe.Pointer(c)).Map)).Codeoff = libc.AssignPtrInt64((*J40__container_st)(unsafe.Pointer(c)).Map+8, int64(0))
 __1:
 	;
-
-	// immediately return if given codeoff is already mappable
 	if !((*J40__container_st)(unsafe.Pointer(c)).Flags&J40__IMPLIED_LAST_MAP_ENTRY != 0) {
 		goto __7
 	}
@@ -5784,8 +3146,6 @@ __7:
 	return J40_err(0)
 __8:
 	;
-
-	// read the file header (if not yet read) and skip to the next box header
 	if !((*J40__container_st)(unsafe.Pointer(c)).Flags&J40__CONTAINER_CONFIRMED != 0) {
 		goto __9
 	}
@@ -5821,7 +3181,6 @@ __16:
 	goto __17
 __17:
 	;
-
 __19:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__read_from_source(tls, st, bp, int64(2)) != 0)), int64(0)) != 0) {
 		goto __22
@@ -5839,12 +3198,11 @@ __21:
 	;
 	if !(int32(*(*Uint8_t)(unsafe.Pointer(bp))) == 0xff && int32(*(*Uint8_t)(unsafe.Pointer(bp + 1))) == 0x0a) {
 		goto __23
-	} // bare codestream
+	}
 	(*J40__container_st)(unsafe.Pointer(c)).Flags = uint32(J40__CONTAINER_CONFIRMED | J40__IMPLIED_LAST_MAP_ENTRY)
 	return J40_err(0)
 __23:
 	;
-
 __24:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __27
@@ -5930,7 +3288,6 @@ __40:
 	(*J40__map)(unsafe.Pointer((*J40__container_st)(unsafe.Pointer(c)).Map)).Fileoff = (*J40__source_st)(unsafe.Pointer(source)).Fileoff
 __10:
 	;
-
 __43:
 	if !(wanted_codeoff >= (*J40__map)(unsafe.Pointer((*J40__container_st)(unsafe.Pointer(c)).Map+uintptr((*J40__container_st)(unsafe.Pointer(c)).Nmap-1)*16)).Codeoff) {
 		goto __44
@@ -5958,9 +3315,7 @@ __47:
 	goto __44
 __49:
 	;
-
-	// TODO the ordering rule for jxll/jxli may change in the future version of 18181-2
-	switch *(*Uint32_t)(unsafe.Pointer(bp + 32 /* type1 */)) {
+	switch *(*Uint32_t)(unsafe.Pointer(bp + 32)) {
 	case Uint32_t(0x6a786c6c):
 		goto __51
 
@@ -5977,7 +3332,7 @@ __49:
 		goto __55
 	}
 	goto __50
-__51: // jxll: codestream level
+__51:
 __56:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __59
@@ -6003,7 +3358,7 @@ __58:
 	*(*uint32)(unsafe.Pointer(c)) |= J40__SEEN_JXLL
 	goto __50
 
-__52: // jxli: frame index
+__52:
 __61:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __64
@@ -6029,7 +3384,7 @@ __63:
 	*(*uint32)(unsafe.Pointer(c)) |= J40__SEEN_JXLI
 	goto __50
 
-__53: // jxlc: single codestream
+__53:
 __66:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __69
@@ -6078,7 +3433,7 @@ __73:
 	codestream_box = 1
 	goto __50
 
-__54: // jxlp: partial codestreams
+__54:
 __76:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __79
@@ -6162,7 +3517,6 @@ __92:
 	goto __93
 __93:
 	;
-	// TODO the partial codestream index is ignored right now
 	if !!(int32(*(*Uint8_t)(unsafe.Pointer(bp)))>>7 != 0) {
 		goto __95
 	}
@@ -6172,12 +3526,12 @@ __95:
 	if !(*(*Int64_t)(unsafe.Pointer(bp + 40)) < 9223372036854775807) {
 		goto __96
 	}
-	*(*Int64_t)(unsafe.Pointer(bp + 40 /* size */)) -= int64(4)
+	*(*Int64_t)(unsafe.Pointer(bp + 40)) -= int64(4)
 __96:
 	;
 	goto __50
 
-__55: // brob: brotli-compressed box
+__55:
 __97:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __100
@@ -6199,7 +3553,7 @@ __98:
 	}
 	goto __99
 __99:
-	; // Brotli stream is never empty so 4 is also out
+	;
 __102:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__read_from_source(tls, st, bp, int64(4)) != 0)), int64(0)) != 0) {
 		goto __105
@@ -6215,7 +3569,7 @@ __103:
 	goto __104
 __104:
 	;
-	*(*Uint32_t)(unsafe.Pointer(bp + 32 /* type1 */)) = J40__u32be(tls, bp)
+	*(*Uint32_t)(unsafe.Pointer(bp + 32)) = J40__u32be(tls, bp)
 __106:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __109
@@ -6241,14 +3595,12 @@ __108:
 	if !(*(*Int64_t)(unsafe.Pointer(bp + 40)) < 9223372036854775807) {
 		goto __111
 	}
-	*(*Int64_t)(unsafe.Pointer(bp + 40 /* size */)) -= int64(4)
+	*(*Int64_t)(unsafe.Pointer(bp + 40)) -= int64(4)
 __111:
 	;
 	goto __50
 __50:
-	; // other boxes have no additional requirements and are simply skipped
-
-	// this box has an indeterminate size and thus there is no more box following
+	;
 	if !(*(*Int64_t)(unsafe.Pointer(bp + 40)) == 9223372036854775807) {
 		goto __112
 	}
@@ -6262,13 +3614,10 @@ __113:
 	goto __44
 __112:
 	;
-
 	if !(codestream_box != 0) {
 		goto __114
 	}
-	// add a new entry. at this point C[nmap-1] is the first codestream offset in this box
-	// and F[nmap-1] points to the beginning of this box, which should be updated to
-	// the beginning of the box *contents*.
+
 __115:
 	newptr = j40__realloc32(tls, st, *(*uintptr)(unsafe.Pointer(c + 8)), uint64(unsafe.Sizeof(J40__map{})), (*J40__container_st)(unsafe.Pointer(c)).Nmap+1, c+20)
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(newptr != 0)), int64(1)) != 0) {
@@ -6311,7 +3660,6 @@ __121:
 	goto __122
 __122:
 	;
-	// F[nmap] gets updated in the common case.
 __125:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __128
@@ -6336,9 +3684,6 @@ __127:
 	;
 __114:
 	;
-
-	// always maintains F[nmap-1] to be the beginning of the next box (and seek to that point).
-	// we've already read the previous box header, so this should happen even if seek fails.
 __130:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __133
@@ -6379,10 +3724,6 @@ __137:
 	goto __43
 __44:
 	;
-
-	// now the EOF has been reached or the last box had an indeterminate size.
-	// EOF condition can be recovered (i.e. we can add more boxes to get it correctly decoded)
-	// so it's not a hard error, but we can't recover from an indeterminately sized box.
 	if !((*J40__container_st)(unsafe.Pointer(c)).Flags&J40__NO_MORE_BOX != 0 && !((*J40__container_st)(unsafe.Pointer(c)).Flags&uint32(J40__SEEN_JXLC|J40__SEEN_JXLP) != 0)) {
 		goto __139
 	}
@@ -6400,26 +3741,24 @@ __142:
 	;
 __139:
 	;
-
 J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-var JXL_BOX = [12]Uint8_t{ // type `JXL `, value 0D 0A 87 0A
+var JXL_BOX = [12]Uint8_t{
 	Uint8_t(0x00), Uint8_t(0x00), Uint8_t(0x00), Uint8_t(0x0c), Uint8_t(0x4a), Uint8_t(0x58), Uint8_t(0x4c), Uint8_t(0x20), Uint8_t(0x0d), Uint8_t(0x0a), Uint8_t(0x87), Uint8_t(0x0a),
-}                           /* j40.h:1380:23 */
-var FTYP_BOX = [20]Uint8_t{ // type `ftyp`, brand `jxl `, version 0, only compatible w/ brand `jxl `
+}
+var FTYP_BOX = [20]Uint8_t{
 	Uint8_t(0x00), Uint8_t(0x00), Uint8_t(0x00), Uint8_t(0x14), Uint8_t(0x66), Uint8_t(0x74), Uint8_t(0x79), Uint8_t(0x70), Uint8_t(0x6a), Uint8_t(0x78), Uint8_t(0x6c), Uint8_t(0x20),
 	Uint8_t(0x00), Uint8_t(0x00), Uint8_t(0x00), Uint8_t(0x00), Uint8_t(0x6a), Uint8_t(0x78), Uint8_t(0x6c), Uint8_t(0x20),
-} /* j40.h:1382:5 */
+}
 
 // returns i such that codeoff is in [C[i], C[i+1]), or nmap-1 if there is no such map entry
-func j40__search_codestream_offset(tls *libc.TLS, st uintptr, codeoff Int64_t) Int32_t { /* j40.h:1507:20: */
+func j40__search_codestream_offset(tls *libc.TLS, st uintptr, codeoff Int64_t) Int32_t {
 	var map1 uintptr = (*J40__container_st1)(unsafe.Pointer((*J40__st)(unsafe.Pointer(st)).Container)).Map
 	var nmap Int32_t = (*J40__container_st1)(unsafe.Pointer((*J40__st)(unsafe.Pointer(st)).Container)).Nmap
 	var i Int32_t
 
-	// TODO use a binary search instead
 	for i = 1; i < nmap; i++ {
 		if codeoff < (*J40__map)(unsafe.Pointer(map1+uintptr(i)*16)).Codeoff {
 			break
@@ -6428,7 +3767,7 @@ func j40__search_codestream_offset(tls *libc.TLS, st uintptr, codeoff Int64_t) I
 	return i - 1
 }
 
-func j40__map_codestream_offset(tls *libc.TLS, st uintptr, codeoff Int64_t, fileoff uintptr) J40_err { /* j40.h:1518:29: */
+func j40__map_codestream_offset(tls *libc.TLS, st uintptr, codeoff Int64_t, fileoff uintptr) J40_err {
 	var map1 uintptr
 	var nmap Int32_t
 	var i Int32_t
@@ -6440,7 +3779,7 @@ func j40__map_codestream_offset(tls *libc.TLS, st uintptr, codeoff Int64_t, file
 		goto __1
 	}
 
-	*(*Int64_t)(unsafe.Pointer(fileoff)) = (*J40__map)(unsafe.Pointer(map1+uintptr(i)*16)).Fileoff + (codeoff - (*J40__map)(unsafe.Pointer(map1+uintptr(i)*16)).Codeoff) // thus this never overflows
+	*(*Int64_t)(unsafe.Pointer(fileoff)) = (*J40__map)(unsafe.Pointer(map1+uintptr(i)*16)).Fileoff + (codeoff - (*J40__map)(unsafe.Pointer(map1+uintptr(i)*16)).Codeoff)
 	goto __2
 __1:
 	if !((*J40__container_st1)(unsafe.Pointer((*J40__st)(unsafe.Pointer(st)).Container)).Flags&J40__IMPLIED_LAST_MAP_ENTRY != 0) {
@@ -6473,7 +3812,7 @@ __3:
 	if !((*J40__container_st1)(unsafe.Pointer((*J40__st)(unsafe.Pointer(st)).Container)).Flags&J40__NO_MORE_CODESTREAM_BOX != 0) {
 		goto __10
 	}
-	// TODO is this valid to do? j40__end_of_frame depends on this.
+
 	if !(codeoff == (*J40__map)(unsafe.Pointer(map1+uintptr(nmap-1)*16)).Codeoff) {
 		goto __12
 	}
@@ -6513,23 +3852,19 @@ __4:
 	;
 __2:
 	;
-
 J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__free_container(tls *libc.TLS, container uintptr) { /* j40.h:1544:17: */
+func j40__free_container(tls *libc.TLS, container uintptr) {
 	j40__free(tls, (*J40__container_st)(unsafe.Pointer(container)).Map)
 	(*J40__container_st)(unsafe.Pointer(container)).Map = uintptr(0)
 	(*J40__container_st)(unsafe.Pointer(container)).Nmap = libc.AssignPtrInt32(container+20, 0)
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// backing buffer
+type J40__buffer_st = J40__buffer_st1
 
-type J40__buffer_st = J40__buffer_st1 /* j40.h:1563:3 */
-
-func j40__init_buffer(tls *libc.TLS, st uintptr, codeoff Int64_t, codeoff_limit Int64_t) J40_err { /* j40.h:1576:29: */
+func j40__init_buffer(tls *libc.TLS, st uintptr, codeoff Int64_t, codeoff_limit Int64_t) J40_err {
 	var bits uintptr
 	var checkpoint uintptr
 	var buffer uintptr
@@ -6570,7 +3905,7 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__refill_buffer(tls *libc.TLS, st uintptr) J40_err { /* j40.h:1593:29: */
+func j40__refill_buffer(tls *libc.TLS, st uintptr) J40_err {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
 
@@ -6589,22 +3924,19 @@ func j40__refill_buffer(tls *libc.TLS, st uintptr) J40_err { /* j40.h:1593:29: *
 	_ = box_size
 	var map1 uintptr
 	var nmap Int32_t
-	// var fileoff Int64_t at bp, 8
 
 	var readable_size Int64_t
-	// var read_size Int64_t at bp+8, 8
+
 	bits = st + 16
 	checkpoint = (*J40__st)(unsafe.Pointer(st)).Buffer + 40
 	buffer = (*J40__st)(unsafe.Pointer(st)).Buffer
 	container = (*J40__st)(unsafe.Pointer(st)).Container
 
-	// trim the committed portion from the backing buffer
 	if !((*J40__bits_st)(unsafe.Pointer(checkpoint)).Ptr > (*J40__buffer_st)(unsafe.Pointer(buffer)).Buf) {
 		goto __1
 	}
 	committed_size = (int64((*J40__bits_st)(unsafe.Pointer(checkpoint)).Ptr) - int64((*J40__buffer_st)(unsafe.Pointer(buffer)).Buf)) / 1
-	// so committed_size can't overflow
-	// this also can't overflow, because buffer->size never exceeds SIZE_MAX
+
 	libc.Xmemmove(tls, (*J40__buffer_st)(unsafe.Pointer(buffer)).Buf, (*J40__bits_st)(unsafe.Pointer(checkpoint)).Ptr, Size_t((*J40__buffer_st)(unsafe.Pointer(buffer)).Size-committed_size))
 	*(*Int64_t)(unsafe.Pointer(buffer + 8)) -= committed_size
 	*(*uintptr)(unsafe.Pointer(bits + 16)) -= uintptr(committed_size)
@@ -6612,8 +3944,6 @@ func j40__refill_buffer(tls *libc.TLS, st uintptr) J40_err { /* j40.h:1593:29: *
 	(*J40__bits_st)(unsafe.Pointer(checkpoint)).Ptr = (*J40__buffer_st)(unsafe.Pointer(buffer)).Buf
 __1:
 	;
-
-	// if there is no room left in the backing buffer, it's time to grow it
 	if !((*J40__buffer_st)(unsafe.Pointer(buffer)).Size == (*J40__buffer_st)(unsafe.Pointer(buffer)).Capacity) {
 		goto __2
 	}
@@ -6642,13 +3972,11 @@ __5:
 	(*J40__bits_st)(unsafe.Pointer(checkpoint)).Ptr = (*J40__buffer_st)(unsafe.Pointer(buffer)).Buf
 __2:
 	;
-
 	wanted_codeoff = J40__min64(tls, (*J40__buffer_st)(unsafe.Pointer(buffer)).Codeoff_limit,
 		J40__clamp_add64(tls, (*J40__buffer_st)(unsafe.Pointer(buffer)).Next_codeoff, (*J40__buffer_st)(unsafe.Pointer(buffer)).Capacity-(*J40__buffer_st)(unsafe.Pointer(buffer)).Size))
 	available = wanted_codeoff - (*J40__buffer_st)(unsafe.Pointer(buffer)).Next_codeoff
-	wanted_codeoff-- // ensure that this is inclusive, i.e. the last byte offset *allowed*
+	wanted_codeoff--
 
-	// do the initial mapping if no map is available
 	if !!(int32((*J40__container_st)(unsafe.Pointer(container)).Map) != 0) {
 		goto __8
 	}
@@ -6669,7 +3997,6 @@ __11:
 	;
 __8:
 	;
-
 	i = j40__search_codestream_offset(tls, st, (*J40__buffer_st)(unsafe.Pointer(buffer)).Next_codeoff)
 __13:
 	if !(available > int64(0)) {
@@ -6685,7 +4012,7 @@ __13:
 
 	readable_size = J40__min64(tls, available, (*J40__map)(unsafe.Pointer(map1+uintptr(i+1)*16)).Codeoff-(*J40__buffer_st)(unsafe.Pointer(buffer)).Next_codeoff)
 
-	*(*Int64_t)(unsafe.Pointer(bp /* fileoff */)) = (*J40__map)(unsafe.Pointer(map1+uintptr(i)*16)).Fileoff + ((*J40__buffer_st)(unsafe.Pointer(buffer)).Next_codeoff - (*J40__map)(unsafe.Pointer(map1+uintptr(i)*16)).Codeoff) // thus can't overflow
+	*(*Int64_t)(unsafe.Pointer(bp)) = (*J40__map)(unsafe.Pointer(map1+uintptr(i)*16)).Fileoff + ((*J40__buffer_st)(unsafe.Pointer(buffer)).Next_codeoff - (*J40__map)(unsafe.Pointer(map1+uintptr(i)*16)).Codeoff)
 	goto __16
 __15:
 	if !((*J40__container_st)(unsafe.Pointer(container)).Flags&J40__IMPLIED_LAST_MAP_ENTRY != 0) {
@@ -6716,7 +4043,6 @@ __21:
 	;
 	goto __18
 __17:
-	// we have reached past the last mapped box, but there may be more boxes to map
 __24:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__container(tls, st, wanted_codeoff) != 0)), int64(0)) != 0) {
 		goto __27
@@ -6735,7 +4061,7 @@ __26:
 	if !(nmap == (*J40__container_st)(unsafe.Pointer(container)).Nmap && !((*J40__container_st)(unsafe.Pointer(container)).Flags&J40__IMPLIED_LAST_MAP_ENTRY != 0)) {
 		goto __28
 	}
-	goto __14 // no additional box mapped, nothing can be done
+	goto __14
 __28:
 	;
 	goto __13
@@ -6743,7 +4069,6 @@ __18:
 	;
 __16:
 	;
-
 __29:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__seek_from_source(tls, st, *(*Int64_t)(unsafe.Pointer(bp))) != 0)), int64(0)) != 0) {
 		goto __32
@@ -6779,8 +4104,7 @@ __35:
 	}
 	goto __14
 __37:
-	; // EOF or blocking condition, can't continue
-
+	;
 	*(*Int64_t)(unsafe.Pointer(buffer + 8)) += *(*Int64_t)(unsafe.Pointer(bp + 8))
 __38:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
@@ -6811,21 +4135,20 @@ __40:
 	}
 	i++
 __43:
-	; // try again if read is somehow incomplete
+	;
 	goto __13
 __14:
 	;
-
 J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__seek_buffer(tls *libc.TLS, st uintptr, codeoff Int64_t) J40_err { /* j40.h:1675:29: */
+func j40__seek_buffer(tls *libc.TLS, st uintptr, codeoff Int64_t) J40_err {
 	bp := tls.Alloc(8)
 	defer tls.Free(8)
 
 	var reusable_size Int64_t
-	// var fileoff Int64_t at bp, 8
+
 	reusable_size = (*J40__buffer_st1)(unsafe.Pointer((*J40__st)(unsafe.Pointer(st)).Buffer)).Next_codeoff - codeoff
 	(*J40__st)(unsafe.Pointer(st)).Bits.Bits = uint64(0)
 	(*J40__st)(unsafe.Pointer(st)).Bits.Nbits = 0
@@ -6875,28 +4198,27 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__codestream_offset(tls *libc.TLS, st uintptr) Int64_t { /* j40.h:1693:20: */
-
+func j40__codestream_offset(tls *libc.TLS, st uintptr) Int64_t {
 	return (*J40__buffer_st1)(unsafe.Pointer((*J40__st)(unsafe.Pointer(st)).Buffer)).Next_codeoff - (*J40__buffer_st1)(unsafe.Pointer((*J40__st)(unsafe.Pointer(st)).Buffer)).Size + (int64((*J40__st)(unsafe.Pointer(st)).Bits.Ptr)-int64((*J40__buffer_st1)(unsafe.Pointer((*J40__st)(unsafe.Pointer(st)).Buffer)).Buf))/1 - Int64_t((*J40__st)(unsafe.Pointer(st)).Bits.Nbits/8)
 }
 
 // diagnostic only, doesn't check for overflow or anything
-func J40__bits_read(tls *libc.TLS, st uintptr) Int64_t { /* j40.h:1699:37: */
+func J40__bits_read(tls *libc.TLS, st uintptr) Int64_t {
 	var nbytes Int32_t = J40__ceil_div32(tls, (*J40__st)(unsafe.Pointer(st)).Bits.Nbits, 8)
 	var nbits Int32_t = 8*nbytes - (*J40__st)(unsafe.Pointer(st)).Bits.Nbits
-	// the codestream offset for the byte that contains the first bit to read
+
 	var codeoff Int64_t = (*J40__buffer_st1)(unsafe.Pointer((*J40__st)(unsafe.Pointer(st)).Buffer)).Next_codeoff - (*J40__buffer_st1)(unsafe.Pointer((*J40__st)(unsafe.Pointer(st)).Buffer)).Size + (int64((*J40__st)(unsafe.Pointer(st)).Bits.Ptr)-int64((*J40__buffer_st1)(unsafe.Pointer((*J40__st)(unsafe.Pointer(st)).Buffer)).Buf))/1 - Int64_t(nbytes)
 	var map1 = *(*J40__map)(unsafe.Pointer((*J40__container_st1)(unsafe.Pointer((*J40__st)(unsafe.Pointer(st)).Container)).Map + uintptr(j40__search_codestream_offset(tls, st, codeoff))*16))
 	return (map1.Fileoff+(codeoff-map1.Codeoff))*int64(8) + Int64_t(nbits)
 }
 
-func j40__free_buffer(tls *libc.TLS, buffer uintptr) { /* j40.h:1707:17: */
+func j40__free_buffer(tls *libc.TLS, buffer uintptr) {
 	j40__free(tls, (*J40__buffer_st)(unsafe.Pointer(buffer)).Buf)
 	(*J40__buffer_st)(unsafe.Pointer(buffer)).Buf = uintptr(0)
 	(*J40__buffer_st)(unsafe.Pointer(buffer)).Size = libc.AssignPtrInt64(buffer+16, int64(0))
 }
 
-func j40__always_refill(tls *libc.TLS, st uintptr, n Int32_t) J40_err { /* j40.h:1747:29: */
+func j40__always_refill(tls *libc.TLS, st uintptr, n Int32_t) J40_err {
 	var bits uintptr
 	var consumed Int32_t
 	bits = st + 16
@@ -6909,7 +4231,6 @@ __1:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!((int64((*J40__bits_st)(unsafe.Pointer(bits)).End)-int64((*J40__bits_st)(unsafe.Pointer(bits)).Ptr))/1 >= int64(consumed))), int64(1)) != 0) {
 		goto __3
 	}
-	// fast case: consume `consumed` bytes from the logical buffer
 
 __4:
 	*(*Uint64_t)(unsafe.Pointer(bits + 8)) |= Uint64_t(*(*Uint8_t)(unsafe.Pointer(libc.PostIncUintptr(&(*J40__bits_st)(unsafe.Pointer(bits)).Ptr, 1)))) << (*J40__bits_st)(unsafe.Pointer(bits)).Nbits
@@ -6925,8 +4246,6 @@ __6:
 	goto __2
 __3:
 	;
-
-	// slow case: the logical buffer has been exhausted, try to refill the backing buffer
 __7:
 	if !((*J40__bits_st)(unsafe.Pointer(bits)).Ptr < (*J40__bits_st)(unsafe.Pointer(bits)).End) {
 		goto __8
@@ -6942,7 +4261,6 @@ __8:
 	goto __2
 __9:
 	;
-
 __10:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __13
@@ -6982,7 +4300,7 @@ __17:
 	;
 	if !((*J40__bits_st)(unsafe.Pointer(bits)).End == (*J40__bits_st)(unsafe.Pointer(bits)).Ptr) {
 		goto __19
-	} // no possibility to read more bits
+	}
 	if !((*J40__bits_st)(unsafe.Pointer(bits)).Nbits >= n) {
 		goto __20
 	}
@@ -7002,18 +4320,16 @@ __23:
 	;
 __19:
 	;
-	// otherwise now we have possibly more bits to refill, try again
 	goto __1
 __2:
 	;
-
 J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-var NBITS Int32_t = 64 /* j40.h:1748:23 */
+var NBITS Int32_t = 64
 
-func j40__zero_pad_to_byte(tls *libc.TLS, st uintptr) J40_err { /* j40.h:1784:29: */
+func j40__zero_pad_to_byte(tls *libc.TLS, st uintptr) J40_err {
 	var n Int32_t = (*J40__st)(unsafe.Pointer(st)).Bits.Nbits & 7
 	if (*J40__st)(unsafe.Pointer(st)).Bits.Bits&Uint64_t(uint32(1)<<n-uint32(1)) != 0 {
 		return j40__set_error(tls, st, Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 119))))<<24|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 119 + 1))))<<16|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 119 + 2))))<<8|Uint32_t(*(*int8)(unsafe.Pointer(ts + 119 + 3))))
@@ -7023,7 +4339,7 @@ func j40__zero_pad_to_byte(tls *libc.TLS, st uintptr) J40_err { /* j40.h:1784:29
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__skip(tls *libc.TLS, st uintptr, n Int64_t) J40_err { /* j40.h:1792:29: */
+func j40__skip(tls *libc.TLS, st uintptr, n Int64_t) J40_err {
 	var bits uintptr = st + 16
 	var bytes Int64_t
 	if Int64_t((*J40__bits_st)(unsafe.Pointer(bits)).Nbits) >= n {
@@ -7035,7 +4351,7 @@ func j40__skip(tls *libc.TLS, st uintptr, n Int64_t) J40_err { /* j40.h:1792:29:
 		(*J40__bits_st)(unsafe.Pointer(bits)).Nbits = 0
 	}
 	bytes = n >> 3
-	// TODO honor containers
+
 	if (int64((*J40__bits_st)(unsafe.Pointer(bits)).End)-int64((*J40__bits_st)(unsafe.Pointer(bits)).Ptr))/1 < bytes {
 		return j40__set_error(tls, st, Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts))))<<24|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 1))))<<16|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2))))<<8|Uint32_t(*(*int8)(unsafe.Pointer(ts + 3))))
 	}
@@ -7054,7 +4370,7 @@ func j40__skip(tls *libc.TLS, st uintptr, n Int64_t) J40_err { /* j40.h:1792:29:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__u(tls *libc.TLS, st uintptr, n Int32_t) Int32_t { /* j40.h:1814:20: */
+func j40__u(tls *libc.TLS, st uintptr, n Int32_t) Int32_t {
 	var ret Int32_t
 
 	if func() uint32 {
@@ -7071,7 +4387,7 @@ func j40__u(tls *libc.TLS, st uintptr, n Int32_t) Int32_t { /* j40.h:1814:20: */
 	return ret
 }
 
-func j40__64u(tls *libc.TLS, st uintptr, n Int32_t) Int64_t { /* j40.h:1824:20: */
+func j40__64u(tls *libc.TLS, st uintptr, n Int32_t) Int64_t {
 	var ret Int64_t
 
 	if func() uint32 {
@@ -7088,31 +4404,31 @@ func j40__64u(tls *libc.TLS, st uintptr, n Int32_t) Int64_t { /* j40.h:1824:20: 
 	return ret
 }
 
-func j40__u32(tls *libc.TLS, st uintptr, o0 Int32_t, n0 Int32_t, o1 Int32_t, n1 Int32_t, o2 Int32_t, n2 Int32_t, o3 Int32_t, n3 Int32_t) Int32_t { /* j40.h:1834:20: */
+func j40__u32(tls *libc.TLS, st uintptr, o0 Int32_t, n0 Int32_t, o1 Int32_t, n1 Int32_t, o2 Int32_t, n2 Int32_t, o3 Int32_t, n3 Int32_t) Int32_t {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
 
-	*(*[4]Int32_t)(unsafe.Pointer(bp + 16 /* o */)) = [4]Int32_t{o0, o1, o2, o3}
-	*(*[4]Int32_t)(unsafe.Pointer(bp /* n */)) = [4]Int32_t{n0, n1, n2, n3}
+	*(*[4]Int32_t)(unsafe.Pointer(bp + 16)) = [4]Int32_t{o0, o1, o2, o3}
+	*(*[4]Int32_t)(unsafe.Pointer(bp)) = [4]Int32_t{n0, n1, n2, n3}
 	var sel Int32_t
 
 	sel = j40__u(tls, st, 2)
 	return j40__u(tls, st, *(*Int32_t)(unsafe.Pointer(bp + uintptr(sel)*4))) + *(*Int32_t)(unsafe.Pointer(bp + 16 + uintptr(sel)*4))
 }
 
-func j40__64u32(tls *libc.TLS, st uintptr, o0 Int32_t, n0 Int32_t, o1 Int32_t, n1 Int32_t, o2 Int32_t, n2 Int32_t, o3 Int32_t, n3 Int32_t) Int64_t { /* j40.h:1850:20: */
+func j40__64u32(tls *libc.TLS, st uintptr, o0 Int32_t, n0 Int32_t, o1 Int32_t, n1 Int32_t, o2 Int32_t, n2 Int32_t, o3 Int32_t, n3 Int32_t) Int64_t {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
 
-	*(*[4]Int32_t)(unsafe.Pointer(bp + 16 /* o */)) = [4]Int32_t{o0, o1, o2, o3}
-	*(*[4]Int32_t)(unsafe.Pointer(bp /* n */)) = [4]Int32_t{n0, n1, n2, n3}
+	*(*[4]Int32_t)(unsafe.Pointer(bp + 16)) = [4]Int32_t{o0, o1, o2, o3}
+	*(*[4]Int32_t)(unsafe.Pointer(bp)) = [4]Int32_t{n0, n1, n2, n3}
 	var sel Int32_t
 
 	sel = j40__u(tls, st, 2)
 	return (j40__64u(tls, st, *(*Int32_t)(unsafe.Pointer(bp + uintptr(sel)*4))) + Int64_t(*(*Int32_t)(unsafe.Pointer(bp + 16 + uintptr(sel)*4)))) & int64(0xffffffff)
 }
 
-func j40__u64(tls *libc.TLS, st uintptr) Uint64_t { /* j40.h:1866:21: */
+func j40__u64(tls *libc.TLS, st uintptr) Uint64_t {
 	var sel Int32_t = j40__u(tls, st, 2)
 	var shift Int32_t
 	var ret Uint64_t = Uint64_t(j40__u(tls, st, sel*4))
@@ -7131,10 +4447,9 @@ func j40__u64(tls *libc.TLS, st uintptr) Uint64_t { /* j40.h:1866:21: */
 	return ret
 }
 
-func j40__enum(tls *libc.TLS, st uintptr) Int32_t { /* j40.h:1879:20: */
+func j40__enum(tls *libc.TLS, st uintptr) Int32_t {
 	var ret Int32_t = j40__u32(tls, st, 0, 0, 1, 0, 2, 4, 18, 6)
-	// the spec says it should be 64, but the largest enum value in use is 18 (kHLG);
-	// we have to reject unknown enum values anyway so we use a smaller limit to avoid overflow
+
 	if ret >= 31 {
 		j40__set_error(tls, st, Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 124))))<<24|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 124 + 1))))<<16|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 124 + 2))))<<8|Uint32_t(*(*int8)(unsafe.Pointer(ts + 124 + 3))))
 		return 0
@@ -7142,7 +4457,7 @@ func j40__enum(tls *libc.TLS, st uintptr) Int32_t { /* j40.h:1879:20: */
 	return ret
 }
 
-func j40__f16(tls *libc.TLS, st uintptr) float32 { /* j40.h:1887:18: */
+func j40__f16(tls *libc.TLS, st uintptr) float32 {
 	var bits Int32_t = j40__u(tls, st, 16)
 	var biased_exp Int32_t = bits >> 10 & 0x1f
 	if biased_exp == 31 {
@@ -7162,7 +4477,7 @@ func j40__f16(tls *libc.TLS, st uintptr) float32 { /* j40.h:1887:18: */
 	}()), biased_exp-25)
 }
 
-func j40__u8(tls *libc.TLS, st uintptr) Int32_t { /* j40.h:1907:20: */ // ANS distribution decoding only
+func j40__u8(tls *libc.TLS, st uintptr) Int32_t {
 	if j40__u(tls, st, 1) != 0 {
 		var n Int32_t = j40__u(tls, st, 3)
 		return j40__u(tls, st, n) + int32(1)<<n
@@ -7173,7 +4488,7 @@ func j40__u8(tls *libc.TLS, st uintptr) Int32_t { /* j40.h:1907:20: */ // ANS di
 }
 
 // equivalent to u(ceil(log2(max + 1))), decodes [0, max] with the minimal number of bits
-func j40__at_most(tls *libc.TLS, st uintptr, max Int32_t) Int32_t { /* j40.h:1917:20: */
+func j40__at_most(tls *libc.TLS, st uintptr, max Int32_t) Int32_t {
 	var v Int32_t
 	if max > 0 {
 		v = j40__u(tls, st, J40__ceil_lg32(tls, Uint32_t(max)+Uint32_t(1)))
@@ -7188,7 +4503,7 @@ func j40__at_most(tls *libc.TLS, st uintptr, max Int32_t) Int32_t { /* j40.h:191
 }
 
 // ensures that we have reached the end of file or advertised section with proper padding
-func j40__no_more_bytes(tls *libc.TLS, st uintptr) J40_err { /* j40.h:1924:29: */
+func j40__no_more_bytes(tls *libc.TLS, st uintptr) J40_err {
 __1:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__zero_pad_to_byte(tls, st) != 0)), int64(0)) != 0) {
 		goto __4
@@ -7230,27 +4545,12 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-// we can afford 2x the table size if beneficial though
-
 // read a prefix code tree, as specified in RFC 7932 section 3
-func j40__prefix_code_tree(tls *libc.TLS, st uintptr, l2size Int32_t, out_fast_len uintptr, out_max_len uintptr, out_table uintptr) J40_err { /* j40.h:1962:29: */
+func j40__prefix_code_tree(tls *libc.TLS, st uintptr, l2size Int32_t, out_fast_len uintptr, out_max_len uintptr, out_table uintptr) J40_err {
 	bp := tls.Alloc(456)
 	defer tls.Free(456)
 
-	// var l1lengths [18]Int32_t at bp+40, 72
-
 	var l2lengths uintptr
-	// var l1counts [6]Int32_t at bp+16, 24
-
-	// var l2counts [16]Int32_t at bp+264, 64
-
-	// var l1starts [6]Int32_t at bp+240, 24
-
-	// var l2starts [16]Int32_t at bp+328, 64
-
-	// var l2overflows [16]Int32_t at bp+392, 64
-
-	// var l1table [32]Int32_t at bp+112, 128
 
 	var l2table uintptr
 	var total Int32_t
@@ -7260,33 +4560,29 @@ func j40__prefix_code_tree(tls *libc.TLS, st uintptr, l2size Int32_t, out_fast_l
 	var i Int32_t
 	var j Int32_t
 	var nsym Int32_t
-	// var syms [4]Int32_t at bp, 16
 
 	var tmp Int32_t
 	var n Int32_t
-	var start uintptr // read layer 2 code lengths using the layer 1 code
+	var start uintptr
 	var prev Int32_t
 	var rep Int32_t
 	var prev_rep Int32_t
-	// if the distribution is flat enough the max fast_len might be slow
-	// because most LUT entries will be overflow refs so we will hit slow paths for most cases.
-	// we therefore calculate the table size with the max fast_len,
-	// then find the largest fast_len within the specified table growth factor.
+
 	var size Int32_t
 	var size_limit Int32_t
 	var size_used Int32_t
 	var n1 Int32_t
 	var start1 uintptr
-	*(*[18]Int32_t)(unsafe.Pointer(bp + 40 /* l1lengths */)) = [18]Int32_t{0: 0}
+	*(*[18]Int32_t)(unsafe.Pointer(bp + 40)) = [18]Int32_t{0: 0}
 	l2lengths = uintptr(0)
-	*(*[6]Int32_t)(unsafe.Pointer(bp + 16 /* l1counts */)) = [6]Int32_t{0: 0}
-	*(*[16]Int32_t)(unsafe.Pointer(bp + 264 /* l2counts */)) = [16]Int32_t{0: 0}
-	*(*[32]Int32_t)(unsafe.Pointer(bp + 112 /* l1table */)) = [32]Int32_t{0: 0}
+	*(*[6]Int32_t)(unsafe.Pointer(bp + 16)) = [6]Int32_t{0: 0}
+	*(*[16]Int32_t)(unsafe.Pointer(bp + 264)) = [16]Int32_t{0: 0}
+	*(*[32]Int32_t)(unsafe.Pointer(bp + 112)) = [32]Int32_t{0: 0}
 	l2table = uintptr(0)
 
 	if !(l2size == 1) {
 		goto __1
-	} // SPEC missing this case
+	}
 	*(*Int32_t)(unsafe.Pointer(out_fast_len)) = libc.AssignPtrInt32(out_max_len, 0)
 __2:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
@@ -7314,7 +4610,6 @@ __4:
 	return J40_err(0)
 __1:
 	;
-
 	hskip = j40__u(tls, st, 2)
 	if !(hskip == 1) {
 		goto __7
@@ -7372,7 +4667,7 @@ __10:
 	}
 	nsym = 0
 __19:
-	; // tree-select
+	;
 __20:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __23
@@ -7388,8 +4683,6 @@ __21:
 	goto __22
 __22:
 	;
-
-	// symbols of the equal length have to be sorted
 	i = int32(TEMPLATES[nsym].Sortfrom) + 1
 __24:
 	if !(i < Int32_t(TEMPLATES[nsym].Sortto)) {
@@ -7417,7 +4710,6 @@ __25:
 	goto __26
 __26:
 	;
-
 	*(*Int32_t)(unsafe.Pointer(out_fast_len)) = libc.AssignPtrInt32(out_max_len, Int32_t(TEMPLATES[nsym].Maxlen))
 __30:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
@@ -7457,15 +4749,13 @@ __37:
 	return J40_err(0)
 __7:
 	;
-
-	// complex prefix codes (section 3.5): read layer 1 code lengths using the layer 0 code
 	total = 0
 	i = libc.AssignPtrInt32(bp+16, hskip)
 __38:
 	if !(i < 18 && total < 32) {
 		goto __40
 	}
-	*(*Int32_t)(unsafe.Pointer(bp + 40 + uintptr(L1ZIGZAG[i])*4)) = libc.AssignInt32(&code, j40__prefix_code(tls, st, 4 /* L0MAXLEN */, 4 /* L0MAXLEN */, uintptr(unsafe.Pointer(&L0TABLE))))
+	*(*Int32_t)(unsafe.Pointer(bp + 40 + uintptr(L1ZIGZAG[i])*4)) = libc.AssignInt32(&code, j40__prefix_code(tls, st, 4, 4, uintptr(unsafe.Pointer(&L0TABLE))))
 	*(*Int32_t)(unsafe.Pointer(bp + 16 + uintptr(code)*4))++
 	if !(code != 0) {
 		goto __41
@@ -7502,11 +4792,9 @@ __43:
 	goto __44
 __44:
 	;
-
-	// construct the layer 1 tree
 	if !(*(*Int32_t)(unsafe.Pointer(bp + 16)) == i-1) {
 		goto __47
-	} // special case: a single code repeats as many as possible
+	}
 	i = 0
 __49:
 	if !(*(*Int32_t)(unsafe.Pointer(bp + 40 + uintptr(i)*4)) != 0) {
@@ -7518,7 +4806,7 @@ __50:
 	goto __49
 	goto __51
 __51:
-	; // this SHOULD terminate
+	;
 	code = 0
 __52:
 	if !(code < 32) {
@@ -7585,10 +4873,8 @@ __60:
 	;
 __48:
 	;
-
-	// read layer 2 code lengths using the layer 1 code
 	prev = 8
-	prev_rep = 0 // prev_rep: prev repeat count of 16(pos)/17(neg) so far
+	prev_rep = 0
 __65:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __68
@@ -7616,7 +4902,7 @@ __70:
 	if !(i < l2size && total < 32768) {
 		goto __72
 	}
-	code = j40__prefix_code(tls, st, 5 /* L1MAXLEN */, 5 /* L1MAXLEN */, bp+112)
+	code = j40__prefix_code(tls, st, 5, 5, bp+112)
 	if !(code < 16) {
 		goto __73
 	}
@@ -7634,9 +4920,8 @@ __75:
 __73:
 	if !(code == 16) {
 		goto __76
-	} // repeat non-zero 3+u(2) times
-	// instead of keeping the current repeat count, we calculate a difference
-	// between the previous and current repeat count and directly apply the delta
+	}
+
 	if !(prev_rep < 0) {
 		goto __78
 	}
@@ -7686,7 +4971,7 @@ __85:
 __86:
 	;
 	goto __77
-__76: // code == 17: repeat zero 3+u(3) times
+__76:
 	if !(prev_rep > 0) {
 		goto __87
 	}
@@ -7781,8 +5066,6 @@ __101:
 	goto __102
 __102:
 	;
-
-	// determine the layer 2 lookup table size
 	*(*Int32_t)(unsafe.Pointer(bp + 328 + 1*4)) = 0
 	*(*Int32_t)(unsafe.Pointer(out_max_len)) = 1
 	i = 2
@@ -7905,12 +5188,9 @@ __127:
 	goto __128
 __128:
 	;
-	// this entry should be unreachable, but should work as a stopper if there happens to be a logic bug
 	*(*Int32_t)(unsafe.Pointer(l2table + uintptr(size_used)*4)) = 0
 __110:
 	;
-
-	// fill the layer 2 table
 	i = 0
 __131:
 	if !(i < l2size) {
@@ -7943,8 +5223,6 @@ __139:
 	*(*Int32_t)(unsafe.Pointer(start1)) += int32(32768) >> n1
 	goto __136
 __135:
-	// there should be exactly one code which is a LUT-covered prefix plus all zeroes;
-	// in the canonical Huffman tree that code would be in the first overflow entry
 	if !(code>>fast_len == 0) {
 		goto __140
 	}
@@ -7962,7 +5240,6 @@ __132:
 	goto __133
 __133:
 	;
-
 	*(*Int32_t)(unsafe.Pointer(out_fast_len)) = fast_len
 	*(*uintptr)(unsafe.Pointer(out_table)) = l2table
 	j40__free(tls, l2lengths)
@@ -7977,12 +5254,12 @@ J40__ON_ERROR:
 var REV5 = [32]Uint8_t{
 	Uint8_t(0), Uint8_t(16), Uint8_t(8), Uint8_t(24), Uint8_t(4), Uint8_t(20), Uint8_t(12), Uint8_t(28), Uint8_t(2), Uint8_t(18), Uint8_t(10), Uint8_t(26), Uint8_t(6), Uint8_t(22), Uint8_t(14), Uint8_t(30),
 	Uint8_t(1), Uint8_t(17), Uint8_t(9), Uint8_t(25), Uint8_t(5), Uint8_t(21), Uint8_t(13), Uint8_t(29), Uint8_t(3), Uint8_t(19), Uint8_t(11), Uint8_t(27), Uint8_t(7), Uint8_t(23), Uint8_t(15), Uint8_t(31),
-} /* j40.h:1965:23 */
+}
 var L0TABLE = [16]Int32_t{
 	0x00002, 0x40002, 0x30002, 0x20003, 0x00002, 0x40002, 0x30002, 0x10004,
 	0x00002, 0x40002, 0x30002, 0x20003, 0x00002, 0x40002, 0x30002, 0x50004,
-}                                                                                                                                                                                                                                                          /* j40.h:1976:23 */
-var L1ZIGZAG = [18]Uint8_t{Uint8_t(1), Uint8_t(2), Uint8_t(3), Uint8_t(4), Uint8_t(0), Uint8_t(5), Uint8_t(17), Uint8_t(6), Uint8_t(16), Uint8_t(7), Uint8_t(8), Uint8_t(9), Uint8_t(10), Uint8_t(11), Uint8_t(12), Uint8_t(13), Uint8_t(14), Uint8_t(15)} /* j40.h:1980:23 */
+}
+var L1ZIGZAG = [18]Uint8_t{Uint8_t(1), Uint8_t(2), Uint8_t(3), Uint8_t(4), Uint8_t(0), Uint8_t(5), Uint8_t(17), Uint8_t(6), Uint8_t(16), Uint8_t(7), Uint8_t(8), Uint8_t(9), Uint8_t(10), Uint8_t(11), Uint8_t(12), Uint8_t(13), Uint8_t(14), Uint8_t(15)}
 var TEMPLATES = [5]struct {
 	Maxlen   Int8_t
 	Sortfrom Int8_t
@@ -7990,13 +5267,13 @@ var TEMPLATES = [5]struct {
 	Len      [8]Int8_t
 	Symref   [8]Int8_t
 }{
-	{Maxlen: int8(3), Sortfrom: int8(2), Sortto: int8(4), Len: [8]Int8_t{int8(1), int8(2), int8(1), int8(3), int8(1), int8(2), int8(1), int8(3)}, Symref: [8]Int8_t{int8(0), int8(1), int8(0), int8(2), int8(0), int8(1), int8(0), int8(3)}}, // NSYM=4 tree-select 1 (1233)
-	{}, // NSYM=1 (0)
-	{Maxlen: int8(1), Sortto: int8(2), Len: [8]Int8_t{0: int8(1), 1: int8(1)}, Symref: [8]Int8_t{0: int8(0), 1: int8(1)}},                                                                    // NSYM=2 (11)
-	{Maxlen: int8(2), Sortfrom: int8(1), Sortto: int8(3), Len: [8]Int8_t{0: int8(1), 1: int8(2), 2: int8(1), 3: int8(2)}, Symref: [8]Int8_t{0: int8(0), 1: int8(1), 2: int8(0), 3: int8(2)}}, // NSYM=3 (122)
-	{Maxlen: int8(2), Sortto: int8(4), Len: [8]Int8_t{0: int8(2), 1: int8(2), 2: int8(2), 3: int8(2)}, Symref: [8]Int8_t{0: int8(0), 1: int8(1), 2: int8(2), 3: int8(3)}}}                    /* j40.h:1998:79 */
+	{Maxlen: int8(3), Sortfrom: int8(2), Sortto: int8(4), Len: [8]Int8_t{int8(1), int8(2), int8(1), int8(3), int8(1), int8(2), int8(1), int8(3)}, Symref: [8]Int8_t{int8(0), int8(1), int8(0), int8(2), int8(0), int8(1), int8(0), int8(3)}},
+	{},
+	{Maxlen: int8(1), Sortto: int8(2), Len: [8]Int8_t{0: int8(1), 1: int8(1)}, Symref: [8]Int8_t{0: int8(0), 1: int8(1)}},
+	{Maxlen: int8(2), Sortfrom: int8(1), Sortto: int8(3), Len: [8]Int8_t{0: int8(1), 1: int8(2), 2: int8(1), 3: int8(2)}, Symref: [8]Int8_t{0: int8(0), 1: int8(1), 2: int8(0), 3: int8(2)}},
+	{Maxlen: int8(2), Sortto: int8(4), Len: [8]Int8_t{0: int8(2), 1: int8(2), 2: int8(2), 3: int8(2)}, Symref: [8]Int8_t{0: int8(0), 1: int8(1), 2: int8(2), 3: int8(3)}}}
 
-func j40__match_overflow(tls *libc.TLS, st uintptr, fast_len Int32_t, table uintptr) Int32_t { /* j40.h:2157:20: */
+func j40__match_overflow(tls *libc.TLS, st uintptr, fast_len Int32_t, table uintptr) Int32_t {
 	var entry Int32_t
 	var code Int32_t
 	var code_len Int32_t
@@ -8010,12 +5287,10 @@ func j40__match_overflow(tls *libc.TLS, st uintptr, fast_len Int32_t, table uint
 	return entry
 }
 
-func j40__prefix_code(tls *libc.TLS, st uintptr, fast_len Int32_t, max_len Int32_t, table uintptr) Int32_t { /* j40.h:2169:20: */
+func j40__prefix_code(tls *libc.TLS, st uintptr, fast_len Int32_t, max_len Int32_t, table uintptr) Int32_t {
 	var entry Int32_t
 	var code_len Int32_t
-	// this is not `j40__refill(st, max_len)` because it should be able to handle codes
-	// at the very end of file or section and shorter than max_len bits; in that case
-	// the bit buffer will correctly contain a short code padded with zeroes.
+
 	if (*J40__st)(unsafe.Pointer(st)).Bits.Nbits < max_len && j40__always_refill(tls, st, 0) != 0 {
 		return 0
 	}
@@ -8026,16 +5301,13 @@ func j40__prefix_code(tls *libc.TLS, st uintptr, fast_len Int32_t, max_len Int32
 	code_len = entry & 15
 	*(*Int32_t)(unsafe.Pointer(st + 16)) -= code_len
 	libc.AssignShrPtrUint64(st+16+8, int(code_len))
-	if (*J40__st)(unsafe.Pointer(st)).Bits.Nbits < 0 { // too many bits read from the bit buffer
+	if (*J40__st)(unsafe.Pointer(st)).Bits.Nbits < 0 {
 		(*J40__st)(unsafe.Pointer(st)).Bits.Nbits = 0
 
 		j40__set_error(tls, st, Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts))))<<24|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 1))))<<16|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2))))<<8|Uint32_t(*(*int8)(unsafe.Pointer(ts + 3))))
 	}
 	return entry >> 16
 }
-
-////////////////////////////////////////////////////////////////////////////////
-// hybrid integer encoding
 
 // token < 2^split_exp is interpreted as is.
 // otherwise (token - 2^split_exp) is split into NNHHHLLL where config determines H/L lengths.
@@ -8046,10 +5318,9 @@ type J40__hybrid_int_config = struct {
 	Lsb_in_token Int8_t
 	__ccgo_pad1  [1]byte
 	Max_token    Int32_t
-} /* j40.h:2201:3 */
+}
 
-func j40__read_hybrid_int_config(tls *libc.TLS, st uintptr, log_alpha_size Int32_t, out uintptr) J40_err { /* j40.h:2210:29: */
-
+func j40__read_hybrid_int_config(tls *libc.TLS, st uintptr, log_alpha_size Int32_t, out uintptr) J40_err {
 	(*J40__hybrid_int_config)(unsafe.Pointer(out)).Split_exp = Int8_t(j40__at_most(tls, st, log_alpha_size))
 	if int32((*J40__hybrid_int_config)(unsafe.Pointer(out)).Split_exp) != log_alpha_size {
 		(*J40__hybrid_int_config)(unsafe.Pointer(out)).Msb_in_token = Int8_t(j40__at_most(tls, st, int32((*J40__hybrid_int_config)(unsafe.Pointer(out)).Split_exp)))
@@ -8061,7 +5332,7 @@ func j40__read_hybrid_int_config(tls *libc.TLS, st uintptr, log_alpha_size Int32
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__hybrid_int(tls *libc.TLS, st uintptr, token Int32_t, config J40__hybrid_int_config) Int32_t { /* j40.h:2226:20: */
+func j40__hybrid_int(tls *libc.TLS, st uintptr, token Int32_t, config J40__hybrid_int_config) Int32_t {
 	var midbits Int32_t
 	var lo Int32_t
 	var mid Int32_t
@@ -8102,15 +5373,14 @@ type J40__alias_bucket = struct {
 	Cutoff         Int16_t
 	Offset_or_next Int16_t
 	Symbol         Int16_t
-} /* j40.h:2263:60 */
+}
 
-func j40__init_alias_map(tls *libc.TLS, st uintptr, D uintptr, log_alpha_size Int32_t, out uintptr) J40_err { /* j40.h:2275:29: */
+func j40__init_alias_map(tls *libc.TLS, st uintptr, D uintptr, log_alpha_size Int32_t, out uintptr) J40_err {
 	var log_bucket_size Int16_t
 	var bucket_size Int16_t
 	var table_size Int16_t
 	var buckets uintptr
-	// the underfull and overfull stacks are implicit linked lists; u/o resp. is the top index,
-	// buckets[u/o].next is the second-to-top index and so on. an index -1 indicates the bottom.
+
 	var u Int16_t
 	var o Int16_t
 	var i Int16_t
@@ -8147,7 +5417,6 @@ __2:
 	goto __3
 __3:
 	;
-
 	i = int16(0)
 __6:
 	if !(int32(i) < int32(table_size) && !(int32(*(*Int16_t)(unsafe.Pointer(D + uintptr(i)*2))) != 0)) {
@@ -8174,7 +5443,7 @@ __11:
 	;
 	if !(int32(i) < int32(table_size) && int32(j) >= int32(table_size)) {
 		goto __12
-	} // D[i] is the only non-zero probability
+	}
 	j = int16(0)
 __13:
 	if !(int32(j) < int32(table_size)) {
@@ -8194,13 +5463,6 @@ __15:
 	return J40_err(0)
 __12:
 	;
-
-	// each bucket is either settled (fields fully set) or unsettled (only `cutoff` is set).
-	// unsettled buckets are either in the underfull stack, in which case `cutoff < bucket_size`,
-	// or in the overfull stack, in which case `cutoff > bucket_size`. other fields are left
-	// unused, so `offset` in settled buckets is aliased to `next` in unsettled buckets.
-	// when rearranging results in buckets with `cutoff == bucket_size`,
-	// final fields are set and they become settled; eventually every bucket has to be settled.
 	i = int16(0)
 __16:
 	if !(int32(i) < int32(table_size)) {
@@ -8221,7 +5483,7 @@ __19:
 	(*J40__alias_bucket)(unsafe.Pointer(buckets + uintptr(i)*6)).Offset_or_next = u
 	u = i
 	goto __22
-__21: // immediately settled
+__21:
 	(*J40__alias_bucket)(unsafe.Pointer(buckets + uintptr(i)*6)).Symbol = i
 	(*J40__alias_bucket)(unsafe.Pointer(buckets + uintptr(i)*6)).Offset_or_next = int16(0)
 __22:
@@ -8235,15 +5497,13 @@ __17:
 	goto __18
 __18:
 	;
-
 __23:
 	if !(int32(o) >= 0) {
 		goto __24
 	}
 
 	by = Int16_t(int32(bucket_size) - int32((*J40__alias_bucket)(unsafe.Pointer(buckets+uintptr(u)*6)).Cutoff))
-	// move the input range [cutoff[o] - by, cutoff[o]] of the bucket o into
-	// the input range [cutoff[u], bucket_size] of the bucket u (which is settled after this)
+
 	tmp = (*J40__alias_bucket)(unsafe.Pointer(buckets + uintptr(u)*6)).Offset_or_next
 	(*J40__alias_bucket)(unsafe.Pointer(buckets + uintptr(o)*6)).Cutoff = Int16_t(int32((*J40__alias_bucket)(unsafe.Pointer(buckets+uintptr(o)*6)).Cutoff) - int32(by))
 	(*J40__alias_bucket)(unsafe.Pointer(buckets + uintptr(u)*6)).Symbol = o
@@ -8251,7 +5511,7 @@ __23:
 	u = tmp
 	if !(int32((*J40__alias_bucket)(unsafe.Pointer(buckets+uintptr(o)*6)).Cutoff) < int32(bucket_size)) {
 		goto __25
-	} // o is now underfull, move to the underfull stack
+	}
 	tmp = (*J40__alias_bucket)(unsafe.Pointer(buckets + uintptr(o)*6)).Offset_or_next
 	(*J40__alias_bucket)(unsafe.Pointer(buckets + uintptr(o)*6)).Offset_or_next = u
 	u = o
@@ -8260,7 +5520,7 @@ __23:
 __25:
 	if !(int32((*J40__alias_bucket)(unsafe.Pointer(buckets+uintptr(o)*6)).Cutoff) == int32(bucket_size)) {
 		goto __27
-	} // o is also settled
+	}
 	tmp = (*J40__alias_bucket)(unsafe.Pointer(buckets + uintptr(o)*6)).Offset_or_next
 	(*J40__alias_bucket)(unsafe.Pointer(buckets + uintptr(o)*6)).Offset_or_next = int16(0)
 	o = tmp
@@ -8271,7 +5531,6 @@ __26:
 	goto __23
 __24:
 	;
-
 	*(*uintptr)(unsafe.Pointer(out)) = buckets
 	return J40_err(0)
 
@@ -8280,7 +5539,7 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__ans_code(tls *libc.TLS, st uintptr, state uintptr, log_bucket_size Int32_t, D uintptr, aliases uintptr) Int32_t { /* j40.h:2354:20: */
+func j40__ans_code(tls *libc.TLS, st uintptr, state uintptr, log_bucket_size Int32_t, D uintptr, aliases uintptr) Int32_t {
 	if *(*Uint32_t)(unsafe.Pointer(state)) == Uint32_t(0) {
 		*(*Uint32_t)(unsafe.Pointer(state)) = Uint32_t(j40__u(tls, st, 16))
 		*(*Uint32_t)(unsafe.Pointer(state)) |= Uint32_t(j40__u(tls, st, 16)) << 16
@@ -8313,14 +5572,11 @@ func j40__ans_code(tls *libc.TLS, st uintptr, state uintptr, log_bucket_size Int
 	return Int32_t(0)
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// entropy code
-
 type J40__code_cluster = struct {
 	__ccgo_pad1 [0]uint64
 	Config      J40__hybrid_int_config
 	__ccgo_pad2 [16]byte
-} /* j40.h:2397:3 */
+}
 
 type J40__code_spec = struct {
 	Num_dist        Int32_t
@@ -8334,7 +5590,7 @@ type J40__code_spec = struct {
 	Cluster_map     uintptr
 	Lz_len_config   J40__hybrid_int_config
 	Clusters        uintptr
-} /* j40.h:2408:3 */
+}
 
 type J40__code_st = struct {
 	Spec        uintptr
@@ -8345,29 +5601,22 @@ type J40__code_st = struct {
 	Window      uintptr
 	Ans_state   Uint32_t
 	__ccgo_pad1 [4]byte
-} /* j40.h:2417:3 */
+}
 
-func j40__cluster_map(tls *libc.TLS, st uintptr, num_dist Int32_t, max_allowed Int32_t, num_clusters uintptr, map1 uintptr) J40_err { /* j40.h:2438:29: */
+func j40__cluster_map(tls *libc.TLS, st uintptr, num_dist Int32_t, max_allowed Int32_t, num_clusters uintptr, map1 uintptr) J40_err {
 	bp := tls.Alloc(384)
 	defer tls.Free(384)
 
-	// var codespec J40__code_spec at bp, 56
-	// cluster map might be recursively coded
-	// var code J40__code_st at bp+56, 40
-
-	// var seen [8]Uint32_t at bp+352, 32
-
 	var i Int32_t
-	var j Int32_t // is_simple (# clusters < 8)
+	var j Int32_t
 	var nbits Int32_t
 	var index Int32_t
-	// var mtf [256]Uint8_t at bp+96, 256
 
 	var moved Uint8_t
 	var use_mtf int32
-	*(*J40__code_spec)(unsafe.Pointer(bp /* codespec */)) = J40__code_spec{}
-	*(*J40__code_st)(unsafe.Pointer(bp + 56 /* code */)) = J40__code_st{Spec: bp}
-	*(*[8]Uint32_t)(unsafe.Pointer(bp + 352 /* seen */)) = [8]Uint32_t{0: Uint32_t(0)}
+	*(*J40__code_spec)(unsafe.Pointer(bp)) = J40__code_spec{}
+	*(*J40__code_st)(unsafe.Pointer(bp + 56)) = J40__code_st{Spec: bp}
+	*(*[8]Uint32_t)(unsafe.Pointer(bp + 352)) = [8]Uint32_t{0: Uint32_t(0)}
 
 	if !(max_allowed > num_dist) {
 		goto __1
@@ -8375,19 +5624,17 @@ func j40__cluster_map(tls *libc.TLS, st uintptr, num_dist Int32_t, max_allowed I
 	max_allowed = num_dist
 __1:
 	;
-
 	if !(num_dist == 1) {
 		goto __2
-	} // SPEC impossible in Brotli but possible (and unspecified) in JPEG XL
+	}
 	*(*Int32_t)(unsafe.Pointer(num_clusters)) = 1
 	*(*Uint8_t)(unsafe.Pointer(map1)) = Uint8_t(0)
 	return J40_err(0)
 __2:
 	;
-
 	if !(j40__u(tls, st, 1) != 0) {
 		goto __3
-	} // is_simple (# clusters < 8)
+	}
 	nbits = j40__u(tls, st, 2)
 	i = 0
 __5:
@@ -8428,7 +5675,6 @@ __7:
 __3:
 	use_mtf = j40__u(tls, st, 1)
 
-	// num_dist=1 prevents further recursion
 __13:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__read_code_spec(tls, st, 1, bp) != 0)), int64(0)) != 0) {
 		goto __16
@@ -8449,7 +5695,7 @@ __17:
 	if !(i < num_dist) {
 		goto __19
 	}
-	index = j40__code(tls, st, 0, 0, bp+56) // SPEC context (always 0) is missing
+	index = j40__code(tls, st, 0, 0, bp+56)
 __20:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __23
@@ -8544,8 +5790,6 @@ __29:
 	;
 __4:
 	;
-
-	// verify cluster_map and determine the implicit num_clusters
 	i = 0
 __39:
 	if !(i < num_dist) {
@@ -8571,7 +5815,7 @@ __43:
 	goto __44
 __44:
 	;
-	*(*Int32_t)(unsafe.Pointer(num_clusters)) = i // the first unset position or 256 if none
+	*(*Int32_t)(unsafe.Pointer(num_clusters)) = i
 __45:
 	if !(i < 256 && !(*(*Uint32_t)(unsafe.Pointer(bp + 352 + uintptr(i>>5)*4))>>(i&31)&Uint32_t(1) != 0)) {
 		goto __47
@@ -8604,8 +5848,7 @@ __49:
 	}
 	goto __50
 __50:
-	; // no more set position beyond num_clusters
-
+	;
 	return J40_err(0)
 
 J40__ON_ERROR:
@@ -8614,21 +5857,21 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__ans_table(tls *libc.TLS, st uintptr, log_alpha_size Int32_t, outtable uintptr) J40_err { /* j40.h:2503:29: */
+func j40__ans_table(tls *libc.TLS, st uintptr, log_alpha_size Int32_t, outtable uintptr) J40_err {
 	bp := tls.Alloc(1036)
 	defer tls.Free(1036)
 
 	var table_size Int32_t
 	var i Int32_t
-	var D uintptr // true -> false case: one entry
-	var v Int32_t // true -> true case: two entries
+	var D uintptr
+	var v Int32_t
 	var v1 Int32_t
-	var v2 Int32_t // false -> true case: evenly distribute to first `alpha_size` entries
+	var v2 Int32_t
 	var alpha_size Int32_t
 	var d Int16_t
-	var bias_size Int16_t // repeat
+	var bias_size Int16_t
 	var prev Int16_t
-	var bitcount Int32_t // false -> false case: bit counts + RLE
+	var bitcount Int32_t
 	var len Int32_t
 	var shift Int32_t
 	var alpha_size1 Int32_t
@@ -8638,7 +5881,7 @@ func j40__ans_table(tls *libc.TLS, st uintptr, log_alpha_size Int32_t, outtable 
 	var total Int32_t
 	var n Int32_t
 	var ncodes Int32_t
-	// var codes [259]Int32_t at bp, 1036
+
 	table_size = int32(1) << log_alpha_size
 	D = uintptr(0)
 
@@ -8664,8 +5907,7 @@ __2:
 	goto __3
 __3:
 	;
-
-	switch j40__u(tls, st, 2) { // two Bool() calls combined into u(2), so bits are swapped
+	switch j40__u(tls, st, 2) {
 	case 1:
 		goto __7
 
@@ -8681,8 +5923,8 @@ __3:
 	default:
 		goto __11
 	}
-	goto __6 // two Bool() calls combined into u(2), so bits are swapped
-__7: // true -> false case: one entry
+	goto __6
+__7:
 	v = j40__u8(tls, st)
 	libc.Xmemset(tls, D, 0, uint64(unsafe.Sizeof(Int16_t(0)))*Size_t(table_size))
 __12:
@@ -8707,10 +5949,10 @@ __13:
 	goto __14
 __14:
 	;
-	*(*Int16_t)(unsafe.Pointer(D + uintptr(v)*2)) = int16(4096) /* DISTSUM */
+	*(*Int16_t)(unsafe.Pointer(D + uintptr(v)*2)) = int16(4096)
 	goto __6
 
-__8: // true -> true case: two entries
+__8:
 	v1 = j40__u8(tls, st)
 	v2 = j40__u8(tls, st)
 __17:
@@ -8736,11 +5978,11 @@ __18:
 __19:
 	;
 	libc.Xmemset(tls, D, 0, uint64(unsafe.Sizeof(Int16_t(0)))*Size_t(table_size))
-	*(*Int16_t)(unsafe.Pointer(D + uintptr(v1)*2)) = Int16_t(j40__u(tls, st, 12 /* DISTBITS */))
+	*(*Int16_t)(unsafe.Pointer(D + uintptr(v1)*2)) = Int16_t(j40__u(tls, st, 12))
 	*(*Int16_t)(unsafe.Pointer(D + uintptr(v2)*2)) = Int16_t(4096 - int32(*(*Int16_t)(unsafe.Pointer(D + uintptr(v1)*2))))
 	goto __6
 
-__9: // false -> true case: evenly distribute to first `alpha_size` entries
+__9:
 	alpha_size = j40__u8(tls, st) + 1
 	d = Int16_t(4096 / alpha_size)
 	bias_size = Int16_t(4096 % alpha_size)
@@ -8805,8 +6047,7 @@ __35:
 	;
 	goto __6
 
-__10: // exponents if >= 0, negated repeat count if < 0
-
+__10:
 	if j40__u(tls, st, 1) != 0 {
 		if j40__u(tls, st, 1) != 0 {
 			if j40__u(tls, st, 1) != 0 {
@@ -8845,7 +6086,7 @@ __38:
 	;
 	alpha_size1 = j40__u8(tls, st) + 3
 
-	omit_log = -1 // there should be at least one non-RLE code
+	omit_log = -1
 	i = libc.AssignInt32(&ncodes, 0)
 __41:
 	if !(i < alpha_size1) {
@@ -8898,7 +6139,6 @@ __48:
 	goto __49
 __49:
 	;
-
 	omit_pos = -1
 	i = libc.AssignInt32(&n, libc.AssignInt32(&total, 0))
 __52:
@@ -8908,7 +6148,7 @@ __52:
 	code = *(*Int32_t)(unsafe.Pointer(bp + uintptr(i)*4))
 	if !(code < 0) {
 		goto __55
-	} // repeat
+	}
 	if n > 0 {
 		prev = *(*Int16_t)(unsafe.Pointer(D + uintptr(n-1)*2))
 	} else {
@@ -8935,7 +6175,7 @@ __58:
 	}
 	goto __59
 __59:
-	; // implicit D[n] followed by RLE
+	;
 	code = J40__min32(tls, -code, table_size-n)
 	total = total + Int32_t(prev)*code
 __62:
@@ -8950,9 +6190,9 @@ __63:
 __55:
 	if !(code == omit_log) {
 		goto __64
-	} // the first longest D[n] is "omitted" (implicit)
+	}
 	omit_pos = n
-	omit_log = -1 // this branch runs at most once
+	omit_log = -1
 	*(*Int16_t)(unsafe.Pointer(D + uintptr(libc.PostIncInt32(&n, 1))*2)) = int16(-1)
 	goto __65
 __64:
@@ -9044,7 +6284,6 @@ __11:
 	;
 __6:
 	;
-
 	*(*uintptr)(unsafe.Pointer(outtable)) = D
 	return J40_err(0)
 
@@ -9053,29 +6292,25 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-var TABLE = [20]Int32_t{ // reinterpretation of kLogCountLut
+var TABLE = [20]Int32_t{
 	0xa0003, -16, 0x70003, 0x30004, 0x60003, 0x80003, 0x90003, 0x50004,
 	0xa0003, 0x40004, 0x70003, 0x10004, 0x60003, 0x80003, 0x90003, 0x20004,
-	0x00011, 0xb0022, 0xc0003, 0xd0043, // overflow for ...0001
-} /* j40.h:2552:25 */
+	0x00011, 0xb0022, 0xc0003, 0xd0043,
+}
 
-func j40__read_code_spec(tls *libc.TLS, st uintptr, num_dist Int32_t, spec uintptr) J40_err { /* j40.h:2612:29: */
+func j40__read_code_spec(tls *libc.TLS, st uintptr, num_dist Int32_t, spec uintptr) J40_err {
 	bp := tls.Alloc(8)
 	defer tls.Free(8)
 
 	var i Int32_t
 	var n Int32_t
 	var c uintptr
-	// var fast_len Int32_t at bp, 4
-
-	// var max_len Int32_t at bp+4, 4
 
 	var c1 uintptr
 
 	(*J40__code_spec)(unsafe.Pointer(spec)).Cluster_map = uintptr(0)
 	(*J40__code_spec)(unsafe.Pointer(spec)).Clusters = uintptr(0)
 
-	// LZ77Params
 	(*J40__code_spec)(unsafe.Pointer(spec)).Lz77_enabled = j40__u(tls, st, 1)
 	if !((*J40__code_spec)(unsafe.Pointer(spec)).Lz77_enabled != 0) {
 		goto __1
@@ -9097,14 +6332,12 @@ __4:
 	goto __5
 __5:
 	;
-	num_dist++ // num_dist - 1 is a synthesized LZ77 length distribution
+	num_dist++
 	goto __2
 __1:
 	(*J40__code_spec)(unsafe.Pointer(spec)).Min_symbol = libc.AssignPtrInt32(spec+16, 0x7fffffff)
 __2:
 	;
-
-	// cluster_map: a mapping from context IDs to actual distributions
 __7:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __10
@@ -9142,7 +6375,6 @@ __13:
 	goto __14
 __14:
 	;
-
 __16:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __19
@@ -9165,7 +6397,6 @@ __17:
 	goto __18
 __18:
 	;
-
 	(*J40__code_spec)(unsafe.Pointer(spec)).Use_prefix_code = j40__u(tls, st, 1)
 	if !((*J40__code_spec)(unsafe.Pointer(spec)).Use_prefix_code != 0) {
 		goto __21
@@ -9174,7 +6405,7 @@ __18:
 __23:
 	if !(i < (*J40__code_spec)(unsafe.Pointer(spec)).Num_clusters) {
 		goto __25
-	} // SPEC the count is off by one
+	}
 __26:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__read_hybrid_int_config(tls, st, 15, (*J40__code_spec)(unsafe.Pointer(spec)).Clusters+uintptr(i)*24) != 0)), int64(0)) != 0) {
 		goto __29
@@ -9197,7 +6428,6 @@ __24:
 	goto __25
 __25:
 	;
-
 	i = 0
 __30:
 	if !(i < (*J40__code_spec)(unsafe.Pointer(spec)).Num_clusters) {
@@ -9207,7 +6437,7 @@ __30:
 		goto __33
 	}
 	n = j40__u(tls, st, 4)
-	*(*Int32_t)(unsafe.Pointer((*J40__code_spec)(unsafe.Pointer(spec)).Clusters + uintptr(i)*24 + 8 /* &.count */)) = 1 + int32(1)<<n + j40__u(tls, st, n)
+	*(*Int32_t)(unsafe.Pointer((*J40__code_spec)(unsafe.Pointer(spec)).Clusters + uintptr(i)*24 + 8)) = 1 + int32(1)<<n + j40__u(tls, st, n)
 __35:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __38
@@ -9232,7 +6462,7 @@ __37:
 	;
 	goto __34
 __33:
-	*(*Int32_t)(unsafe.Pointer((*J40__code_spec)(unsafe.Pointer(spec)).Clusters + uintptr(i)*24 + 8 /* &.count */)) = 1
+	*(*Int32_t)(unsafe.Pointer((*J40__code_spec)(unsafe.Pointer(spec)).Clusters + uintptr(i)*24 + 8)) = 1
 __34:
 	;
 	goto __31
@@ -9242,8 +6472,6 @@ __31:
 	goto __32
 __32:
 	;
-
-	// SPEC this should happen after reading *all* count[i]
 	i = 0
 __40:
 	if !(i < (*J40__code_spec)(unsafe.Pointer(spec)).Num_clusters) {
@@ -9265,8 +6493,8 @@ __44:
 	goto __45
 __45:
 	;
-	*(*Int16_t)(unsafe.Pointer(c + 8 /* &.fast_len */)) = Int16_t(*(*Int32_t)(unsafe.Pointer(bp /* fast_len */)))
-	*(*Int16_t)(unsafe.Pointer(c + 10 /* &.max_len */)) = Int16_t(*(*Int32_t)(unsafe.Pointer(bp + 4 /* max_len */)))
+	*(*Int16_t)(unsafe.Pointer(c + 8)) = Int16_t(*(*Int32_t)(unsafe.Pointer(bp)))
+	*(*Int16_t)(unsafe.Pointer(c + 10)) = Int16_t(*(*Int32_t)(unsafe.Pointer(bp + 4)))
 	goto __41
 __41:
 	i++
@@ -9281,7 +6509,7 @@ __21:
 __47:
 	if !(i < (*J40__code_spec)(unsafe.Pointer(spec)).Num_clusters) {
 		goto __49
-	} // SPEC the count is off by one
+	}
 __50:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__read_hybrid_int_config(tls, st, (*J40__code_spec)(unsafe.Pointer(spec)).Log_alpha_size, (*J40__code_spec)(unsafe.Pointer(spec)).Clusters+uintptr(i)*24) != 0)), int64(0)) != 0) {
 		goto __53
@@ -9304,7 +6532,6 @@ __48:
 	goto __49
 __49:
 	;
-
 	i = 0
 __54:
 	if !(i < (*J40__code_spec)(unsafe.Pointer(spec)).Num_clusters) {
@@ -9350,7 +6577,6 @@ __56:
 	;
 __22:
 	;
-
 	(*J40__code_spec)(unsafe.Pointer(spec)).Num_dist = num_dist
 	return J40_err(0)
 
@@ -9359,18 +6585,17 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__entropy_code_cluster(tls *libc.TLS, st uintptr, use_prefix_code int32, log_alpha_size Int32_t, cluster uintptr, ans_state uintptr) Int32_t { /* j40.h:2680:20: */
+func j40__entropy_code_cluster(tls *libc.TLS, st uintptr, use_prefix_code int32, log_alpha_size Int32_t, cluster uintptr, ans_state uintptr) Int32_t {
 	if use_prefix_code != 0 {
-		return j40__prefix_code(tls, st, int32(*(*Int16_t)(unsafe.Pointer(cluster + 8 /* &.fast_len */))), int32(*(*Int16_t)(unsafe.Pointer(cluster + 10 /* &.max_len */))), *(*uintptr)(unsafe.Pointer(cluster + 16 /* &.table */)))
+		return j40__prefix_code(tls, st, int32(*(*Int16_t)(unsafe.Pointer(cluster + 8))), int32(*(*Int16_t)(unsafe.Pointer(cluster + 10))), *(*uintptr)(unsafe.Pointer(cluster + 16)))
 	} else {
-		return j40__ans_code(tls, st, ans_state, J40__DIST_BITS-log_alpha_size, *(*uintptr)(unsafe.Pointer(cluster + 8 /* &.D */)), *(*uintptr)(unsafe.Pointer(cluster + 16 /* &.aliases */)))
+		return j40__ans_code(tls, st, ans_state, J40__DIST_BITS-log_alpha_size, *(*uintptr)(unsafe.Pointer(cluster + 8)), *(*uintptr)(unsafe.Pointer(cluster + 16)))
 	}
 	return Int32_t(0)
 }
 
 // aka DecodeHybridVarLenUint
-func j40__code(tls *libc.TLS, st uintptr, ctx Int32_t, dist_mult Int32_t, code uintptr) Int32_t { /* j40.h:2692:20: */
-
+func j40__code(tls *libc.TLS, st uintptr, ctx Int32_t, dist_mult Int32_t, code uintptr) Int32_t {
 	var spec uintptr = (*J40__code_st)(unsafe.Pointer(code)).Spec
 	var token Int32_t
 	var distance Int32_t
@@ -9379,7 +6604,6 @@ func j40__code(tls *libc.TLS, st uintptr, ctx Int32_t, dist_mult Int32_t, code u
 	var use_prefix_code int32
 
 	if (*J40__code_st)(unsafe.Pointer(code)).Num_to_copy > 0 {
-		// because this can't be the initial token and lz77_enabled is true
 		(*J40__code_st)(unsafe.Pointer(code)).Num_to_copy--
 		return libc.AssignPtrInt32((*J40__code_st)(unsafe.Pointer(code)).Window+uintptr(libc.PostIncInt32(&(*J40__code_st)(unsafe.Pointer(code)).Num_decoded, 1)&MASK)*4, *(*Int32_t)(unsafe.Pointer((*J40__code_st)(unsafe.Pointer(code)).Window + uintptr(libc.PostIncInt32(&(*J40__code_st)(unsafe.Pointer(code)).Copy_pos, 1)&MASK)*4)))
 	}
@@ -9388,11 +6612,11 @@ func j40__code(tls *libc.TLS, st uintptr, ctx Int32_t, dist_mult Int32_t, code u
 	log_alpha_size = (*J40__code_spec)(unsafe.Pointer(spec)).Log_alpha_size
 	cluster = (*J40__code_spec)(unsafe.Pointer(spec)).Clusters + uintptr(*(*Uint8_t)(unsafe.Pointer((*J40__code_spec)(unsafe.Pointer(spec)).Cluster_map + uintptr(ctx))))*24
 	token = j40__entropy_code_cluster(tls, st, use_prefix_code, log_alpha_size, cluster, code+32)
-	if token >= (*J40__code_spec)(unsafe.Pointer(spec)).Min_symbol { // this is large enough if lz77_enabled is false
+	if token >= (*J40__code_spec)(unsafe.Pointer(spec)).Min_symbol {
 		var lz_cluster uintptr = (*J40__code_spec)(unsafe.Pointer(spec)).Clusters + uintptr(*(*Uint8_t)(unsafe.Pointer((*J40__code_spec)(unsafe.Pointer(spec)).Cluster_map + uintptr((*J40__code_spec)(unsafe.Pointer(spec)).Num_dist-1))))*24
 		(*J40__code_st)(unsafe.Pointer(code)).Num_to_copy = j40__hybrid_int(tls, st, token-(*J40__code_spec)(unsafe.Pointer(spec)).Min_symbol, (*J40__code_spec)(unsafe.Pointer(spec)).Lz_len_config) + (*J40__code_spec)(unsafe.Pointer(spec)).Min_length
 		token = j40__entropy_code_cluster(tls, st, use_prefix_code, log_alpha_size, lz_cluster, code+32)
-		distance = j40__hybrid_int(tls, st, token, *(*J40__hybrid_int_config)(unsafe.Pointer(lz_cluster /* .Config */)))
+		distance = j40__hybrid_int(tls, st, token, *(*J40__hybrid_int_config)(unsafe.Pointer(lz_cluster)))
 		if (*J40__st)(unsafe.Pointer(st)).Err != 0 {
 			return 0
 		}
@@ -9403,16 +6627,11 @@ func j40__code(tls *libc.TLS, st uintptr, ctx Int32_t, dist_mult Int32_t, code u
 		} else {
 			var special Int32_t = Int32_t(SPECIAL_DISTANCES[distance])
 
-			// TODO spec bug: distance can be as low as -6 when dist_mult = 1 and distance =
-			// dist_mult * 1 - 7; libjxl clamps it to the minimum of 1, so we do the same here
 			distance = J40__max32(tls, 1, special>>4-7+dist_mult*(special&7))
 		}
 		distance = J40__min32(tls, J40__min32(tls, distance, (*J40__code_st)(unsafe.Pointer(code)).Num_decoded), int32(1)<<20)
 		(*J40__code_st)(unsafe.Pointer(code)).Copy_pos = (*J40__code_st)(unsafe.Pointer(code)).Num_decoded - distance
 		if libc.X__builtin_expect(tls, libc.BoolInt64(!!(distance == 0)), int64(0)) != 0 {
-			// TODO spec bug: this is possible when num_decoded == 0 (or a non-positive special
-			// distance, handled above) and libjxl acts as if `window[i]` is initially filled with 0
-
 			(*J40__code_st)(unsafe.Pointer(code)).Window = j40__calloc(tls, uint64(uint32(1)<<20), uint64(unsafe.Sizeof(Int32_t(0))))
 			if !(int32((*J40__code_st)(unsafe.Pointer(code)).Window) != 0) {
 				j40__set_error(tls, st, Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 5))))<<24|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 5 + 1))))<<16|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 5 + 2))))<<8|Uint32_t(*(*int8)(unsafe.Pointer(ts + 5 + 3))))
@@ -9423,12 +6642,12 @@ func j40__code(tls *libc.TLS, st uintptr, ctx Int32_t, dist_mult Int32_t, code u
 		return libc.AssignPtrInt32((*J40__code_st)(unsafe.Pointer(code)).Window+uintptr(libc.PostIncInt32(&(*J40__code_st)(unsafe.Pointer(code)).Num_decoded, 1)&MASK)*4, *(*Int32_t)(unsafe.Pointer((*J40__code_st)(unsafe.Pointer(code)).Window + uintptr(libc.PostIncInt32(&(*J40__code_st)(unsafe.Pointer(code)).Copy_pos, 1)&MASK)*4)))
 	}
 
-	token = j40__hybrid_int(tls, st, token, *(*J40__hybrid_int_config)(unsafe.Pointer(cluster /* .Config */)))
+	token = j40__hybrid_int(tls, st, token, *(*J40__hybrid_int_config)(unsafe.Pointer(cluster)))
 	if (*J40__st)(unsafe.Pointer(st)).Err != 0 {
 		return 0
 	}
 	if (*J40__code_spec)(unsafe.Pointer(spec)).Lz77_enabled != 0 {
-		if !(int32((*J40__code_st)(unsafe.Pointer(code)).Window) != 0) { // XXX should be dynamically resized
+		if !(int32((*J40__code_st)(unsafe.Pointer(code)).Window) != 0) {
 			(*J40__code_st)(unsafe.Pointer(code)).Window = j40__malloc(tls, uint64(uint64(unsafe.Sizeof(Int32_t(0))))<<20)
 			if !(int32((*J40__code_st)(unsafe.Pointer(code)).Window) != 0) {
 				j40__set_error(tls, st, Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 5))))<<24|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 5 + 1))))<<16|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 5 + 2))))<<8|Uint32_t(*(*int8)(unsafe.Pointer(ts + 5 + 3))))
@@ -9440,8 +6659,8 @@ func j40__code(tls *libc.TLS, st uintptr, ctx Int32_t, dist_mult Int32_t, code u
 	return token
 }
 
-var MASK Int32_t = 0xfffff            /* j40.h:2693:23 */
-var SPECIAL_DISTANCES = [120]Uint8_t{ // {a,b} encoded as (a+7)*16+b
+var MASK Int32_t = 0xfffff
+var SPECIAL_DISTANCES = [120]Uint8_t{
 	Uint8_t(0x71), Uint8_t(0x80), Uint8_t(0x81), Uint8_t(0x61), Uint8_t(0x72), Uint8_t(0x90), Uint8_t(0x82), Uint8_t(0x62), Uint8_t(0x91), Uint8_t(0x51), Uint8_t(0x92), Uint8_t(0x52),
 	Uint8_t(0x73), Uint8_t(0xa0), Uint8_t(0x83), Uint8_t(0x63), Uint8_t(0xa1), Uint8_t(0x41), Uint8_t(0x93), Uint8_t(0x53), Uint8_t(0xa2), Uint8_t(0x42), Uint8_t(0x74), Uint8_t(0xb0),
 	Uint8_t(0x84), Uint8_t(0x64), Uint8_t(0xb1), Uint8_t(0x31), Uint8_t(0xa3), Uint8_t(0x43), Uint8_t(0x94), Uint8_t(0x54), Uint8_t(0xb2), Uint8_t(0x32), Uint8_t(0x75), Uint8_t(0xa4),
@@ -9452,15 +6671,15 @@ var SPECIAL_DISTANCES = [120]Uint8_t{ // {a,b} encoded as (a+7)*16+b
 	Uint8_t(0x97), Uint8_t(0x57), Uint8_t(0xe2), Uint8_t(0x02), Uint8_t(0xa7), Uint8_t(0x47), Uint8_t(0xe3), Uint8_t(0x03), Uint8_t(0xc6), Uint8_t(0x26), Uint8_t(0xd5), Uint8_t(0x15),
 	Uint8_t(0xf0), Uint8_t(0xb7), Uint8_t(0x37), Uint8_t(0xe4), Uint8_t(0x04), Uint8_t(0xf1), Uint8_t(0xf2), Uint8_t(0xd6), Uint8_t(0x16), Uint8_t(0xf3), Uint8_t(0xc7), Uint8_t(0x27),
 	Uint8_t(0xe5), Uint8_t(0x05), Uint8_t(0xf4), Uint8_t(0xd7), Uint8_t(0x17), Uint8_t(0xe6), Uint8_t(0x06), Uint8_t(0xf5), Uint8_t(0xe7), Uint8_t(0x07), Uint8_t(0xf6), Uint8_t(0xf7),
-} /* j40.h:2722:25 */
+}
 
-func j40__free_code(tls *libc.TLS, code uintptr) { /* j40.h:2765:17: */
+func j40__free_code(tls *libc.TLS, code uintptr) {
 	j40__free(tls, (*J40__code_st)(unsafe.Pointer(code)).Window)
 	(*J40__code_st)(unsafe.Pointer(code)).Window = uintptr(0)
 	(*J40__code_st)(unsafe.Pointer(code)).Window_cap = 0
 }
 
-func j40__finish_and_free_code(tls *libc.TLS, st uintptr, code uintptr) J40_err { /* j40.h:2771:29: */
+func j40__finish_and_free_code(tls *libc.TLS, st uintptr, code uintptr) J40_err {
 	if !!((*J40__code_spec)(unsafe.Pointer((*J40__code_st)(unsafe.Pointer(code)).Spec)).Use_prefix_code != 0) {
 		goto __1
 	}
@@ -9490,7 +6709,7 @@ __5:
 __6:
 	;
 	goto __3
-__2: // edge case: if no symbols have been read the state has to be read at this point
+__2:
 __9:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __12
@@ -9539,21 +6758,20 @@ __3:
 	;
 __1:
 	;
-	// it's explicitly allowed that num_to_copy can be > 0 at the end of stream
 J40__ON_ERROR:
 	j40__free_code(tls, code)
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__free_code_spec(tls *libc.TLS, spec uintptr) { /* j40.h:2786:17: */
+func j40__free_code_spec(tls *libc.TLS, spec uintptr) {
 	var i Int32_t
 	if (*J40__code_spec)(unsafe.Pointer(spec)).Clusters != 0 {
 		for i = 0; i < (*J40__code_spec)(unsafe.Pointer(spec)).Num_clusters; i++ {
 			if (*J40__code_spec)(unsafe.Pointer(spec)).Use_prefix_code != 0 {
-				j40__free(tls, *(*uintptr)(unsafe.Pointer((*J40__code_spec)(unsafe.Pointer(spec)).Clusters + uintptr(i)*24 + 16 /* &.table */)))
+				j40__free(tls, *(*uintptr)(unsafe.Pointer((*J40__code_spec)(unsafe.Pointer(spec)).Clusters + uintptr(i)*24 + 16)))
 			} else {
-				j40__free(tls, *(*uintptr)(unsafe.Pointer((*J40__code_spec)(unsafe.Pointer(spec)).Clusters + uintptr(i)*24 + 8 /* &.D */)))
-				j40__free(tls, *(*uintptr)(unsafe.Pointer((*J40__code_spec)(unsafe.Pointer(spec)).Clusters + uintptr(i)*24 + 16 /* &.aliases */)))
+				j40__free(tls, *(*uintptr)(unsafe.Pointer((*J40__code_spec)(unsafe.Pointer(spec)).Clusters + uintptr(i)*24 + 8)))
+				j40__free(tls, *(*uintptr)(unsafe.Pointer((*J40__code_spec)(unsafe.Pointer(spec)).Clusters + uintptr(i)*24 + 16)))
 			}
 		}
 		j40__free(tls, (*J40__code_spec)(unsafe.Pointer(spec)).Clusters)
@@ -9563,7 +6781,7 @@ func j40__free_code_spec(tls *libc.TLS, spec uintptr) { /* j40.h:2786:17: */
 	(*J40__code_spec)(unsafe.Pointer(spec)).Cluster_map = uintptr(0)
 }
 
-const ( /* j40.h:2814:1: */
+const (
 	J40__EC_ALPHA          = 0
 	J40__EC_DEPTH          = 1
 	J40__EC_SPOT_COLOUR    = 2
@@ -9587,9 +6805,9 @@ type J40__ec_info = struct {
 		Alpha_associated int32
 		__ccgo_pad1      [12]byte
 	}
-} /* j40.h:2827:3 */
+}
 
-const ( /* j40.h:2829:1: */
+const (
 	J40__ORIENT_TL = 1
 	J40__ORIENT_TR = 2
 	J40__ORIENT_BR = 3
@@ -9600,13 +6818,13 @@ const ( /* j40.h:2829:1: */
 	J40__ORIENT_LB = 8
 )
 
-const ( /* j40.h:2829:1: */
+const (
 	J40__CS_CHROMA = 99
 	J40__CS_GREY   = 103
 	J40__CS_XYB    = 120
 )
 
-const ( /* j40.h:2829:1: */
+const (
 	J40__TF_709     = -1
 	J40__TF_UNKNOWN = -2
 	J40__TF_LINEAR  = -8
@@ -9617,16 +6835,16 @@ const ( /* j40.h:2829:1: */
 	J40__GAMMA_MAX  = 10000000
 )
 
-const ( /* j40.h:2829:1: */
+const (
 	J40__INTENT_PERC = 0
 	J40__INTENT_REL  = 1
 	J40__INTENT_SAT  = 2
 	J40__INTENT_ABS  = 3
 )
 
-type J40__image_st = J40__image_st1 /* j40.h:2863:3 */
+type J40__image_st = J40__image_st1
 
-func j40__signature(tls *libc.TLS, st uintptr) J40_err { /* j40.h:2876:29: */
+func j40__signature(tls *libc.TLS, st uintptr) J40_err {
 	var sig Int32_t
 	sig = j40__u(tls, st, 16)
 __1:
@@ -9650,12 +6868,12 @@ __2:
 	}
 	goto __3
 __3:
-	; // FF 0A in the byte sequence
+	;
 J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__size_header(tls *libc.TLS, st uintptr, outw uintptr, outh uintptr) J40_err { /* j40.h:2883:29: */
+func j40__size_header(tls *libc.TLS, st uintptr, outw uintptr, outh uintptr) J40_err {
 	var div8 Int32_t
 	div8 = j40__u(tls, st, 1)
 	*(*Int32_t)(unsafe.Pointer(outh)) = func() int32 {
@@ -9664,7 +6882,7 @@ func j40__size_header(tls *libc.TLS, st uintptr, outw uintptr, outh uintptr) J40
 		}
 		return j40__u32(tls, st, 1, 9, 1, 13, 1, 18, 1, 30)
 	}()
-	switch j40__u(tls, st, 3) { // ratio
+	switch j40__u(tls, st, 3) {
 	case 0:
 		goto __2
 	case 1:
@@ -9684,7 +6902,7 @@ func j40__size_header(tls *libc.TLS, st uintptr, outw uintptr, outh uintptr) J40
 	default:
 		goto __10
 	}
-	goto __1 // ratio
+	goto __1
 __2:
 	*(*Int32_t)(unsafe.Pointer(outw)) = func() int32 {
 		if div8 != 0 {
@@ -9712,10 +6930,6 @@ __8:
 	*(*Int32_t)(unsafe.Pointer(outw)) = Int32_t(Uint64_t(*(*Int32_t)(unsafe.Pointer(outh))) * uint64(5) / uint64(4))
 	goto __1
 __9:
-	// height is at most 2^30, so width is at most 2^31 which requires uint32_t.
-	// but in order to avoid bugs we rarely use unsigned integers, so we just reject it.
-	// this should be not a problem as the Main profile Level 10 (the largest profile)
-	// already limits height to at most 2^30.
 __11:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __14
@@ -9748,7 +6962,7 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__bit_depth(tls *libc.TLS, st uintptr, outbpp uintptr, outexpbits uintptr) J40_err { /* j40.h:2908:29: */ // float_sample
+func j40__bit_depth(tls *libc.TLS, st uintptr, outbpp uintptr, outexpbits uintptr) J40_err {
 	var mantissa_bits Int32_t
 	if !(j40__u(tls, st, 1) != 0) {
 		goto __1
@@ -9799,7 +7013,7 @@ __9:
 	}
 	goto __10
 __10:
-	; // implies bpp in [5,32] when combined
+	;
 	goto __2
 __1:
 	*(*Int32_t)(unsafe.Pointer(outbpp)) = j40__u32(tls, st, 8, 0, 10, 0, 12, 0, 1, 6)
@@ -9832,7 +7046,7 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__name(tls *libc.TLS, st uintptr, outlen uintptr, outbuf uintptr) J40_err { /* j40.h:2925:29: */
+func j40__name(tls *libc.TLS, st uintptr, outlen uintptr, outbuf uintptr) J40_err {
 	var buf uintptr
 	var i Int32_t
 	var c Int32_t
@@ -9898,9 +7112,9 @@ __10:
 __15:
 	if !(i < len) {
 		goto __17
-	} // UTF-8 verification
+	}
 	c = Int32_t(Uint8_t(*(*int8)(unsafe.Pointer(buf + uintptr(libc.PostIncInt32(&i, 1))))))
-	cc = Int32_t(Uint8_t(*(*int8)(unsafe.Pointer(buf + uintptr(i))))) // always accessible thanks to null-termination
+	cc = Int32_t(Uint8_t(*(*int8)(unsafe.Pointer(buf + uintptr(i)))))
 	if c < 0x80 {
 		c = 0
 	} else {
@@ -10036,23 +7250,22 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__customxy(tls *libc.TLS, st uintptr, xy uintptr) J40_err { /* j40.h:2957:29: */
+func j40__customxy(tls *libc.TLS, st uintptr, xy uintptr) J40_err {
 	*(*float32)(unsafe.Pointer(xy)) = float32(J40__unpack_signed(tls, j40__u32(tls, st, 0, 19, 0x80000, 19, 0x100000, 20, 0x200000, 21))) / 100000.0
 	*(*float32)(unsafe.Pointer(xy + 1*4)) = float32(J40__unpack_signed(tls, j40__u32(tls, st, 0, 19, 0x80000, 19, 0x100000, 20, 0x200000, 21))) / 100000.0
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__extensions(tls *libc.TLS, st uintptr) J40_err { /* j40.h:2963:29: */
+func j40__extensions(tls *libc.TLS, st uintptr) J40_err {
 	bp := tls.Alloc(8)
 	defer tls.Free(8)
 
 	var extensions Uint64_t
-	// var nbits Int64_t at bp, 8
 
 	var i Int32_t
 	var n Uint64_t
 	extensions = j40__u64(tls, st)
-	*(*Int64_t)(unsafe.Pointer(bp /* nbits */)) = int64(0)
+	*(*Int64_t)(unsafe.Pointer(bp)) = int64(0)
 	i = 0
 __1:
 	if !(i < 64) {
@@ -10108,19 +7321,19 @@ __2:
 	goto __3
 __3:
 	;
-	return j40__skip(tls, st, *(*Int64_t)(unsafe.Pointer(bp /* nbits */)))
+	return j40__skip(tls, st, *(*Int64_t)(unsafe.Pointer(bp)))
 J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__image_metadata(tls *libc.TLS, st uintptr) J40_err { /* j40.h:2979:29: */
+func j40__image_metadata(tls *libc.TLS, st uintptr) J40_err {
 	var im uintptr
 	var i Int32_t
 	var j Int32_t
-	var ec uintptr                    // ColourEncoding.all_default
-	var cspace uint32                 // ToneMapping.all_default
-	var relative_to_max_display int32 // !all_default
-	var extra_fields Int32_t          // !default_m
+	var ec uintptr
+	var cspace uint32
+	var relative_to_max_display int32
+	var extra_fields Int32_t
 	var cw_mask Int32_t
 	im = (*J40__st)(unsafe.Pointer(st)).Image
 
@@ -10210,10 +7423,9 @@ __11:
 	goto __12
 __12:
 	;
-
 	if !!(j40__u(tls, st, 1) != 0) {
 		goto __15
-	} // !all_default
+	}
 	extra_fields = j40__u(tls, st, 1)
 	if !(extra_fields != 0) {
 		goto __16
@@ -10221,7 +7433,7 @@ __12:
 	(*J40__image_st)(unsafe.Pointer(im)).Orientation = uint32(uint32(j40__u(tls, st, 3) + 1))
 	if !(j40__u(tls, st, 1) != 0) {
 		goto __17
-	} // have_intr_size
+	}
 __18:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__size_header(tls, st, im+12, im+16) != 0)), int64(0)) != 0) {
 		goto __21
@@ -10241,7 +7453,7 @@ __17:
 	;
 	if !(j40__u(tls, st, 1) != 0) {
 		goto __22
-	} // have_preview
+	}
 __23:
 	j40__set_error(tls, st, Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 189))))<<24|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 189 + 1))))<<16|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 189 + 2))))<<8|Uint32_t(*(*int8)(unsafe.Pointer(ts + 189 + 3))))
 	goto J40__ON_ERROR
@@ -10257,7 +7469,7 @@ __22:
 	;
 	if !(j40__u(tls, st, 1) != 0) {
 		goto __26
-	} // have_animation
+	}
 	(*J40__image_st)(unsafe.Pointer(im)).Anim_tps_num = j40__u32(tls, st, 100, 0, 1000, 0, 1, 10, 1, 30)
 	(*J40__image_st)(unsafe.Pointer(im)).Anim_tps_denom = j40__u32(tls, st, 1, 0, 1001, 0, 1, 8, 1, 10)
 	(*J40__image_st)(unsafe.Pointer(im)).Anim_nloops = j40__64u32(tls, st, 0, 0, 0, 3, 0, 16, 0, 32)
@@ -10392,7 +7604,7 @@ __54:
 	ec = (*J40__image_st)(unsafe.Pointer(im)).Ec_info + uintptr(i)*48
 	if !(j40__u(tls, st, 1) != 0) {
 		goto __57
-	} // d_alpha
+	}
 	(*J40__ec_info)(unsafe.Pointer(ec)).Type = J40__EC_ALPHA
 	(*J40__ec_info)(unsafe.Pointer(ec)).Bpp = 8
 	(*J40__ec_info)(unsafe.Pointer(ec)).Exp_bits = libc.AssignPtrInt32(ec+12, libc.AssignPtrInt32(ec+16, 0))
@@ -10459,9 +7671,9 @@ __68:
 	goto __67
 __69:
 	*(*float32)(unsafe.Pointer(ec + 32)) = j40__f16(tls, st)
-	*(*float32)(unsafe.Pointer(ec + 32 + 4 /* &.green */)) = j40__f16(tls, st)
-	*(*float32)(unsafe.Pointer(ec + 32 + 8 /* &.blue */)) = j40__f16(tls, st)
-	*(*float32)(unsafe.Pointer(ec + 32 + 12 /* &.solidity */)) = j40__f16(tls, st)
+	*(*float32)(unsafe.Pointer(ec + 32 + 4)) = j40__f16(tls, st)
+	*(*float32)(unsafe.Pointer(ec + 32 + 8)) = j40__f16(tls, st)
+	*(*float32)(unsafe.Pointer(ec + 32 + 12)) = j40__f16(tls, st)
 	goto __67
 __70:
 	*(*Int32_t)(unsafe.Pointer(ec + 32)) = j40__u32(tls, st, 1, 0, 0, 2, 3, 4, 19, 8)
@@ -10563,13 +7775,13 @@ __56:
 	(*J40__image_st)(unsafe.Pointer(im)).Want_icc = j40__u(tls, st, 1)
 	cspace = uint32(uint32(j40__enum(tls, st)))
 	switch cspace {
-	case uint32(0) /* CS_RGB */ :
+	case uint32(0):
 		goto __97
-	case uint32(3) /* CS_UNKNOWN */ :
+	case uint32(3):
 		goto __98
-	case uint32(1) /* CS_GREY */ :
+	case uint32(1):
 		goto __99
-	case uint32(2) /* CS_XYB */ :
+	case uint32(2):
 		goto __100
 	default:
 		goto __101
@@ -10599,7 +7811,6 @@ __104:
 	;
 __96:
 	;
-	// TODO: should verify cspace grayness with ICC grayness
 	if !!((*J40__image_st)(unsafe.Pointer(im)).Want_icc != 0) {
 		goto __105
 	}
@@ -10607,20 +7818,20 @@ __96:
 		goto __106
 	}
 	switch j40__enum(tls, st) {
-	case 1 /* WP_D65 */ :
-		goto __108 // default
-	case 2 /* WP_CUSTOM */ :
+	case 1:
+		goto __108
+	case 2:
 		goto __109
-	case 10 /* WP_E */ :
+	case 10:
 		goto __110
-	case 11 /* WP_DCI */ :
+	case 11:
 		goto __111
 	default:
 		goto __112
 	}
 	goto __107
 __108:
-	goto __107 // default
+	goto __107
 __109:
 __113:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__customxy(tls, st, im+76) != 0)), int64(0)) != 0) {
@@ -10662,20 +7873,20 @@ __107:
 		goto __120
 	}
 	switch j40__enum(tls, st) {
-	case 1 /* PR_SRGB */ :
-		goto __122 // default
-	case 2 /* PR_CUSTOM */ :
+	case 1:
+		goto __122
+	case 2:
 		goto __123
-	case 9 /* PR_2100 */ :
+	case 9:
 		goto __124
-	case 11 /* PR_P3 */ :
+	case 11:
 		goto __125
 	default:
 		goto __126
 	}
 	goto __121
 __122:
-	goto __121 // default
+	goto __121
 __123:
 __127:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__customxy(tls, st, im+76+1*8) != 0)), int64(0)) != 0) {
@@ -10749,7 +7960,7 @@ __106:
 	;
 	if !(j40__u(tls, st, 1) != 0) {
 		goto __142
-	} // have_gamma
+	}
 	(*J40__image_st)(unsafe.Pointer(im)).Gamma_or_tf = j40__u(tls, st, 24)
 __144:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
@@ -11113,21 +8324,21 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-var SRGB_CHROMA = [4][2]float32{ // default chromacity (kD65, kSRGB)
+var SRGB_CHROMA = [4][2]float32{
 	{0.3127, 0.3290}, {0.639998686, 0.330010138},
 	{0.300003784, 0.600003357}, {0.150002046, 0.059997204},
-}                                  /* j40.h:2980:21 */
-var OPSIN_INV_MAT = [3][3]float32{ // default opsin inverse matrix
+}
+var OPSIN_INV_MAT = [3][3]float32{
 	{11.031566901960783, -9.866943921568629, -0.16462299647058826},
 	{-3.254147380392157, 4.418770392156863, -0.16462299647058826},
 	{-3.6588512862745097, 2.7129230470588235, 1.9459282392156863},
-}                                                                          /* j40.h:2984:21 */
-var E = [2]float32{float32(float32(1)) / 3., float32(float32(1)) / 3.}     /* j40.h:3102:25 */
-var DCI = [2]float32{0.314, 0.351}                                         /* j40.h:3102:48 */
-var BT2100 = [3][2]float32{{0.708, 0.292}, {0.170, 0.797}, {0.131, 0.046}} /* j40.h:3103:7 */
-var P3 = [3][2]float32{{0.680, 0.320}, {0.265, 0.690}, {0.150, 0.060}}     /* j40.h:3104:7 */
+}
+var E = [2]float32{float32(float32(1)) / 3., float32(float32(1)) / 3.}
+var DCI = [2]float32{0.314, 0.351}
+var BT2100 = [3][2]float32{{0.708, 0.292}, {0.170, 0.797}, {0.131, 0.046}}
+var P3 = [3][2]float32{{0.680, 0.320}, {0.265, 0.690}, {0.150, 0.060}}
 
-func j40__free_image_state(tls *libc.TLS, im uintptr) { /* j40.h:3190:17: */
+func j40__free_image_state(tls *libc.TLS, im uintptr) {
 	var i Int32_t
 	if (*J40__image_st)(unsafe.Pointer(im)).Ec_info != 0 {
 		for i = 0; i < (*J40__image_st)(unsafe.Pointer(im)).Num_extra_channels; i++ {
@@ -11141,22 +8352,19 @@ func j40__free_image_state(tls *libc.TLS, im uintptr) { /* j40.h:3190:17: */
 	(*J40__image_st)(unsafe.Pointer(im)).Num_extra_channels = 0
 }
 
-func j40__icc(tls *libc.TLS, st uintptr) J40_err { /* j40.h:3211:29: */
+func j40__icc(tls *libc.TLS, st uintptr) J40_err {
 	bp := tls.Alloc(96)
 	defer tls.Free(96)
 
 	var enc_size Size_t
 	var index Size_t
-	// var codespec J40__code_spec at bp, 56
-
-	// var code J40__code_st at bp+56, 40
 
 	var byte Int32_t
 	var prev Int32_t
 	var pprev Int32_t
 	var ctx Int32_t
-	*(*J40__code_spec)(unsafe.Pointer(bp /* codespec */)) = J40__code_spec{}
-	*(*J40__code_st)(unsafe.Pointer(bp + 56 /* code */)) = J40__code_st{Spec: bp}
+	*(*J40__code_spec)(unsafe.Pointer(bp)) = J40__code_spec{}
+	*(*J40__code_st)(unsafe.Pointer(bp + 56)) = J40__code_st{Spec: bp}
 	byte = 0
 	prev = 0
 	pprev = 0
@@ -11177,7 +8385,6 @@ __2:
 	goto __3
 __3:
 	;
-
 	index = uint64(0)
 __5:
 	if !(index < enc_size) {
@@ -11262,7 +8469,7 @@ __18:
 __8:
 	;
 	byte = j40__code(tls, st, ctx, 0, bp+56)
-	//printf("%zd/%zd: %zd ctx=%d byte=%#x %c\n", index, enc_size, j40__bits_read(st), ctx, (int)byte, 0x20 <= byte && byte < 0x7f ? byte : ' '); fflush(stdout);
+
 __25:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __28
@@ -11278,7 +8485,6 @@ __26:
 	goto __27
 __27:
 	;
-	// TODO actually interpret them
 	goto __6
 __6:
 	index++
@@ -11303,37 +8509,6 @@ __31:
 	;
 	j40__free_code_spec(tls, bp)
 
-	//size_t output_size = j40__varint(st);
-	//size_t commands_size = j40__varint(st);
-
-	//
-	// 	static const char PREDICTIONS[] = {
-	// 		'*', '*', '*', '*', 0, 0, 0, 0, 4, 0, 0, 0, 'm', 'n', 't', 'r',
-	// 		'R', 'G', 'B', ' ', 'X', 'Y', 'Z', ' ', 0, 0, 0, 0, 0, 0, 0, 0,
-	// 		0, 0, 0, 0, 'a', 'c', 's', 'p', 0, '@', '@', '@', 0, 0, 0, 0,
-	// 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-	// 		0, 0, 0, 0, 0, 0, 246, 214, 0, 1, 0, 0, 0, 0, 211, 45,
-	// 		'#', '#', '#', '#',
-	// 	};
-	// 	char pred = i < sizeof(PREDICTIONS) ? PREDICTIONS[i] : 0;
-	// 	switch (pred) {
-	// 	case '*': pred = output_size[i]; break;
-	// 	case '#': pred = header[i - 76]; break;
-	// 	case '@':
-	// 		switch (header[40]) {
-	// 		case 'A': pred = "APPL"[i - 40]; break;
-	// 		case 'M': pred = "MSFT"[i - 40]; break;
-	// 		case 'S':
-	// 			switch (i < 41 ? 0 : header[41]) {
-	// 			case 'G': pred = "SGI "[i - 40]; break;
-	// 			case 'U': pred = "SUNW"[i - 40]; break;
-	// 			}
-	// 			break;
-	// 		}
-	// 		break;
-	// 	}
-	//
-
 	return J40_err(0)
 
 J40__ON_ERROR:
@@ -11349,38 +8524,31 @@ type J40__tree_node = struct {
 		Leftoff  Int32_t
 		Rightoff Int32_t
 	}
-} /* j40.h:3301:3 */
+}
 
-func j40__tree(tls *libc.TLS, st uintptr, max_tree_size Int32_t, tree uintptr, codespec uintptr) J40_err { /* j40.h:3309:29: */
+func j40__tree(tls *libc.TLS, st uintptr, max_tree_size Int32_t, tree uintptr, codespec uintptr) J40_err {
 	bp := tls.Alloc(52)
 	defer tls.Free(52)
 
-	// var code J40__code_st at bp, 40
-
-	// var t uintptr at bp+40, 8
-
 	var tree_idx Int32_t
-	// var tree_cap Int32_t at bp+48, 4
 
 	var ctx_id Int32_t
 	var nodes_left Int32_t
 	var depth Int32_t
 	var nodes_upto_this_depth Int32_t
-	var newptr uintptr // depth-first, left-to-right ordering
+	var newptr uintptr
 	var n uintptr
 	var prop Int32_t
 	var val Int32_t
 	var shift Int32_t
-	*(*J40__code_st)(unsafe.Pointer(bp /* code */)) = J40__code_st{Spec: codespec}
-	*(*uintptr)(unsafe.Pointer(bp + 40 /* t */)) = uintptr(0)
+	*(*J40__code_st)(unsafe.Pointer(bp)) = J40__code_st{Spec: codespec}
+	*(*uintptr)(unsafe.Pointer(bp + 40)) = uintptr(0)
 	tree_idx = 0
-	*(*Int32_t)(unsafe.Pointer(bp + 48 /* tree_cap */)) = 8
+	*(*Int32_t)(unsafe.Pointer(bp + 48)) = 8
 	ctx_id = 0
 	nodes_left = 1
 	depth = 0
 	nodes_upto_this_depth = 1
-
-	// codestream limit; the actual limit should be smaller
 
 __1:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__read_code_spec(tls, st, 6, codespec) != 0)), int64(0)) != 0) {
@@ -11424,7 +8592,6 @@ __10:
 		goto __11
 	}
 
-	// the beginning of new tree depth; all `nodes_left` nodes are in this depth at the moment
 	if !(tree_idx == nodes_upto_this_depth) {
 		goto __12
 	}
@@ -11453,7 +8620,6 @@ __15:
 	nodes_upto_this_depth = nodes_upto_this_depth + (nodes_left + 1)
 __12:
 	;
-
 	prop = j40__code(tls, st, 1, 0, bp)
 __18:
 	newptr = j40__realloc32(tls, st, *(*uintptr)(unsafe.Pointer(bp + 40)), uint64(unsafe.Sizeof(J40__tree_node{})), tree_idx+1, bp+48)
@@ -11479,14 +8645,14 @@ __20:
 		goto __23
 	}
 	*(*Int32_t)(unsafe.Pointer(n)) = -prop
-	*(*Int32_t)(unsafe.Pointer(n + 4 /* &.value */)) = J40__unpack_signed(tls, j40__code(tls, st, 0, 0, bp))
-	*(*Int32_t)(unsafe.Pointer(n + 8 /* &.leftoff */)) = libc.PreIncInt32(&nodes_left, 1)
-	*(*Int32_t)(unsafe.Pointer(n + 12 /* &.rightoff */)) = libc.PreIncInt32(&nodes_left, 1)
+	*(*Int32_t)(unsafe.Pointer(n + 4)) = J40__unpack_signed(tls, j40__code(tls, st, 0, 0, bp))
+	*(*Int32_t)(unsafe.Pointer(n + 8)) = libc.PreIncInt32(&nodes_left, 1)
+	*(*Int32_t)(unsafe.Pointer(n + 12)) = libc.PreIncInt32(&nodes_left, 1)
 	goto __24
 __23:
 	*(*Int32_t)(unsafe.Pointer(n)) = libc.PostIncInt32(&ctx_id, 1)
-	*(*Int32_t)(unsafe.Pointer(n + 4 /* &.predictor */)) = j40__code(tls, st, 2, 0, bp)
-	*(*Int32_t)(unsafe.Pointer(n + 8 /* &.offset */)) = J40__unpack_signed(tls, j40__code(tls, st, 3, 0, bp))
+	*(*Int32_t)(unsafe.Pointer(n + 4)) = j40__code(tls, st, 2, 0, bp)
+	*(*Int32_t)(unsafe.Pointer(n + 8)) = J40__unpack_signed(tls, j40__code(tls, st, 3, 0, bp))
 	shift = j40__code(tls, st, 4, 0, bp)
 __25:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
@@ -11533,10 +8699,9 @@ __31:
 	goto __32
 __32:
 	;
-	*(*Int32_t)(unsafe.Pointer(n + 12 /* &.multiplier */)) = (val + 1) << shift
+	*(*Int32_t)(unsafe.Pointer(n + 12)) = (val + 1) << shift
 __24:
 	;
-
 __35:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __38
@@ -11562,7 +8727,6 @@ __37:
 	goto __10
 __11:
 	;
-
 __40:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__finish_and_free_code(tls, st, bp) != 0)), int64(0)) != 0) {
 		goto __43
@@ -11578,9 +8742,8 @@ __41:
 	goto __42
 __42:
 	;
-
 	j40__free_code_spec(tls, codespec)
-	libc.Xmemset(tls, codespec, 0, uint64(unsafe.Sizeof(J40__code_spec{}))) // XXX is it required?
+	libc.Xmemset(tls, codespec, 0, uint64(unsafe.Sizeof(J40__code_spec{})))
 __44:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__read_code_spec(tls, st, ctx_id, codespec) != 0)), int64(0)) != 0) {
 		goto __47
@@ -11596,39 +8759,33 @@ __45:
 	goto __46
 __46:
 	;
-	*(*uintptr)(unsafe.Pointer(tree)) = *(*uintptr)(unsafe.Pointer(bp + 40 /* t */))
+	*(*uintptr)(unsafe.Pointer(tree)) = *(*uintptr)(unsafe.Pointer(bp + 40))
 	return J40_err(0)
 
 J40__ON_ERROR:
-	j40__free(tls, *(*uintptr)(unsafe.Pointer(bp + 40 /* t */)))
+	j40__free(tls, *(*uintptr)(unsafe.Pointer(bp + 40)))
 	j40__free_code(tls, bp)
 	j40__free_code_spec(tls, codespec)
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// modular header
-
-const ( /* j40.h:3374:1: */
+const (
 	J40__TR_RCT     = 0
 	J40__TR_PALETTE = 1
 	J40__TR_SQUEEZE = 2
 )
 
-////////////////////////////////////////////////////////////////////////////////
-// modular header
-
 type J40__transform = struct {
 	Tr          uint32
 	__ccgo_pad1 [20]byte
-} /* j40.h:3394:3 */
+}
 
 type J40__wp_params = struct {
 	P1 Int8_t
 	P2 Int8_t
 	P3 [5]Int8_t
 	W  [4]Int8_t
-} /* j40.h:3396:48 */
+}
 
 type J40__modular = struct {
 	Use_global_tree  int32
@@ -11645,9 +8802,9 @@ type J40__modular = struct {
 	Channel          uintptr
 	Dist_mult        Int32_t
 	__ccgo_pad3      [4]byte
-} /* j40.h:3409:3 */
+}
 
-func j40__init_modular_common(tls *libc.TLS, m uintptr) { /* j40.h:3437:17: */
+func j40__init_modular_common(tls *libc.TLS, m uintptr) {
 	(*J40__modular)(unsafe.Pointer(m)).Transform = uintptr(0)
 	(*J40__modular)(unsafe.Pointer(m)).Tree = uintptr(0)
 	libc.Xmemset(tls, m+40, 0, uint64(unsafe.Sizeof(J40__code_spec{})))
@@ -11656,7 +8813,7 @@ func j40__init_modular_common(tls *libc.TLS, m uintptr) { /* j40.h:3437:17: */
 	(*J40__modular)(unsafe.Pointer(m)).Channel = uintptr(0)
 }
 
-func j40__init_modular(tls *libc.TLS, st uintptr, num_channels Int32_t, w uintptr, h uintptr, m uintptr) J40_err { /* j40.h:3446:29: */
+func j40__init_modular(tls *libc.TLS, st uintptr, num_channels Int32_t, w uintptr, h uintptr, m uintptr) J40_err {
 	var i Int32_t
 
 	j40__init_modular_common(tls, m)
@@ -11703,7 +8860,7 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__init_modular_for_global(tls *libc.TLS, st uintptr, frame_is_modular int32, frame_do_ycbcr int32, frame_log_upsampling Int32_t, frame_ec_log_upsampling uintptr, frame_width Int32_t, frame_height Int32_t, m uintptr) J40_err { /* j40.h:3464:29: */
+func j40__init_modular_for_global(tls *libc.TLS, st uintptr, frame_is_modular int32, frame_do_ycbcr int32, frame_log_upsampling Int32_t, frame_ec_log_upsampling uintptr, frame_width Int32_t, frame_height Int32_t, m uintptr) J40_err {
 	var im uintptr
 	var i Int32_t
 	var log_upsampling Int32_t
@@ -11713,7 +8870,7 @@ func j40__init_modular_for_global(tls *libc.TLS, st uintptr, frame_is_modular in
 	(*J40__modular)(unsafe.Pointer(m)).Num_channels = (*J40__image_st)(unsafe.Pointer(im)).Num_extra_channels
 	if !(frame_is_modular != 0) {
 		goto __1
-	} // SPEC the condition is negated
+	}
 	*(*Int32_t)(unsafe.Pointer(m + 136)) += func() int32 {
 		if !(frame_do_ycbcr != 0) && !((*J40__image_st)(unsafe.Pointer(im)).Xyb_encoded != 0) && (*J40__image_st)(unsafe.Pointer(im)).Cspace == J40__CS_GREY {
 			return 1
@@ -11728,7 +8885,6 @@ __1:
 	return J40_err(0)
 __2:
 	;
-
 __3:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __6
@@ -11838,7 +8994,7 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__init_modular_for_pass_group(tls *libc.TLS, st uintptr, num_gm_channels Int32_t, gw Int32_t, gh Int32_t, minshift Int32_t, maxshift Int32_t, gm uintptr, m uintptr) J40_err { /* j40.h:3501:29: */
+func j40__init_modular_for_pass_group(tls *libc.TLS, st uintptr, num_gm_channels Int32_t, gw Int32_t, gh Int32_t, minshift Int32_t, maxshift Int32_t, gm uintptr, m uintptr) J40_err {
 	var i Int32_t
 	var max_channels Int32_t
 	var gc uintptr
@@ -11883,10 +9039,10 @@ __6:
 
 	_ = minshift
 	_ = maxshift
-	// TODO check minshift/maxshift!!!
+
 	(*J40__plane)(unsafe.Pointer(c)).Hshift = (*J40__plane)(unsafe.Pointer(gc)).Hshift
 	(*J40__plane)(unsafe.Pointer(c)).Vshift = (*J40__plane)(unsafe.Pointer(gc)).Vshift
-	(*J40__plane)(unsafe.Pointer(c)).Width = gw >> int32((*J40__plane)(unsafe.Pointer(gc)).Hshift) // TODO is this correct? should be ceil?
+	(*J40__plane)(unsafe.Pointer(c)).Width = gw >> int32((*J40__plane)(unsafe.Pointer(gc)).Hshift)
 	(*J40__plane)(unsafe.Pointer(c)).Height = gh >> int32((*J40__plane)(unsafe.Pointer(gc)).Vshift)
 	(*J40__modular)(unsafe.Pointer(m)).Num_channels++
 __9:
@@ -11909,7 +9065,7 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__combine_modular_from_pass_group(tls *libc.TLS, num_gm_channels Int32_t, gy Int32_t, gx Int32_t, minshift Int32_t, maxshift Int32_t, gm uintptr, m uintptr) { /* j40.h:3533:17: */
+func j40__combine_modular_from_pass_group(tls *libc.TLS, num_gm_channels Int32_t, gy Int32_t, gx Int32_t, minshift Int32_t, maxshift Int32_t, gm uintptr, m uintptr) {
 	var gcidx Int32_t
 	var cidx Int32_t
 	var y Int32_t
@@ -11927,7 +9083,6 @@ func j40__combine_modular_from_pass_group(tls *libc.TLS, num_gm_channels Int32_t
 			var c_stride Size_t = Size_t((*J40__plane)(unsafe.Pointer(c)).Stride_bytes)
 			_ = minshift
 			_ = maxshift
-			// TODO check minshift/maxshift!!!
 
 			gx0 = gx >> int32((*J40__plane)(unsafe.Pointer(gc)).Hshift)
 			gy0 = gy >> int32((*J40__plane)(unsafe.Pointer(gc)).Vshift)
@@ -11944,22 +9099,15 @@ func j40__combine_modular_from_pass_group(tls *libc.TLS, num_gm_channels Int32_t
 
 }
 
-func j40__modular_header(tls *libc.TLS, st uintptr, global_tree uintptr, global_codespec uintptr, m uintptr) J40_err { /* j40.h:3562:29: */
+func j40__modular_header(tls *libc.TLS, st uintptr, global_tree uintptr, global_codespec uintptr, m uintptr) J40_err {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
 
-	// var channel uintptr at bp, 8
-
 	var num_channels Int32_t
 	var nb_meta_channels Int32_t
-	// note: channel_cap is the upper bound of # channels during inverse transform, and since
-	// we don't shrink the channel list we don't ever need reallocation in j40__inverse_transform!
-	// var channel_cap Int32_t at bp+8, 4
-
-	// var transform_cap Int32_t at bp+12, 4
 
 	var i Int32_t
-	var j Int32_t // WPHeader
+	var j Int32_t
 	var default_wp int32
 	var begin_c Int32_t
 	var type1 Int32_t
@@ -11973,10 +9121,10 @@ func j40__modular_header(tls *libc.TLS, st uintptr, global_tree uintptr, global_
 	var tr uintptr
 	var num_sq Int32_t
 	var max_tree_size Int32_t
-	*(*uintptr)(unsafe.Pointer(bp /* channel */)) = (*J40__modular)(unsafe.Pointer(m)).Channel
+	*(*uintptr)(unsafe.Pointer(bp)) = (*J40__modular)(unsafe.Pointer(m)).Channel
 	num_channels = (*J40__modular)(unsafe.Pointer(m)).Num_channels
 	nb_meta_channels = 0
-	*(*Int32_t)(unsafe.Pointer(bp + 8 /* channel_cap */)) = (*J40__modular)(unsafe.Pointer(m)).Num_channels
+	*(*Int32_t)(unsafe.Pointer(bp + 8)) = (*J40__modular)(unsafe.Pointer(m)).Num_channels
 
 	(*J40__modular)(unsafe.Pointer(m)).Use_global_tree = j40__u(tls, st, 1)
 __1:
@@ -12001,8 +9149,6 @@ __2:
 	goto __3
 __3:
 	;
-
-	// WPHeader
 	default_wp = j40__u(tls, st, 1)
 	(*J40__modular)(unsafe.Pointer(m)).Wp.P1 = func() int8 {
 		if default_wp != 0 {
@@ -12052,8 +9198,7 @@ __10:
 	goto __11
 __11:
 	;
-
-	*(*Int32_t)(unsafe.Pointer(bp + 12 /* transform_cap */)) = libc.AssignPtrInt32(m+16, j40__u32(tls, st, 0, 0, 1, 0, 2, 4, 18, 8))
+	*(*Int32_t)(unsafe.Pointer(bp + 12)) = libc.AssignPtrInt32(m+16, j40__u32(tls, st, 0, 0, 1, 0, 2, 4, 18, 8))
 __12:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __15
@@ -12106,16 +9251,13 @@ __22:
 	tr = (*J40__modular)(unsafe.Pointer(m)).Transform + uintptr(i)*24
 
 	*(*uint32)(unsafe.Pointer(tr)) = uint32(uint32(j40__u(tls, st, 2)))
-	switch *(*uint32)(unsafe.Pointer(tr /* .Tr */)) {
-	// RCT: [begin_c, begin_c+3) -> [begin_c, begin_c+3)
+	switch *(*uint32)(unsafe.Pointer(tr)) {
 	case J40__TR_RCT:
 		goto __26
 
-	// Palette: [begin_c, end_c) -> palette 0 (meta, nb_colours by num_c) + index begin_c+1
 	case J40__TR_PALETTE:
 		goto __27
 
-	// Squeeze:
 	case J40__TR_SQUEEZE:
 		goto __28
 
@@ -12123,7 +9265,7 @@ __22:
 		goto __29
 	}
 	goto __25
-	// RCT: [begin_c, begin_c+3) -> [begin_c, begin_c+3)
+
 __26:
 	begin_c = libc.AssignPtrInt32(tr+4, j40__u32(tls, st, 0, 3, 8, 6, 72, 10, 1096, 13))
 	type1 = libc.AssignPtrInt32(tr+8, j40__u32(tls, st, 6, 0, 0, 2, 2, 4, 10, 6))
@@ -12217,14 +9359,13 @@ __47:
 	;
 	goto __25
 
-	// Palette: [begin_c, end_c) -> palette 0 (meta, nb_colours by num_c) + index begin_c+1
 __27:
 	begin_c1 = libc.AssignPtrInt32(tr+4, j40__u32(tls, st, 0, 3, 8, 6, 72, 10, 1096, 13))
 	num_c = libc.AssignPtrInt32(tr+8, j40__u32(tls, st, 1, 0, 3, 0, 4, 0, 1, 13))
 	end_c = begin_c1 + num_c
 	nb_colours = libc.AssignPtrInt32(tr+12, j40__u32(tls, st, 0, 8, 256, 10, 1280, 12, 5376, 16))
-	*(*Int32_t)(unsafe.Pointer(tr + 16 /* &.nb_deltas */)) = j40__u32(tls, st, 0, 0, 1, 8, 257, 10, 1281, 16)
-	*(*Int32_t)(unsafe.Pointer(tr + 20 /* &.d_pred */)) = j40__u(tls, st, 4)
+	*(*Int32_t)(unsafe.Pointer(tr + 16)) = j40__u32(tls, st, 0, 0, 1, 8, 257, 10, 1281, 16)
+	*(*Int32_t)(unsafe.Pointer(tr + 20)) = j40__u(tls, st, 4)
 __50:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __53
@@ -12271,7 +9412,7 @@ __57:
 	;
 	if !(begin_c1 < nb_meta_channels) {
 		goto __60
-	} // num_c meta channels -> 2 meta channels (palette + index)
+	}
 __62:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __65
@@ -12296,7 +9437,7 @@ __64:
 	;
 	nb_meta_channels = nb_meta_channels + (2 - num_c)
 	goto __61
-__60: // num_c color channels -> 1 meta channel (palette) + 1 color channel (index)
+__60:
 	nb_meta_channels = nb_meta_channels + 1
 __61:
 	;
@@ -12322,7 +9463,6 @@ __68:
 	goto __69
 __69:
 	;
-	// inverse palette transform always requires one more channel slot
 __72:
 	newptr = j40__realloc32(tls, st, *(*uintptr)(unsafe.Pointer(bp)), uint64(unsafe.Sizeof(J40__plane{})), num_channels+1, bp+8)
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(newptr != 0)), int64(1)) != 0) {
@@ -12342,24 +9482,23 @@ __73:
 	goto __74
 __74:
 	;
-	input = *(*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp /* channel */)) + uintptr(begin_c1)*24))
-	libc.Xmemmove(tls, *(*uintptr)(unsafe.Pointer(bp))+uintptr(1)*24, *(*uintptr)(unsafe.Pointer(bp /* channel */)), uint64(unsafe.Sizeof(J40__plane{}))*Size_t(begin_c1))
+	input = *(*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)) + uintptr(begin_c1)*24))
+	libc.Xmemmove(tls, *(*uintptr)(unsafe.Pointer(bp))+uintptr(1)*24, *(*uintptr)(unsafe.Pointer(bp)), uint64(unsafe.Sizeof(J40__plane{}))*Size_t(begin_c1))
 	libc.Xmemmove(tls, *(*uintptr)(unsafe.Pointer(bp))+uintptr(begin_c1)*24+uintptr(2)*24, *(*uintptr)(unsafe.Pointer(bp))+uintptr(end_c)*24, uint64(unsafe.Sizeof(J40__plane{}))*Size_t(num_channels-end_c))
-	(*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp /* channel */)))).Width = nb_colours
-	(*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp /* channel */)))).Height = num_c
-	(*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp /* channel */)))).Hshift = int8(0) // SPEC missing
-	(*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp /* channel */)))).Vshift = int8(-1)
-	*(*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp /* channel */)) + uintptr(begin_c1+1)*24)) = input
+	(*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Width = nb_colours
+	(*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Height = num_c
+	(*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Hshift = int8(0)
+	(*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Vshift = int8(-1)
+	*(*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)) + uintptr(begin_c1+1)*24)) = input
 	num_channels = num_channels + (2 - num_c)
 	goto __25
 
-	// Squeeze:
 __28:
 	num_sq = j40__u32(tls, st, 0, 0, 1, 4, 9, 6, 41, 8)
 	if !(num_sq == 0) {
 		goto __77
 	}
-	*(*int32)(unsafe.Pointer(tr + 4 /* &.implicit */)) = 1
+	*(*int32)(unsafe.Pointer(tr + 4)) = 1
 	goto __78
 __77:
 __79:
@@ -12388,11 +9527,11 @@ __84:
 	}
 	tr = (*J40__modular)(unsafe.Pointer(m)).Transform + uintptr(i+j)*24
 	*(*uint32)(unsafe.Pointer(tr)) = J40__TR_SQUEEZE
-	*(*int32)(unsafe.Pointer(tr + 4 /* &.implicit */)) = 0
-	*(*int32)(unsafe.Pointer(tr + 8 /* &.horizontal */)) = j40__u(tls, st, 1)
-	*(*int32)(unsafe.Pointer(tr + 12 /* &.in_place */)) = j40__u(tls, st, 1)
-	*(*Int32_t)(unsafe.Pointer(tr + 16 /* &.begin_c */)) = j40__u32(tls, st, 0, 3, 8, 6, 72, 10, 1096, 13)
-	*(*Int32_t)(unsafe.Pointer(tr + 20 /* &.num_c */)) = j40__u32(tls, st, 1, 0, 2, 0, 3, 0, 4, 4)
+	*(*int32)(unsafe.Pointer(tr + 4)) = 0
+	*(*int32)(unsafe.Pointer(tr + 8)) = j40__u(tls, st, 1)
+	*(*int32)(unsafe.Pointer(tr + 12)) = j40__u(tls, st, 1)
+	*(*Int32_t)(unsafe.Pointer(tr + 16)) = j40__u32(tls, st, 0, 3, 8, 6, 72, 10, 1096, 13)
+	*(*Int32_t)(unsafe.Pointer(tr + 20)) = j40__u32(tls, st, 1, 0, 2, 0, 3, 0, 4, 4)
 	goto __85
 __85:
 	j++
@@ -12453,7 +9592,6 @@ __23:
 	goto __24
 __24:
 	;
-
 __97:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __100
@@ -12476,7 +9614,6 @@ __98:
 	goto __99
 __99:
 	;
-
 	if !((*J40__modular)(unsafe.Pointer(m)).Use_global_tree != 0) {
 		goto __102
 	}
@@ -12491,7 +9628,7 @@ __104:
 		goto __106
 	}
 	max_tree_size = J40__clamp_add32(tls, max_tree_size,
-		J40__clamp_mul32(tls, (*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp /* channel */))+uintptr(i)*24)).Width, (*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp /* channel */))+uintptr(i)*24)).Height))
+		J40__clamp_mul32(tls, (*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp))+uintptr(i)*24)).Width, (*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp))+uintptr(i)*24)).Height))
 	goto __105
 __105:
 	i++
@@ -12517,8 +9654,7 @@ __109:
 	;
 __103:
 	;
-
-	(*J40__modular)(unsafe.Pointer(m)).Channel = *(*uintptr)(unsafe.Pointer(bp /* channel */))
+	(*J40__modular)(unsafe.Pointer(m)).Channel = *(*uintptr)(unsafe.Pointer(bp))
 	(*J40__modular)(unsafe.Pointer(m)).Num_channels = num_channels
 	(*J40__modular)(unsafe.Pointer(m)).Nb_meta_channels = nb_meta_channels
 	(*J40__modular)(unsafe.Pointer(m)).Dist_mult = 0
@@ -12527,7 +9663,7 @@ __111:
 	if !(i < num_channels) {
 		goto __113
 	}
-	(*J40__modular)(unsafe.Pointer(m)).Dist_mult = J40__max32(tls, (*J40__modular)(unsafe.Pointer(m)).Dist_mult, (*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp /* channel */))+uintptr(i)*24)).Width)
+	(*J40__modular)(unsafe.Pointer(m)).Dist_mult = J40__max32(tls, (*J40__modular)(unsafe.Pointer(m)).Dist_mult, (*J40__plane)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp))+uintptr(i)*24)).Width)
 	goto __112
 __112:
 	i++
@@ -12539,7 +9675,7 @@ __113:
 	return J40_err(0)
 
 J40__ON_ERROR:
-	j40__free(tls, *(*uintptr)(unsafe.Pointer(bp /* channel */)))
+	j40__free(tls, *(*uintptr)(unsafe.Pointer(bp)))
 	j40__free(tls, (*J40__modular)(unsafe.Pointer(m)).Transform)
 	if !!((*J40__modular)(unsafe.Pointer(m)).Use_global_tree != 0) {
 		goto __114
@@ -12556,7 +9692,7 @@ __114:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__allocate_modular(tls *libc.TLS, st uintptr, m uintptr) J40_err { /* j40.h:3706:29: */
+func j40__allocate_modular(tls *libc.TLS, st uintptr, m uintptr) J40_err {
 	var pixel_type Uint8_t
 	var i Int32_t
 	var c uintptr
@@ -12597,7 +9733,7 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__free_modular(tls *libc.TLS, m uintptr) { /* j40.h:3717:17: */
+func j40__free_modular(tls *libc.TLS, m uintptr) {
 	var i Int32_t
 	j40__free_code(tls, m+96)
 	if !((*J40__modular)(unsafe.Pointer(m)).Use_global_tree != 0) {
@@ -12617,7 +9753,7 @@ func j40__free_modular(tls *libc.TLS, m uintptr) { /* j40.h:3717:17: */
 	(*J40__modular)(unsafe.Pointer(m)).Channel = uintptr(0)
 }
 
-var sJ40__24DIVP1 = [64]Int32_t{ // [i] = floor(2^24 / (i+1))
+var sJ40__24DIVP1 = [64]Int32_t{
 	0x1000000, 0x800000, 0x555555, 0x400000, 0x333333, 0x2aaaaa, 0x249249, 0x200000,
 	0x1c71c7, 0x199999, 0x1745d1, 0x155555, 0x13b13b, 0x124924, 0x111111, 0x100000,
 	0xf0f0f, 0xe38e3, 0xd7943, 0xccccc, 0xc30c3, 0xba2e8, 0xb2164, 0xaaaaa,
@@ -12626,97 +9762,7 @@ var sJ40__24DIVP1 = [64]Int32_t{ // [i] = floor(2^24 / (i+1))
 	0x63e70, 0x61861, 0x5f417, 0x5d174, 0x5b05b, 0x590b2, 0x57262, 0x55555,
 	0x53978, 0x51eb8, 0x50505, 0x4ec4e, 0x4d487, 0x4bda1, 0x4a790, 0x49249,
 	0x47dc1, 0x469ee, 0x456c7, 0x44444, 0x4325c, 0x42108, 0x41041, 0x40000,
-} /* j40.h:3743:22 */
-
-// ----------------------------------------
-// recursion for modular buffer sizes (16/32)
-// J40: Independent, self-contained JPEG XL decoder
-// Kang Seonghoon, version 2270 (2022-09), Public Domain
-// https://github.com/lifthrasiir/j40
-//
-// This is a decoder for JPEG XL (ISO/IEC 18181) image format. It intends to be a fully compatible
-// reimplementation to the reference implementation, libjxl, and also serves as a verification that
-// the specification allows for an independent implementation besides from libjxl.
-//
-// The following is a simple but complete converter from JPEG XL to Portable Arbitrary Map format:
-//
-// --------------------------------------------------------------------------------
-// #define J40_IMPLEMENTATION // only a SINGLE file should have this
-// #include "j40.h" // you also need to define a macro for experimental versions; follow the error.
-// #include <stdio.h>
-// #include <stdarg.h> // for va_*
-//
-// static int oops(const char *fmt, ...) {
-//     va_list args;
-//     va_start(args, fmt);
-//     vfprintf(stderr, fmt, args);
-//     va_end(args);
-//     return 1;
-// }
-//
-// int main(int argc, char **argv) {
-//     if (argc < 3) return oops("Usage: %s input.jxl output.pam\n", argv[0]);
-//
-//     FILE *out = fopen(argv[2], "wb");
-//     if (!out) return oops("Error: Cannot open an output file.\n");
-//
-//     j40_image image;
-//     j40_from_file(&image, argv[1]); // or: j40_from_memory(&image, buf, bufsize, freefunc);
-//     j40_output_format(&image, J40_RGBA, J40_U8X4);
-//
-//     // JPEG XL supports animation, so `j40_next_frame` calls can be called multiple times
-//     if (j40_next_frame(&image)) {
-//         j40_frame frame = j40_current_frame(&image);
-//         j40_pixels_u8x4 pixels = j40_frame_pixels_u8x4(&frame, J40_RGBA);
-//         fprintf(out,
-//             "P7\n"
-//             "WIDTH %d\n"
-//             "HEIGHT %d\n"
-//             "DEPTH 4\n"
-//             "MAXVAL 255\n"
-//             "TUPLTYPE RGB_ALPHA\n"
-//             "ENDHDR\n",
-//             pixels.width, pixels.height);
-//         for (int y = 0; y < height; ++y) {
-//             fwrite(j40_row_u8x4(pixels, y), 4, pixels.width, out);
-//         }
-//     }
-//
-//     // J40 stops once the first error is encountered; its error can be checked at the very end
-//     if (j40_error(&image)) return oops("Error: %s\n", j40_error_string(&image));
-//     if (ferror(out)) return oops("Error: Cannot fully write to the output file.\n");
-//
-//     j40_free(&image); // also frees all memory associated to j40_frame etc.
-//     fclose(out);
-//     return 0;
-// }
-// --------------------------------------------------------------------------------
-
-////////////////////////////////////////////////////////////////////////////////
-// preamble (only reachable via the user `#include`)
-
-// controls whether each `#if`-`#endif` section in this file should be included or not.
-// there are multiple purposes of this macro:
-// - `J40__RECURSING` is always defined after the first ever `#include`, so that:
-//   - the preamble will precede every other code in the typical usage, and
-//   - the preamble won't be included twice.
-// - `J40__RECURSING` is either 0 (public) or -1 (internal) depending on the logical visibility,
-//   so that the preamble can choose whether to include the internal code or not.
-// - larger values (>= 100) are used to repeat a specific section of code with
-//   slightly different parameters, i.e. templated code.
-// - one value (currently 9999) is reserved and used to ignore subsequent top-level `#include`s.
-
-////////////////////////////////////////////////////////////////////////////////
-// public platform macros
-
-////////////////////////////////////////////////////////////////////////////////
-// public API
-
-////////////////////////////////////////////////////////////////////////////////
-//////////////////////// internal code starts from here ////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-// ----------------------------------------
+}
 
 type J40__wp32 = struct {
 	Width       Int32_t
@@ -12729,7 +9775,7 @@ type J40__wp32 = struct {
 	Trueerrnw   Int32_t
 	Trueerrne   Int32_t
 	__ccgo_pad2 [4]byte
-} /* j40.h:3781:3 */
+}
 
 type J40__neighbors16 = struct {
 	W   Int16_t
@@ -12740,9 +9786,9 @@ type J40__neighbors16 = struct {
 	Nee Int16_t
 	Ww  Int16_t
 	Nww Int16_t
-} /* j40.h:3783:62 */
+}
 
-func J40__init_neighbors16(tls *libc.TLS, plane uintptr, x Int32_t, y Int32_t) J40__neighbors16 { /* j40.h:3803:38: */
+func J40__init_neighbors16(tls *libc.TLS, plane uintptr, x Int32_t, y Int32_t) J40__neighbors16 {
 	var p J40__neighbors16
 	var pixels uintptr = func() uintptr {
 		return uintptr((*J40__plane)(unsafe.Pointer(plane)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(plane)).Stride_bytes)*Size_t(y))
@@ -12750,16 +9796,6 @@ func J40__init_neighbors16(tls *libc.TLS, plane uintptr, x Int32_t, y Int32_t) J
 	var width Int32_t = (*J40__plane)(unsafe.Pointer(plane)).Width
 	var stride Int32_t = (*J40__plane)(unsafe.Pointer(plane)).Stride_bytes >> (int32((*J40__plane)(unsafe.Pointer(plane)).Type) & 31)
 
-	// NN
-	//             |
-	//             v
-	// NWW  NW   _ N <- NE <- NEE
-	//  |    |   /|
-	//  v    v |/
-	// WW -> W  `  C
-	//
-	// A -> B means that if A doesn't exist B is used instead.
-	// if the pixel at the end of this chain doesn't exist as well, 0 is used.
 	p.W = func() int16 {
 		if x > 0 {
 			return *(*Int16_t)(unsafe.Pointer(pixels + uintptr(x-1)*2))
@@ -12816,13 +9852,13 @@ func J40__init_neighbors16(tls *libc.TLS, plane uintptr, x Int32_t, y Int32_t) J
 	return p
 }
 
-func j40__gradient32(tls *libc.TLS, w Int32_t, n Int32_t, nw Int32_t) Int32_t { /* j40.h:3830:23: */
+func j40__gradient32(tls *libc.TLS, w Int32_t, n Int32_t, nw Int32_t) Int32_t {
 	var lo Int32_t = J40__min32(tls, w, n)
 	var hi Int32_t = J40__max32(tls, w, n)
 	return J40__min32(tls, J40__max32(tls, lo, w+n-nw), hi)
 }
 
-func j40__init_wp32(tls *libc.TLS, st uintptr, params J40__wp_params, width Int32_t, wp uintptr) J40_err { /* j40.h:3835:29: */
+func j40__init_wp32(tls *libc.TLS, st uintptr, params J40__wp_params, width Int32_t, wp uintptr) J40_err {
 	var i Int32_t
 
 	(*J40__wp32)(unsafe.Pointer(wp)).Width = width
@@ -12868,13 +9904,12 @@ J40__ON_ERROR:
 }
 
 // also works when wp is zero-initialized (in which case does nothing)
-func j40__wp_before_predict_internal32(tls *libc.TLS, wp uintptr, x Int32_t, y Int32_t, pw Int16_t, pn Int16_t, pnw Int16_t, pne Int16_t, pnn Int16_t) { /* j40.h:3848:17: */
+func j40__wp_before_predict_internal32(tls *libc.TLS, wp uintptr, x Int32_t, y Int32_t, pw Int16_t, pn Int16_t, pnw Int16_t, pne Int16_t, pnn Int16_t) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
 
 	var err uintptr
 	var nerr uintptr
-	// var w [4]int32 at bp, 16
 
 	var wsum int32
 	var sum int32
@@ -12904,8 +9939,6 @@ func j40__wp_before_predict_internal32(tls *libc.TLS, wp uintptr, x Int32_t, y I
 		return (*J40__wp32)(unsafe.Pointer(wp)).Width
 	}())*20
 
-	// SPEC edge cases are handled differently from the spec, in particular some pixels are
-	// added twice to err_sum and requires a special care (errw2 below)
 	errw = func() uintptr {
 		if x > 0 {
 			return err + uintptr(x-1)*20
@@ -12941,7 +9974,6 @@ func j40__wp_before_predict_internal32(tls *libc.TLS, wp uintptr, x Int32_t, y I
 		return errw
 	}()
 
-	// SPEC again, edge cases are handled differently
 	(*J40__wp32)(unsafe.Pointer(wp)).Trueerrw = func() int32 {
 		if x > 0 {
 			return *(*int32)(unsafe.Pointer(err + uintptr(x-1)*20 + 4*4))
@@ -12967,7 +9999,6 @@ func j40__wp_before_predict_internal32(tls *libc.TLS, wp uintptr, x Int32_t, y I
 		return (*J40__wp32)(unsafe.Pointer(wp)).Trueerrn
 	}()
 
-	// (expr << 3) is used throughout wp, but it's an UB when expr is negative
 	*(*Int32_t)(unsafe.Pointer(wp + 24)) = (int32(pw) + int32(pne) - int32(pn)) * 8
 	*(*Int32_t)(unsafe.Pointer(wp + 24 + 1*4)) = int32(pn)*8 - ((*J40__wp32)(unsafe.Pointer(wp)).Trueerrw+(*J40__wp32)(unsafe.Pointer(wp)).Trueerrn+(*J40__wp32)(unsafe.Pointer(wp)).Trueerrne)*Int32_t((*J40__wp32)(unsafe.Pointer(wp)).Params.P1)>>5
 	*(*Int32_t)(unsafe.Pointer(wp + 24 + 2*4)) = int32(pw)*8 - ((*J40__wp32)(unsafe.Pointer(wp)).Trueerrw+(*J40__wp32)(unsafe.Pointer(wp)).Trueerrn+(*J40__wp32)(unsafe.Pointer(wp)).Trueerrnw)*Int32_t((*J40__wp32)(unsafe.Pointer(wp)).Params.P2)>>5
@@ -12975,7 +10006,7 @@ func j40__wp_before_predict_internal32(tls *libc.TLS, wp uintptr, x Int32_t, y I
 	for i = 0; i < 4; i++ {
 		var errsum int32 = *(*int32)(unsafe.Pointer(errn + uintptr(i)*4)) + *(*int32)(unsafe.Pointer(errw + uintptr(i)*4)) + *(*int32)(unsafe.Pointer(errnw + uintptr(i)*4)) + *(*int32)(unsafe.Pointer(errww + uintptr(i)*4)) + *(*int32)(unsafe.Pointer(errne + uintptr(i)*4)) + *(*int32)(unsafe.Pointer(errw2 + uintptr(i)*4))
 		var shift Int32_t = J40__max32(tls, J40__floor_lg32(tls, uint32(errsum)+uint32(1))-5, 0)
-		// SPEC missing the final `>> shift`
+
 		*(*int32)(unsafe.Pointer(bp + uintptr(i)*4)) = int32(int64(4) + Int64_t(*(*Int8_t)(unsafe.Pointer(wp + 4 + 7 + uintptr(i))))*Int64_t(sJ40__24DIVP1[errsum>>shift])>>shift)
 	}
 	logw = J40__floor_lg32(tls, uint32(*(*int32)(unsafe.Pointer(bp))+*(*int32)(unsafe.Pointer(bp + 1*4))+*(*int32)(unsafe.Pointer(bp + 2*4))+*(*int32)(unsafe.Pointer(bp + 3*4)))) - 4
@@ -12984,22 +10015,22 @@ func j40__wp_before_predict_internal32(tls *libc.TLS, wp uintptr, x Int32_t, y I
 		wsum = wsum + libc.AssignShrPtrInt32(bp+uintptr(i)*4, int(logw))
 		sum = sum + *(*Int32_t)(unsafe.Pointer(wp + 24 + uintptr(i)*4))**(*int32)(unsafe.Pointer(bp + uintptr(i)*4))
 	}
-	// SPEC missing `- 1` before scaling
+
 	*(*Int32_t)(unsafe.Pointer(wp + 24 + 4*4)) = int32((Int64_t(sum) + Int64_t(wsum>>1) - int64(1)) * Int64_t(sJ40__24DIVP1[wsum-1]) >> 24)
 	if (*J40__wp32)(unsafe.Pointer(wp)).Trueerrn^(*J40__wp32)(unsafe.Pointer(wp)).Trueerrw|((*J40__wp32)(unsafe.Pointer(wp)).Trueerrn^(*J40__wp32)(unsafe.Pointer(wp)).Trueerrnw) <= 0 {
-		var lo int32 = J40__min32(tls, int32(pw), J40__min32(tls, int32(pn), int32(pne))) * 8 // SPEC missing shifts
+		var lo int32 = J40__min32(tls, int32(pw), J40__min32(tls, int32(pn), int32(pne))) * 8
 		var hi int32 = J40__max32(tls, int32(pw), J40__max32(tls, int32(pn), int32(pne))) * 8
 		*(*Int32_t)(unsafe.Pointer(wp + 24 + 4*4)) = J40__min32(tls, J40__max32(tls, lo, *(*Int32_t)(unsafe.Pointer(wp + 24 + 4*4))), hi)
 	}
 }
 
-var ZERO = [4]int32{0, 0, 0, 0} /* j40.h:3855:23 */
+var ZERO = [4]int32{0, 0, 0, 0}
 
-func j40__wp_before_predict32(tls *libc.TLS, wp uintptr, x Int32_t, y Int32_t, p uintptr) { /* j40.h:3911:17: */
+func j40__wp_before_predict32(tls *libc.TLS, wp uintptr, x Int32_t, y Int32_t, p uintptr) {
 	j40__wp_before_predict_internal32(tls, wp, x, y, (*J40__neighbors16)(unsafe.Pointer(p)).W, (*J40__neighbors16)(unsafe.Pointer(p)).N, (*J40__neighbors16)(unsafe.Pointer(p)).Nw, (*J40__neighbors16)(unsafe.Pointer(p)).Ne, (*J40__neighbors16)(unsafe.Pointer(p)).Nn)
 }
 
-func j40__predict32(tls *libc.TLS, st uintptr, pred Int32_t, wp uintptr, p uintptr) Int32_t { /* j40.h:3917:23: */
+func j40__predict32(tls *libc.TLS, st uintptr, pred Int32_t, wp uintptr, p uintptr) Int32_t {
 	switch pred {
 	case 0:
 		return 0
@@ -13040,7 +10071,7 @@ func j40__predict32(tls *libc.TLS, st uintptr, pred Int32_t, wp uintptr, p uintp
 }
 
 // also works when wp is zero-initialized (in which case does nothing)
-func j40__wp_after_predict32(tls *libc.TLS, wp uintptr, x Int32_t, y Int32_t, val Int32_t) { /* j40.h:3940:17: */
+func j40__wp_after_predict32(tls *libc.TLS, wp uintptr, x Int32_t, y Int32_t, val Int32_t) {
 	if (*J40__wp32)(unsafe.Pointer(wp)).Errors != 0 {
 		var err uintptr = (*J40__wp32)(unsafe.Pointer(wp)).Errors + uintptr(func() int32 {
 			if y&1 != 0 {
@@ -13049,16 +10080,16 @@ func j40__wp_after_predict32(tls *libc.TLS, wp uintptr, x Int32_t, y Int32_t, va
 			return 0
 		}()+x)*20
 		var i Int32_t
-		// SPEC approximated differently from the spec
+
 		for i = 0; i < 4; i++ {
 			*(*Int32_t)(unsafe.Pointer(err + uintptr(i)*4)) = (J40__abs32(tls, *(*Int32_t)(unsafe.Pointer(wp + 24 + uintptr(i)*4))-val*8) + 3) >> 3
 		}
-		*(*Int32_t)(unsafe.Pointer(err + 4*4)) = *(*Int32_t)(unsafe.Pointer(wp + 24 + 4*4)) - val*8 // SPEC this is a *signed* difference
+		*(*Int32_t)(unsafe.Pointer(err + 4*4)) = *(*Int32_t)(unsafe.Pointer(wp + 24 + 4*4)) - val*8
 	}
 }
 
 // also works when wp is zero-initialized (in which case does nothing)
-func j40__reset_wp32(tls *libc.TLS, wp uintptr) { /* j40.h:3951:17: */
+func j40__reset_wp32(tls *libc.TLS, wp uintptr) {
 	var i Int32_t
 	if (*J40__wp32)(unsafe.Pointer(wp)).Errors != 0 {
 		libc.Xmemset(tls, (*J40__wp32)(unsafe.Pointer(wp)).Errors, 0, Size_t((*J40__wp32)(unsafe.Pointer(wp)).Width)*uint64(2)*Size_t(20))
@@ -13069,13 +10100,13 @@ func j40__reset_wp32(tls *libc.TLS, wp uintptr) { /* j40.h:3951:17: */
 	(*J40__wp32)(unsafe.Pointer(wp)).Trueerrw = libc.AssignPtrInt32(wp+48, libc.AssignPtrInt32(wp+52, libc.AssignPtrInt32(wp+56, 0)))
 }
 
-func j40__free_wp32(tls *libc.TLS, wp uintptr) { /* j40.h:3958:17: */
+func j40__free_wp32(tls *libc.TLS, wp uintptr) {
 	j40__free(tls, (*J40__wp32)(unsafe.Pointer(wp)).Errors)
 	(*J40__wp32)(unsafe.Pointer(wp)).Errors = uintptr(0)
 	(*J40__wp32)(unsafe.Pointer(wp)).Width = 0
 }
 
-func j40__modular_channel16(tls *libc.TLS, st uintptr, m uintptr, cidx Int32_t, sidx Int64_t) J40_err { /* j40.h:3964:29: */
+func j40__modular_channel16(tls *libc.TLS, st uintptr, m uintptr, cidx Int32_t, sidx Int64_t) J40_err {
 	bp := tls.Alloc(80)
 	defer tls.Free(80)
 
@@ -13086,9 +10117,8 @@ func j40__modular_channel16(tls *libc.TLS, st uintptr, m uintptr, cidx Int32_t, 
 	var x Int32_t
 	var i Int32_t
 	var nrefcmap Int32_t
-	var refcmap uintptr // refcmap[i] is a channel index for properties (16..19)+4*i
-	// var wp J40__wp32 at bp, 64
-	// determine whether to use weighted predictor (expensive)
+	var refcmap uintptr
+
 	var lasttree Int32_t
 	var use_wp Int32_t
 	var refc uintptr
@@ -13098,7 +10128,6 @@ func j40__modular_channel16(tls *libc.TLS, st uintptr, m uintptr, cidx Int32_t, 
 	var refcidx Int32_t
 	var refc1 uintptr
 	var n uintptr
-	// var p J40__neighbors16 at bp+64, 16
 
 	var val int32
 	var outpixels uintptr
@@ -13106,11 +10135,8 @@ func j40__modular_channel16(tls *libc.TLS, st uintptr, m uintptr, cidx Int32_t, 
 	width = (*J40__plane)(unsafe.Pointer(c)).Width
 	height = (*J40__plane)(unsafe.Pointer(c)).Height
 	refcmap = uintptr(0)
-	*(*J40__wp32)(unsafe.Pointer(bp /* wp */)) = J40__wp32{}
+	*(*J40__wp32)(unsafe.Pointer(bp)) = J40__wp32{}
 
-	// caller should set this to the global tree if not given
-
-	// determine whether to use weighted predictor (expensive)
 	lasttree = 0
 	use_wp = 0
 	i = 0
@@ -13156,9 +10182,6 @@ __9:
 	;
 __6:
 	;
-
-	// compute indices for additional "previous channel" properties
-	// SPEC incompatible channels are skipped and never result in unusable but numbered properties
 __11:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __14
@@ -13208,7 +10231,6 @@ __17:
 	goto __18
 __18:
 	;
-
 	y = 0
 __21:
 	if !(y < height) {
@@ -13223,9 +10245,8 @@ __24:
 		goto __26
 	}
 	n = (*J40__modular)(unsafe.Pointer(m)).Tree
-	*(*J40__neighbors16)(unsafe.Pointer(bp + 64 /* p */)) = J40__init_neighbors16(tls, c, x, y)
+	*(*J40__neighbors16)(unsafe.Pointer(bp + 64)) = J40__init_neighbors16(tls, c, x, y)
 
-	// wp should be calculated before any property testing due to max_error (property 15)
 	j40__wp_before_predict32(tls, bp, x, y, bp+64)
 
 __27:
@@ -13237,7 +10258,7 @@ __27:
 	case 0:
 		goto __30
 	case 1:
-		goto __31 // TODO check overflow
+		goto __31
 	case 2:
 		goto __32
 	case 3:
@@ -13275,7 +10296,7 @@ __30:
 	goto __29
 __31:
 	val = int32(sidx)
-	goto __29 // TODO check overflow
+	goto __29
 __32:
 	val = y
 	goto __29
@@ -13283,22 +10304,22 @@ __33:
 	val = x
 	goto __29
 __34:
-	val = J40__abs32(tls, int32((*J40__neighbors16)(unsafe.Pointer(bp+64 /* &p */)).N))
+	val = J40__abs32(tls, int32((*J40__neighbors16)(unsafe.Pointer(bp+64)).N))
 	goto __29
 __35:
-	val = J40__abs32(tls, int32((*J40__neighbors16)(unsafe.Pointer(bp+64 /* &p */)).W))
+	val = J40__abs32(tls, int32((*J40__neighbors16)(unsafe.Pointer(bp+64)).W))
 	goto __29
 __36:
-	val = int32((*J40__neighbors16)(unsafe.Pointer(bp + 64 /* &p */)).N)
+	val = int32((*J40__neighbors16)(unsafe.Pointer(bp + 64)).N)
 	goto __29
 __37:
-	val = int32((*J40__neighbors16)(unsafe.Pointer(bp + 64 /* &p */)).W)
+	val = int32((*J40__neighbors16)(unsafe.Pointer(bp + 64)).W)
 	goto __29
 __38:
 	if x > 0 {
 		val = int32((*J40__neighbors16)(unsafe.Pointer(bp+64)).W) - (int32((*J40__neighbors16)(unsafe.Pointer(bp+64)).Ww) + int32((*J40__neighbors16)(unsafe.Pointer(bp+64)).Nw) - int32((*J40__neighbors16)(unsafe.Pointer(bp+64)).Nww))
 	} else {
-		val = int32((*J40__neighbors16)(unsafe.Pointer(bp + 64 /* &p */)).W)
+		val = int32((*J40__neighbors16)(unsafe.Pointer(bp + 64)).W)
 	}
 	goto __29
 __39:
@@ -13319,24 +10340,24 @@ __43:
 __44:
 	val = int32((*J40__neighbors16)(unsafe.Pointer(bp+64)).W) - int32((*J40__neighbors16)(unsafe.Pointer(bp+64)).Ww)
 	goto __29
-__45: // requires use_wp; otherwise will be 0
-	val = (*J40__wp32)(unsafe.Pointer(bp /* &wp */)).Trueerrw
+__45:
+	val = (*J40__wp32)(unsafe.Pointer(bp)).Trueerrw
 	if !(J40__abs32(tls, val) < J40__abs32(tls, (*J40__wp32)(unsafe.Pointer(bp)).Trueerrn)) {
 		goto __47
 	}
-	val = (*J40__wp32)(unsafe.Pointer(bp /* &wp */)).Trueerrn
+	val = (*J40__wp32)(unsafe.Pointer(bp)).Trueerrn
 __47:
 	;
 	if !(J40__abs32(tls, val) < J40__abs32(tls, (*J40__wp32)(unsafe.Pointer(bp)).Trueerrnw)) {
 		goto __48
 	}
-	val = (*J40__wp32)(unsafe.Pointer(bp /* &wp */)).Trueerrnw
+	val = (*J40__wp32)(unsafe.Pointer(bp)).Trueerrnw
 __48:
 	;
 	if !(J40__abs32(tls, val) < J40__abs32(tls, (*J40__wp32)(unsafe.Pointer(bp)).Trueerrne)) {
 		goto __49
 	}
-	val = (*J40__wp32)(unsafe.Pointer(bp /* &wp */)).Trueerrne
+	val = (*J40__wp32)(unsafe.Pointer(bp)).Trueerrne
 __49:
 	;
 	goto __29
@@ -13368,7 +10389,7 @@ __52:
 
 	val = int32(*(*Int16_t)(unsafe.Pointer(func() uintptr {
 		return uintptr((*J40__plane)(unsafe.Pointer(refc1)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(refc1)).Stride_bytes)*Size_t(y))
-	}() + uintptr(x)*2))) // rC
+	}() + uintptr(x)*2)))
 	if !(^*(*Int32_t)(unsafe.Pointer(n))&2 != 0) {
 		goto __55
 	}
@@ -13414,9 +10435,8 @@ __29:
 	goto __27
 __28:
 	;
-
 	val = j40__code(tls, st, *(*Int32_t)(unsafe.Pointer(n)), (*J40__modular)(unsafe.Pointer(m)).Dist_mult, m+96)
-	// TODO can overflow at any operator and the bound is incorrect anyway
+
 	val = J40__unpack_signed(tls, val)**(*Int32_t)(unsafe.Pointer(n + 12)) + *(*Int32_t)(unsafe.Pointer(n + 8))
 	val = val + j40__predict32(tls, st, *(*Int32_t)(unsafe.Pointer(n + 4)), bp, bp+64)
 __57:
@@ -13457,7 +10477,6 @@ __22:
 	goto __23
 __23:
 	;
-
 	j40__free_wp32(tls, bp)
 	j40__free(tls, refcmap)
 	return J40_err(0)
@@ -13469,103 +10488,6 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-// ----------------------------------------
-// end of recursion
-////////////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////// end of file //////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-// vim: noet ts=4 st=4 sts=4 sw=4 list colorcolumn=100
-// J40: Independent, self-contained JPEG XL decoder
-// Kang Seonghoon, version 2270 (2022-09), Public Domain
-// https://github.com/lifthrasiir/j40
-//
-// This is a decoder for JPEG XL (ISO/IEC 18181) image format. It intends to be a fully compatible
-// reimplementation to the reference implementation, libjxl, and also serves as a verification that
-// the specification allows for an independent implementation besides from libjxl.
-//
-// The following is a simple but complete converter from JPEG XL to Portable Arbitrary Map format:
-//
-// --------------------------------------------------------------------------------
-// #define J40_IMPLEMENTATION // only a SINGLE file should have this
-// #include "j40.h" // you also need to define a macro for experimental versions; follow the error.
-// #include <stdio.h>
-// #include <stdarg.h> // for va_*
-//
-// static int oops(const char *fmt, ...) {
-//     va_list args;
-//     va_start(args, fmt);
-//     vfprintf(stderr, fmt, args);
-//     va_end(args);
-//     return 1;
-// }
-//
-// int main(int argc, char **argv) {
-//     if (argc < 3) return oops("Usage: %s input.jxl output.pam\n", argv[0]);
-//
-//     FILE *out = fopen(argv[2], "wb");
-//     if (!out) return oops("Error: Cannot open an output file.\n");
-//
-//     j40_image image;
-//     j40_from_file(&image, argv[1]); // or: j40_from_memory(&image, buf, bufsize, freefunc);
-//     j40_output_format(&image, J40_RGBA, J40_U8X4);
-//
-//     // JPEG XL supports animation, so `j40_next_frame` calls can be called multiple times
-//     if (j40_next_frame(&image)) {
-//         j40_frame frame = j40_current_frame(&image);
-//         j40_pixels_u8x4 pixels = j40_frame_pixels_u8x4(&frame, J40_RGBA);
-//         fprintf(out,
-//             "P7\n"
-//             "WIDTH %d\n"
-//             "HEIGHT %d\n"
-//             "DEPTH 4\n"
-//             "MAXVAL 255\n"
-//             "TUPLTYPE RGB_ALPHA\n"
-//             "ENDHDR\n",
-//             pixels.width, pixels.height);
-//         for (int y = 0; y < height; ++y) {
-//             fwrite(j40_row_u8x4(pixels, y), 4, pixels.width, out);
-//         }
-//     }
-//
-//     // J40 stops once the first error is encountered; its error can be checked at the very end
-//     if (j40_error(&image)) return oops("Error: %s\n", j40_error_string(&image));
-//     if (ferror(out)) return oops("Error: Cannot fully write to the output file.\n");
-//
-//     j40_free(&image); // also frees all memory associated to j40_frame etc.
-//     fclose(out);
-//     return 0;
-// }
-// --------------------------------------------------------------------------------
-
-////////////////////////////////////////////////////////////////////////////////
-// preamble (only reachable via the user `#include`)
-
-// controls whether each `#if`-`#endif` section in this file should be included or not.
-// there are multiple purposes of this macro:
-// - `J40__RECURSING` is always defined after the first ever `#include`, so that:
-//   - the preamble will precede every other code in the typical usage, and
-//   - the preamble won't be included twice.
-// - `J40__RECURSING` is either 0 (public) or -1 (internal) depending on the logical visibility,
-//   so that the preamble can choose whether to include the internal code or not.
-// - larger values (>= 100) are used to repeat a specific section of code with
-//   slightly different parameters, i.e. templated code.
-// - one value (currently 9999) is reserved and used to ignore subsequent top-level `#include`s.
-
-////////////////////////////////////////////////////////////////////////////////
-// public platform macros
-
-////////////////////////////////////////////////////////////////////////////////
-// public API
-
-////////////////////////////////////////////////////////////////////////////////
-//////////////////////// internal code starts from here ////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-// ----------------------------------------
-
 type J40__wp64 = struct {
 	Width       Int32_t
 	Params      J40__wp_params
@@ -13576,7 +10498,7 @@ type J40__wp64 = struct {
 	Trueerrn    Int64_t
 	Trueerrnw   Int64_t
 	Trueerrne   Int64_t
-} /* j40.h:3781:3 */
+}
 
 type J40__neighbors32 = struct {
 	W   Int32_t
@@ -13587,9 +10509,9 @@ type J40__neighbors32 = struct {
 	Nee Int32_t
 	Ww  Int32_t
 	Nww Int32_t
-} /* j40.h:3783:62 */
+}
 
-func J40__init_neighbors32(tls *libc.TLS, plane uintptr, x Int32_t, y Int32_t) J40__neighbors32 { /* j40.h:3803:38: */
+func J40__init_neighbors32(tls *libc.TLS, plane uintptr, x Int32_t, y Int32_t) J40__neighbors32 {
 	var p J40__neighbors32
 	var pixels uintptr = func() uintptr {
 		return uintptr((*J40__plane)(unsafe.Pointer(plane)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(plane)).Stride_bytes)*Size_t(y))
@@ -13597,16 +10519,6 @@ func J40__init_neighbors32(tls *libc.TLS, plane uintptr, x Int32_t, y Int32_t) J
 	var width Int32_t = (*J40__plane)(unsafe.Pointer(plane)).Width
 	var stride Int32_t = (*J40__plane)(unsafe.Pointer(plane)).Stride_bytes >> (int32((*J40__plane)(unsafe.Pointer(plane)).Type) & 31)
 
-	// NN
-	//             |
-	//             v
-	// NWW  NW   _ N <- NE <- NEE
-	//  |    |   /|
-	//  v    v |/
-	// WW -> W  `  C
-	//
-	// A -> B means that if A doesn't exist B is used instead.
-	// if the pixel at the end of this chain doesn't exist as well, 0 is used.
 	p.W = func() int32 {
 		if x > 0 {
 			return *(*Int32_t)(unsafe.Pointer(pixels + uintptr(x-1)*4))
@@ -13663,13 +10575,13 @@ func J40__init_neighbors32(tls *libc.TLS, plane uintptr, x Int32_t, y Int32_t) J
 	return p
 }
 
-func j40__gradient64(tls *libc.TLS, w Int64_t, n Int64_t, nw Int64_t) Int64_t { /* j40.h:3830:23: */
+func j40__gradient64(tls *libc.TLS, w Int64_t, n Int64_t, nw Int64_t) Int64_t {
 	var lo Int64_t = J40__min64(tls, w, n)
 	var hi Int64_t = J40__max64(tls, w, n)
 	return J40__min64(tls, J40__max64(tls, lo, w+n-nw), hi)
 }
 
-func j40__init_wp64(tls *libc.TLS, st uintptr, params J40__wp_params, width Int32_t, wp uintptr) J40_err { /* j40.h:3835:29: */
+func j40__init_wp64(tls *libc.TLS, st uintptr, params J40__wp_params, width Int32_t, wp uintptr) J40_err {
 	var i Int32_t
 
 	(*J40__wp64)(unsafe.Pointer(wp)).Width = width
@@ -13715,13 +10627,12 @@ J40__ON_ERROR:
 }
 
 // also works when wp is zero-initialized (in which case does nothing)
-func j40__wp_before_predict_internal64(tls *libc.TLS, wp uintptr, x Int32_t, y Int32_t, pw Int32_t, pn Int32_t, pnw Int32_t, pne Int32_t, pnn Int32_t) { /* j40.h:3848:17: */
+func j40__wp_before_predict_internal64(tls *libc.TLS, wp uintptr, x Int32_t, y Int32_t, pw Int32_t, pn Int32_t, pnw Int32_t, pne Int32_t, pnn Int32_t) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
 
 	var err uintptr
 	var nerr uintptr
-	// var w [4]int64 at bp, 32
 
 	var wsum int64
 	var sum int64
@@ -13751,8 +10662,6 @@ func j40__wp_before_predict_internal64(tls *libc.TLS, wp uintptr, x Int32_t, y I
 		return (*J40__wp64)(unsafe.Pointer(wp)).Width
 	}())*40
 
-	// SPEC edge cases are handled differently from the spec, in particular some pixels are
-	// added twice to err_sum and requires a special care (errw2 below)
 	errw = func() uintptr {
 		if x > 0 {
 			return err + uintptr(x-1)*40
@@ -13788,7 +10697,6 @@ func j40__wp_before_predict_internal64(tls *libc.TLS, wp uintptr, x Int32_t, y I
 		return errw
 	}()
 
-	// SPEC again, edge cases are handled differently
 	(*J40__wp64)(unsafe.Pointer(wp)).Trueerrw = func() int64 {
 		if x > 0 {
 			return *(*int64)(unsafe.Pointer(err + uintptr(x-1)*40 + 4*8))
@@ -13814,7 +10722,6 @@ func j40__wp_before_predict_internal64(tls *libc.TLS, wp uintptr, x Int32_t, y I
 		return (*J40__wp64)(unsafe.Pointer(wp)).Trueerrn
 	}()
 
-	// (expr << 3) is used throughout wp, but it's an UB when expr is negative
 	*(*Int64_t)(unsafe.Pointer(wp + 24)) = Int64_t((pw + pne - pn) * 8)
 	*(*Int64_t)(unsafe.Pointer(wp + 24 + 1*8)) = Int64_t(pn*8) - ((*J40__wp64)(unsafe.Pointer(wp)).Trueerrw+(*J40__wp64)(unsafe.Pointer(wp)).Trueerrn+(*J40__wp64)(unsafe.Pointer(wp)).Trueerrne)*Int64_t((*J40__wp64)(unsafe.Pointer(wp)).Params.P1)>>5
 	*(*Int64_t)(unsafe.Pointer(wp + 24 + 2*8)) = Int64_t(pw*8) - ((*J40__wp64)(unsafe.Pointer(wp)).Trueerrw+(*J40__wp64)(unsafe.Pointer(wp)).Trueerrn+(*J40__wp64)(unsafe.Pointer(wp)).Trueerrnw)*Int64_t((*J40__wp64)(unsafe.Pointer(wp)).Params.P2)>>5
@@ -13822,7 +10729,7 @@ func j40__wp_before_predict_internal64(tls *libc.TLS, wp uintptr, x Int32_t, y I
 	for i = 0; i < 4; i++ {
 		var errsum int64 = *(*int64)(unsafe.Pointer(errn + uintptr(i)*8)) + *(*int64)(unsafe.Pointer(errw + uintptr(i)*8)) + *(*int64)(unsafe.Pointer(errnw + uintptr(i)*8)) + *(*int64)(unsafe.Pointer(errww + uintptr(i)*8)) + *(*int64)(unsafe.Pointer(errne + uintptr(i)*8)) + *(*int64)(unsafe.Pointer(errw2 + uintptr(i)*8))
 		var shift Int32_t = J40__max32(tls, J40__floor_lg64(tls, uint64(errsum)+uint64(1))-5, 0)
-		// SPEC missing the final `>> shift`
+
 		*(*int64)(unsafe.Pointer(bp + uintptr(i)*8)) = int64(4) + Int64_t(*(*Int8_t)(unsafe.Pointer(wp + 4 + 7 + uintptr(i))))*Int64_t(sJ40__24DIVP1[errsum>>shift])>>shift
 	}
 	logw = J40__floor_lg64(tls, uint64(*(*int64)(unsafe.Pointer(bp))+*(*int64)(unsafe.Pointer(bp + 1*8))+*(*int64)(unsafe.Pointer(bp + 2*8))+*(*int64)(unsafe.Pointer(bp + 3*8)))) - 4
@@ -13831,22 +10738,22 @@ func j40__wp_before_predict_internal64(tls *libc.TLS, wp uintptr, x Int32_t, y I
 		wsum = wsum + libc.AssignShrPtrInt64(bp+uintptr(i)*8, int(int64(logw)))
 		sum = sum + *(*Int64_t)(unsafe.Pointer(wp + 24 + uintptr(i)*8))**(*int64)(unsafe.Pointer(bp + uintptr(i)*8))
 	}
-	// SPEC missing `- 1` before scaling
+
 	*(*Int64_t)(unsafe.Pointer(wp + 24 + 4*8)) = (sum + wsum>>1 - int64(1)) * Int64_t(sJ40__24DIVP1[wsum-int64(1)]) >> 24
 	if (*J40__wp64)(unsafe.Pointer(wp)).Trueerrn^(*J40__wp64)(unsafe.Pointer(wp)).Trueerrw|((*J40__wp64)(unsafe.Pointer(wp)).Trueerrn^(*J40__wp64)(unsafe.Pointer(wp)).Trueerrnw) <= int64(0) {
-		var lo int64 = J40__min64(tls, int64(pw), J40__min64(tls, int64(pn), int64(pne))) * int64(8) // SPEC missing shifts
+		var lo int64 = J40__min64(tls, int64(pw), J40__min64(tls, int64(pn), int64(pne))) * int64(8)
 		var hi int64 = J40__max64(tls, int64(pw), J40__max64(tls, int64(pn), int64(pne))) * int64(8)
 		*(*Int64_t)(unsafe.Pointer(wp + 24 + 4*8)) = J40__min64(tls, J40__max64(tls, lo, *(*Int64_t)(unsafe.Pointer(wp + 24 + 4*8))), hi)
 	}
 }
 
-var ZERO1 = [4]int64{int64(0), int64(0), int64(0), int64(0)} /* j40.h:3855:23 */
+var ZERO1 = [4]int64{int64(0), int64(0), int64(0), int64(0)}
 
-func j40__wp_before_predict64(tls *libc.TLS, wp uintptr, x Int32_t, y Int32_t, p uintptr) { /* j40.h:3911:17: */
+func j40__wp_before_predict64(tls *libc.TLS, wp uintptr, x Int32_t, y Int32_t, p uintptr) {
 	j40__wp_before_predict_internal64(tls, wp, x, y, (*J40__neighbors32)(unsafe.Pointer(p)).W, (*J40__neighbors32)(unsafe.Pointer(p)).N, (*J40__neighbors32)(unsafe.Pointer(p)).Nw, (*J40__neighbors32)(unsafe.Pointer(p)).Ne, (*J40__neighbors32)(unsafe.Pointer(p)).Nn)
 }
 
-func j40__predict64(tls *libc.TLS, st uintptr, pred Int32_t, wp uintptr, p uintptr) Int64_t { /* j40.h:3917:23: */
+func j40__predict64(tls *libc.TLS, st uintptr, pred Int32_t, wp uintptr, p uintptr) Int64_t {
 	switch pred {
 	case 0:
 		return int64(0)
@@ -13887,7 +10794,7 @@ func j40__predict64(tls *libc.TLS, st uintptr, pred Int32_t, wp uintptr, p uintp
 }
 
 // also works when wp is zero-initialized (in which case does nothing)
-func j40__wp_after_predict64(tls *libc.TLS, wp uintptr, x Int32_t, y Int32_t, val Int64_t) { /* j40.h:3940:17: */
+func j40__wp_after_predict64(tls *libc.TLS, wp uintptr, x Int32_t, y Int32_t, val Int64_t) {
 	if (*J40__wp64)(unsafe.Pointer(wp)).Errors != 0 {
 		var err uintptr = (*J40__wp64)(unsafe.Pointer(wp)).Errors + uintptr(func() int32 {
 			if y&1 != 0 {
@@ -13896,16 +10803,16 @@ func j40__wp_after_predict64(tls *libc.TLS, wp uintptr, x Int32_t, y Int32_t, va
 			return 0
 		}()+x)*40
 		var i Int32_t
-		// SPEC approximated differently from the spec
+
 		for i = 0; i < 4; i++ {
 			*(*Int64_t)(unsafe.Pointer(err + uintptr(i)*8)) = (J40__abs64(tls, *(*Int64_t)(unsafe.Pointer(wp + 24 + uintptr(i)*8))-val*int64(8)) + int64(3)) >> 3
 		}
-		*(*Int64_t)(unsafe.Pointer(err + 4*8)) = *(*Int64_t)(unsafe.Pointer(wp + 24 + 4*8)) - val*int64(8) // SPEC this is a *signed* difference
+		*(*Int64_t)(unsafe.Pointer(err + 4*8)) = *(*Int64_t)(unsafe.Pointer(wp + 24 + 4*8)) - val*int64(8)
 	}
 }
 
 // also works when wp is zero-initialized (in which case does nothing)
-func j40__reset_wp64(tls *libc.TLS, wp uintptr) { /* j40.h:3951:17: */
+func j40__reset_wp64(tls *libc.TLS, wp uintptr) {
 	var i Int32_t
 	if (*J40__wp64)(unsafe.Pointer(wp)).Errors != 0 {
 		libc.Xmemset(tls, (*J40__wp64)(unsafe.Pointer(wp)).Errors, 0, Size_t((*J40__wp64)(unsafe.Pointer(wp)).Width)*uint64(2)*Size_t(40))
@@ -13916,13 +10823,13 @@ func j40__reset_wp64(tls *libc.TLS, wp uintptr) { /* j40.h:3951:17: */
 	(*J40__wp64)(unsafe.Pointer(wp)).Trueerrw = libc.AssignPtrInt64(wp+72, libc.AssignPtrInt64(wp+80, libc.AssignPtrInt64(wp+88, int64(0))))
 }
 
-func j40__free_wp64(tls *libc.TLS, wp uintptr) { /* j40.h:3958:17: */
+func j40__free_wp64(tls *libc.TLS, wp uintptr) {
 	j40__free(tls, (*J40__wp64)(unsafe.Pointer(wp)).Errors)
 	(*J40__wp64)(unsafe.Pointer(wp)).Errors = uintptr(0)
 	(*J40__wp64)(unsafe.Pointer(wp)).Width = 0
 }
 
-func j40__modular_channel32(tls *libc.TLS, st uintptr, m uintptr, cidx Int32_t, sidx Int64_t) J40_err { /* j40.h:3964:29: */
+func j40__modular_channel32(tls *libc.TLS, st uintptr, m uintptr, cidx Int32_t, sidx Int64_t) J40_err {
 	bp := tls.Alloc(128)
 	defer tls.Free(128)
 
@@ -13933,9 +10840,8 @@ func j40__modular_channel32(tls *libc.TLS, st uintptr, m uintptr, cidx Int32_t, 
 	var x Int32_t
 	var i Int32_t
 	var nrefcmap Int32_t
-	var refcmap uintptr // refcmap[i] is a channel index for properties (16..19)+4*i
-	// var wp J40__wp64 at bp, 96
-	// determine whether to use weighted predictor (expensive)
+	var refcmap uintptr
+
 	var lasttree Int32_t
 	var use_wp Int32_t
 	var refc uintptr
@@ -13945,7 +10851,6 @@ func j40__modular_channel32(tls *libc.TLS, st uintptr, m uintptr, cidx Int32_t, 
 	var refcidx Int32_t
 	var refc1 uintptr
 	var n uintptr
-	// var p J40__neighbors32 at bp+96, 32
 
 	var val int64
 	var outpixels uintptr
@@ -13953,11 +10858,8 @@ func j40__modular_channel32(tls *libc.TLS, st uintptr, m uintptr, cidx Int32_t, 
 	width = (*J40__plane)(unsafe.Pointer(c)).Width
 	height = (*J40__plane)(unsafe.Pointer(c)).Height
 	refcmap = uintptr(0)
-	*(*J40__wp64)(unsafe.Pointer(bp /* wp */)) = J40__wp64{}
+	*(*J40__wp64)(unsafe.Pointer(bp)) = J40__wp64{}
 
-	// caller should set this to the global tree if not given
-
-	// determine whether to use weighted predictor (expensive)
 	lasttree = 0
 	use_wp = 0
 	i = 0
@@ -14003,9 +10905,6 @@ __9:
 	;
 __6:
 	;
-
-	// compute indices for additional "previous channel" properties
-	// SPEC incompatible channels are skipped and never result in unusable but numbered properties
 __11:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __14
@@ -14055,7 +10954,6 @@ __17:
 	goto __18
 __18:
 	;
-
 	y = 0
 __21:
 	if !(y < height) {
@@ -14070,9 +10968,8 @@ __24:
 		goto __26
 	}
 	n = (*J40__modular)(unsafe.Pointer(m)).Tree
-	*(*J40__neighbors32)(unsafe.Pointer(bp + 96 /* p */)) = J40__init_neighbors32(tls, c, x, y)
+	*(*J40__neighbors32)(unsafe.Pointer(bp + 96)) = J40__init_neighbors32(tls, c, x, y)
 
-	// wp should be calculated before any property testing due to max_error (property 15)
 	j40__wp_before_predict64(tls, bp, x, y, bp+96)
 
 __27:
@@ -14084,7 +10981,7 @@ __27:
 	case 0:
 		goto __30
 	case 1:
-		goto __31 // TODO check overflow
+		goto __31
 	case 2:
 		goto __32
 	case 3:
@@ -14122,7 +11019,7 @@ __30:
 	goto __29
 __31:
 	val = sidx
-	goto __29 // TODO check overflow
+	goto __29
 __32:
 	val = int64(y)
 	goto __29
@@ -14130,22 +11027,22 @@ __33:
 	val = int64(x)
 	goto __29
 __34:
-	val = J40__abs64(tls, int64((*J40__neighbors32)(unsafe.Pointer(bp+96 /* &p */)).N))
+	val = J40__abs64(tls, int64((*J40__neighbors32)(unsafe.Pointer(bp+96)).N))
 	goto __29
 __35:
-	val = J40__abs64(tls, int64((*J40__neighbors32)(unsafe.Pointer(bp+96 /* &p */)).W))
+	val = J40__abs64(tls, int64((*J40__neighbors32)(unsafe.Pointer(bp+96)).W))
 	goto __29
 __36:
-	val = int64((*J40__neighbors32)(unsafe.Pointer(bp + 96 /* &p */)).N)
+	val = int64((*J40__neighbors32)(unsafe.Pointer(bp + 96)).N)
 	goto __29
 __37:
-	val = int64((*J40__neighbors32)(unsafe.Pointer(bp + 96 /* &p */)).W)
+	val = int64((*J40__neighbors32)(unsafe.Pointer(bp + 96)).W)
 	goto __29
 __38:
 	if x > 0 {
 		val = int64((*J40__neighbors32)(unsafe.Pointer(bp+96)).W - ((*J40__neighbors32)(unsafe.Pointer(bp+96)).Ww + (*J40__neighbors32)(unsafe.Pointer(bp+96)).Nw - (*J40__neighbors32)(unsafe.Pointer(bp+96)).Nww))
 	} else {
-		val = int64((*J40__neighbors32)(unsafe.Pointer(bp + 96 /* &p */)).W)
+		val = int64((*J40__neighbors32)(unsafe.Pointer(bp + 96)).W)
 	}
 	goto __29
 __39:
@@ -14166,24 +11063,24 @@ __43:
 __44:
 	val = int64((*J40__neighbors32)(unsafe.Pointer(bp+96)).W - (*J40__neighbors32)(unsafe.Pointer(bp+96)).Ww)
 	goto __29
-__45: // requires use_wp; otherwise will be 0
-	val = (*J40__wp64)(unsafe.Pointer(bp /* &wp */)).Trueerrw
+__45:
+	val = (*J40__wp64)(unsafe.Pointer(bp)).Trueerrw
 	if !(J40__abs64(tls, val) < J40__abs64(tls, (*J40__wp64)(unsafe.Pointer(bp)).Trueerrn)) {
 		goto __47
 	}
-	val = (*J40__wp64)(unsafe.Pointer(bp /* &wp */)).Trueerrn
+	val = (*J40__wp64)(unsafe.Pointer(bp)).Trueerrn
 __47:
 	;
 	if !(J40__abs64(tls, val) < J40__abs64(tls, (*J40__wp64)(unsafe.Pointer(bp)).Trueerrnw)) {
 		goto __48
 	}
-	val = (*J40__wp64)(unsafe.Pointer(bp /* &wp */)).Trueerrnw
+	val = (*J40__wp64)(unsafe.Pointer(bp)).Trueerrnw
 __48:
 	;
 	if !(J40__abs64(tls, val) < J40__abs64(tls, (*J40__wp64)(unsafe.Pointer(bp)).Trueerrne)) {
 		goto __49
 	}
-	val = (*J40__wp64)(unsafe.Pointer(bp /* &wp */)).Trueerrne
+	val = (*J40__wp64)(unsafe.Pointer(bp)).Trueerrne
 __49:
 	;
 	goto __29
@@ -14215,7 +11112,7 @@ __52:
 
 	val = int64(*(*Int32_t)(unsafe.Pointer(func() uintptr {
 		return uintptr((*J40__plane)(unsafe.Pointer(refc1)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(refc1)).Stride_bytes)*Size_t(y))
-	}() + uintptr(x)*4))) // rC
+	}() + uintptr(x)*4)))
 	if !(^*(*Int32_t)(unsafe.Pointer(n))&2 != 0) {
 		goto __55
 	}
@@ -14261,9 +11158,8 @@ __29:
 	goto __27
 __28:
 	;
-
 	val = int64(j40__code(tls, st, *(*Int32_t)(unsafe.Pointer(n)), (*J40__modular)(unsafe.Pointer(m)).Dist_mult, m+96))
-	// TODO can overflow at any operator and the bound is incorrect anyway
+
 	val = int64(J40__unpack_signed(tls, Int32_t(val))**(*Int32_t)(unsafe.Pointer(n + 12)) + *(*Int32_t)(unsafe.Pointer(n + 8)))
 	val = val + j40__predict64(tls, st, *(*Int32_t)(unsafe.Pointer(n + 4)), bp, bp+96)
 __57:
@@ -14304,7 +11200,6 @@ __22:
 	goto __23
 __23:
 	;
-
 	j40__free_wp64(tls, bp)
 	j40__free(tls, refcmap)
 	return J40_err(0)
@@ -14316,19 +11211,7 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-// ----------------------------------------
-// end of recursion
-////////////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////// end of file //////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-// vim: noet ts=4 st=4 sts=4 sw=4 list colorcolumn=100
-
-// ----------------------------------------
-
-func j40__modular_channel(tls *libc.TLS, st uintptr, m uintptr, cidx Int32_t, sidx Int64_t) J40_err { /* j40.h:4093:29: */
+func j40__modular_channel(tls *libc.TLS, st uintptr, m uintptr, cidx Int32_t, sidx Int64_t) J40_err {
 	if int32((*J40__plane)(unsafe.Pointer((*J40__modular)(unsafe.Pointer(m)).Channel+uintptr(cidx)*24)).Type) == J40__PLANE_I16 {
 		return j40__modular_channel16(tls, st, m, cidx, sidx)
 	} else {
@@ -14337,7 +11220,7 @@ func j40__modular_channel(tls *libc.TLS, st uintptr, m uintptr, cidx Int32_t, si
 	return J40_err(0)
 }
 
-var sJ40__PALETTE_DELTAS = [144][3]Int16_t{ // the first entry is a duplicate and skipped
+var sJ40__PALETTE_DELTAS = [144][3]Int16_t{
 	{int16(0), int16(0), int16(0)}, {int16(-0), int16(-0), int16(-0)}, {int16(4), int16(4), int16(4)}, {int16(-4), int16(-4), int16(-4)}, {int16(11), int16(0), int16(0)}, {int16(-11), int16(-0), int16(-0)}, {int16(0), int16(0), int16(-13)}, {int16(-0), int16(-0), int16(- -13)}, {int16(0), int16(-12), int16(0)}, {int16(-0), int16(- -12), int16(-0)}, {int16(-10), int16(-10), int16(-10)}, {int16(- -10), int16(- -10), int16(- -10)},
 	{int16(-18), int16(-18), int16(-18)}, {int16(- -18), int16(- -18), int16(- -18)}, {int16(-27), int16(-27), int16(-27)}, {int16(- -27), int16(- -27), int16(- -27)}, {int16(-18), int16(-18), int16(0)}, {int16(- -18), int16(- -18), int16(-0)}, {int16(0), int16(0), int16(-32)}, {int16(-0), int16(-0), int16(- -32)}, {int16(-32), int16(0), int16(0)}, {int16(- -32), int16(-0), int16(-0)}, {int16(-37), int16(-37), int16(-37)}, {int16(- -37), int16(- -37), int16(- -37)},
 	{int16(0), int16(-32), int16(-32)}, {int16(-0), int16(- -32), int16(- -32)}, {int16(24), int16(24), int16(45)}, {int16(-24), int16(-24), int16(-45)}, {int16(50), int16(50), int16(50)}, {int16(-50), int16(-50), int16(-50)}, {int16(-45), int16(-24), int16(-24)}, {int16(- -45), int16(- -24), int16(- -24)}, {int16(-24), int16(-45), int16(-45)}, {int16(- -24), int16(- -45), int16(- -45)}, {int16(0), int16(-24), int16(-24)}, {int16(-0), int16(- -24), int16(- -24)},
@@ -14350,13 +11233,11 @@ var sJ40__PALETTE_DELTAS = [144][3]Int16_t{ // the first entry is a duplicate an
 	{int16(45), int16(-24), int16(-45)}, {int16(-45), int16(- -24), int16(- -45)}, {int16(45), int16(-45), int16(-24)}, {int16(-45), int16(- -45), int16(- -24)}, {int16(0), int16(0), int16(-96)}, {int16(-0), int16(-0), int16(- -96)}, {int16(0), int16(128), int16(128)}, {int16(-0), int16(-128), int16(-128)}, {int16(0), int16(96), int16(0)}, {int16(-0), int16(-96), int16(-0)}, {int16(45), int16(24), int16(-45)}, {int16(-45), int16(-24), int16(- -45)},
 	{int16(-128), int16(0), int16(0)}, {int16(- -128), int16(-0), int16(-0)}, {int16(24), int16(-45), int16(24)}, {int16(-24), int16(- -45), int16(-24)}, {int16(-45), int16(24), int16(-45)}, {int16(- -45), int16(-24), int16(- -45)}, {int16(64), int16(0), int16(-64)}, {int16(-64), int16(-0), int16(- -64)}, {int16(64), int16(-64), int16(-64)}, {int16(-64), int16(- -64), int16(- -64)}, {int16(96), int16(0), int16(96)}, {int16(-96), int16(-0), int16(-96)},
 	{int16(45), int16(-45), int16(24)}, {int16(-45), int16(- -45), int16(-24)}, {int16(24), int16(45), int16(-45)}, {int16(-24), int16(-45), int16(- -45)}, {int16(64), int16(64), int16(-64)}, {int16(-64), int16(-64), int16(- -64)}, {int16(128), int16(128), int16(0)}, {int16(-128), int16(-128), int16(-0)}, {int16(0), int16(0), int16(-128)}, {int16(-0), int16(-0), int16(- -128)}, {int16(-24), int16(45), int16(-45)}, {int16(- -24), int16(-45), int16(- -45)},
-} /* j40.h:4110:22 */
+}
 
-func j40__inverse_rct16(tls *libc.TLS, m uintptr, tr uintptr) { /* j40.h:4153:17: */
+func j40__inverse_rct16(tls *libc.TLS, m uintptr, tr uintptr) {
 	bp := tls.Alloc(72)
 	defer tls.Free(72)
-
-	// var c [3]J40__plane at bp, 72
 
 	var x Int32_t
 	var y Int32_t
@@ -14366,25 +11247,24 @@ func j40__inverse_rct16(tls *libc.TLS, m uintptr, tr uintptr) { /* j40.h:4153:17
 		*(*J40__plane)(unsafe.Pointer(bp + uintptr(i)*24)) = *(*J40__plane)(unsafe.Pointer((*J40__modular)(unsafe.Pointer(m)).Channel + uintptr(*(*Int32_t)(unsafe.Pointer(tr + 4))+i)*24))
 	}
 
-	// TODO detect overflow
 	switch *(*Int32_t)(unsafe.Pointer(tr + 8)) % 7 {
 	case 0:
 		break
 	case 1:
-		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp /* c */)).Height; y++ {
+		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp)).Height; y++ {
 			var pp0 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp)).Stride_bytes)*Size_t(y))
 			}()
 			var pp2 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp+2*24)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp+2*24)).Stride_bytes)*Size_t(y))
 			}()
-			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp /* c */)).Width; x++ {
+			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp)).Width; x++ {
 				*(*int16)(unsafe.Pointer(pp2 + uintptr(x)*2)) = int16(int32(*(*int16)(unsafe.Pointer(pp2 + uintptr(x)*2))) + int32(*(*int16)(unsafe.Pointer(pp0 + uintptr(x)*2))))
 			}
 		}
 		break
 	case 2:
-		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp /* c */)).Height; y++ {
+		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp)).Height; y++ {
 			var pp0 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp)).Stride_bytes)*Size_t(y))
 			}()
@@ -14394,13 +11274,13 @@ func j40__inverse_rct16(tls *libc.TLS, m uintptr, tr uintptr) { /* j40.h:4153:17
 			var pp2 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp+2*24)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp+2*24)).Stride_bytes)*Size_t(y))
 			}()
-			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp /* c */)).Width; x++ {
+			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp)).Width; x++ {
 				*(*int16)(unsafe.Pointer(pp2 + uintptr(x)*2)) = int16(int32(*(*int16)(unsafe.Pointer(pp1 + uintptr(x)*2))) + int32(*(*int16)(unsafe.Pointer(pp0 + uintptr(x)*2))))
 			}
 		}
 		break
 	case 3:
-		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp /* c */)).Height; y++ {
+		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp)).Height; y++ {
 			var pp0 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp)).Stride_bytes)*Size_t(y))
 			}()
@@ -14410,14 +11290,14 @@ func j40__inverse_rct16(tls *libc.TLS, m uintptr, tr uintptr) { /* j40.h:4153:17
 			var pp2 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp+2*24)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp+2*24)).Stride_bytes)*Size_t(y))
 			}()
-			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp /* c */)).Width; x++ {
+			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp)).Width; x++ {
 				*(*int16)(unsafe.Pointer(pp1 + uintptr(x)*2)) = int16(int32(*(*int16)(unsafe.Pointer(pp1 + uintptr(x)*2))) + int32(*(*int16)(unsafe.Pointer(pp0 + uintptr(x)*2))))
 				*(*int16)(unsafe.Pointer(pp2 + uintptr(x)*2)) = int16(int32(*(*int16)(unsafe.Pointer(pp2 + uintptr(x)*2))) + int32(*(*int16)(unsafe.Pointer(pp0 + uintptr(x)*2))))
 			}
 		}
 		break
 	case 4:
-		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp /* c */)).Height; y++ {
+		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp)).Height; y++ {
 			var pp0 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp)).Stride_bytes)*Size_t(y))
 			}()
@@ -14427,13 +11307,13 @@ func j40__inverse_rct16(tls *libc.TLS, m uintptr, tr uintptr) { /* j40.h:4153:17
 			var pp2 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp+2*24)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp+2*24)).Stride_bytes)*Size_t(y))
 			}()
-			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp /* c */)).Width; x++ {
+			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp)).Width; x++ {
 				*(*int16)(unsafe.Pointer(pp1 + uintptr(x)*2)) = int16(int32(*(*int16)(unsafe.Pointer(pp1 + uintptr(x)*2))) + int32(J40__floor_avg16(tls, *(*int16)(unsafe.Pointer(pp0 + uintptr(x)*2)), *(*int16)(unsafe.Pointer(pp2 + uintptr(x)*2)))))
 			}
 		}
 		break
 	case 5:
-		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp /* c */)).Height; y++ {
+		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp)).Height; y++ {
 			var pp0 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp)).Stride_bytes)*Size_t(y))
 			}()
@@ -14443,15 +11323,14 @@ func j40__inverse_rct16(tls *libc.TLS, m uintptr, tr uintptr) { /* j40.h:4153:17
 			var pp2 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp+2*24)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp+2*24)).Stride_bytes)*Size_t(y))
 			}()
-			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp /* c */)).Width; x++ {
-				// TODO avoid int2P_t if possible
+			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp)).Width; x++ {
 				*(*int16)(unsafe.Pointer(pp1 + uintptr(x)*2)) = int16(int32(*(*int16)(unsafe.Pointer(pp1 + uintptr(x)*2))) + int32(*(*int16)(unsafe.Pointer(pp0 + uintptr(x)*2))) + int32(*(*int16)(unsafe.Pointer(pp2 + uintptr(x)*2)))>>1)
 				*(*int16)(unsafe.Pointer(pp2 + uintptr(x)*2)) = int16(int32(*(*int16)(unsafe.Pointer(pp2 + uintptr(x)*2))) + int32(*(*int16)(unsafe.Pointer(pp0 + uintptr(x)*2))))
 			}
 		}
 		break
-	case 6: // YCgCo
-		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp /* c */)).Height; y++ {
+	case 6:
+		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp)).Height; y++ {
 			var pp0 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp)).Stride_bytes)*Size_t(y))
 			}()
@@ -14461,8 +11340,7 @@ func j40__inverse_rct16(tls *libc.TLS, m uintptr, tr uintptr) { /* j40.h:4153:17
 			var pp2 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp+2*24)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp+2*24)).Stride_bytes)*Size_t(y))
 			}()
-			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp /* c */)).Width; x++ {
-				// TODO avoid int2P_t if possible
+			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp)).Width; x++ {
 				var tmp int32 = int32(*(*int16)(unsafe.Pointer(pp0 + uintptr(x)*2))) - int32(*(*int16)(unsafe.Pointer(pp2 + uintptr(x)*2)))>>1
 				var p1 int32 = int32(*(*int16)(unsafe.Pointer(pp2 + uintptr(x)*2))) + tmp
 				var p2 int32 = tmp - int32(*(*int16)(unsafe.Pointer(pp1 + uintptr(x)*2)))>>1
@@ -14480,15 +11358,12 @@ func j40__inverse_rct16(tls *libc.TLS, m uintptr, tr uintptr) { /* j40.h:4153:17
 	}
 }
 
-var PERMUTATIONS = [6][3]Uint8_t{{Uint8_t(0), Uint8_t(1), Uint8_t(2)}, {Uint8_t(1), Uint8_t(2), Uint8_t(0)}, {Uint8_t(2), Uint8_t(0), Uint8_t(1)}, {Uint8_t(0), Uint8_t(2), Uint8_t(1)}, {Uint8_t(1), Uint8_t(0), Uint8_t(2)}, {Uint8_t(2), Uint8_t(1), Uint8_t(0)}} /* j40.h:4158:23 */
+var PERMUTATIONS = [6][3]Uint8_t{{Uint8_t(0), Uint8_t(1), Uint8_t(2)}, {Uint8_t(1), Uint8_t(2), Uint8_t(0)}, {Uint8_t(2), Uint8_t(0), Uint8_t(1)}, {Uint8_t(0), Uint8_t(2), Uint8_t(1)}, {Uint8_t(1), Uint8_t(0), Uint8_t(2)}, {Uint8_t(2), Uint8_t(1), Uint8_t(0)}}
 
-func j40__inverse_palette16(tls *libc.TLS, st uintptr, m uintptr, tr uintptr) J40_err { /* j40.h:4229:29: */
+func j40__inverse_palette16(tls *libc.TLS, st uintptr, m uintptr, tr uintptr) J40_err {
 	bp := tls.Alloc(80)
 	defer tls.Free(80)
 
-	// `first` is the index channel index; restored color channels will be at indices [first,last],
-	// where the original index channel is relocated to the index `last` and then repurposed.
-	// the palette meta channel 0 will be removed at the very end.
 	var first Int32_t
 	var last Int32_t
 	var bpp Int32_t
@@ -14501,14 +11376,11 @@ func j40__inverse_palette16(tls *libc.TLS, st uintptr, m uintptr, tr uintptr) J4
 	var height Int32_t
 	var use_pred int32
 	var use_wp int32
-	// var wp J40__wp32 at bp, 64
-
-	// var p J40__neighbors16 at bp+64, 16
 
 	var idx int16
 	var val int16
 	var is_delta int32
-	// SPEC pseudocode accidentally overwrites the index channel
+
 	var idxline uintptr
 	var line uintptr
 	var palp uintptr
@@ -14521,9 +11393,8 @@ func j40__inverse_palette16(tls *libc.TLS, st uintptr, m uintptr, tr uintptr) J4
 	height = (*J40__plane)(unsafe.Pointer((*J40__modular)(unsafe.Pointer(m)).Channel + uintptr(first)*24)).Height
 	use_pred = libc.Bool32(*(*Int32_t)(unsafe.Pointer(tr + 16)) > 0)
 	use_wp = libc.Bool32(use_pred != 0 && *(*Int32_t)(unsafe.Pointer(tr + 20)) == 6)
-	*(*J40__wp32)(unsafe.Pointer(bp /* wp */)) = J40__wp32{}
+	*(*J40__wp32)(unsafe.Pointer(bp)) = J40__wp32{}
 
-	// since we never shrink m->channel, we know there is enough capacity for intermediate transform
 	libc.Xmemmove(tls, (*J40__modular)(unsafe.Pointer(m)).Channel+uintptr(last)*24, (*J40__modular)(unsafe.Pointer(m)).Channel+uintptr(first)*24, uint64(unsafe.Sizeof(J40__plane{}))*Size_t((*J40__modular)(unsafe.Pointer(m)).Num_channels-first))
 	*(*Int32_t)(unsafe.Pointer(m + 136)) += last - first
 
@@ -14567,7 +11438,6 @@ __5:
 	goto __6
 __6:
 	;
-
 	if !(use_wp != 0) {
 		goto __11
 	}
@@ -14588,7 +11458,6 @@ __14:
 	;
 __11:
 	;
-
 	i = 0
 __16:
 	if !(i < *(*Int32_t)(unsafe.Pointer(tr + 8))) {
@@ -14603,7 +11472,7 @@ __19:
 	if !(y < height) {
 		goto __21
 	}
-	// SPEC pseudocode accidentally overwrites the index channel
+
 	idxline = func() uintptr {
 		return uintptr((*J40__plane)(unsafe.Pointer(idxc)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(idxc)).Stride_bytes)*Size_t(y))
 	}()
@@ -14619,11 +11488,11 @@ __22:
 	is_delta = libc.Bool32(int32(idx) < *(*Int32_t)(unsafe.Pointer(tr + 16)))
 	if !(int32(idx) < 0) {
 		goto __25
-	} // hard-coded delta for first 3 channels, otherwise 0
+	}
 	if !(i < 3) {
 		goto __27
 	}
-	idx = int16(^int32(idx) % 143) // say no to 1's complement
+	idx = int16(^int32(idx) % 143)
 	val = *(*Int16_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&sJ40__PALETTE_DELTAS)) + uintptr(int32(idx)+1)*6 + uintptr(i)*2))
 	if !(bpp > 8) {
 		goto __29
@@ -14643,11 +11512,11 @@ __25:
 	}
 	val = *(*int16)(unsafe.Pointer(palp + uintptr(idx)*2))
 	goto __31
-__30: // synthesized from (idx - nb_colours)
+__30:
 	idx = int16(int32(idx) - *(*Int32_t)(unsafe.Pointer(tr + 12)))
 	if !(int32(idx) < 64) {
 		goto __32
-	} // idx == ..YX in base 4 -> {(X+0.5)/4, (Y+0.5)/4, ...}
+	}
 	val = int16(func() int32 {
 		if i < 3 {
 			return int32(idx) >> (2 * i)
@@ -14655,7 +11524,7 @@ __30: // synthesized from (idx - nb_colours)
 		return 0
 	}()*(int32(1)<<bpp-1)/4 + int32(1)<<J40__max32(tls, 0, bpp-3))
 	goto __33
-__32: // idx + 64 == ..ZYX in base 5 -> {X/4, Y/4, Z/4, ...}
+__32:
 	val = int16(int32(idx) - 64)
 	j = 0
 __34:
@@ -14680,9 +11549,9 @@ __26:
 	if !(use_pred != 0) {
 		goto __37
 	}
-	*(*J40__neighbors16)(unsafe.Pointer(bp + 64 /* p */)) = J40__init_neighbors16(tls, c, x, y)
+	*(*J40__neighbors16)(unsafe.Pointer(bp + 64)) = J40__init_neighbors16(tls, c, x, y)
 	j40__wp_before_predict32(tls, bp, x, y, bp+64)
-	// TODO handle overflow
+
 	if !(is_delta != 0) {
 		goto __38
 	}
@@ -14715,7 +11584,6 @@ __17:
 	goto __18
 __18:
 	;
-
 	j40__free_wp32(tls, bp)
 	j40__free_plane(tls, (*J40__modular)(unsafe.Pointer(m)).Channel)
 	libc.Xmemmove(tls, (*J40__modular)(unsafe.Pointer(m)).Channel, (*J40__modular)(unsafe.Pointer(m)).Channel+uintptr(1)*24, uint64(unsafe.Sizeof(J40__plane{}))*Size_t(libc.PreDecInt32(&(*J40__modular)(unsafe.Pointer(m)).Num_channels, 1)))
@@ -14726,11 +11594,9 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__inverse_rct32(tls *libc.TLS, m uintptr, tr uintptr) { /* j40.h:4153:17: */
+func j40__inverse_rct32(tls *libc.TLS, m uintptr, tr uintptr) {
 	bp := tls.Alloc(72)
 	defer tls.Free(72)
-
-	// var c [3]J40__plane at bp, 72
 
 	var x Int32_t
 	var y Int32_t
@@ -14740,25 +11606,24 @@ func j40__inverse_rct32(tls *libc.TLS, m uintptr, tr uintptr) { /* j40.h:4153:17
 		*(*J40__plane)(unsafe.Pointer(bp + uintptr(i)*24)) = *(*J40__plane)(unsafe.Pointer((*J40__modular)(unsafe.Pointer(m)).Channel + uintptr(*(*Int32_t)(unsafe.Pointer(tr + 4))+i)*24))
 	}
 
-	// TODO detect overflow
 	switch *(*Int32_t)(unsafe.Pointer(tr + 8)) % 7 {
 	case 0:
 		break
 	case 1:
-		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp /* c */)).Height; y++ {
+		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp)).Height; y++ {
 			var pp0 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp)).Stride_bytes)*Size_t(y))
 			}()
 			var pp2 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp+2*24)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp+2*24)).Stride_bytes)*Size_t(y))
 			}()
-			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp /* c */)).Width; x++ {
+			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp)).Width; x++ {
 				*(*int32)(unsafe.Pointer(pp2 + uintptr(x)*4)) = *(*int32)(unsafe.Pointer(pp2 + uintptr(x)*4)) + *(*int32)(unsafe.Pointer(pp0 + uintptr(x)*4))
 			}
 		}
 		break
 	case 2:
-		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp /* c */)).Height; y++ {
+		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp)).Height; y++ {
 			var pp0 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp)).Stride_bytes)*Size_t(y))
 			}()
@@ -14768,13 +11633,13 @@ func j40__inverse_rct32(tls *libc.TLS, m uintptr, tr uintptr) { /* j40.h:4153:17
 			var pp2 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp+2*24)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp+2*24)).Stride_bytes)*Size_t(y))
 			}()
-			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp /* c */)).Width; x++ {
+			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp)).Width; x++ {
 				*(*int32)(unsafe.Pointer(pp2 + uintptr(x)*4)) = *(*int32)(unsafe.Pointer(pp1 + uintptr(x)*4)) + *(*int32)(unsafe.Pointer(pp0 + uintptr(x)*4))
 			}
 		}
 		break
 	case 3:
-		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp /* c */)).Height; y++ {
+		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp)).Height; y++ {
 			var pp0 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp)).Stride_bytes)*Size_t(y))
 			}()
@@ -14784,14 +11649,14 @@ func j40__inverse_rct32(tls *libc.TLS, m uintptr, tr uintptr) { /* j40.h:4153:17
 			var pp2 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp+2*24)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp+2*24)).Stride_bytes)*Size_t(y))
 			}()
-			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp /* c */)).Width; x++ {
+			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp)).Width; x++ {
 				*(*int32)(unsafe.Pointer(pp1 + uintptr(x)*4)) = *(*int32)(unsafe.Pointer(pp1 + uintptr(x)*4)) + *(*int32)(unsafe.Pointer(pp0 + uintptr(x)*4))
 				*(*int32)(unsafe.Pointer(pp2 + uintptr(x)*4)) = *(*int32)(unsafe.Pointer(pp2 + uintptr(x)*4)) + *(*int32)(unsafe.Pointer(pp0 + uintptr(x)*4))
 			}
 		}
 		break
 	case 4:
-		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp /* c */)).Height; y++ {
+		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp)).Height; y++ {
 			var pp0 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp)).Stride_bytes)*Size_t(y))
 			}()
@@ -14801,13 +11666,13 @@ func j40__inverse_rct32(tls *libc.TLS, m uintptr, tr uintptr) { /* j40.h:4153:17
 			var pp2 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp+2*24)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp+2*24)).Stride_bytes)*Size_t(y))
 			}()
-			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp /* c */)).Width; x++ {
+			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp)).Width; x++ {
 				*(*int32)(unsafe.Pointer(pp1 + uintptr(x)*4)) = *(*int32)(unsafe.Pointer(pp1 + uintptr(x)*4)) + J40__floor_avg32(tls, *(*int32)(unsafe.Pointer(pp0 + uintptr(x)*4)), *(*int32)(unsafe.Pointer(pp2 + uintptr(x)*4)))
 			}
 		}
 		break
 	case 5:
-		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp /* c */)).Height; y++ {
+		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp)).Height; y++ {
 			var pp0 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp)).Stride_bytes)*Size_t(y))
 			}()
@@ -14817,15 +11682,14 @@ func j40__inverse_rct32(tls *libc.TLS, m uintptr, tr uintptr) { /* j40.h:4153:17
 			var pp2 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp+2*24)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp+2*24)).Stride_bytes)*Size_t(y))
 			}()
-			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp /* c */)).Width; x++ {
-				// TODO avoid int2P_t if possible
+			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp)).Width; x++ {
 				*(*int32)(unsafe.Pointer(pp1 + uintptr(x)*4)) = int32(int64(*(*int32)(unsafe.Pointer(pp1 + uintptr(x)*4))) + int64(*(*int32)(unsafe.Pointer(pp0 + uintptr(x)*4))) + int64(*(*int32)(unsafe.Pointer(pp2 + uintptr(x)*4))>>1))
 				*(*int32)(unsafe.Pointer(pp2 + uintptr(x)*4)) = *(*int32)(unsafe.Pointer(pp2 + uintptr(x)*4)) + *(*int32)(unsafe.Pointer(pp0 + uintptr(x)*4))
 			}
 		}
 		break
-	case 6: // YCgCo
-		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp /* c */)).Height; y++ {
+	case 6:
+		for y = 0; y < (*J40__plane)(unsafe.Pointer(bp)).Height; y++ {
 			var pp0 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp)).Stride_bytes)*Size_t(y))
 			}()
@@ -14835,8 +11699,7 @@ func j40__inverse_rct32(tls *libc.TLS, m uintptr, tr uintptr) { /* j40.h:4153:17
 			var pp2 uintptr = func() uintptr {
 				return uintptr((*J40__plane)(unsafe.Pointer(bp+2*24)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp+2*24)).Stride_bytes)*Size_t(y))
 			}()
-			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp /* c */)).Width; x++ {
-				// TODO avoid int2P_t if possible
+			for x = 0; x < (*J40__plane)(unsafe.Pointer(bp)).Width; x++ {
 				var tmp int64 = int64(*(*int32)(unsafe.Pointer(pp0 + uintptr(x)*4))) - int64(*(*int32)(unsafe.Pointer(pp2 + uintptr(x)*4)))>>1
 				var p1 int64 = int64(*(*int32)(unsafe.Pointer(pp2 + uintptr(x)*4))) + tmp
 				var p2 int64 = tmp - int64(*(*int32)(unsafe.Pointer(pp1 + uintptr(x)*4)))>>1
@@ -14854,15 +11717,12 @@ func j40__inverse_rct32(tls *libc.TLS, m uintptr, tr uintptr) { /* j40.h:4153:17
 	}
 }
 
-var PERMUTATIONS1 = [6][3]Uint8_t{{Uint8_t(0), Uint8_t(1), Uint8_t(2)}, {Uint8_t(1), Uint8_t(2), Uint8_t(0)}, {Uint8_t(2), Uint8_t(0), Uint8_t(1)}, {Uint8_t(0), Uint8_t(2), Uint8_t(1)}, {Uint8_t(1), Uint8_t(0), Uint8_t(2)}, {Uint8_t(2), Uint8_t(1), Uint8_t(0)}} /* j40.h:4158:23 */
+var PERMUTATIONS1 = [6][3]Uint8_t{{Uint8_t(0), Uint8_t(1), Uint8_t(2)}, {Uint8_t(1), Uint8_t(2), Uint8_t(0)}, {Uint8_t(2), Uint8_t(0), Uint8_t(1)}, {Uint8_t(0), Uint8_t(2), Uint8_t(1)}, {Uint8_t(1), Uint8_t(0), Uint8_t(2)}, {Uint8_t(2), Uint8_t(1), Uint8_t(0)}}
 
-func j40__inverse_palette32(tls *libc.TLS, st uintptr, m uintptr, tr uintptr) J40_err { /* j40.h:4229:29: */
+func j40__inverse_palette32(tls *libc.TLS, st uintptr, m uintptr, tr uintptr) J40_err {
 	bp := tls.Alloc(128)
 	defer tls.Free(128)
 
-	// `first` is the index channel index; restored color channels will be at indices [first,last],
-	// where the original index channel is relocated to the index `last` and then repurposed.
-	// the palette meta channel 0 will be removed at the very end.
 	var first Int32_t
 	var last Int32_t
 	var bpp Int32_t
@@ -14875,14 +11735,11 @@ func j40__inverse_palette32(tls *libc.TLS, st uintptr, m uintptr, tr uintptr) J4
 	var height Int32_t
 	var use_pred int32
 	var use_wp int32
-	// var wp J40__wp64 at bp, 96
-
-	// var p J40__neighbors32 at bp+96, 32
 
 	var idx int32
 	var val int32
 	var is_delta int32
-	// SPEC pseudocode accidentally overwrites the index channel
+
 	var idxline uintptr
 	var line uintptr
 	var palp uintptr
@@ -14895,9 +11752,8 @@ func j40__inverse_palette32(tls *libc.TLS, st uintptr, m uintptr, tr uintptr) J4
 	height = (*J40__plane)(unsafe.Pointer((*J40__modular)(unsafe.Pointer(m)).Channel + uintptr(first)*24)).Height
 	use_pred = libc.Bool32(*(*Int32_t)(unsafe.Pointer(tr + 16)) > 0)
 	use_wp = libc.Bool32(use_pred != 0 && *(*Int32_t)(unsafe.Pointer(tr + 20)) == 6)
-	*(*J40__wp64)(unsafe.Pointer(bp /* wp */)) = J40__wp64{}
+	*(*J40__wp64)(unsafe.Pointer(bp)) = J40__wp64{}
 
-	// since we never shrink m->channel, we know there is enough capacity for intermediate transform
 	libc.Xmemmove(tls, (*J40__modular)(unsafe.Pointer(m)).Channel+uintptr(last)*24, (*J40__modular)(unsafe.Pointer(m)).Channel+uintptr(first)*24, uint64(unsafe.Sizeof(J40__plane{}))*Size_t((*J40__modular)(unsafe.Pointer(m)).Num_channels-first))
 	*(*Int32_t)(unsafe.Pointer(m + 136)) += last - first
 
@@ -14941,7 +11797,6 @@ __5:
 	goto __6
 __6:
 	;
-
 	if !(use_wp != 0) {
 		goto __11
 	}
@@ -14962,7 +11817,6 @@ __14:
 	;
 __11:
 	;
-
 	i = 0
 __16:
 	if !(i < *(*Int32_t)(unsafe.Pointer(tr + 8))) {
@@ -14977,7 +11831,7 @@ __19:
 	if !(y < height) {
 		goto __21
 	}
-	// SPEC pseudocode accidentally overwrites the index channel
+
 	idxline = func() uintptr {
 		return uintptr((*J40__plane)(unsafe.Pointer(idxc)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(idxc)).Stride_bytes)*Size_t(y))
 	}()
@@ -14993,11 +11847,11 @@ __22:
 	is_delta = libc.Bool32(idx < *(*Int32_t)(unsafe.Pointer(tr + 16)))
 	if !(idx < 0) {
 		goto __25
-	} // hard-coded delta for first 3 channels, otherwise 0
+	}
 	if !(i < 3) {
 		goto __27
 	}
-	idx = ^idx % 143 // say no to 1's complement
+	idx = ^idx % 143
 	val = int32(*(*Int16_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&sJ40__PALETTE_DELTAS)) + uintptr(idx+1)*6 + uintptr(i)*2)))
 	if !(bpp > 8) {
 		goto __29
@@ -15017,11 +11871,11 @@ __25:
 	}
 	val = *(*int32)(unsafe.Pointer(palp + uintptr(idx)*4))
 	goto __31
-__30: // synthesized from (idx - nb_colours)
+__30:
 	idx = idx - *(*Int32_t)(unsafe.Pointer(tr + 12))
 	if !(idx < 64) {
 		goto __32
-	} // idx == ..YX in base 4 -> {(X+0.5)/4, (Y+0.5)/4, ...}
+	}
 	val = int32(func() int64 {
 		if i < 3 {
 			return int64(idx >> (2 * i))
@@ -15029,7 +11883,7 @@ __30: // synthesized from (idx - nb_colours)
 		return int64(0)
 	}()*(int64(int64(1))<<bpp-int64(1))/int64(4) + int64(int32(1)<<J40__max32(tls, 0, bpp-3)))
 	goto __33
-__32: // idx + 64 == ..ZYX in base 5 -> {X/4, Y/4, Z/4, ...}
+__32:
 	val = idx - 64
 	j = 0
 __34:
@@ -15054,9 +11908,9 @@ __26:
 	if !(use_pred != 0) {
 		goto __37
 	}
-	*(*J40__neighbors32)(unsafe.Pointer(bp + 96 /* p */)) = J40__init_neighbors32(tls, c, x, y)
+	*(*J40__neighbors32)(unsafe.Pointer(bp + 96)) = J40__init_neighbors32(tls, c, x, y)
 	j40__wp_before_predict64(tls, bp, x, y, bp+96)
-	// TODO handle overflow
+
 	if !(is_delta != 0) {
 		goto __38
 	}
@@ -15089,7 +11943,6 @@ __17:
 	goto __18
 __18:
 	;
-
 	j40__free_wp64(tls, bp)
 	j40__free_plane(tls, (*J40__modular)(unsafe.Pointer(m)).Channel)
 	libc.Xmemmove(tls, (*J40__modular)(unsafe.Pointer(m)).Channel, (*J40__modular)(unsafe.Pointer(m)).Channel+uintptr(1)*24, uint64(unsafe.Sizeof(J40__plane{}))*Size_t(libc.PreDecInt32(&(*J40__modular)(unsafe.Pointer(m)).Num_channels, 1)))
@@ -15100,19 +11953,7 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-// ----------------------------------------
-// end of recursion
-////////////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////// end of file //////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-// vim: noet ts=4 st=4 sts=4 sw=4 list colorcolumn=100
-
-// ----------------------------------------
-
-func j40__inverse_transform(tls *libc.TLS, st uintptr, m uintptr) J40_err { /* j40.h:4326:29: */
+func j40__inverse_transform(tls *libc.TLS, st uintptr, m uintptr) J40_err {
 	var i Int32_t
 	var tr uintptr
 	var tr1 uintptr
@@ -15123,7 +11964,6 @@ func j40__inverse_transform(tls *libc.TLS, st uintptr, m uintptr) J40_err { /* j
 	return J40_err(0)
 __1:
 	;
-
 	switch int32(j40__plane_all_equal_typed(tls, (*J40__modular)(unsafe.Pointer(m)).Channel, (*J40__modular)(unsafe.Pointer(m)).Channel+uintptr((*J40__modular)(unsafe.Pointer(m)).Num_channels)*24)) {
 	case J40__PLANE_I16:
 		goto __3
@@ -15142,7 +11982,7 @@ __6:
 		goto __8
 	}
 	tr = (*J40__modular)(unsafe.Pointer(m)).Transform + uintptr(i)*24
-	switch *(*uint32)(unsafe.Pointer(tr /* .Tr */)) {
+	switch *(*uint32)(unsafe.Pointer(tr)) {
 	case J40__TR_RCT:
 		goto __10
 	case J40__TR_PALETTE:
@@ -15206,7 +12046,7 @@ __21:
 		goto __23
 	}
 	tr1 = (*J40__modular)(unsafe.Pointer(m)).Transform + uintptr(i)*24
-	switch *(*uint32)(unsafe.Pointer(tr1 /* .Tr */)) {
+	switch *(*uint32)(unsafe.Pointer(tr1)) {
 	case J40__TR_RCT:
 		goto __25
 	case J40__TR_PALETTE:
@@ -15267,21 +12107,20 @@ __5:
 	;
 __2:
 	;
-
 J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-const ( /* j40.h:4373:1: */ // the number of params per channel follows:
-	J40__DQ_ENC_LIBRARY = 0 // 0
-	J40__DQ_ENC_HORNUSS = 1 // 3 (params)
-	J40__DQ_ENC_DCT2    = 2 // 6 (params)
-	J40__DQ_ENC_DCT4    = 3 // 2 (params) + n (dct_params)
-	// TODO spec issue: DCT4x8 uses an undefined name "parameters" (should be "params")
-	J40__DQ_ENC_DCT4X8 = 4 // 1 (params) + n (dct_params)
-	J40__DQ_ENC_AFV    = 5 // 9 (params) + n (dct_params) + m (dct4x4_params)
-	J40__DQ_ENC_DCT    = 6 // n (params)
-	// all other modes eventually decode to:
+const (
+	J40__DQ_ENC_LIBRARY = 0
+	J40__DQ_ENC_HORNUSS = 1
+	J40__DQ_ENC_DCT2    = 2
+	J40__DQ_ENC_DCT4    = 3
+
+	J40__DQ_ENC_DCT4X8 = 4
+	J40__DQ_ENC_AFV    = 5
+	J40__DQ_ENC_DCT    = 6
+
 	J40__DQ_ENC_RAW = 7
 )
 
@@ -15290,24 +12129,24 @@ type J40__dq_matrix = struct {
 	N      Int16_t
 	M      Int16_t
 	Params uintptr
-} /* j40.h:4388:3 */
+}
 
 type J40__dct_select = struct {
 	Log_rows    Int8_t
 	Log_columns Int8_t
 	Param_idx   Int8_t
 	Order_idx   Int8_t
-} /* j40.h:4407:72 */
+}
+
 var sJ40__DCT_SELECT = [27]J40__dct_select{
-	// hereafter DCTnm refers to DCT(2^n)x(2^m) in the spec
-	/*DCT33*/ {Log_rows: int8(3), Log_columns: int8(3)} /*Hornuss*/, {Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(1), Order_idx: int8(1)} /*DCT11*/, {Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(2), Order_idx: int8(1)} /*DCT22*/, {Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(3), Order_idx: int8(1)},
-	/*DCT44*/ {Log_rows: int8(4), Log_columns: int8(4), Param_idx: int8(4), Order_idx: int8(2)} /*DCT55*/, {Log_rows: int8(5), Log_columns: int8(5), Param_idx: int8(5), Order_idx: int8(3)} /*DCT43*/, {Log_rows: int8(4), Log_columns: int8(3), Param_idx: int8(6), Order_idx: int8(4)} /*DCT34*/, {Log_rows: int8(3), Log_columns: int8(4), Param_idx: int8(6), Order_idx: int8(4)},
-	/*DCT53*/ {Log_rows: int8(5), Log_columns: int8(3), Param_idx: int8(7), Order_idx: int8(5)} /*DCT35*/, {Log_rows: int8(3), Log_columns: int8(5), Param_idx: int8(7), Order_idx: int8(5)} /*DCT54*/, {Log_rows: int8(5), Log_columns: int8(4), Param_idx: int8(8), Order_idx: int8(6)} /*DCT45*/, {Log_rows: int8(4), Log_columns: int8(5), Param_idx: int8(8), Order_idx: int8(6)},
-	/*DCT23*/ {Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(9), Order_idx: int8(1)} /*DCT32*/, {Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(9), Order_idx: int8(1)} /*AFV0*/, {Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(10), Order_idx: int8(1)} /*AFV1*/, {Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(10), Order_idx: int8(1)},
-	/*AFV2*/ {Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(10), Order_idx: int8(1)} /*AFV3*/, {Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(10), Order_idx: int8(1)} /*DCT66*/, {Log_rows: int8(6), Log_columns: int8(6), Param_idx: int8(11), Order_idx: int8(7)} /*DCT65*/, {Log_rows: int8(6), Log_columns: int8(5), Param_idx: int8(12), Order_idx: int8(8)},
-	/*DCT56*/ {Log_rows: int8(5), Log_columns: int8(6), Param_idx: int8(12), Order_idx: int8(8)} /*DCT77*/, {Log_rows: int8(7), Log_columns: int8(7), Param_idx: int8(13), Order_idx: int8(9)} /*DCT76*/, {Log_rows: int8(7), Log_columns: int8(6), Param_idx: int8(14), Order_idx: int8(10)} /*DCT67*/, {Log_rows: int8(6), Log_columns: int8(7), Param_idx: int8(14), Order_idx: int8(10)},
-	/*DCT88*/ {Log_rows: int8(8), Log_columns: int8(8), Param_idx: int8(15), Order_idx: int8(11)} /*DCT87*/, {Log_rows: int8(8), Log_columns: int8(7), Param_idx: int8(16), Order_idx: int8(12)} /*DCT78*/, {Log_rows: int8(7), Log_columns: int8(8), Param_idx: int8(16), Order_idx: int8(12)},
-} /* j40.h:4408:30 */
+	{Log_rows: int8(3), Log_columns: int8(3)}, {Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(1), Order_idx: int8(1)}, {Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(2), Order_idx: int8(1)}, {Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(3), Order_idx: int8(1)},
+	{Log_rows: int8(4), Log_columns: int8(4), Param_idx: int8(4), Order_idx: int8(2)}, {Log_rows: int8(5), Log_columns: int8(5), Param_idx: int8(5), Order_idx: int8(3)}, {Log_rows: int8(4), Log_columns: int8(3), Param_idx: int8(6), Order_idx: int8(4)}, {Log_rows: int8(3), Log_columns: int8(4), Param_idx: int8(6), Order_idx: int8(4)},
+	{Log_rows: int8(5), Log_columns: int8(3), Param_idx: int8(7), Order_idx: int8(5)}, {Log_rows: int8(3), Log_columns: int8(5), Param_idx: int8(7), Order_idx: int8(5)}, {Log_rows: int8(5), Log_columns: int8(4), Param_idx: int8(8), Order_idx: int8(6)}, {Log_rows: int8(4), Log_columns: int8(5), Param_idx: int8(8), Order_idx: int8(6)},
+	{Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(9), Order_idx: int8(1)}, {Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(9), Order_idx: int8(1)}, {Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(10), Order_idx: int8(1)}, {Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(10), Order_idx: int8(1)},
+	{Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(10), Order_idx: int8(1)}, {Log_rows: int8(3), Log_columns: int8(3), Param_idx: int8(10), Order_idx: int8(1)}, {Log_rows: int8(6), Log_columns: int8(6), Param_idx: int8(11), Order_idx: int8(7)}, {Log_rows: int8(6), Log_columns: int8(5), Param_idx: int8(12), Order_idx: int8(8)},
+	{Log_rows: int8(5), Log_columns: int8(6), Param_idx: int8(12), Order_idx: int8(8)}, {Log_rows: int8(7), Log_columns: int8(7), Param_idx: int8(13), Order_idx: int8(9)}, {Log_rows: int8(7), Log_columns: int8(6), Param_idx: int8(14), Order_idx: int8(10)}, {Log_rows: int8(6), Log_columns: int8(7), Param_idx: int8(14), Order_idx: int8(10)},
+	{Log_rows: int8(8), Log_columns: int8(8), Param_idx: int8(15), Order_idx: int8(11)}, {Log_rows: int8(8), Log_columns: int8(7), Param_idx: int8(16), Order_idx: int8(12)}, {Log_rows: int8(7), Log_columns: int8(8), Param_idx: int8(16), Order_idx: int8(12)},
+}
 
 type J40__dct_params = struct {
 	Log_rows    Int8_t
@@ -15316,32 +12155,27 @@ type J40__dct_params = struct {
 	Def_mode    Int8_t
 	Def_n       Int8_t
 	Def_m       Int8_t
-} /* j40.h:4419:14 */
+}
 
 var sJ40__DCT_PARAMS = [17]J40__dct_params{
-	/*DCT33*/ {Log_rows: int8(3), Log_columns: int8(3), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(6)} /*Hornuss*/, {Log_rows: int8(3), Log_columns: int8(3), Def_offset: int8(6), Def_mode: J40__DQ_ENC_HORNUSS},
-	/*DCT11*/ {Log_rows: int8(3), Log_columns: int8(3), Def_offset: int8(9), Def_mode: J40__DQ_ENC_DCT2} /*DCT22*/, {Log_rows: int8(3), Log_columns: int8(3), Def_offset: int8(15), Def_mode: J40__DQ_ENC_DCT4, Def_n: int8(4)},
-	/*DCT44*/ {Log_rows: int8(4), Log_columns: int8(4), Def_offset: int8(21), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(7)} /*DCT55*/, {Log_rows: int8(5), Log_columns: int8(5), Def_offset: int8(28), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)},
-	/*DCT34*/ {Log_rows: int8(3), Log_columns: int8(4), Def_offset: int8(36), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(7)} /*DCT35*/, {Log_rows: int8(3), Log_columns: int8(5), Def_offset: int8(43), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)},
-	/*DCT45*/ {Log_rows: int8(4), Log_columns: int8(5), Def_offset: int8(51), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)} /*DCT23*/, {Log_rows: int8(3), Log_columns: int8(3), Def_offset: int8(59), Def_mode: J40__DQ_ENC_DCT4X8, Def_n: int8(4)},
-	/*AFV*/ {Log_rows: int8(3), Log_columns: int8(3), Def_offset: int8(64), Def_mode: J40__DQ_ENC_AFV, Def_n: int8(4), Def_m: int8(4)} /*DCT66*/, {Log_rows: int8(6), Log_columns: int8(6), Def_offset: int8(81), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)},
-	/*DCT56*/ {Log_rows: int8(5), Log_columns: int8(6), Def_offset: int8(89), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)} /*DCT77*/, {Log_rows: int8(7), Log_columns: int8(7), Def_offset: int8(97), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)},
-	/*DCT67*/ {Log_rows: int8(6), Log_columns: int8(7), Def_offset: int8(105), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)} /*DCT88*/, {Log_rows: int8(8), Log_columns: int8(8), Def_offset: int8(113), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)},
-	/*DCT78*/ {Log_rows: int8(7), Log_columns: int8(8), Def_offset: int8(121), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)},
-} /* j40.h:4421:3 */
+	{Log_rows: int8(3), Log_columns: int8(3), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(6)}, {Log_rows: int8(3), Log_columns: int8(3), Def_offset: int8(6), Def_mode: J40__DQ_ENC_HORNUSS},
+	{Log_rows: int8(3), Log_columns: int8(3), Def_offset: int8(9), Def_mode: J40__DQ_ENC_DCT2}, {Log_rows: int8(3), Log_columns: int8(3), Def_offset: int8(15), Def_mode: J40__DQ_ENC_DCT4, Def_n: int8(4)},
+	{Log_rows: int8(4), Log_columns: int8(4), Def_offset: int8(21), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(7)}, {Log_rows: int8(5), Log_columns: int8(5), Def_offset: int8(28), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)},
+	{Log_rows: int8(3), Log_columns: int8(4), Def_offset: int8(36), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(7)}, {Log_rows: int8(3), Log_columns: int8(5), Def_offset: int8(43), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)},
+	{Log_rows: int8(4), Log_columns: int8(5), Def_offset: int8(51), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)}, {Log_rows: int8(3), Log_columns: int8(3), Def_offset: int8(59), Def_mode: J40__DQ_ENC_DCT4X8, Def_n: int8(4)},
+	{Log_rows: int8(3), Log_columns: int8(3), Def_offset: int8(64), Def_mode: J40__DQ_ENC_AFV, Def_n: int8(4), Def_m: int8(4)}, {Log_rows: int8(6), Log_columns: int8(6), Def_offset: int8(81), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)},
+	{Log_rows: int8(5), Log_columns: int8(6), Def_offset: int8(89), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)}, {Log_rows: int8(7), Log_columns: int8(7), Def_offset: int8(97), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)},
+	{Log_rows: int8(6), Log_columns: int8(7), Def_offset: int8(105), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)}, {Log_rows: int8(8), Log_columns: int8(8), Def_offset: int8(113), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)},
+	{Log_rows: int8(7), Log_columns: int8(8), Def_offset: int8(121), Def_mode: J40__DQ_ENC_DCT, Def_n: int8(8)},
+}
 
 var sJ40__LIBRARY_DCT_PARAMS = [129][4]float32{
-	// DCT33 dct_params (n=6) (SPEC some values are incorrect)
 	{0: 3150.0, 1: 560.0, 2: 512.0}, {0: 0.0, 1: 0.0, 2: -2.0}, {0: -0.4, 1: -0.3, 2: -1.0},
 	{0: -0.4, 1: -0.3, 2: 0.0}, {0: -0.4, 1: -0.3, 2: -1.0}, {0: -2.0, 1: -0.3, 2: -2.0},
-	// Hornuss params (3)
 	{0: 280.0, 1: 60.0, 2: 18.0}, {0: 3160.0, 1: 864.0, 2: 200.0}, {0: 3160.0, 1: 864.0, 2: 200.0},
-	// DCT11 params (6)
 	{0: 3840.0, 1: 960.0, 2: 640.0}, {0: 2560.0, 1: 640.0, 2: 320.0}, {0: 1280.0, 1: 320.0, 2: 128.0},
 	{0: 640.0, 1: 180.0, 2: 64.0}, {0: 480.0, 1: 140.0, 2: 32.0}, {0: 300.0, 1: 120.0, 2: 16.0},
-	// DCT22 params (2) + dct_params (n=4) (TODO spec bug: some values are incorrect)
 	{0: 1.0, 1: 1.0, 2: 1.0}, {0: 1.0, 1: 1.0, 2: 1.0}, {0: 2200.0, 1: 392.0, 2: 112.0}, {0: 0.0, 1: 0.0, 2: -0.25}, {0: 0.0, 1: 0.0, 2: -0.25}, {0: 0.0, 1: 0.0, 2: -0.5},
-	// DCT44 dct_params (n=7)
 	{0: 8996.8725711814115328, 1: 3191.48366296844234752, 2: 1157.50408145487200256},
 	{0: -1.3000777393353804, 1: -0.67424582104194355, 2: -2.0531423165804414},
 	{0: -0.49424529824571225, 1: -0.80745813428471001, 2: -1.4},
@@ -15349,7 +12183,6 @@ var sJ40__LIBRARY_DCT_PARAMS = [129][4]float32{
 	{0: -0.6350101832695744, 1: -0.35865440981033403, 2: -0.42708730624733904},
 	{0: -0.90177264050827612, 1: -0.31322389111877305, 2: -1.4856834539296244},
 	{0: -1.6162099239887414, 1: -0.37615025315725483, 2: -4.9209142884401604},
-	// DCT55 dct_params (n=8)
 	{0: 15718.40830982518931456, 1: 7305.7636810695983104, 2: 3803.53173721215041536},
 	{0: -1.025, 1: -0.8041958212306401, 2: -3.060733579805728},
 	{0: -0.98, 1: -0.7633036457487539, 2: -2.0413270132490346},
@@ -15358,68 +12191,56 @@ var sJ40__LIBRARY_DCT_PARAMS = [129][4]float32{
 	{0: -0.48819395464, 1: -0.43699592683512467, 2: -0.4},
 	{0: -0.421064, 1: -0.40180866526242109, 2: -0.4},
 	{0: -0.27, 1: -0.27321683125358037, 2: -0.3},
-	// DCT34 dct_params (n=7)
 	{0: 7240.7734393502, 1: 1448.15468787004, 2: 506.854140754517},
 	{0: -0.7, 1: -0.5, 2: -1.4}, {0: -0.7, 1: -0.5, 2: -0.2}, {0: -0.2, 1: -0.5, 2: -0.5},
 	{0: -0.2, 1: -0.2, 2: -0.5}, {0: -0.2, 1: -0.2, 2: -1.5}, {0: -0.5, 1: -0.2, 2: -3.6},
-	// DCT35 dct_params (n=8)
 	{0: 16283.2494710648897, 1: 5089.15750884921511936, 2: 3397.77603275308720128},
 	{0: -1.7812845336559429, 1: -0.320049391452786891, 2: -0.321327362693153371},
 	{0: -1.6309059012653515, 1: -0.35362849922161446, 2: -0.34507619223117997},
 	{0: -1.0382179034313539, 1: -0.30340000000000003, 2: -0.70340000000000003},
 	{0: -0.85, 1: -0.61, 2: -0.9}, {0: -0.7, 1: -0.5, 2: -1.0}, {0: -0.9, 1: -0.5, 2: -1.0},
 	{0: -1.2360638576849587, 1: -0.6, 2: -1.1754605576265209},
-	// DCT45 dct_params (n=8)
 	{0: 13844.97076442300573, 1: 4798.964084220744293, 2: 1807.236946760964614},
 	{0: -0.97113799999999995, 1: -0.61125308982767057, 2: -1.2},
 	{0: -0.658, 1: -0.83770786552491361, 2: -1.2}, {0: -0.42026, 1: -0.79014862079498627, 2: -0.7},
 	{0: -0.22712, 1: -0.2692727459704829, 2: -0.7}, {0: -0.2206, 1: -0.38272769465388551, 2: -0.7},
 	{0: -0.226, 1: -0.22924222653091453, 2: -0.4}, {0: -0.6, 1: -0.20719098826199578, 2: -0.5},
-	// DCT23 params (1) + dct_params (n=4)
 	{0: 1.0, 1: 1.0, 2: 1.0}, {0: 2198.050556016380522, 1: 764.3655248643528689, 2: 527.107573587542228}, {0: -0.96269623020744692, 1: -0.92630200888366945, 2: -1.4594385811273854}, {0: -0.76194253026666783, 1: -0.9675229603596517, 2: -1.450082094097871593}, {0: -0.6551140670773547, 1: -0.27845290869168118, 2: -1.5843722511996204},
-	// AFV params (9) + dct_params (n=4) + dct4x4_params (m=4)
-	// (SPEC params & dct_params are swapped; TODO spec bug: dct4x4_params are also incorrect)
 	{0: 3072.0, 1: 1024.0, 2: 384.0}, {0: 3072.0, 1: 1024.0, 2: 384.0}, {0: 256.0, 1: 50.0, 2: 12.0},
 	{0: 256.0, 1: 50.0, 2: 12.0}, {0: 256.0, 1: 50.0, 2: 12.0}, {0: 414.0, 1: 58.0, 2: 22.0},
 	{0: 0.0, 1: 0.0, 2: -0.25}, {0: 0.0, 1: 0.0, 2: -0.25}, {0: 0.0, 1: 0.0, 2: -0.25},
 	{0: 2198.050556016380522, 1: 764.3655248643528689, 2: 527.107573587542228}, {0: -0.96269623020744692, 1: -0.92630200888366945, 2: -1.4594385811273854}, {0: -0.76194253026666783, 1: -0.9675229603596517, 2: -1.450082094097871593}, {0: -0.6551140670773547, 1: -0.27845290869168118, 2: -1.5843722511996204}, {0: 2200.0, 1: 392.0, 2: 112.0}, {0: 0.0, 1: 0.0, 2: -0.25}, {0: 0.0, 1: 0.0, 2: -0.25}, {0: 0.0, 1: 0.0, 2: -0.5},
-
-	{0: float32(0.9) * 23629.073922049845, 1: float32(0.9) * 8611.3238710010046, 2: float32(0.9) * 4492.2486445538634}, {0: -1.025, 1: -0.3041958212306401, 2: -1.2}, {0: -0.78, 1: 0.3633036457487539, 2: -1.2}, {0: -0.65012, 1: -0.35660379990111464, 2: -0.8}, {0: -0.19041574084286472, 1: -0.3443074455424403, 2: -0.7}, {0: -0.20819395464, 1: -0.33699592683512467, 2: -0.7}, {0: -0.421064, 1: -0.30180866526242109, 2: -0.4}, {0: -0.32733845535848671, 1: -0.27321683125358037, 2: -0.5}, // DCT66 dct_params (n=8)
-	{0: float32(0.65) * 23629.073922049845, 1: float32(0.65) * 8611.3238710010046, 2: float32(0.65) * 4492.2486445538634}, {0: -1.025, 1: -0.3041958212306401, 2: -1.2}, {0: -0.78, 1: 0.3633036457487539, 2: -1.2}, {0: -0.65012, 1: -0.35660379990111464, 2: -0.8}, {0: -0.19041574084286472, 1: -0.3443074455424403, 2: -0.7}, {0: -0.20819395464, 1: -0.33699592683512467, 2: -0.7}, {0: -0.421064, 1: -0.30180866526242109, 2: -0.4}, {0: -0.32733845535848671, 1: -0.27321683125358037, 2: -0.5}, // DCT56 dct_params (n=8)
-	{0: float32(1.8) * 23629.073922049845, 1: float32(1.8) * 8611.3238710010046, 2: float32(1.8) * 4492.2486445538634}, {0: -1.025, 1: -0.3041958212306401, 2: -1.2}, {0: -0.78, 1: 0.3633036457487539, 2: -1.2}, {0: -0.65012, 1: -0.35660379990111464, 2: -0.8}, {0: -0.19041574084286472, 1: -0.3443074455424403, 2: -0.7}, {0: -0.20819395464, 1: -0.33699592683512467, 2: -0.7}, {0: -0.421064, 1: -0.30180866526242109, 2: -0.4}, {0: -0.32733845535848671, 1: -0.27321683125358037, 2: -0.5}, // DCT77 dct_params (n=8)
-	{0: float32(1.3) * 23629.073922049845, 1: float32(1.3) * 8611.3238710010046, 2: float32(1.3) * 4492.2486445538634}, {0: -1.025, 1: -0.3041958212306401, 2: -1.2}, {0: -0.78, 1: 0.3633036457487539, 2: -1.2}, {0: -0.65012, 1: -0.35660379990111464, 2: -0.8}, {0: -0.19041574084286472, 1: -0.3443074455424403, 2: -0.7}, {0: -0.20819395464, 1: -0.33699592683512467, 2: -0.7}, {0: -0.421064, 1: -0.30180866526242109, 2: -0.4}, {0: -0.32733845535848671, 1: -0.27321683125358037, 2: -0.5}, // DCT67 dct_params (n=8)
-	{0: float32(3.6) * 23629.073922049845, 1: float32(3.6) * 8611.3238710010046, 2: float32(3.6) * 4492.2486445538634}, {0: -1.025, 1: -0.3041958212306401, 2: -1.2}, {0: -0.78, 1: 0.3633036457487539, 2: -1.2}, {0: -0.65012, 1: -0.35660379990111464, 2: -0.8}, {0: -0.19041574084286472, 1: -0.3443074455424403, 2: -0.7}, {0: -0.20819395464, 1: -0.33699592683512467, 2: -0.7}, {0: -0.421064, 1: -0.30180866526242109, 2: -0.4}, {0: -0.32733845535848671, 1: -0.27321683125358037, 2: -0.5}, // DCT88 dct_params (n=8)
-	{0: float32(2.6) * 23629.073922049845, 1: float32(2.6) * 8611.3238710010046, 2: float32(2.6) * 4492.2486445538634}, {0: -1.025, 1: -0.3041958212306401, 2: -1.2}, {0: -0.78, 1: 0.3633036457487539, 2: -1.2}, {0: -0.65012, 1: -0.35660379990111464, 2: -0.8}, {0: -0.19041574084286472, 1: -0.3443074455424403, 2: -0.7}, {0: -0.20819395464, 1: -0.33699592683512467, 2: -0.7}, {0: -0.421064, 1: -0.30180866526242109, 2: -0.4}, {0: -0.32733845535848671, 1: -0.27321683125358037, 2: -0.5}, // DCT78 dct_params (n=8)
-} /* j40.h:4447:20 */
+	{0: float32(0.9) * 23629.073922049845, 1: float32(0.9) * 8611.3238710010046, 2: float32(0.9) * 4492.2486445538634}, {0: -1.025, 1: -0.3041958212306401, 2: -1.2}, {0: -0.78, 1: 0.3633036457487539, 2: -1.2}, {0: -0.65012, 1: -0.35660379990111464, 2: -0.8}, {0: -0.19041574084286472, 1: -0.3443074455424403, 2: -0.7}, {0: -0.20819395464, 1: -0.33699592683512467, 2: -0.7}, {0: -0.421064, 1: -0.30180866526242109, 2: -0.4}, {0: -0.32733845535848671, 1: -0.27321683125358037, 2: -0.5},
+	{0: float32(0.65) * 23629.073922049845, 1: float32(0.65) * 8611.3238710010046, 2: float32(0.65) * 4492.2486445538634}, {0: -1.025, 1: -0.3041958212306401, 2: -1.2}, {0: -0.78, 1: 0.3633036457487539, 2: -1.2}, {0: -0.65012, 1: -0.35660379990111464, 2: -0.8}, {0: -0.19041574084286472, 1: -0.3443074455424403, 2: -0.7}, {0: -0.20819395464, 1: -0.33699592683512467, 2: -0.7}, {0: -0.421064, 1: -0.30180866526242109, 2: -0.4}, {0: -0.32733845535848671, 1: -0.27321683125358037, 2: -0.5},
+	{0: float32(1.8) * 23629.073922049845, 1: float32(1.8) * 8611.3238710010046, 2: float32(1.8) * 4492.2486445538634}, {0: -1.025, 1: -0.3041958212306401, 2: -1.2}, {0: -0.78, 1: 0.3633036457487539, 2: -1.2}, {0: -0.65012, 1: -0.35660379990111464, 2: -0.8}, {0: -0.19041574084286472, 1: -0.3443074455424403, 2: -0.7}, {0: -0.20819395464, 1: -0.33699592683512467, 2: -0.7}, {0: -0.421064, 1: -0.30180866526242109, 2: -0.4}, {0: -0.32733845535848671, 1: -0.27321683125358037, 2: -0.5},
+	{0: float32(1.3) * 23629.073922049845, 1: float32(1.3) * 8611.3238710010046, 2: float32(1.3) * 4492.2486445538634}, {0: -1.025, 1: -0.3041958212306401, 2: -1.2}, {0: -0.78, 1: 0.3633036457487539, 2: -1.2}, {0: -0.65012, 1: -0.35660379990111464, 2: -0.8}, {0: -0.19041574084286472, 1: -0.3443074455424403, 2: -0.7}, {0: -0.20819395464, 1: -0.33699592683512467, 2: -0.7}, {0: -0.421064, 1: -0.30180866526242109, 2: -0.4}, {0: -0.32733845535848671, 1: -0.27321683125358037, 2: -0.5},
+	{0: float32(3.6) * 23629.073922049845, 1: float32(3.6) * 8611.3238710010046, 2: float32(3.6) * 4492.2486445538634}, {0: -1.025, 1: -0.3041958212306401, 2: -1.2}, {0: -0.78, 1: 0.3633036457487539, 2: -1.2}, {0: -0.65012, 1: -0.35660379990111464, 2: -0.8}, {0: -0.19041574084286472, 1: -0.3443074455424403, 2: -0.7}, {0: -0.20819395464, 1: -0.33699592683512467, 2: -0.7}, {0: -0.421064, 1: -0.30180866526242109, 2: -0.4}, {0: -0.32733845535848671, 1: -0.27321683125358037, 2: -0.5},
+	{0: float32(2.6) * 23629.073922049845, 1: float32(2.6) * 8611.3238710010046, 2: float32(2.6) * 4492.2486445538634}, {0: -1.025, 1: -0.3041958212306401, 2: -1.2}, {0: -0.78, 1: 0.3633036457487539, 2: -1.2}, {0: -0.65012, 1: -0.35660379990111464, 2: -0.8}, {0: -0.19041574084286472, 1: -0.3443074455424403, 2: -0.7}, {0: -0.20819395464, 1: -0.33699592683512467, 2: -0.7}, {0: -0.421064, 1: -0.30180866526242109, 2: -0.4}, {0: -0.32733845535848671, 1: -0.27321683125358037, 2: -0.5},
+}
 
 var sJ40__LOG_ORDER_SIZE = [13][2]Int8_t{
 	{int8(3), int8(3)}, {int8(3), int8(3)}, {int8(4), int8(4)}, {int8(5), int8(5)}, {int8(3), int8(4)}, {int8(3), int8(5)}, {int8(4), int8(5)}, {int8(6), int8(6)}, {int8(5), int8(6)}, {int8(7), int8(7)}, {int8(6), int8(7)}, {int8(8), int8(8)}, {int8(7), int8(8)},
-} /* j40.h:4509:21 */
+}
 
-func j40__read_dq_matrix(tls *libc.TLS, st uintptr, rows Int32_t, columns Int32_t, raw_sidx Int64_t, global_tree uintptr, global_codespec uintptr, dqmat uintptr) J40_err { /* j40.h:4513:29: */
+func j40__read_dq_matrix(tls *libc.TLS, st uintptr, rows Int32_t, columns Int32_t, raw_sidx Int64_t, global_tree uintptr, global_codespec uintptr, dqmat uintptr) J40_err {
 	bp := tls.Alloc(184)
 	defer tls.Free(184)
-
-	// var m J40__modular at bp+24, 160
 
 	var c Int32_t
 	var i Int32_t
 	var j Int32_t
 	var pixels uintptr
-	var pixels1 uintptr // read as a modular image
+	var pixels1 uintptr
 	var denom float32
 	var inv_denom float32
-	// var w [3]Int32_t at bp, 12
-
-	// var h [3]Int32_t at bp+12, 12
 
 	var x Int32_t
-	var y Int32_t // ReadDctParams
+	var y Int32_t
 	var n Int32_t
 	var how How
 	var paramsize Int32_t
 	var paramidx Int32_t
-	*(*J40__modular)(unsafe.Pointer(bp + 24 /* m */)) = J40__modular{}
+	*(*J40__modular)(unsafe.Pointer(bp + 24)) = J40__modular{}
 
 	(*J40__dq_matrix)(unsafe.Pointer(dqmat)).Mode = uint32(uint32(j40__u(tls, st, 3)))
 	(*J40__dq_matrix)(unsafe.Pointer(dqmat)).Params = uintptr(0)
@@ -15428,7 +12249,7 @@ func j40__read_dq_matrix(tls *libc.TLS, st uintptr, rows Int32_t, columns Int32_
 	}
 
 	denom = j40__f16(tls, st)
-	// TODO spec bug: ZeroPadToByte isn't required at this point
+
 __3:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __6
@@ -15557,7 +12378,6 @@ __32:
 	goto __33
 __33:
 	;
-
 __35:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __38
@@ -15655,7 +12475,6 @@ __41:
 	goto __42
 __42:
 	;
-
 	j40__free_modular(tls, bp+24)
 	(*J40__dq_matrix)(unsafe.Pointer(dqmat)).N = Int16_t(rows)
 	(*J40__dq_matrix)(unsafe.Pointer(dqmat)).M = Int16_t(columns)
@@ -15750,7 +12569,7 @@ __71:
 __75:
 	if !(i < Int32_t(how.Ndctparams)) {
 		goto __77
-	} // ReadDctParams
+	}
 	n = Int32_t(libc.AssignPtrInt16(func() uintptr {
 		if i == 0 {
 			return dqmat + 4
@@ -15828,12 +12647,12 @@ type How = struct {
 	Nparams     Int8_t
 	Nscaled     Int8_t
 	Ndctparams  Int8_t
-} /* j40.h:4563:16 */
+}
 
-var HOW = [7]How{{}, {Requires8x8: int8(1), Nparams: int8(3), Nscaled: int8(3)}, {Requires8x8: int8(1), Nparams: int8(6), Nscaled: int8(6)}, {Requires8x8: int8(1), Nparams: int8(2), Nscaled: int8(2), Ndctparams: int8(1)}, {Requires8x8: int8(1), Nparams: int8(1), Ndctparams: int8(1)}, {Requires8x8: int8(1), Nparams: int8(9), Nscaled: int8(6), Ndctparams: int8(2)}, {Requires8x8: int8(1), Ndctparams: int8(1)}} /* j40.h:4568:5 */
+var HOW = [7]How{{}, {Requires8x8: int8(1), Nparams: int8(3), Nscaled: int8(3)}, {Requires8x8: int8(1), Nparams: int8(6), Nscaled: int8(6)}, {Requires8x8: int8(1), Nparams: int8(2), Nscaled: int8(2), Ndctparams: int8(1)}, {Requires8x8: int8(1), Nparams: int8(1), Ndctparams: int8(1)}, {Requires8x8: int8(1), Nparams: int8(9), Nscaled: int8(6), Ndctparams: int8(2)}, {Requires8x8: int8(1), Ndctparams: int8(1)}}
 
 // piecewise exponential interpolation where pos is in [0,1], mapping pos = k/(len-1) to bands[k]
-func j40__interpolate(tls *libc.TLS, pos float32, c Int32_t, bands uintptr, len Int32_t) float32 { /* j40.h:4597:18: */
+func j40__interpolate(tls *libc.TLS, pos float32, c Int32_t, bands uintptr, len Int32_t) float32 {
 	var scaled_pos float32
 	var frac_idx float32
 	var a float32
@@ -15850,7 +12669,7 @@ func j40__interpolate(tls *libc.TLS, pos float32, c Int32_t, bands uintptr, len 
 	return a * powf(tls, b/a, frac_idx)
 }
 
-func j40__interpolation_bands(tls *libc.TLS, st uintptr, params uintptr, nparams Int32_t, out uintptr) J40_err { /* j40.h:4609:29: */
+func j40__interpolation_bands(tls *libc.TLS, st uintptr, params uintptr, nparams Int32_t, out uintptr) J40_err {
 	var i Int32_t
 	var c Int32_t
 	var v float32
@@ -15859,8 +12678,7 @@ __1:
 	if !(c < 3) {
 		goto __3
 	}
-	// TODO spec bug: loops for x & y are independent of the loop for i (bands)
-	// TODO spec bug: `bands(i)` for i >= 0 (not i > 0) should be larger (not no less) than 0
+
 	*(*float32)(unsafe.Pointer(out + uintptr(c)*4)) = *(*float32)(unsafe.Pointer(params + uintptr(c)*4))
 __4:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
@@ -15936,7 +12754,7 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__dct_quant_weights(tls *libc.TLS, rows Int32_t, columns Int32_t, bands uintptr, len Int32_t, out uintptr) { /* j40.h:4628:17: */
+func j40__dct_quant_weights(tls *libc.TLS, rows Int32_t, columns Int32_t, bands uintptr, len Int32_t, out uintptr) {
 	var inv_rows_m1 float32 = 1.0 / float32(rows-1)
 	var inv_columns_m1 float32 = 1.0 / float32(columns-1)
 	var x Int32_t
@@ -15944,20 +12762,20 @@ func j40__dct_quant_weights(tls *libc.TLS, rows Int32_t, columns Int32_t, bands 
 	var c Int32_t
 	for c = 0; c < 3; c++ {
 		for y = 0; y < rows; y++ {
-			for x = 0; x < columns; x++ { // 1/(sqrt(2) + 1e-6)
+			for x = 0; x < columns; x++ {
 				var d float32 = hypotf(tls, float32(x)*inv_columns_m1, float32(y)*inv_rows_m1)
-				// TODO spec issue: num_bands doesn't exist (probably len)
+
 				*(*float32)(unsafe.Pointer(out + uintptr(y*columns+x)*16 + uintptr(c)*4)) = j40__interpolate(tls, d*INV_SQRT2, c, bands, len)
 			}
 		}
 	}
 }
 
-var INV_SQRT2 float32 = float32(1.0) / 1.414214562373095 /* j40.h:4635:23 */
+var INV_SQRT2 float32 = float32(1.0) / 1.414214562373095
 
 // TODO spec issue: VarDCT uses the (row, column) notation, not the (x, y) notation; explicitly note this
 // TODO spec improvement: spec can provide computed matrices for default parameters to aid verification
-func j40__load_dq_matrix(tls *libc.TLS, st uintptr, idx Int32_t, dqmat uintptr) J40_err { /* j40.h:4645:29: */
+func j40__load_dq_matrix(tls *libc.TLS, st uintptr, idx Int32_t, dqmat uintptr) J40_err {
 	bp := tls.Alloc(1264)
 	defer tls.Free(1264)
 
@@ -15969,9 +12787,6 @@ func j40__load_dq_matrix(tls *libc.TLS, st uintptr, idx Int32_t, dqmat uintptr) 
 	var m Int32_t
 	var params uintptr
 	var raw uintptr
-	// var bands [15][4]float32 at bp, 240
-
-	// var scratch [64][4]float32 at bp+240, 1024
 
 	var x Int32_t
 	var y Int32_t
@@ -15984,7 +12799,7 @@ func j40__load_dq_matrix(tls *libc.TLS, st uintptr, idx Int32_t, dqmat uintptr) 
 	if !(int32(mode) == J40__DQ_ENC_RAW) {
 		goto __1
 	}
-	return J40_err(0) // nothing to do
+	return J40_err(0)
 	goto __2
 __1:
 	if !(int32(mode) == J40__DQ_ENC_LIBRARY) {
@@ -16003,7 +12818,6 @@ __4:
 	;
 __2:
 	;
-
 	rows = int32(1) << int32(dct.Log_rows)
 	columns = int32(1) << int32(dct.Log_columns)
 __5:
@@ -16028,7 +12842,6 @@ __6:
 	goto __7
 __7:
 	;
-
 	switch mode {
 	case J40__DQ_ENC_DCT:
 		goto __11
@@ -16073,7 +12886,6 @@ __20:
 
 __12:
 	;
-
 __22:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__interpolation_bands(tls, st, params+uintptr(2)*16, n, bp) != 0)), int64(0)) != 0) {
 		goto __25
@@ -16196,7 +13008,6 @@ __43:
 
 __15:
 	;
-
 __47:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__interpolation_bands(tls, st, params+uintptr(1)*16, n, bp) != 0)), int64(0)) != 0) {
 		goto __50
@@ -16212,8 +13023,6 @@ __48:
 	goto __49
 __49:
 	;
-	// TODO spec bug: 4 rows by 8 columns, not 8 rows by 4 columns (compare with AFV weights4x8)
-	// the position (x, y Idiv 2) is also confusing, since it's using the (x, y) notation
 	j40__dct_quant_weights(tls, 4, 8, bp, n, bp+240)
 	c = 0
 __51:
@@ -16257,7 +13066,6 @@ __53:
 
 __16:
 	;
-
 __60:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__interpolation_bands(tls, st, params+uintptr(9)*16, n, bp) != 0)), int64(0)) != 0) {
 		goto __63
@@ -16310,8 +13118,8 @@ __72:
 	if !(c < 3) {
 		goto __74
 	}
-	*(*float32)(unsafe.Pointer(bp + 240 + uintptr(c)*4)) = *(*float32)(unsafe.Pointer(params + uintptr(c)*4))                // replaces the top-left corner of weights4x8
-	*(*float32)(unsafe.Pointer(bp + 240 + 32*16 + uintptr(c)*4)) = *(*float32)(unsafe.Pointer(params + 1*16 + uintptr(c)*4)) // replaces the top-left corner of weights4x4
+	*(*float32)(unsafe.Pointer(bp + 240 + uintptr(c)*4)) = *(*float32)(unsafe.Pointer(params + uintptr(c)*4))
+	*(*float32)(unsafe.Pointer(bp + 240 + 32*16 + uintptr(c)*4)) = *(*float32)(unsafe.Pointer(params + 1*16 + uintptr(c)*4))
 	i = 0
 __75:
 	if !(i < 12) {
@@ -16377,7 +13185,6 @@ __17:
 	;
 __10:
 	;
-
 	j40__free(tls, (*J40__dq_matrix)(unsafe.Pointer(dqmat)).Params)
 	(*J40__dq_matrix)(unsafe.Pointer(dqmat)).Mode = J40__DQ_ENC_RAW
 	(*J40__dq_matrix)(unsafe.Pointer(dqmat)).N = Int16_t(rows)
@@ -16391,7 +13198,6 @@ J40__ON_ERROR:
 }
 
 var MAP = [64]Int8_t{
-	// TODO spec issue: coefficient (0,0) is unspecified; means it shouldn't be touched
 	int8(0), int8(0), int8(2), int8(2), int8(4), int8(4), int8(4), int8(4),
 	int8(0), int8(1), int8(2), int8(2), int8(4), int8(4), int8(4), int8(4),
 	int8(2), int8(2), int8(3), int8(3), int8(4), int8(4), int8(4), int8(4),
@@ -16400,14 +13206,12 @@ var MAP = [64]Int8_t{
 	int8(4), int8(4), int8(4), int8(4), int8(5), int8(5), int8(5), int8(5),
 	int8(4), int8(4), int8(4), int8(4), int8(5), int8(5), int8(5), int8(5),
 	int8(4), int8(4), int8(4), int8(4), int8(5), int8(5), int8(5), int8(5),
-}                        /* j40.h:4696:24 */
-var FREQS = [12]float32{ // precomputed values of (freqs[i] - lo) / (hi - lo + 1e-6)
+}
+var FREQS = [12]float32{
 	0.000000000, 0.373436417, 0.320380100, 0.379332596, 0.066671353, 0.259756761,
 	0.530035651, 0.789731061, 0.149436598, 0.559318823, 0.669198646, 0.999999917,
-} /* j40.h:4748:23 */
+}
 var MAP1 = [64]Int8_t{
-	// 1..31 from weights4x8, 33..47 from weights4x4, 48..59 interpolated,
-	// 0/32/61..63 directly from parameters, 60 fixed to 1.0
 	int8(60), int8(32), int8(62), int8(33), int8(48), int8(34), int8(49), int8(35),
 	int8(0), int8(1), int8(2), int8(3), int8(4), int8(5), int8(6), int8(7),
 	int8(61), int8(36), int8(63), int8(37), int8(50), int8(38), int8(51), int8(39),
@@ -16416,9 +13220,9 @@ var MAP1 = [64]Int8_t{
 	int8(16), int8(17), int8(18), int8(19), int8(20), int8(21), int8(22), int8(23),
 	int8(56), int8(44), int8(57), int8(45), int8(58), int8(46), int8(59), int8(47),
 	int8(24), int8(25), int8(26), int8(27), int8(28), int8(29), int8(30), int8(31),
-} /* j40.h:4760:24 */
+}
 
-func j40__free_dq_matrix(tls *libc.TLS, dqmat uintptr) { /* j40.h:4791:17: */
+func j40__free_dq_matrix(tls *libc.TLS, dqmat uintptr) {
 	if (*J40__dq_matrix)(unsafe.Pointer(dqmat)).Mode != J40__DQ_ENC_LIBRARY {
 		j40__free(tls, (*J40__dq_matrix)(unsafe.Pointer(dqmat)).Params)
 	}
@@ -16426,7 +13230,7 @@ func j40__free_dq_matrix(tls *libc.TLS, dqmat uintptr) { /* j40.h:4791:17: */
 	(*J40__dq_matrix)(unsafe.Pointer(dqmat)).Params = uintptr(0)
 }
 
-func j40__natural_order(tls *libc.TLS, st uintptr, log_rows Int32_t, log_columns Int32_t, out uintptr) J40_err { /* j40.h:4797:29: */
+func j40__natural_order(tls *libc.TLS, st uintptr, log_rows Int32_t, log_columns Int32_t, out uintptr) J40_err {
 	var size Int32_t
 	var log_slope Int32_t
 	var rows8 Int32_t
@@ -16438,7 +13242,7 @@ func j40__natural_order(tls *libc.TLS, st uintptr, log_rows Int32_t, log_columns
 	var o Int32_t
 	var excess Int32_t
 	var excess1 Int32_t
-	// place initial endpoints to leftmost and topmost edges, then fix out-of-bounds later
+
 	var x0 Int32_t
 	var y0 Int32_t
 	var x1 Int32_t
@@ -16471,7 +13275,6 @@ __2:
 	goto __3
 __3:
 	;
-
 	o = 0
 	y = 0
 __6:
@@ -16498,18 +13301,12 @@ __7:
 	goto __8
 __8:
 	;
-
-	//            d e..
-	// +---------/-/-  each diagonal is identified by an integer
-	// |       |/ / /    key1 = scaled_x + scaled_y = x + y * 2^log_slope,
-	// |_a_b_c_| / /   and covers at least one cell when:
-	// |/ / / / / / /    2^(log_columns - 3) <= key1 < 2^(log_columns + 1) - 2^log_slope.
 	key1 = int32(1) << (log_columns - 3)
 __12:
 	if !(o < size) {
 		goto __14
 	}
-	// place initial endpoints to leftmost and topmost edges, then fix out-of-bounds later
+
 	x0 = key1 & (int32(1)<<log_slope - 1)
 	y0 = key1 >> log_slope
 	x1 = key1
@@ -16532,7 +13329,6 @@ __15:
 
 __16:
 	;
-
 	if !(key1&1 != 0) {
 		goto __17
 	}
@@ -16542,7 +13338,7 @@ __19:
 	if !(x >= x0) {
 		goto __21
 	}
-	// skip the already covered top-left LLF region
+
 	if !(y >= rows8 || x >= columns8) {
 		goto __22
 	}
@@ -16588,7 +13384,6 @@ __13:
 	goto __14
 __14:
 	;
-
 	*(*uintptr)(unsafe.Pointer(out)) = order
 	return J40_err(0)
 
@@ -16602,18 +13397,18 @@ type J40__blend_info = struct {
 	Alpha_chan    Int8_t
 	Clamp         Int8_t
 	Src_ref_frame Int8_t
-} /* j40.h:4872:3 */
+}
 
-const ( /* j40.h:4874:1: */
+const (
 	J40__FRAME_REGULAR          = 0
 	J40__FRAME_LF               = 1
 	J40__FRAME_REFONLY          = 2
 	J40__FRAME_REGULAR_SKIPPROG = 3
 )
 
-type J40__frame_st = J40__frame_st1 /* j40.h:4937:3 */
+type J40__frame_st = J40__frame_st1
 
-func j40__free_frame_state(tls *libc.TLS, f uintptr) { /* j40.h:4943:17: */
+func j40__free_frame_state(tls *libc.TLS, f uintptr) {
 	var i Int32_t
 	var j Int32_t
 	var k Int32_t
@@ -16643,7 +13438,7 @@ func j40__free_frame_state(tls *libc.TLS, f uintptr) { /* j40.h:4943:17: */
 	(*J40__frame_st)(unsafe.Pointer(f)).Block_ctx_map = uintptr(0)
 }
 
-func j40__frame_header(tls *libc.TLS, st uintptr) J40_err { /* j40.h:4978:29: */
+func j40__frame_header(tls *libc.TLS, st uintptr) J40_err {
 	bp := tls.Alloc(4)
 	defer tls.Free(4)
 
@@ -16652,17 +13447,11 @@ func j40__frame_header(tls *libc.TLS, st uintptr) J40_err { /* j40.h:4978:29: */
 	var i Int32_t
 	var j Int32_t
 	var pass Int32_t
-	// SPEC this part is especially flaky and the spec and libjxl don't agree to each other.
-	// we do the most sensible thing that is still compatible to libjxl:
-	// - downsample should be decreasing (or stay same)
-	// - last_pass should be strictly increasing and last_pass[0] (if any) should be 0
-	// see also https://github.com/libjxl/libjxl/issues/1401
-	// var log_ds [4]Int8_t at bp, 4
 
 	var ppass Int32_t
 	var num_ds Int32_t
-	var blend uintptr                 // RestorationFilter
-	var restoration_all_default int32 // !all_default
+	var blend uintptr
+	var restoration_all_default int32
 	var full_frame int32
 	var flags Uint64_t
 	im = (*J40__st)(unsafe.Pointer(st)).Image
@@ -16680,16 +13469,16 @@ func j40__frame_header(tls *libc.TLS, st uintptr) J40_err { /* j40.h:4978:29: */
 	(*J40__frame_st)(unsafe.Pointer(f)).X_qm_scale = 3
 	(*J40__frame_st)(unsafe.Pointer(f)).B_qm_scale = 2
 	(*J40__frame_st)(unsafe.Pointer(f)).Num_passes = 1
-	*(*Int8_t)(unsafe.Pointer(f + 72)) = int8(0) // last pass if default
+	*(*Int8_t)(unsafe.Pointer(f + 72)) = int8(0)
 	*(*Int8_t)(unsafe.Pointer(f + 83)) = int8(3)
-	*(*Int8_t)(unsafe.Pointer(f + 83 + 1)) = int8(0) // last pass if default
+	*(*Int8_t)(unsafe.Pointer(f + 83 + 1)) = int8(0)
 	(*J40__frame_st)(unsafe.Pointer(f)).Lf_level = 0
 	(*J40__frame_st)(unsafe.Pointer(f)).X0 = libc.AssignPtrInt32(f+104, 0)
 	(*J40__frame_st)(unsafe.Pointer(f)).Width = (*J40__image_st)(unsafe.Pointer(im)).Width
 	(*J40__frame_st)(unsafe.Pointer(f)).Height = (*J40__image_st)(unsafe.Pointer(im)).Height
 	(*J40__frame_st)(unsafe.Pointer(f)).Duration = libc.AssignPtrInt64(f+160, int64(0))
 	(*J40__frame_st)(unsafe.Pointer(f)).Blend_info.Mode = J40__BLEND_REPLACE
-	(*J40__frame_st)(unsafe.Pointer(f)).Blend_info.Alpha_chan = int8(0) // XXX set to the actual alpha channel
+	(*J40__frame_st)(unsafe.Pointer(f)).Blend_info.Alpha_chan = int8(0)
 	(*J40__frame_st)(unsafe.Pointer(f)).Blend_info.Clamp = int8(0)
 	(*J40__frame_st)(unsafe.Pointer(f)).Blend_info.Src_ref_frame = int8(0)
 	(*J40__frame_st)(unsafe.Pointer(f)).Ec_blend_info = uintptr(0)
@@ -16722,7 +13511,7 @@ __3:
 	(*J40__frame_st)(unsafe.Pointer(f)).Epf.Pass2_sigma_scale = 6.5
 	(*J40__frame_st)(unsafe.Pointer(f)).Epf.Border_sad_mul = float32(2.0) / 3.0
 	(*J40__frame_st)(unsafe.Pointer(f)).Epf.Sigma_for_modular = 1.0
-	// TODO spec bug: default values for m_*_lf_unscaled should be reciprocals of the listed values
+
 	*(*float32)(unsafe.Pointer(f + 304)) = float32(1.0) / 4096.0
 	*(*float32)(unsafe.Pointer(f + 304 + 1*4)) = float32(1.0) / 512.0
 	*(*float32)(unsafe.Pointer(f + 304 + 2*4)) = float32(1.0) / 256.0
@@ -16756,10 +13545,9 @@ __5:
 	goto __6
 __6:
 	;
-
 	if !!(j40__u(tls, st, 1) != 0) {
 		goto __8
-	} // !all_default
+	}
 	full_frame = 1
 	(*J40__frame_st)(unsafe.Pointer(f)).Type = uint32(uint32(j40__u(tls, st, 2)))
 	(*J40__frame_st)(unsafe.Pointer(f)).Is_modular = j40__u(tls, st, 1)
@@ -16783,7 +13571,7 @@ __9:
 	}
 	(*J40__frame_st)(unsafe.Pointer(f)).Jpeg_upsampling = j40__u(tls, st, 6)
 __11:
-	; // yes, we are lazy
+	;
 	(*J40__frame_st)(unsafe.Pointer(f)).Log_upsampling = j40__u(tls, st, 2)
 __12:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
@@ -17044,10 +13832,10 @@ __33:
 __64:
 	if !(j40__u(tls, st, 1) != 0) {
 		goto __66
-	} // have_crop
+	}
 	if !((*J40__frame_st)(unsafe.Pointer(f)).Type != J40__FRAME_REFONLY) {
 		goto __67
-	} // SPEC missing UnpackSigned
+	}
 	(*J40__frame_st)(unsafe.Pointer(f)).X0 = J40__unpack_signed(tls, j40__u32(tls, st, 0, 8, 256, 11, 2304, 14, 18688, 30))
 	(*J40__frame_st)(unsafe.Pointer(f)).Y0 = J40__unpack_signed(tls, j40__u32(tls, st, 0, 8, 256, 11, 2304, 14, 18688, 30))
 __67:
@@ -17174,7 +13962,7 @@ __87:
 	;
 	if !((*J40__image_st)(unsafe.Pointer(im)).Anim_tps_denom != 0) {
 		goto __93
-	} // have_animation stored implicitly
+	}
 	(*J40__frame_st)(unsafe.Pointer(f)).Duration = j40__64u32(tls, st, 0, 0, 1, 0, 0, 8, 0, 32)
 	if !((*J40__image_st)(unsafe.Pointer(im)).Anim_have_timecodes != 0) {
 		goto __94
@@ -17196,7 +13984,6 @@ __79:
 	(*J40__frame_st)(unsafe.Pointer(f)).Save_as_ref = j40__u(tls, st, 2)
 __95:
 	;
-	// SPEC this condition is essentially swapped with the default value in the spec
 	if !((*J40__frame_st)(unsafe.Pointer(f)).Type == J40__FRAME_REFONLY || full_frame != 0 && ((*J40__frame_st)(unsafe.Pointer(f)).Type == J40__FRAME_REGULAR || (*J40__frame_st)(unsafe.Pointer(f)).Type == J40__FRAME_REGULAR_SKIPPROG) && int32((*J40__frame_st)(unsafe.Pointer(f)).Blend_info.Mode) == J40__BLEND_REPLACE && ((*J40__frame_st)(unsafe.Pointer(f)).Duration == int64(0) || (*J40__frame_st)(unsafe.Pointer(f)).Save_as_ref != 0) && !((*J40__frame_st)(unsafe.Pointer(f)).Is_last != 0)) {
 		goto __96
 	}
@@ -17221,7 +14008,6 @@ __99:
 	goto __100
 __100:
 	;
-	// RestorationFilter
 	restoration_all_default = j40__u(tls, st, 1)
 	(*J40__frame_st)(unsafe.Pointer(f)).Gab.Enabled = func() int32 {
 		if restoration_all_default != 0 {
@@ -17234,7 +14020,7 @@ __100:
 	}
 	if !(j40__u(tls, st, 1) != 0) {
 		goto __103
-	} // gab_custom
+	}
 	i = 0
 __104:
 	if !(i < 3) {
@@ -17275,7 +14061,7 @@ __102:
 	}
 	if !(!((*J40__frame_st)(unsafe.Pointer(f)).Is_modular != 0) && j40__u(tls, st, 1) != 0) {
 		goto __111
-	} // epf_sharp_custom
+	}
 	i = 0
 __112:
 	if !(i < 8) {
@@ -17293,7 +14079,7 @@ __111:
 	;
 	if !(j40__u(tls, st, 1) != 0) {
 		goto __115
-	} // epf_weight_custom
+	}
 	i = 0
 __116:
 	if !(i < 3) {
@@ -17321,12 +14107,12 @@ __120:
 	}
 	goto __121
 __121:
-	; // ignored
+	;
 __115:
 	;
 	if !(j40__u(tls, st, 1) != 0) {
 		goto __123
-	} // epf_sigma_custom
+	}
 	if !!((*J40__frame_st)(unsafe.Pointer(f)).Is_modular != 0) {
 		goto __124
 	}
@@ -17366,7 +14152,6 @@ __129:
 	;
 __126:
 	;
-
 __131:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__extensions(tls, st) != 0)), int64(0)) != 0) {
 		goto __134
@@ -17399,13 +14184,12 @@ __136:
 	goto __137
 __137:
 	;
-
 	if !((*J40__image_st)(unsafe.Pointer(im)).Xyb_encoded != 0 && (*J40__image_st)(unsafe.Pointer(im)).Want_icc != 0) {
 		goto __139
 	}
 	(*J40__frame_st)(unsafe.Pointer(f)).Save_before_ct = 1
 __139:
-	; // ignores the decoded bit
+	;
 	(*J40__frame_st)(unsafe.Pointer(f)).Num_groups_per_row = Int64_t(J40__ceil_div32(tls, (*J40__frame_st)(unsafe.Pointer(f)).Width, int32(1)<<(*J40__frame_st)(unsafe.Pointer(f)).Group_size_shift))
 	(*J40__frame_st)(unsafe.Pointer(f)).Num_groups = (*J40__frame_st)(unsafe.Pointer(f)).Num_groups_per_row * Int64_t(J40__ceil_div32(tls, (*J40__frame_st)(unsafe.Pointer(f)).Height, int32(1)<<(*J40__frame_st)(unsafe.Pointer(f)).Group_size_shift))
 	(*J40__frame_st)(unsafe.Pointer(f)).Num_lf_groups_per_row = Int64_t(J40__ceil_div32(tls, (*J40__frame_st)(unsafe.Pointer(f)).Width, int32(8)<<(*J40__frame_st)(unsafe.Pointer(f)).Group_size_shift))
@@ -17422,15 +14206,12 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// frame header
-
 type J40__section = struct {
 	Idx     Int64_t
 	Codeoff Int64_t
 	Size    Int32_t
 	Pass    Int32_t
-} /* j40.h:5217:3 */
+}
 
 type J40__toc = struct {
 	Single_size       Int32_t
@@ -17443,18 +14224,17 @@ type J40__toc = struct {
 	Nsections_read    Int64_t
 	Sections          uintptr
 	End_codeoff       Int64_t
-} /* j40.h:5232:3 */
+}
 
 // also used in j40__hf_global; out is terminated by a sentinel (-1) or NULL if empty
 // TODO permutation may have to handle more than 2^31 entries
-func j40__permutation(tls *libc.TLS, st uintptr, code uintptr, size Int32_t, skip Int32_t, out uintptr) J40_err { /* j40.h:5245:29: */
+func j40__permutation(tls *libc.TLS, st uintptr, code uintptr, size Int32_t, skip Int32_t, out uintptr) J40_err {
 	var arr uintptr
 	var i Int32_t
 	var prev Int32_t
 	var end Int32_t
 	arr = uintptr(0)
 
-	// SPEC this is the number of integers to read, not the last offset to read (can differ when skip > 0)
 	end = j40__code(tls, st, J40__min32(tls, 7, J40__ceil_lg32(tls, Uint32_t(size)+Uint32_t(1))), 0, code)
 __1:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
@@ -17477,7 +14257,7 @@ __2:
 	}
 	goto __3
 __3:
-	; // SPEC missing
+	;
 	if !(end == 0) {
 		goto __6
 	}
@@ -17485,7 +14265,6 @@ __3:
 	return J40_err(0)
 __6:
 	;
-
 __7:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __10
@@ -17536,7 +14315,7 @@ __16:
 	}
 	goto __17
 __17:
-	; // SPEC missing
+	;
 	goto __13
 __13:
 	i++
@@ -17544,7 +14323,7 @@ __13:
 	goto __14
 __14:
 	;
-	*(*Int32_t)(unsafe.Pointer(arr + uintptr(end)*4)) = -1 // sentinel
+	*(*Int32_t)(unsafe.Pointer(arr + uintptr(end)*4)) = -1
 	*(*uintptr)(unsafe.Pointer(out)) = arr
 	return J40_err(0)
 
@@ -17554,7 +14333,7 @@ J40__ON_ERROR:
 }
 
 // target is pre-shifted by skip
-func j40__apply_permutation(tls *libc.TLS, targetbuf uintptr, temp uintptr, elemsize Size_t, lehmer uintptr) { /* j40.h:5277:17: */
+func j40__apply_permutation(tls *libc.TLS, targetbuf uintptr, temp uintptr, elemsize Size_t, lehmer uintptr) {
 	var target uintptr = targetbuf
 	if !(lehmer != 0) {
 		return
@@ -17568,7 +14347,7 @@ func j40__apply_permutation(tls *libc.TLS, targetbuf uintptr, temp uintptr, elem
 	}
 }
 
-func j40__compare_section(tls *libc.TLS, a uintptr, b uintptr) int32 { /* j40.h:5291:16: */
+func j40__compare_section(tls *libc.TLS, a uintptr, b uintptr) int32 {
 	var aa uintptr = a
 	var bb uintptr = b
 	if (*J40__section)(unsafe.Pointer(aa)).Codeoff < (*J40__section)(unsafe.Pointer(bb)).Codeoff {
@@ -17580,7 +14359,7 @@ func j40__compare_section(tls *libc.TLS, a uintptr, b uintptr) int32 { /* j40.h:
 	return 0
 }
 
-func j40__read_toc(tls *libc.TLS, st uintptr, toc uintptr) J40_err { /* j40.h:5296:29: */
+func j40__read_toc(tls *libc.TLS, st uintptr, toc uintptr) J40_err {
 	bp := tls.Alloc(144)
 	defer tls.Free(144)
 
@@ -17589,23 +14368,8 @@ func j40__read_toc(tls *libc.TLS, st uintptr, toc uintptr) J40_err { /* j40.h:52
 	var nsections2 Int64_t
 	var sections uintptr
 	var sections2 uintptr
-	// var temp J40__section at bp+104, 24
-
-	// interleaved linked lists for each LF group; for each LF group `gg` there are three cases:
-	// - no relocated section if `relocs[gg].next == 0` (initial state).
-	// - a single relocated section `relocs[gg].section` if `relocs[gg].next < 0`.
-	// - 2+ relocated sections `relocs[i].section`, where `k` starts at `gg` and
-	//   continues through `next` until it's negative.
-	// var relocs uintptr at bp+128, 8
 
 	var nrelocs Int64_t
-	// var relocs_cap Int64_t at bp+136, 8
-
-	// var lehmer uintptr at bp+96, 8
-
-	// var codespec J40__code_spec at bp, 56
-
-	// var code J40__code_st at bp+56, 40
 
 	var i Int64_t
 	var nremoved Int64_t
@@ -17637,12 +14401,11 @@ func j40__read_toc(tls *libc.TLS, st uintptr, toc uintptr) J40_err { /* j40.h:52
 	}
 	sections = uintptr(0)
 	sections2 = uintptr(0)
-	*(*uintptr)(unsafe.Pointer(bp + 128 /* relocs */)) = uintptr(0)
-	*(*uintptr)(unsafe.Pointer(bp + 96 /* lehmer */)) = uintptr(0)
-	*(*J40__code_spec)(unsafe.Pointer(bp /* codespec */)) = J40__code_spec{}
-	*(*J40__code_st)(unsafe.Pointer(bp + 56 /* code */)) = J40__code_st{Spec: bp}
+	*(*uintptr)(unsafe.Pointer(bp + 128)) = uintptr(0)
+	*(*uintptr)(unsafe.Pointer(bp + 96)) = uintptr(0)
+	*(*J40__code_spec)(unsafe.Pointer(bp)) = J40__code_spec{}
+	*(*J40__code_st)(unsafe.Pointer(bp + 56)) = J40__code_st{Spec: bp}
 
-	// TODO remove int32_t restrictions
 __1:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __4
@@ -17665,10 +14428,9 @@ __2:
 	goto __3
 __3:
 	;
-
 	if !(j40__u(tls, st, 1) != 0) {
 		goto __6
-	} // permuted
+	}
 __7:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__read_code_spec(tls, st, 8, bp) != 0)), int64(0)) != 0) {
 		goto __10
@@ -17732,8 +14494,6 @@ __20:
 	goto __21
 __21:
 	;
-
-	// single section case: no allocation required
 	if !(nsections == int64(1)) {
 		goto __23
 	}
@@ -17779,11 +14539,10 @@ __29:
 	goto __30
 __30:
 	;
-	j40__free(tls, *(*uintptr)(unsafe.Pointer(bp + 96 /* lehmer */)))
+	j40__free(tls, *(*uintptr)(unsafe.Pointer(bp + 96)))
 	return J40_err(0)
 __23:
 	;
-
 __33:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __36
@@ -17834,8 +14593,7 @@ __42:
 	goto __43
 __43:
 	;
-
-	(*J40__section)(unsafe.Pointer(sections)).Codeoff = j40__codestream_offset(tls, st) // all TOC offsets are relative to this point
+	(*J40__section)(unsafe.Pointer(sections)).Codeoff = j40__codestream_offset(tls, st)
 	i = int64(1)
 __45:
 	if !(i < nsections) {
@@ -17892,16 +14650,14 @@ __54:
 	goto __55
 __55:
 	;
-
 	if !(*(*uintptr)(unsafe.Pointer(bp + 96)) != 0) {
 		goto __58
 	}
-	j40__apply_permutation(tls, sections, bp+104, uint64(unsafe.Sizeof(J40__section{})), *(*uintptr)(unsafe.Pointer(bp + 96 /* lehmer */)))
-	j40__free(tls, *(*uintptr)(unsafe.Pointer(bp + 96 /* lehmer */)))
-	*(*uintptr)(unsafe.Pointer(bp + 96 /* lehmer */)) = uintptr(0)
+	j40__apply_permutation(tls, sections, bp+104, uint64(unsafe.Sizeof(J40__section{})), *(*uintptr)(unsafe.Pointer(bp + 96)))
+	j40__free(tls, *(*uintptr)(unsafe.Pointer(bp + 96)))
+	*(*uintptr)(unsafe.Pointer(bp + 96)) = uintptr(0)
 __58:
 	;
-
 	(*J40__toc)(unsafe.Pointer(toc)).Lf_global_codeoff = (*J40__section)(unsafe.Pointer(sections)).Codeoff
 	(*J40__toc)(unsafe.Pointer(toc)).Lf_global_size = (*J40__section)(unsafe.Pointer(sections)).Size
 	(*J40__section)(unsafe.Pointer(sections)).Codeoff = int64(-1)
@@ -17949,9 +14705,6 @@ __63:
 	goto __64
 __64:
 	;
-
-	// any group section depending on the later LF group section is temporarily moved to relocs
-
 	ggrows = J40__ceil_div32(tls, (*J40__frame_st)(unsafe.Pointer(f)).Height, int32(8)<<(*J40__frame_st)(unsafe.Pointer(f)).Group_size_shift)
 	grows = J40__ceil_div32(tls, (*J40__frame_st)(unsafe.Pointer(f)).Height, int32(1)<<(*J40__frame_st)(unsafe.Pointer(f)).Group_size_shift)
 	ggcolumns = J40__ceil_div32(tls, (*J40__frame_st)(unsafe.Pointer(f)).Width, int32(8)<<(*J40__frame_st)(unsafe.Pointer(f)).Group_size_shift)
@@ -17979,7 +14732,7 @@ __69:
 	goto __70
 __70:
 	;
-	nrelocs = libc.AssignPtrInt64(bp+136 /* relocs_cap */, (*J40__frame_st)(unsafe.Pointer(f)).Num_lf_groups)
+	nrelocs = libc.AssignPtrInt64(bp+136, (*J40__frame_st)(unsafe.Pointer(f)).Num_lf_groups)
 
 	ggrow = 0
 __73:
@@ -18042,14 +14795,14 @@ __92:
 	goto __93
 __93:
 	;
-	*(*Reloc)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 128 /* relocs */)) + uintptr(nrelocs)*32)) = *(*Reloc)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 128 /* relocs */)) + uintptr(ggidx)*32))
-	(*Reloc)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 128 /* relocs */)) + uintptr(ggidx)*32)).Next = libc.PostIncInt64(&nrelocs, 1)
+	*(*Reloc)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 128)) + uintptr(nrelocs)*32)) = *(*Reloc)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 128)) + uintptr(ggidx)*32))
+	(*Reloc)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 128)) + uintptr(ggidx)*32)).Next = libc.PostIncInt64(&nrelocs, 1)
 	goto __90
 __89:
-	(*Reloc)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 128 /* relocs */)) + uintptr(ggidx)*32)).Next = int64(-1)
+	(*Reloc)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 128)) + uintptr(ggidx)*32)).Next = int64(-1)
 __90:
 	;
-	(*Reloc)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 128 /* relocs */)) + uintptr(ggidx)*32)).Section = *(*J40__section)(unsafe.Pointer(sections + uintptr(gsection)*24))
+	(*Reloc)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 128)) + uintptr(ggidx)*32)).Section = *(*J40__section)(unsafe.Pointer(sections + uintptr(gsection)*24))
 	(*J40__section)(unsafe.Pointer(sections + uintptr(gsection)*24)).Codeoff = int64(-1)
 	goto __86
 __86:
@@ -18086,8 +14839,6 @@ __74:
 	goto __75
 __75:
 	;
-
-	// remove any section with a codeoff -1 and sort the remainder
 	i = libc.AssignInt64(&nremoved, int64(0))
 __96:
 	if !(i < nsections) {
@@ -18113,7 +14864,6 @@ __98:
 		f func(*libc.TLS, uintptr, uintptr) int32
 	}{j40__compare_section})))
 
-	// copy sections to sections2, but insert any relocated sections after corresponding LF group section
 __101:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __104
@@ -18161,8 +14911,8 @@ __111:
 	if !(j >= int64(0)) {
 		goto __112
 	}
-	*(*J40__section)(unsafe.Pointer(sections2 + uintptr(libc.PostIncInt64(&nsections2, 1))*24)) = (*Reloc)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 128 /* relocs */)) + uintptr(j)*32)).Section
-	j = (*Reloc)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 128 /* relocs */)) + uintptr(j)*32)).Next
+	*(*J40__section)(unsafe.Pointer(sections2 + uintptr(libc.PostIncInt64(&nsections2, 1))*24)) = (*Reloc)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 128)) + uintptr(j)*32)).Section
+	j = (*Reloc)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 128)) + uintptr(j)*32)).Next
 	goto __111
 __112:
 	;
@@ -18177,15 +14927,13 @@ __107:
 	goto __108
 __108:
 	;
-
 	(*J40__toc)(unsafe.Pointer(toc)).Sections = sections2
 	(*J40__toc)(unsafe.Pointer(toc)).Nsections = nsections2
 	(*J40__toc)(unsafe.Pointer(toc)).Nsections_read = int64(0)
-	// excludes LfGlobal and HfGlobal
 
 	j40__free(tls, sections)
-	j40__free(tls, *(*uintptr)(unsafe.Pointer(bp + 128 /* relocs */)))
-	j40__free(tls, *(*uintptr)(unsafe.Pointer(bp + 96 /* lehmer */)))
+	j40__free(tls, *(*uintptr)(unsafe.Pointer(bp + 128)))
+	j40__free(tls, *(*uintptr)(unsafe.Pointer(bp + 96)))
 	j40__free_code(tls, bp+56)
 	j40__free_code_spec(tls, bp)
 	return J40_err(0)
@@ -18193,8 +14941,8 @@ __108:
 J40__ON_ERROR:
 	j40__free(tls, sections)
 	j40__free(tls, sections2)
-	j40__free(tls, *(*uintptr)(unsafe.Pointer(bp + 128 /* relocs */)))
-	j40__free(tls, *(*uintptr)(unsafe.Pointer(bp + 96 /* lehmer */)))
+	j40__free(tls, *(*uintptr)(unsafe.Pointer(bp + 128)))
+	j40__free(tls, *(*uintptr)(unsafe.Pointer(bp + 96)))
 	j40__free_code(tls, bp+56)
 	j40__free_code_spec(tls, bp)
 	return (*J40__st)(unsafe.Pointer(st)).Err
@@ -18208,33 +14956,25 @@ J40__ON_ERROR:
 type Reloc = struct {
 	Next    Int64_t
 	Section J40__section
-} /* j40.h:5310:2 */
+}
 
-func j40__free_toc(tls *libc.TLS, toc uintptr) { /* j40.h:5469:17: */
+func j40__free_toc(tls *libc.TLS, toc uintptr) {
 	j40__free(tls, (*J40__toc)(unsafe.Pointer(toc)).Sections)
 	(*J40__toc)(unsafe.Pointer(toc)).Sections = uintptr(0)
 }
 
-// this is more or less a direct translation of mcos2/3 algorithms described in:
-// Perera, S. M., & Liu, J. (2018). Lowest Complexity Self-Recursive Radix-2 DCT II/III Algorithms.
-// SIAM Journal on Matrix Analysis and Applications, 39(2), 664--682.
-
 // [(1<<n) + k] = 1/(2 cos((k+0.5)/2^(n+1) pi)) for n >= 1 and 0 <= k < 2^n
 var sJ40__HALF_SECANTS = [256]float32{
-	float32(0), float32(0), // unused
-	0.54119610, 1.30656296, // n=1 for DCT-4
-	0.50979558, 0.60134489, 0.89997622, 2.56291545, // n=2 for DCT-8
-	// n=3 for DCT-16
+	float32(0), float32(0),
+	0.54119610, 1.30656296,
+	0.50979558, 0.60134489, 0.89997622, 2.56291545,
 	0.50241929, 0.52249861, 0.56694403, 0.64682178, 0.78815462, 1.06067769, 1.72244710, 5.10114862,
-	// n=4 for DCT-32
 	0.50060300, 0.50547096, 0.51544731, 0.53104259, 0.55310390, 0.58293497, 0.62250412, 0.67480834,
 	0.74453627, 0.83934965, 0.97256824, 1.16943993, 1.48416462, 2.05778101, 3.40760842, 10.1900081,
-	// n=5 for DCT-64
 	0.50015064, 0.50135845, 0.50378873, 0.50747117, 0.51245148, 0.51879271, 0.52657732, 0.53590982,
 	0.54692044, 0.55976981, 0.57465518, 0.59181854, 0.61155735, 0.63423894, 0.66031981, 0.69037213,
 	0.72512052, 0.76549416, 0.81270209, 0.86834472, 0.93458360, 1.01440826, 1.11207162, 1.23383274,
 	1.38929396, 1.59397228, 1.87467598, 2.28205007, 2.92462843, 4.08461108, 6.79675071, 20.3738782,
-	// n=6 for DCT-128
 	0.50003765, 0.50033904, 0.50094272, 0.50185052, 0.50306519, 0.50459044, 0.50643095, 0.50859242,
 	0.51108159, 0.51390633, 0.51707566, 0.52059987, 0.52449054, 0.52876071, 0.53342493, 0.53849944,
 	0.54400225, 0.54995337, 0.55637499, 0.56329167, 0.57073059, 0.57872189, 0.58729894, 0.59649876,
@@ -18243,7 +14983,6 @@ var sJ40__HALF_SECANTS = [256]float32{
 	0.91688445, 0.95312587, 0.99297296, 1.03694904, 1.08568506, 1.13994868, 1.20068326, 1.26906117,
 	1.34655763, 1.43505509, 1.53699410, 1.65559652, 1.79520522, 1.96181785, 2.16395782, 2.41416000,
 	2.73164503, 3.14746219, 3.71524274, 4.53629094, 5.82768838, 8.15384860, 13.5842903, 40.7446881,
-	// n=7 for DCT-256
 	0.50000941, 0.50008472, 0.50023540, 0.50046156, 0.50076337, 0.50114106, 0.50159492, 0.50212529,
 	0.50273257, 0.50341722, 0.50417977, 0.50502081, 0.50594098, 0.50694099, 0.50802161, 0.50918370,
 	0.51042817, 0.51175599, 0.51316821, 0.51466598, 0.51625048, 0.51792302, 0.51968494, 0.52153769,
@@ -18260,7 +14999,7 @@ var sJ40__HALF_SECANTS = [256]float32{
 	1.75804061, 1.83404561, 1.91722116, 2.00861611, 2.10949453, 2.22139378, 2.34620266, 2.48626791,
 	2.64454188, 2.82479140, 3.03189945, 3.27231159, 3.55471533, 3.89110779, 4.29853753, 4.80207601,
 	5.44016622, 6.27490841, 7.41356676, 9.05875145, 11.6446273, 16.3000231, 27.1639777, 81.4878422,
-} /* j40.h:5509:24 */
+}
 
 // TODO spec bug: ScaleF doesn't match with the current libjxl! it turns out that this is actually
 // a set of factors for the Arai, Agui, Nakajima DCT & IDCT algorithm, which was only used in
@@ -18271,30 +15010,26 @@ var sJ40__HALF_SECANTS = [256]float32{
 //
 //	for N >= 1 and 0 <= k < 2^N
 var sJ40__LF2LLF_SCALES = [64]float32{
-	float32(0),             // unused
-	1.00000000,             // N=1, n=8
-	0.50000000, 0.55446868, // N=2, n=16
-	0.25000000, 0.25644002, 0.27723434, 0.31763984, // N=4, n=32
-	// N=8, n=64
+	float32(0),
+	1.00000000,
+	0.50000000, 0.55446868,
+	0.25000000, 0.25644002, 0.27723434, 0.31763984,
 	0.12500000, 0.12579419, 0.12822001, 0.13241272, 0.13861717, 0.14722207, 0.15881992, 0.17431123,
-	// N=16, n=128
 	0.06250000, 0.06259894, 0.06289709, 0.06339849, 0.06411001, 0.06504154, 0.06620636, 0.06762155,
 	0.06930858, 0.07129412, 0.07361103, 0.07629973, 0.07940996, 0.08300316, 0.08715562, 0.09196277,
-	// N=32, n=256
 	0.03125000, 0.03126236, 0.03129947, 0.03136146, 0.03144855, 0.03156101, 0.03169925, 0.03186372,
 	0.03205500, 0.03227376, 0.03252077, 0.03279691, 0.03310318, 0.03344071, 0.03381077, 0.03421478,
 	0.03465429, 0.03513107, 0.03564706, 0.03620441, 0.03680552, 0.03745302, 0.03814986, 0.03889931,
 	0.03970498, 0.04057091, 0.04150158, 0.04250201, 0.04357781, 0.04473525, 0.04598138, 0.04732417,
-} /* j40.h:5558:24 */
+}
 
-func J40__forward_dct_core(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t, half_forward_dct uintptr) { /* j40.h:5583:24: */
+func J40__forward_dct_core(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t, half_forward_dct uintptr) {
 	var r1 Int32_t
 	var r2 Int32_t
 	var i Int32_t
 	var N Int32_t = int32(1) << t
 	var stride Int32_t = rep1 * rep2
 
-	// out[0..N) = W^c_N H_N in[0..N)
 	for r1 = 0; r1 < rep1*rep2; r1 = r1 + rep2 {
 		for i = 0; i < N/2; i++ {
 			var mult float32 = sJ40__HALF_SECANTS[N/2+i]
@@ -18307,8 +15042,6 @@ func J40__forward_dct_core(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, re
 		}
 	}
 
-	// in[0..N/2) = mcos2(out[0..N/2), N/2)
-	// in[N/2..N) = mcos2(out[N/2..N), N/2)
 	(*struct {
 		f func(*libc.TLS, uintptr, uintptr, Int32_t, Int32_t, Int32_t)
 	})(unsafe.Pointer(&struct{ uintptr }{half_forward_dct})).f(tls, in, out, t-1, rep1, rep2)
@@ -18316,7 +15049,6 @@ func J40__forward_dct_core(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, re
 		f func(*libc.TLS, uintptr, uintptr, Int32_t, Int32_t, Int32_t)
 	})(unsafe.Pointer(&struct{ uintptr }{half_forward_dct})).f(tls, in+uintptr(N/2*stride)*4, out+uintptr(N/2*stride)*4, t-1, rep1, rep2)
 
-	// out[0,2..N) = in[0..N/2)
 	for r1 = 0; r1 < rep1*rep2; r1 = r1 + rep2 {
 		for i = 0; i < N/2; i++ {
 			for r2 = 0; r2 < rep2; r2++ {
@@ -18325,7 +15057,6 @@ func J40__forward_dct_core(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, re
 		}
 	}
 
-	// out[1,3..N) = B_(N/2) in[N/2..N)
 	for r1 = 0; r1 < rep1*rep2; r1 = r1 + rep2 {
 		for r2 = 0; r2 < rep2; r2++ {
 			*(*float32)(unsafe.Pointer(out + uintptr(1*stride+r1+r2)*4)) = 1.4142135623730951**(*float32)(unsafe.Pointer(in + uintptr(N/2*stride+r1+r2)*4)) + *(*float32)(unsafe.Pointer(in + uintptr((N/2+1)*stride+r1+r2)*4))
@@ -18341,14 +15072,13 @@ func J40__forward_dct_core(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, re
 	}
 }
 
-func J40__inverse_dct_core(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t, half_inverse_dct uintptr) { /* j40.h:5621:24: */
+func J40__inverse_dct_core(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t, half_inverse_dct uintptr) {
 	var r1 Int32_t
 	var r2 Int32_t
 	var i Int32_t
 	var N Int32_t = int32(1) << t
 	var stride Int32_t = rep1 * rep2
 
-	// out[0..N/2) = in[0,2..N)
 	for r1 = 0; r1 < rep1*rep2; r1 = r1 + rep2 {
 		for i = 0; i < N/2; i++ {
 			for r2 = 0; r2 < rep2; r2++ {
@@ -18357,7 +15087,6 @@ func J40__inverse_dct_core(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, re
 		}
 	}
 
-	// out[N/2..N) = (B_(N/2))^T in[1,3..N)
 	for r1 = 0; r1 < rep1*rep2; r1 = r1 + rep2 {
 		for r2 = 0; r2 < rep2; r2++ {
 			*(*float32)(unsafe.Pointer(out + uintptr(N/2*stride+r1+r2)*4)) = 1.4142135623730951 * *(*float32)(unsafe.Pointer(in + uintptr(1*stride+r1+r2)*4))
@@ -18369,8 +15098,6 @@ func J40__inverse_dct_core(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, re
 		}
 	}
 
-	// in[0..N/2) = mcos3(out[0..N/2), N/2)
-	// in[N/2..N) = mcos3(out[N/2..N), N/2)
 	(*struct {
 		f func(*libc.TLS, uintptr, uintptr, Int32_t, Int32_t, Int32_t)
 	})(unsafe.Pointer(&struct{ uintptr }{half_inverse_dct})).f(tls, in, out, t-1, rep1, rep2)
@@ -18378,15 +15105,13 @@ func J40__inverse_dct_core(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, re
 		f func(*libc.TLS, uintptr, uintptr, Int32_t, Int32_t, Int32_t)
 	})(unsafe.Pointer(&struct{ uintptr }{half_inverse_dct})).f(tls, in+uintptr(N/2*stride)*4, out+uintptr(N/2*stride)*4, t-1, rep1, rep2)
 
-	// out[0..N) = (H_N)^T W^c_N in[0..N)
 	for r1 = 0; r1 < rep1*rep2; r1 = r1 + rep2 {
 		for i = 0; i < N/2; i++ {
 			var mult float32 = sJ40__HALF_SECANTS[N/2+i]
 			for r2 = 0; r2 < rep2; r2++ {
 				var x float32 = *(*float32)(unsafe.Pointer(in + uintptr(i*stride+r1+r2)*4))
 				var y float32 = *(*float32)(unsafe.Pointer(in + uintptr((N/2+i)*stride+r1+r2)*4))
-				// this might look wasteful, but modern compilers can optimize them into FMA
-				// which can be actually faster than a single multiplication (TODO verify this)
+
 				*(*float32)(unsafe.Pointer(out + uintptr(i*stride+r1+r2)*4)) = x + y*mult
 				*(*float32)(unsafe.Pointer(out + uintptr((N-i-1)*stride+r1+r2)*4)) = x - y*mult
 			}
@@ -18394,7 +15119,7 @@ func J40__inverse_dct_core(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, re
 	}
 }
 
-func J40__dct2(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t) { /* j40.h:5662:24: */
+func J40__dct2(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t) {
 	var r1 Int32_t
 	var r2 Int32_t
 	var stride Int32_t = rep1 * rep2
@@ -18409,16 +15134,15 @@ func J40__dct2(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, 
 	}
 }
 
-func J40__forward_dct4(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t) { /* j40.h:5672:24: */
+func J40__forward_dct4(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t) {
 	_ = t
 	J40__forward_dct_core(tls, out, in, 2, rep1, rep2, *(*uintptr)(unsafe.Pointer(&struct {
 		f func(*libc.TLS, uintptr, uintptr, Int32_t, Int32_t, Int32_t)
 	}{J40__dct2})))
 }
 
-func j40__forward_dct_recur(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t) { /* j40.h:5677:17: */
+func j40__forward_dct_recur(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t) {
 	if t < 4 {
-
 		J40__forward_dct_core(tls, out, in, 3, rep1, rep2, *(*uintptr)(unsafe.Pointer(&struct {
 			f func(*libc.TLS, uintptr, uintptr, Int32_t, Int32_t, Int32_t)
 		}{J40__forward_dct4})))
@@ -18429,10 +15153,9 @@ func j40__forward_dct_recur(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, r
 	}
 }
 
-func j40__forward_dct_recur_x8(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t) { /* j40.h:5686:17: */
+func j40__forward_dct_recur_x8(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t) {
 	_ = rep2
 	if t < 4 {
-
 		J40__forward_dct_core(tls, out, in, 3, rep1, 8, *(*uintptr)(unsafe.Pointer(&struct {
 			f func(*libc.TLS, uintptr, uintptr, Int32_t, Int32_t, Int32_t)
 		}{J40__forward_dct4})))
@@ -18444,7 +15167,7 @@ func j40__forward_dct_recur_x8(tls *libc.TLS, out uintptr, in uintptr, t Int32_t
 }
 
 // this omits the final division by (1 << t)!
-func j40__forward_dct_unscaled(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep Int32_t) { /* j40.h:5697:17: */
+func j40__forward_dct_unscaled(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep Int32_t) {
 	if t <= 0 {
 		libc.Xmemcpy(tls, out, in, uint64(unsafe.Sizeof(float32(0)))*Size_t(rep))
 	} else if rep%8 == 0 {
@@ -18470,21 +15193,20 @@ func j40__forward_dct_unscaled(tls *libc.TLS, out uintptr, in uintptr, t Int32_t
 	}
 }
 
-func J40__forward_dct_unscaled_view(tls *libc.TLS, outv uintptr, inv uintptr) { /* j40.h:5711:24: */
+func J40__forward_dct_unscaled_view(tls *libc.TLS, outv uintptr, inv uintptr) {
 	J40__adapt_view_f32(tls, outv, (*J40__view_f32)(unsafe.Pointer(inv)).Logw, (*J40__view_f32)(unsafe.Pointer(inv)).Logh)
 	j40__forward_dct_unscaled(tls, (*J40__view_f32)(unsafe.Pointer(outv)).Ptr, (*J40__view_f32)(unsafe.Pointer(inv)).Ptr, (*J40__view_f32)(unsafe.Pointer(inv)).Logh, int32(1)<<(*J40__view_f32)(unsafe.Pointer(inv)).Logw)
 }
 
-func J40__inverse_dct4(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t) { /* j40.h:5716:24: */
+func J40__inverse_dct4(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t) {
 	_ = t
 	J40__inverse_dct_core(tls, out, in, 2, rep1, rep2, *(*uintptr)(unsafe.Pointer(&struct {
 		f func(*libc.TLS, uintptr, uintptr, Int32_t, Int32_t, Int32_t)
 	}{J40__dct2})))
 }
 
-func j40__inverse_dct_recur(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t) { /* j40.h:5721:17: */
+func j40__inverse_dct_recur(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t) {
 	if t < 4 {
-
 		J40__inverse_dct_core(tls, out, in, 3, rep1, rep2, *(*uintptr)(unsafe.Pointer(&struct {
 			f func(*libc.TLS, uintptr, uintptr, Int32_t, Int32_t, Int32_t)
 		}{J40__inverse_dct4})))
@@ -18495,10 +15217,9 @@ func j40__inverse_dct_recur(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, r
 	}
 }
 
-func j40__inverse_dct_recur_x8(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t) { /* j40.h:5730:17: */
+func j40__inverse_dct_recur_x8(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep1 Int32_t, rep2 Int32_t) {
 	_ = rep2
 	if t < 4 {
-
 		J40__inverse_dct_core(tls, out, in, 3, rep1, 8, *(*uintptr)(unsafe.Pointer(&struct {
 			f func(*libc.TLS, uintptr, uintptr, Int32_t, Int32_t, Int32_t)
 		}{J40__inverse_dct4})))
@@ -18509,7 +15230,7 @@ func j40__inverse_dct_recur_x8(tls *libc.TLS, out uintptr, in uintptr, t Int32_t
 	}
 }
 
-func j40__inverse_dct(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep Int32_t) { /* j40.h:5740:17: */
+func j40__inverse_dct(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep Int32_t) {
 	if t <= 0 {
 		libc.Xmemcpy(tls, out, in, uint64(unsafe.Sizeof(float32(0)))*Size_t(rep))
 	} else if rep%8 == 0 {
@@ -18537,100 +15258,91 @@ func j40__inverse_dct(tls *libc.TLS, out uintptr, in uintptr, t Int32_t, rep Int
 	}
 }
 
-func J40__inverse_dct_view(tls *libc.TLS, outv uintptr, inv uintptr) { /* j40.h:5754:24: */
+func J40__inverse_dct_view(tls *libc.TLS, outv uintptr, inv uintptr) {
 	J40__adapt_view_f32(tls, outv, (*J40__view_f32)(unsafe.Pointer(inv)).Logw, (*J40__view_f32)(unsafe.Pointer(inv)).Logh)
 	j40__inverse_dct(tls, (*J40__view_f32)(unsafe.Pointer(outv)).Ptr, (*J40__view_f32)(unsafe.Pointer(inv)).Ptr, (*J40__view_f32)(unsafe.Pointer(inv)).Logh, int32(1)<<(*J40__view_f32)(unsafe.Pointer(inv)).Logw)
 }
 
-func j40__forward_dct2d_scaled_for_llf(tls *libc.TLS, buf uintptr, scratch uintptr, log_rows Int32_t, log_columns Int32_t) { /* j40.h:5763:17: */
+func j40__forward_dct2d_scaled_for_llf(tls *libc.TLS, buf uintptr, scratch uintptr, log_rows Int32_t, log_columns Int32_t) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
 
-	*(*J40__view_f32)(unsafe.Pointer(bp + 16 /* bufv */)) = J40__make_view_f32(tls, log_columns, log_rows, buf)
-	*(*J40__view_f32)(unsafe.Pointer(bp /* scratchv */)) = J40__make_view_f32(tls, log_columns, log_rows, scratch)
+	*(*J40__view_f32)(unsafe.Pointer(bp + 16)) = J40__make_view_f32(tls, log_columns, log_rows, buf)
+	*(*J40__view_f32)(unsafe.Pointer(bp)) = J40__make_view_f32(tls, log_columns, log_rows, scratch)
 	var p uintptr
 	var x Int32_t
 	var y Int32_t
 
 	J40__forward_dct_unscaled_view(tls, bp, bp+16)
-	J40__transpose_view_f32(tls, bp+16, *(*J40__view_f32)(unsafe.Pointer(bp /* scratchv */)))
+	J40__transpose_view_f32(tls, bp+16, *(*J40__view_f32)(unsafe.Pointer(bp)))
 	J40__forward_dct_unscaled_view(tls, bp, bp+16)
-	// TODO spec bug (I.6.5): the pseudocode only works correctly when C > R;
-	// the condition itself can be eliminated by inlining DCT_2D though
-	for y = 0; y < int32(1)<<(*J40__view_f32)(unsafe.Pointer(bp /* &scratchv */)).Logh; y++ {
-		for x = 0; x < int32(1)<<(*J40__view_f32)(unsafe.Pointer(bp /* &scratchv */)).Logw && func() bool {
-			p = (*J40__view_f32)(unsafe.Pointer(bp /* &scratchv */)).Ptr + uintptr(y<<(*J40__view_f32)(unsafe.Pointer(bp /* &scratchv */)).Logw|x)*4
+
+	for y = 0; y < int32(1)<<(*J40__view_f32)(unsafe.Pointer(bp)).Logh; y++ {
+		for x = 0; x < int32(1)<<(*J40__view_f32)(unsafe.Pointer(bp)).Logw && func() bool {
+			p = (*J40__view_f32)(unsafe.Pointer(bp)).Ptr + uintptr(y<<(*J40__view_f32)(unsafe.Pointer(bp)).Logw|x)*4
 			return 1 != 0
 		}(); x++ {
-			// hopefully compiler will factor the second multiplication out of the inner loop (TODO verify this)
 			*(*float32)(unsafe.Pointer(p)) *= sJ40__LF2LLF_SCALES[int32(1)<<(*J40__view_f32)(unsafe.Pointer(bp)).Logw+x] * sJ40__LF2LLF_SCALES[int32(1)<<(*J40__view_f32)(unsafe.Pointer(bp)).Logh+y]
 		}
 	}
-	// TODO spec improvement (I.6.3 note): given the pseudocode, it might be better to
-	// state that the DCT result *always* has C <= R, transposing as necessary.
+
 	if log_columns > log_rows {
-		J40__transpose_view_f32(tls, bp+16, *(*J40__view_f32)(unsafe.Pointer(bp /* scratchv */)))
+		J40__transpose_view_f32(tls, bp+16, *(*J40__view_f32)(unsafe.Pointer(bp)))
 	} else {
-		J40__copy_view_f32(tls, bp+16, *(*J40__view_f32)(unsafe.Pointer(bp /* scratchv */)))
+		J40__copy_view_f32(tls, bp+16, *(*J40__view_f32)(unsafe.Pointer(bp)))
 	}
 
 }
 
-func j40__inverse_dct2d(tls *libc.TLS, buf uintptr, scratch uintptr, log_rows Int32_t, log_columns Int32_t) { /* j40.h:5791:17: */
+func j40__inverse_dct2d(tls *libc.TLS, buf uintptr, scratch uintptr, log_rows Int32_t, log_columns Int32_t) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
 
-	// var bufv J40__view_f32 at bp+16, 16
-
-	*(*J40__view_f32)(unsafe.Pointer(bp /* scratchv */)) = J40__make_view_f32(tls, log_columns, log_rows, scratch)
+	*(*J40__view_f32)(unsafe.Pointer(bp)) = J40__make_view_f32(tls, log_columns, log_rows, scratch)
 
 	if log_columns > log_rows {
-		// TODO spec improvement: coefficients start being transposed, note this as well
-		*(*J40__view_f32)(unsafe.Pointer(bp + 16 /* bufv */)) = J40__make_view_f32(tls, log_columns, log_rows, buf)
-		J40__transpose_view_f32(tls, bp, *(*J40__view_f32)(unsafe.Pointer(bp + 16 /* bufv */)))
+		*(*J40__view_f32)(unsafe.Pointer(bp + 16)) = J40__make_view_f32(tls, log_columns, log_rows, buf)
+		J40__transpose_view_f32(tls, bp, *(*J40__view_f32)(unsafe.Pointer(bp + 16)))
 	} else {
-		*(*J40__view_f32)(unsafe.Pointer(bp + 16 /* bufv */)) = J40__make_view_f32(tls, log_rows, log_columns, buf)
-		J40__copy_view_f32(tls, bp, *(*J40__view_f32)(unsafe.Pointer(bp + 16 /* bufv */)))
+		*(*J40__view_f32)(unsafe.Pointer(bp + 16)) = J40__make_view_f32(tls, log_rows, log_columns, buf)
+		J40__copy_view_f32(tls, bp, *(*J40__view_f32)(unsafe.Pointer(bp + 16)))
 	}
 	J40__inverse_dct_view(tls, bp+16, bp)
-	J40__transpose_view_f32(tls, bp, *(*J40__view_f32)(unsafe.Pointer(bp + 16 /* bufv */)))
+	J40__transpose_view_f32(tls, bp, *(*J40__view_f32)(unsafe.Pointer(bp + 16)))
 	J40__inverse_dct_view(tls, bp+16, bp)
 
 }
 
 // a single iteration of AuxIDCT2x2
-func J40__aux_inverse_dct11(tls *libc.TLS, out uintptr, in uintptr, x Int32_t, y Int32_t, S2 Int32_t) { /* j40.h:5812:24: */
+func J40__aux_inverse_dct11(tls *libc.TLS, out uintptr, in uintptr, x Int32_t, y Int32_t, S2 Int32_t) {
 	var p Int32_t = y*8 + x
 	var q Int32_t = y*2*8 + x*2
 	var c00 float32 = *(*float32)(unsafe.Pointer(in + uintptr(p)*4))
 	var c01 float32 = *(*float32)(unsafe.Pointer(in + uintptr(p+S2)*4))
 	var c10 float32 = *(*float32)(unsafe.Pointer(in + uintptr(p+S2*8)*4))
 	var c11 float32 = *(*float32)(unsafe.Pointer(in + uintptr(p+S2*9)*4))
-	*(*float32)(unsafe.Pointer(out + uintptr(q+000)*4)) = c00 + c01 + c10 + c11 // r00
-	*(*float32)(unsafe.Pointer(out + uintptr(q+001)*4)) = c00 + c01 - c10 - c11 // r01
-	*(*float32)(unsafe.Pointer(out + uintptr(q+010)*4)) = c00 - c01 + c10 - c11 // r10
-	*(*float32)(unsafe.Pointer(out + uintptr(q+011)*4)) = c00 - c01 - c10 + c11 // r11
+	*(*float32)(unsafe.Pointer(out + uintptr(q+000)*4)) = c00 + c01 + c10 + c11
+	*(*float32)(unsafe.Pointer(out + uintptr(q+001)*4)) = c00 + c01 - c10 - c11
+	*(*float32)(unsafe.Pointer(out + uintptr(q+010)*4)) = c00 - c01 + c10 - c11
+	*(*float32)(unsafe.Pointer(out + uintptr(q+011)*4)) = c00 - c01 - c10 + c11
 }
 
-func j40__inverse_dct11(tls *libc.TLS, buf uintptr) { /* j40.h:5821:17: */
+func j40__inverse_dct11(tls *libc.TLS, buf uintptr) {
 	bp := tls.Alloc(256)
 	defer tls.Free(256)
-
-	// var scratch [64]float32 at bp, 256
 
 	var x Int32_t
 	var y Int32_t
 
-	// TODO spec issue: only the "top-left" SxS cells, not "top"
-	J40__aux_inverse_dct11(tls, buf, buf, 0, 0, 1) // updates buf[(0..1)*8+(0..1)]
-	// updates scratch[(0..3)*8+(0..3)], copying other elements from buf in verbatim
+	J40__aux_inverse_dct11(tls, buf, buf, 0, 0, 1)
+
 	libc.Xmemcpy(tls, bp, buf, uint64(unsafe.Sizeof(float32(0)))*uint64(64))
 	for y = 0; y < 2; y++ {
 		for x = 0; x < 2; x++ {
 			J40__aux_inverse_dct11(tls, bp, buf, x, y, 2)
 		}
 	}
-	// updates the entire buf
+
 	for y = 0; y < 4; y++ {
 		for x = 0; x < 4; x++ {
 			J40__aux_inverse_dct11(tls, buf, bp, x, y, 4)
@@ -18638,38 +15350,22 @@ func j40__inverse_dct11(tls *libc.TLS, buf uintptr) { /* j40.h:5821:17: */
 	}
 }
 
-func j40__inverse_dct22(tls *libc.TLS, buf uintptr) { /* j40.h:5834:17: */
+func j40__inverse_dct22(tls *libc.TLS, buf uintptr) {
 	bp := tls.Alloc(256)
 	defer tls.Free(256)
-
-	// var scratch [64]float32 at bp, 256
 
 	var x Int32_t
 	var y Int32_t
 
 	J40__aux_inverse_dct11(tls, buf, buf, 0, 0, 1)
-	// after the top-left inverse DCT2x2, four 4x4 submatrices are formed and IDCTed individually.
-	// IDCT itself requires transposition and the final matrices are stitched in a different way,
-	// but it turns out that IDCT can be done in place, only requiring the final stitching.
-	//
-	// input                        after transposition          output
-	// a1 a2 b1 b2 c1 c2 d1 d2      a1 a3 e1 e3 i1 i3 m1 m3      a1 e1 i1 m1 a2 e2 i2 m2
-	// a3 a4 b3 b4 c3 c4 d3 d4      a2 a4 e2 e4 i2 i4 m2 m4      b1 f1 j1 n1 b2 f2 j2 n2
-	// e1 e2 f1 f2 g1 g2 h1 h2      b1 b3 f1 f3 j1 j3 n1 n3      c1 g1 k1 o1 c2 g2 k2 o2
-	// e3 e4 f3 f4 g3 g4 h3 h4 ---> b2 b4 f2 f4 j2 j4 n2 n4 ---> d1 k1 l1 p1 d2 k2 l2 p2
-	// i1 i2 j1 j2 k1 k2 l1 l2      c1 c3 g1 g3 k1 k3 o1 o3      a3 e3 i3 m3 a4 e4 i4 m4
-	// i3 i4 j3 j4 k3 k4 l3 l4      c2 c4 g2 g4 k2 k4 o2 o4      b3 f3 j3 n3 b4 f4 j4 n4
-	// m1 m2 n1 n2 o1 o2 p1 p2      d1 d3 h1 h3 l1 l3 p1 p3      c3 g3 k3 o3 c4 g4 k4 o4
-	// m3 m4 n3 n4 o3 o4 p3 p4      d2 d4 h2 h4 l2 l4 p2 p4      d3 k3 l3 p3 d4 k4 l4 p4
-	//
-	// TODO spec issue: notationally `sample` is a *4-dimensional* array, which is not very clear
-	j40__inverse_dct(tls, bp, buf, 2, 16) // columnar IDCT for a#-m#, b#-n#, c#-o# and d#-p#
+
+	j40__inverse_dct(tls, bp, buf, 2, 16)
 	for y = 0; y < 8; y++ {
 		for x = 0; x < 8; x++ {
 			*(*float32)(unsafe.Pointer(buf + uintptr(x*8+y)*4)) = *(*float32)(unsafe.Pointer(bp + uintptr(y*8+x)*4))
 		}
 	}
-	j40__inverse_dct(tls, bp, buf, 2, 16) // columnar IDCT for a#-d#, e#-h#, i#-l# and m#-p#
+	j40__inverse_dct(tls, bp, buf, 2, 16)
 	for y = 0; y < 4; y++ {
 		for x = 0; x < 4; x++ {
 			*(*float32)(unsafe.Pointer(buf + uintptr(y*8+x)*4)) = *(*float32)(unsafe.Pointer(bp + uintptr(y*2*8+x*2)*4))
@@ -18680,30 +15376,28 @@ func j40__inverse_dct22(tls *libc.TLS, buf uintptr) { /* j40.h:5834:17: */
 	}
 }
 
-func j40__inverse_hornuss(tls *libc.TLS, buf uintptr) { /* j40.h:5865:17: */
+func j40__inverse_hornuss(tls *libc.TLS, buf uintptr) {
 	bp := tls.Alloc(272)
 	defer tls.Free(272)
-
-	// var scratch [64]float32 at bp, 256
 
 	var x Int32_t
 	var y Int32_t
 	var ix Int32_t
 	var iy Int32_t
 	libc.Xmemcpy(tls, bp, buf, uint64(unsafe.Sizeof(float32(0)))*uint64(64))
-	J40__aux_inverse_dct11(tls, bp, buf, 0, 0, 1) // updates scratch[(0..1)*8+(0..1)]
+	J40__aux_inverse_dct11(tls, bp, buf, 0, 0, 1)
 	for y = 0; y < 2; y++ {
 		for x = 0; x < 2; x++ {
 			var pos00 Int32_t = y*8 + x
 			var pos11 Int32_t = (y+2)*8 + (x + 2)
-			*(*[4]float32)(unsafe.Pointer(bp + 256 /* rsum */)) = [4]float32{}
+			*(*[4]float32)(unsafe.Pointer(bp + 256)) = [4]float32{}
 			var sample11 float32
 			for iy = 0; iy < 4; iy++ {
 				for ix = 0; ix < 4; ix++ {
 					*(*float32)(unsafe.Pointer(bp + 256 + uintptr(ix)*4)) += *(*float32)(unsafe.Pointer(bp + uintptr((y+iy*2)*8+(x+ix*2))*4))
 				}
 			}
-			// conceptually (SUM rsum[i]) = residual_sum + coefficients(x, y) in the spec
+
 			sample11 = *(*float32)(unsafe.Pointer(bp + uintptr(pos00)*4)) - (*(*float32)(unsafe.Pointer(bp + 256))+*(*float32)(unsafe.Pointer(bp + 256 + 1*4))+*(*float32)(unsafe.Pointer(bp + 256 + 2*4))+*(*float32)(unsafe.Pointer(bp + 256 + 3*4))-*(*float32)(unsafe.Pointer(bp + uintptr(pos00)*4)))*0.0625
 			*(*float32)(unsafe.Pointer(bp + uintptr(pos00)*4)) = *(*float32)(unsafe.Pointer(bp + uintptr(pos11)*4))
 			*(*float32)(unsafe.Pointer(bp + uintptr(pos11)*4)) = 0.0
@@ -18716,19 +15410,14 @@ func j40__inverse_hornuss(tls *libc.TLS, buf uintptr) { /* j40.h:5865:17: */
 	}
 }
 
-func j40__inverse_dct32(tls *libc.TLS, buf uintptr) { /* j40.h:5886:17: */
+func j40__inverse_dct32(tls *libc.TLS, buf uintptr) {
 	bp := tls.Alloc(288)
 	defer tls.Free(288)
 
-	// var scratch [64]float32 at bp, 256
-
 	var tmp float32
-	*(*J40__view_f32)(unsafe.Pointer(bp + 256 /* bufv */)) = J40__make_view_f32(tls, 3, 3, buf)
-	*(*J40__view_f32)(unsafe.Pointer(bp + 272 /* scratchv */)) = J40__make_view_f32(tls, 3, 3, bp)
+	*(*J40__view_f32)(unsafe.Pointer(bp + 256)) = J40__make_view_f32(tls, 3, 3, buf)
+	*(*J40__view_f32)(unsafe.Pointer(bp + 272)) = J40__make_view_f32(tls, 3, 3, bp)
 
-	// coefficients form two 4 rows x 8 columns matrices from even and odd rows;
-	// note that this is NOT 8 rows x 4 columns, because of transposition
-	// TODO spec issue: inconsistent naming between coeffs_8x4 and coeffs_4x8
 	tmp = *(*float32)(unsafe.Pointer(func() uintptr {
 		return (*J40__view_f32)(unsafe.Pointer(bp+256)).Ptr + uintptr(int32(0)<<(*J40__view_f32)(unsafe.Pointer(bp+256)).Logw|0)*4
 	}())) + *(*float32)(unsafe.Pointer(func() uintptr {
@@ -18747,23 +15436,20 @@ func j40__inverse_dct32(tls *libc.TLS, buf uintptr) { /* j40.h:5886:17: */
 	J40__reshape_view_f32(tls, bp+256, 4, 2)
 	J40__inverse_dct_view(tls, bp+272, bp+256)
 	J40__reshape_view_f32(tls, bp+272, 3, 3)
-	J40__transpose_view_f32(tls, bp+256, *(*J40__view_f32)(unsafe.Pointer(bp + 272 /* scratchv */)))
+	J40__transpose_view_f32(tls, bp+256, *(*J40__view_f32)(unsafe.Pointer(bp + 272)))
 	J40__inverse_dct_view(tls, bp+272, bp+256)
-	J40__oddeven_columns_to_halves_f32(tls, bp+256, *(*J40__view_f32)(unsafe.Pointer(bp + 272 /* scratchv */)))
+	J40__oddeven_columns_to_halves_f32(tls, bp+256, *(*J40__view_f32)(unsafe.Pointer(bp + 272)))
 
 }
 
-func j40__inverse_dct23(tls *libc.TLS, buf uintptr) { /* j40.h:5906:17: */
+func j40__inverse_dct23(tls *libc.TLS, buf uintptr) {
 	bp := tls.Alloc(288)
 	defer tls.Free(288)
 
-	// var scratch [64]float32 at bp, 256
+	*(*J40__view_f32)(unsafe.Pointer(bp + 272)) = J40__make_view_f32(tls, 3, 3, buf)
+	*(*J40__view_f32)(unsafe.Pointer(bp + 256)) = J40__make_view_f32(tls, 3, 3, bp)
 
-	*(*J40__view_f32)(unsafe.Pointer(bp + 272 /* bufv */)) = J40__make_view_f32(tls, 3, 3, buf)
-	*(*J40__view_f32)(unsafe.Pointer(bp + 256 /* scratchv */)) = J40__make_view_f32(tls, 3, 3, bp)
-
-	// coefficients form two 4 rows x 8 columns matrices from even and odd rows
-	J40__copy_view_f32(tls, bp+256, *(*J40__view_f32)(unsafe.Pointer(bp + 272 /* bufv */)))
+	J40__copy_view_f32(tls, bp+256, *(*J40__view_f32)(unsafe.Pointer(bp + 272)))
 	*(*float32)(unsafe.Pointer(func() uintptr {
 		return (*J40__view_f32)(unsafe.Pointer(bp+256)).Ptr + uintptr(int32(0)<<(*J40__view_f32)(unsafe.Pointer(bp+256)).Logw|0)*4
 	}())) = *(*float32)(unsafe.Pointer(func() uintptr {
@@ -18778,18 +15464,18 @@ func j40__inverse_dct23(tls *libc.TLS, buf uintptr) { /* j40.h:5906:17: */
 	}())) - *(*float32)(unsafe.Pointer(func() uintptr {
 		return (*J40__view_f32)(unsafe.Pointer(bp+272)).Ptr + uintptr(int32(1)<<(*J40__view_f32)(unsafe.Pointer(bp+272)).Logw|0)*4
 	}()))
-	J40__transpose_view_f32(tls, bp+272, *(*J40__view_f32)(unsafe.Pointer(bp + 256 /* scratchv */)))
+	J40__transpose_view_f32(tls, bp+272, *(*J40__view_f32)(unsafe.Pointer(bp + 256)))
 	J40__inverse_dct_view(tls, bp+256, bp+272)
-	J40__transpose_view_f32(tls, bp+272, *(*J40__view_f32)(unsafe.Pointer(bp + 256 /* scratchv */)))
+	J40__transpose_view_f32(tls, bp+272, *(*J40__view_f32)(unsafe.Pointer(bp + 256)))
 	J40__reshape_view_f32(tls, bp+272, 4, 2)
 	J40__inverse_dct_view(tls, bp+256, bp+272)
 	J40__reshape_view_f32(tls, bp+256, 3, 3)
-	J40__oddeven_rows_to_halves_f32(tls, bp+272, *(*J40__view_f32)(unsafe.Pointer(bp + 256 /* scratchv */)))
+	J40__oddeven_rows_to_halves_f32(tls, bp+272, *(*J40__view_f32)(unsafe.Pointer(bp + 256)))
 
 }
 
 // TODO spec issue: the input is a 4x4 matrix but indexed like a 1-dimensional array
-func j40__inverse_afv22(tls *libc.TLS, out uintptr, in uintptr) { /* j40.h:5926:17: */
+func j40__inverse_afv22(tls *libc.TLS, out uintptr, in uintptr) {
 	var i Int32_t
 	var j Int32_t
 	for i = 0; i < 16; i++ {
@@ -18801,7 +15487,7 @@ func j40__inverse_afv22(tls *libc.TLS, out uintptr, in uintptr) { /* j40.h:5926:
 	}
 }
 
-var AFV_BASIS = [256]float32{ // AFVBasis in the specification, but transposed
+var AFV_BASIS = [256]float32{
 	0.25000000, 0.87690293, 0.00000000, 0.00000000,
 	0.00000000, -0.41053776, 0.00000000, 0.00000000,
 	0.00000000, 0.00000000, 0.00000000, 0.00000000,
@@ -18866,36 +15552,17 @@ var AFV_BASIS = [256]float32{ // AFVBasis in the specification, but transposed
 	0.00000000, -0.06435072, -0.45175566, 0.00000000,
 	-0.60358590, 0.00000000, 0.00000000, 0.00000000,
 	-0.14266085, -0.13813540, 0.34875205, 0.11354987,
-} /* j40.h:5927:21 */
+}
 
-func j40__inverse_afv(tls *libc.TLS, buf uintptr, flipx int32, flipy int32) { /* j40.h:6002:17: */
+func j40__inverse_afv(tls *libc.TLS, buf uintptr, flipx int32, flipy int32) {
 	bp := tls.Alloc(256)
 	defer tls.Free(256)
 
-	// input          flipx/y=0/0     flipx/y=1/0     flipx/y=0/1     flipx/y=1/1
-	//  _______       +-----+-----+   +-----+-----+   +-----------+   +-----------+
-	// |_|_|_|_|      |'    |     |   |     |    '|   |           |   |           |
-	// |_|_|_|_| ---> |AFV22|DCT22|   |DCT22|AFV22|   |   DCT23   |   |   DCT23   |
-	// |_|_|_|_|      +-----+-----+   +-----+-----+   +-----+-----+   +-----+-----+
-	// |_|_|_|_|      |   DCT23   |   |   DCT23   |   |AFV22|DCT22|   |DCT22|AFV22|
-	//                |           |   |           |   |.    |     |   |     |    .|
-	// (2x2 each)     +-----------+   +-----------+   +-----+-----+   +-----+-----+
-	//
-	// coefficients are divided by 16 2x2 blocks, where two top coefficients are for AFV22
-	// and DCT22 respectively and two bottom coefficients are for DCT23.
-	// all three corresponding DC coefficients are in the top-left block and handled specially.
-	// AFV22 samples are then flipped so that the top-left cell is moved to the corner (dots above).
-	//
-	// TODO spec issue: identifiers have `*` in place of `x`
-
-	// var scratch [64]float32 at bp, 256
-
-	// buf23/buf32 etc. refer to the same memory region; numbers refer to the supposed dimensions
 	var bufafv uintptr = buf
 	var buf22 uintptr = buf + uintptr(16)*4
 	var buf23 uintptr = buf + uintptr(32)*4
 	var buf32 uintptr = buf23
-	var scratchafv uintptr = bp /* scratch */
+	var scratchafv uintptr = bp
 	var scratch22 uintptr = bp + uintptr(16)*4
 	var scratch23 uintptr = bp + uintptr(32)*4
 	var scratch32 uintptr = scratch23
@@ -18904,19 +15571,17 @@ func j40__inverse_afv(tls *libc.TLS, buf uintptr, flipx int32, flipy int32) { /*
 
 	for y = 0; y < 8; y = y + 2 {
 		for x = 0; x < 8; x++ {
-			// AFV22 coefficients to scratch[0..16), DCT22 coefficients to scratch[16..32)
 			*(*float32)(unsafe.Pointer(bp + uintptr(x%2*16+y/2*4+x/2)*4)) = *(*float32)(unsafe.Pointer(buf + uintptr(y*8+x)*4))
 		}
 	}
 	for y = 1; y < 8; y = y + 2 {
 		for x = 0; x < 8; x++ {
-			// DCT23 coefficients to scratch[32..64) = scratch32[0..32), after transposition
 			*(*float32)(unsafe.Pointer(scratch32 + uintptr(x*4+y/2)*4)) = *(*float32)(unsafe.Pointer(buf + uintptr(y*8+x)*4))
 		}
 	}
 	*(*float32)(unsafe.Pointer(scratchafv)) = (*(*float32)(unsafe.Pointer(buf)) + *(*float32)(unsafe.Pointer(buf + 1*4)) + *(*float32)(unsafe.Pointer(buf + 8*4))) * 4.0
-	*(*float32)(unsafe.Pointer(scratch22)) = *(*float32)(unsafe.Pointer(buf)) - *(*float32)(unsafe.Pointer(buf + 1*4)) + *(*float32)(unsafe.Pointer(buf + 8*4)) // TODO spec bug: x and y are swapped
-	*(*float32)(unsafe.Pointer(scratch32)) = *(*float32)(unsafe.Pointer(buf)) - *(*float32)(unsafe.Pointer(buf + 8*4))                                          // TODO spec bug: x and y are swapped
+	*(*float32)(unsafe.Pointer(scratch22)) = *(*float32)(unsafe.Pointer(buf)) - *(*float32)(unsafe.Pointer(buf + 1*4)) + *(*float32)(unsafe.Pointer(buf + 8*4))
+	*(*float32)(unsafe.Pointer(scratch32)) = *(*float32)(unsafe.Pointer(buf)) - *(*float32)(unsafe.Pointer(buf + 8*4))
 
 	j40__inverse_afv22(tls, bufafv, scratchafv)
 	j40__inverse_dct(tls, buf22, scratch22, 2, 4)
@@ -18925,15 +15590,15 @@ func j40__inverse_afv(tls *libc.TLS, buf uintptr, flipx int32, flipy int32) { /*
 	for y = 0; y < 4; y++ {
 		for x = 0; x < 4; x++ {
 			*(*float32)(unsafe.Pointer(scratchafv + uintptr(y*4+x)*4)) = *(*float32)(unsafe.Pointer(bufafv + uintptr(y*4+x)*4))
-		} // AFV22, as is
+		}
 		for x = 0; x < 4; x++ {
 			*(*float32)(unsafe.Pointer(scratch22 + uintptr(x*4+y)*4)) = *(*float32)(unsafe.Pointer(buf22 + uintptr(y*4+x)*4))
-		} // DCT22, transposed
+		}
 	}
 	for y = 0; y < 8; y++ {
 		for x = 0; x < 4; x++ {
 			*(*float32)(unsafe.Pointer(scratch23 + uintptr(x*8+y)*4)) = *(*float32)(unsafe.Pointer(buf32 + uintptr(y*4+x)*4))
-		} // DCT23, transposed
+		}
 	}
 
 	j40__inverse_dct(tls, buf22, scratch22, 2, 4)
@@ -18950,20 +15615,20 @@ func j40__inverse_afv(tls *libc.TLS, buf uintptr, flipx int32, flipy int32) { /*
 		for x = 0; x < 4; x++ {
 			*(*float32)(unsafe.Pointer(buf + uintptr(dct22pos+x)*4)) = *(*float32)(unsafe.Pointer(scratch22 + uintptr(y*4+x)*4))
 		}
-		// TODO spec issue: samples_4x4 should be samples_4x8
+
 		for x = 0; x < 8; x++ {
 			*(*float32)(unsafe.Pointer(buf + uintptr(dct23pos+x)*4)) = *(*float32)(unsafe.Pointer(scratch23 + uintptr(y*8+x)*4))
 		}
 	}
 }
 
-var FLIP_FOR_AFV = [2][4]Int8_t{{int8(0), int8(1), int8(2), int8(3)}, {int8(7), int8(6), int8(5), int8(4)}} /* j40.h:6056:23 */
+var FLIP_FOR_AFV = [2][4]Int8_t{{int8(0), int8(1), int8(2), int8(3)}, {int8(7), int8(6), int8(5), int8(4)}}
 
-func j40__lf_global(tls *libc.TLS, st uintptr) J40_err { /* j40.h:6076:29: */
+func j40__lf_global(tls *libc.TLS, st uintptr) J40_err {
 	var f uintptr
 	var sidx Int32_t
 	var i Int32_t
-	var j Int32_t // global tree present
+	var j Int32_t
 	var max_tree_size Int32_t
 	f = (*J40__st)(unsafe.Pointer(st)).Frame
 	sidx = 0
@@ -19016,11 +15681,10 @@ __12:
 	;
 __9:
 	;
-
 	if !!(j40__u(tls, st, 1) != 0) {
 		goto __13
-	} // LfChannelDequantization.all_default
-	// TODO spec bug: missing division by 128
+	}
+
 	i = 0
 __14:
 	if !(i < 3) {
@@ -19036,14 +15700,12 @@ __16:
 	;
 __13:
 	;
-
 	if !!((*J40__frame_st)(unsafe.Pointer(f)).Is_modular != 0) {
 		goto __17
 	}
 	(*J40__frame_st)(unsafe.Pointer(f)).Global_scale = j40__u32(tls, st, 1, 11, 2049, 11, 4097, 12, 8193, 16)
 	(*J40__frame_st)(unsafe.Pointer(f)).Quant_lf = j40__u32(tls, st, 16, 0, 1, 5, 1, 8, 1, 16)
 
-	// HF block context
 	if !(j40__u(tls, st, 1) != 0) {
 		goto __18
 	}
@@ -19071,7 +15733,7 @@ __21:
 __22:
 	;
 	libc.Xmemcpy(tls, (*J40__frame_st)(unsafe.Pointer(f)).Block_ctx_map, uintptr(unsafe.Pointer(&DEFAULT_BLKCTX)), uint64(unsafe.Sizeof(DEFAULT_BLKCTX)))
-	(*J40__frame_st)(unsafe.Pointer(f)).Nb_qf_thr = libc.AssignPtrInt32(f+796, libc.AssignPtrInt32(f+796+1*4, libc.AssignPtrInt32(f+796+2*4, 0))) // SPEC is implicit
+	(*J40__frame_st)(unsafe.Pointer(f)).Nb_qf_thr = libc.AssignPtrInt32(f+796, libc.AssignPtrInt32(f+796+1*4, libc.AssignPtrInt32(f+796+2*4, 0)))
 	(*J40__frame_st)(unsafe.Pointer(f)).Nb_block_ctx = 15
 	goto __19
 __18:
@@ -19090,14 +15752,14 @@ __26:
 	goto __27
 __27:
 	;
-	(*J40__frame_st)(unsafe.Pointer(f)).Block_ctx_size = 39 // SPEC not 27
+	(*J40__frame_st)(unsafe.Pointer(f)).Block_ctx_size = 39
 	i = 0
 __29:
 	if !(i < 3) {
 		goto __31
 	}
 	*(*Int32_t)(unsafe.Pointer(f + 796 + uintptr(i)*4)) = j40__u(tls, st, 4)
-	// TODO spec question: should this be sorted? (current code is okay with that)
+
 	j = 0
 __32:
 	if !(j < *(*Int32_t)(unsafe.Pointer(f + 796 + uintptr(i)*4))) {
@@ -19111,7 +15773,7 @@ __33:
 	goto __34
 __34:
 	;
-	*(*Int32_t)(unsafe.Pointer(f + 824)) *= *(*Int32_t)(unsafe.Pointer(f + 796 + uintptr(i)*4)) + 1 // SPEC is off by one
+	*(*Int32_t)(unsafe.Pointer(f + 824)) *= *(*Int32_t)(unsafe.Pointer(f + 796 + uintptr(i)*4)) + 1
 	goto __30
 __30:
 	i++
@@ -19120,7 +15782,7 @@ __30:
 __31:
 	;
 	(*J40__frame_st)(unsafe.Pointer(f)).Nb_qf_thr = j40__u(tls, st, 4)
-	// TODO spec bug: both qf_thr[i] and HfMul should be incremented
+
 	i = 0
 __35:
 	if !(i < (*J40__frame_st)(unsafe.Pointer(f)).Nb_qf_thr) {
@@ -19134,8 +15796,8 @@ __36:
 	goto __37
 __37:
 	;
-	*(*Int32_t)(unsafe.Pointer(f + 824)) *= (*J40__frame_st)(unsafe.Pointer(f)).Nb_qf_thr + 1 // SPEC is off by one
-	// block_ctx_size <= 39*15^4 and never overflows
+	*(*Int32_t)(unsafe.Pointer(f + 824)) *= (*J40__frame_st)(unsafe.Pointer(f)).Nb_qf_thr + 1
+
 __38:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __41
@@ -19157,7 +15819,7 @@ __39:
 	}
 	goto __40
 __40:
-	; // SPEC limit is not 21*64
+	;
 __43:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __46
@@ -19197,10 +15859,9 @@ __50:
 	;
 __19:
 	;
-
 	if !!(j40__u(tls, st, 1) != 0) {
 		goto __52
-	} // LfChannelCorrelation.all_default
+	}
 	(*J40__frame_st)(unsafe.Pointer(f)).Inv_colour_factor = 1.0 / float32(j40__u32(tls, st, 84, 0, 256, 0, 2, 8, 258, 16))
 	(*J40__frame_st)(unsafe.Pointer(f)).Base_corr_x = j40__f16(tls, st)
 	(*J40__frame_st)(unsafe.Pointer(f)).Base_corr_b = j40__f16(tls, st)
@@ -19210,8 +15871,6 @@ __52:
 	;
 __17:
 	;
-
-	// we need f->gmodular.num_channels for j40__tree
 __53:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__init_modular_for_global(tls, st, (*J40__frame_st)(unsafe.Pointer(f)).Is_modular, (*J40__frame_st)(unsafe.Pointer(f)).Do_ycbcr, (*J40__frame_st)(unsafe.Pointer(f)).Log_upsampling, (*J40__frame_st)(unsafe.Pointer(f)).Ec_log_upsampling, (*J40__frame_st)(unsafe.Pointer(f)).Width, (*J40__frame_st)(unsafe.Pointer(f)).Height, f+384) != 0)), int64(0)) != 0) {
 		goto __56
@@ -19227,10 +15886,9 @@ __54:
 	goto __55
 __55:
 	;
-
 	if !(j40__u(tls, st, 1) != 0) {
 		goto __57
-	} // global tree present
+	}
 	max_tree_size = J40__min32(tls, int32(1)<<22,
 		1024+J40__clamp_mul32(tls, J40__clamp_mul32(tls, (*J40__frame_st)(unsafe.Pointer(f)).Width, (*J40__frame_st)(unsafe.Pointer(f)).Height), (*J40__frame_st)(unsafe.Pointer(f)).Gmodular.Num_channels)/16)
 __58:
@@ -19250,7 +15908,6 @@ __60:
 	;
 __57:
 	;
-
 	if !((*J40__frame_st)(unsafe.Pointer(f)).Gmodular.Num_channels > 0) {
 		goto __62
 	}
@@ -19340,7 +15997,6 @@ __62:
 	(*J40__frame_st)(unsafe.Pointer(f)).Num_gm_channels = 0
 __63:
 	;
-
 J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
@@ -19349,110 +16005,17 @@ var DEFAULT_BLKCTX = [39]Uint8_t{
 	Uint8_t(0), Uint8_t(1), Uint8_t(2), Uint8_t(2), Uint8_t(3), Uint8_t(3), Uint8_t(4), Uint8_t(5), Uint8_t(6), Uint8_t(6), Uint8_t(6), Uint8_t(6), Uint8_t(6),
 	Uint8_t(7), Uint8_t(8), Uint8_t(9), Uint8_t(9), Uint8_t(10), Uint8_t(11), Uint8_t(12), Uint8_t(13), Uint8_t(14), Uint8_t(14), Uint8_t(14), Uint8_t(14), Uint8_t(14),
 	Uint8_t(7), Uint8_t(8), Uint8_t(9), Uint8_t(9), Uint8_t(10), Uint8_t(11), Uint8_t(12), Uint8_t(13), Uint8_t(14), Uint8_t(14), Uint8_t(14), Uint8_t(14), Uint8_t(14),
-} /* j40.h:6096:25 */
-
-////////////////////////////////////////////////////////////////////////////////
-// LfGroup: downsampled LF image (optionally smoothed), varblock information
+}
 
 type J40__varblock = struct {
 	Coeffoff_qfidx Int32_t
 	Hfmul          struct{ M1 Int32_t }
-} /* j40.h:6178:3 */
+}
 
-type J40__lf_group_st = J40__lf_group_st1 /* j40.h:6210:3 */
-
-// ----------------------------------------
-// recursion for LF dequantization operations
-// J40: Independent, self-contained JPEG XL decoder
-// Kang Seonghoon, version 2270 (2022-09), Public Domain
-// https://github.com/lifthrasiir/j40
-//
-// This is a decoder for JPEG XL (ISO/IEC 18181) image format. It intends to be a fully compatible
-// reimplementation to the reference implementation, libjxl, and also serves as a verification that
-// the specification allows for an independent implementation besides from libjxl.
-//
-// The following is a simple but complete converter from JPEG XL to Portable Arbitrary Map format:
-//
-// --------------------------------------------------------------------------------
-// #define J40_IMPLEMENTATION // only a SINGLE file should have this
-// #include "j40.h" // you also need to define a macro for experimental versions; follow the error.
-// #include <stdio.h>
-// #include <stdarg.h> // for va_*
-//
-// static int oops(const char *fmt, ...) {
-//     va_list args;
-//     va_start(args, fmt);
-//     vfprintf(stderr, fmt, args);
-//     va_end(args);
-//     return 1;
-// }
-//
-// int main(int argc, char **argv) {
-//     if (argc < 3) return oops("Usage: %s input.jxl output.pam\n", argv[0]);
-//
-//     FILE *out = fopen(argv[2], "wb");
-//     if (!out) return oops("Error: Cannot open an output file.\n");
-//
-//     j40_image image;
-//     j40_from_file(&image, argv[1]); // or: j40_from_memory(&image, buf, bufsize, freefunc);
-//     j40_output_format(&image, J40_RGBA, J40_U8X4);
-//
-//     // JPEG XL supports animation, so `j40_next_frame` calls can be called multiple times
-//     if (j40_next_frame(&image)) {
-//         j40_frame frame = j40_current_frame(&image);
-//         j40_pixels_u8x4 pixels = j40_frame_pixels_u8x4(&frame, J40_RGBA);
-//         fprintf(out,
-//             "P7\n"
-//             "WIDTH %d\n"
-//             "HEIGHT %d\n"
-//             "DEPTH 4\n"
-//             "MAXVAL 255\n"
-//             "TUPLTYPE RGB_ALPHA\n"
-//             "ENDHDR\n",
-//             pixels.width, pixels.height);
-//         for (int y = 0; y < height; ++y) {
-//             fwrite(j40_row_u8x4(pixels, y), 4, pixels.width, out);
-//         }
-//     }
-//
-//     // J40 stops once the first error is encountered; its error can be checked at the very end
-//     if (j40_error(&image)) return oops("Error: %s\n", j40_error_string(&image));
-//     if (ferror(out)) return oops("Error: Cannot fully write to the output file.\n");
-//
-//     j40_free(&image); // also frees all memory associated to j40_frame etc.
-//     fclose(out);
-//     return 0;
-// }
-// --------------------------------------------------------------------------------
-
-////////////////////////////////////////////////////////////////////////////////
-// preamble (only reachable via the user `#include`)
-
-// controls whether each `#if`-`#endif` section in this file should be included or not.
-// there are multiple purposes of this macro:
-// - `J40__RECURSING` is always defined after the first ever `#include`, so that:
-//   - the preamble will precede every other code in the typical usage, and
-//   - the preamble won't be included twice.
-// - `J40__RECURSING` is either 0 (public) or -1 (internal) depending on the logical visibility,
-//   so that the preamble can choose whether to include the internal code or not.
-// - larger values (>= 100) are used to repeat a specific section of code with
-//   slightly different parameters, i.e. templated code.
-// - one value (currently 9999) is reserved and used to ignore subsequent top-level `#include`s.
-
-////////////////////////////////////////////////////////////////////////////////
-// public platform macros
-
-////////////////////////////////////////////////////////////////////////////////
-// public API
-
-////////////////////////////////////////////////////////////////////////////////
-//////////////////////// internal code starts from here ////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-// ----------------------------------------
+type J40__lf_group_st = J40__lf_group_st1
 
 // out(x, y) = in(x, y) * mult (after type conversion)
-func j40__dequant_lf16(tls *libc.TLS, in uintptr, mult float32, out uintptr) { /* j40.h:6242:17: */
+func j40__dequant_lf16(tls *libc.TLS, in uintptr, mult float32, out uintptr) {
 	var x Int32_t
 	var y Int32_t
 
@@ -19470,7 +16033,7 @@ func j40__dequant_lf16(tls *libc.TLS, in uintptr, mult float32, out uintptr) { /
 }
 
 // plane(x, y) += # of lf_thr[i] s.t. in(x, y) > lf_thr[i]
-func j40__add_thresholds16(tls *libc.TLS, plane uintptr, in uintptr, lf_thr uintptr, nb_lf_thr Int32_t) { /* j40.h:6254:17: */
+func j40__add_thresholds16(tls *libc.TLS, plane uintptr, in uintptr, lf_thr uintptr, nb_lf_thr Int32_t) {
 	var x Int32_t
 	var y Int32_t
 	var i Int32_t
@@ -19491,105 +16054,8 @@ func j40__add_thresholds16(tls *libc.TLS, plane uintptr, in uintptr, lf_thr uint
 	}
 }
 
-// ----------------------------------------
-// end of recursion
-////////////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////// end of file //////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-// vim: noet ts=4 st=4 sts=4 sw=4 list colorcolumn=100
-// J40: Independent, self-contained JPEG XL decoder
-// Kang Seonghoon, version 2270 (2022-09), Public Domain
-// https://github.com/lifthrasiir/j40
-//
-// This is a decoder for JPEG XL (ISO/IEC 18181) image format. It intends to be a fully compatible
-// reimplementation to the reference implementation, libjxl, and also serves as a verification that
-// the specification allows for an independent implementation besides from libjxl.
-//
-// The following is a simple but complete converter from JPEG XL to Portable Arbitrary Map format:
-//
-// --------------------------------------------------------------------------------
-// #define J40_IMPLEMENTATION // only a SINGLE file should have this
-// #include "j40.h" // you also need to define a macro for experimental versions; follow the error.
-// #include <stdio.h>
-// #include <stdarg.h> // for va_*
-//
-// static int oops(const char *fmt, ...) {
-//     va_list args;
-//     va_start(args, fmt);
-//     vfprintf(stderr, fmt, args);
-//     va_end(args);
-//     return 1;
-// }
-//
-// int main(int argc, char **argv) {
-//     if (argc < 3) return oops("Usage: %s input.jxl output.pam\n", argv[0]);
-//
-//     FILE *out = fopen(argv[2], "wb");
-//     if (!out) return oops("Error: Cannot open an output file.\n");
-//
-//     j40_image image;
-//     j40_from_file(&image, argv[1]); // or: j40_from_memory(&image, buf, bufsize, freefunc);
-//     j40_output_format(&image, J40_RGBA, J40_U8X4);
-//
-//     // JPEG XL supports animation, so `j40_next_frame` calls can be called multiple times
-//     if (j40_next_frame(&image)) {
-//         j40_frame frame = j40_current_frame(&image);
-//         j40_pixels_u8x4 pixels = j40_frame_pixels_u8x4(&frame, J40_RGBA);
-//         fprintf(out,
-//             "P7\n"
-//             "WIDTH %d\n"
-//             "HEIGHT %d\n"
-//             "DEPTH 4\n"
-//             "MAXVAL 255\n"
-//             "TUPLTYPE RGB_ALPHA\n"
-//             "ENDHDR\n",
-//             pixels.width, pixels.height);
-//         for (int y = 0; y < height; ++y) {
-//             fwrite(j40_row_u8x4(pixels, y), 4, pixels.width, out);
-//         }
-//     }
-//
-//     // J40 stops once the first error is encountered; its error can be checked at the very end
-//     if (j40_error(&image)) return oops("Error: %s\n", j40_error_string(&image));
-//     if (ferror(out)) return oops("Error: Cannot fully write to the output file.\n");
-//
-//     j40_free(&image); // also frees all memory associated to j40_frame etc.
-//     fclose(out);
-//     return 0;
-// }
-// --------------------------------------------------------------------------------
-
-////////////////////////////////////////////////////////////////////////////////
-// preamble (only reachable via the user `#include`)
-
-// controls whether each `#if`-`#endif` section in this file should be included or not.
-// there are multiple purposes of this macro:
-// - `J40__RECURSING` is always defined after the first ever `#include`, so that:
-//   - the preamble will precede every other code in the typical usage, and
-//   - the preamble won't be included twice.
-// - `J40__RECURSING` is either 0 (public) or -1 (internal) depending on the logical visibility,
-//   so that the preamble can choose whether to include the internal code or not.
-// - larger values (>= 100) are used to repeat a specific section of code with
-//   slightly different parameters, i.e. templated code.
-// - one value (currently 9999) is reserved and used to ignore subsequent top-level `#include`s.
-
-////////////////////////////////////////////////////////////////////////////////
-// public platform macros
-
-////////////////////////////////////////////////////////////////////////////////
-// public API
-
-////////////////////////////////////////////////////////////////////////////////
-//////////////////////// internal code starts from here ////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-// ----------------------------------------
-
 // out(x, y) = in(x, y) * mult (after type conversion)
-func j40__dequant_lf32(tls *libc.TLS, in uintptr, mult float32, out uintptr) { /* j40.h:6242:17: */
+func j40__dequant_lf32(tls *libc.TLS, in uintptr, mult float32, out uintptr) {
 	var x Int32_t
 	var y Int32_t
 
@@ -19607,7 +16073,7 @@ func j40__dequant_lf32(tls *libc.TLS, in uintptr, mult float32, out uintptr) { /
 }
 
 // plane(x, y) += # of lf_thr[i] s.t. in(x, y) > lf_thr[i]
-func j40__add_thresholds32(tls *libc.TLS, plane uintptr, in uintptr, lf_thr uintptr, nb_lf_thr Int32_t) { /* j40.h:6254:17: */
+func j40__add_thresholds32(tls *libc.TLS, plane uintptr, in uintptr, lf_thr uintptr, nb_lf_thr Int32_t) {
 	var x Int32_t
 	var y Int32_t
 	var i Int32_t
@@ -19628,19 +16094,7 @@ func j40__add_thresholds32(tls *libc.TLS, plane uintptr, in uintptr, lf_thr uint
 	}
 }
 
-// ----------------------------------------
-// end of recursion
-////////////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////// end of file //////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-// vim: noet ts=4 st=4 sts=4 sw=4 list colorcolumn=100
-
-// ----------------------------------------
-
-func J40__dequant_lf(tls *libc.TLS, in uintptr, mult float32, out uintptr) { /* j40.h:6285:24: */
+func J40__dequant_lf(tls *libc.TLS, in uintptr, mult float32, out uintptr) {
 	switch int32((*J40__plane)(unsafe.Pointer(in)).Type) {
 	case J40__PLANE_I16:
 		j40__dequant_lf16(tls, in, mult, out)
@@ -19652,7 +16106,7 @@ func J40__dequant_lf(tls *libc.TLS, in uintptr, mult float32, out uintptr) { /* 
 	}
 }
 
-func J40__add_thresholds(tls *libc.TLS, plane uintptr, in uintptr, lf_thr uintptr, nb_lf_thr Int32_t) { /* j40.h:6293:24: */
+func J40__add_thresholds(tls *libc.TLS, plane uintptr, in uintptr, lf_thr uintptr, nb_lf_thr Int32_t) {
 	switch int32((*J40__plane)(unsafe.Pointer(in)).Type) {
 	case J40__PLANE_I16:
 		j40__add_thresholds16(tls, plane, in, lf_thr, nb_lf_thr)
@@ -19664,7 +16118,7 @@ func J40__add_thresholds(tls *libc.TLS, plane uintptr, in uintptr, lf_thr uintpt
 	}
 }
 
-func j40__multiply_each_u8(tls *libc.TLS, plane uintptr, mult Int32_t) { /* j40.h:6303:17: */
+func j40__multiply_each_u8(tls *libc.TLS, plane uintptr, mult Int32_t) {
 	var x Int32_t
 	var y Int32_t
 
@@ -19678,7 +16132,7 @@ func j40__multiply_each_u8(tls *libc.TLS, plane uintptr, mult Int32_t) { /* j40.
 	}
 }
 
-func j40__smooth_lf(tls *libc.TLS, st uintptr, gg uintptr, lfquant uintptr) J40_err { /* j40.h:6312:29: */
+func j40__smooth_lf(tls *libc.TLS, st uintptr, gg uintptr, lfquant uintptr) J40_err {
 	bp := tls.Alloc(136)
 	defer tls.Free(136)
 
@@ -19686,24 +16140,14 @@ func j40__smooth_lf(tls *libc.TLS, st uintptr, gg uintptr, lfquant uintptr) J40_
 	var ggw8 Int32_t
 	var ggh8 Int32_t
 	var linebuf uintptr
-	// var nline [3]uintptr at bp+16, 24
-
-	// var line [3]uintptr at bp+40, 24
-
-	// var inv_m_lf [3]float32 at bp, 12
 
 	var x Int32_t
 	var y Int32_t
 	var c Int32_t
 	var temp uintptr
-	// var wa [3]float32 at bp+112, 12
-
-	// var diff [3]float32 at bp+124, 12
 
 	var gap float32
-	// var outline [3]uintptr at bp+64, 24
 
-	// var sline [3]uintptr at bp+88, 24
 	f = (*J40__st)(unsafe.Pointer(st)).Frame
 	ggw8 = (*J40__lf_group_st)(unsafe.Pointer(gg)).Width8
 	ggh8 = (*J40__lf_group_st)(unsafe.Pointer(gg)).Height8
@@ -19714,7 +16158,7 @@ __1:
 	if !(c < 3) {
 		goto __3
 	}
-	// TODO spec bug: missing 2^16 scaling
+
 	*(*float32)(unsafe.Pointer(bp + uintptr(c)*4)) = float32((*J40__frame_st)(unsafe.Pointer(f)).Global_scale*(*J40__frame_st)(unsafe.Pointer(f)).Quant_lf) / *(*float32)(unsafe.Pointer(f + 304 + uintptr(c)*4)) / 65536.0
 	goto __2
 __2:
@@ -19723,7 +16167,6 @@ __2:
 	goto __3
 __3:
 	;
-
 __4:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __7
@@ -19751,8 +16194,8 @@ __9:
 	if !(c < 3) {
 		goto __11
 	}
-	*(*uintptr)(unsafe.Pointer(bp + 16 + uintptr(c)*8)) = linebuf + uintptr((c+3)*ggw8)*4 // intentionally uninitialized
-	*(*uintptr)(unsafe.Pointer(bp + 40 + uintptr(c)*8)) = linebuf + uintptr(c*ggw8)*4     // row 0
+	*(*uintptr)(unsafe.Pointer(bp + 16 + uintptr(c)*8)) = linebuf + uintptr((c+3)*ggw8)*4
+	*(*uintptr)(unsafe.Pointer(bp + 40 + uintptr(c)*8)) = linebuf + uintptr(c*ggw8)*4
 	libc.Xmemcpy(tls, *(*uintptr)(unsafe.Pointer(bp + 40 + uintptr(c)*8)), func() uintptr {
 		return uintptr((*J40__plane)(unsafe.Pointer(lfquant+uintptr(c)*24)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(lfquant+uintptr(c)*24)).Stride_bytes)*uint64(0))
 	}(), uint64(unsafe.Sizeof(float32(0)))*Size_t(ggw8))
@@ -19763,7 +16206,6 @@ __10:
 	goto __11
 __11:
 	;
-
 	y = 1
 __12:
 	if !(y < ggh8-1) {
@@ -19818,7 +16260,7 @@ __22:
 __23:
 	;
 	gap = J40__maxf(tls, 0.0, 3.0-4.0*gap)
-	// TODO spec bug: s (sample) and wa (weighted average) are swapped in the final formula
+
 	c = 0
 __25:
 	if !(c < 3) {
@@ -19846,38 +16288,31 @@ __13:
 	goto __14
 __14:
 	;
-
 J40__ON_ERROR:
 	j40__free(tls, linebuf)
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-var W0 float32 = 0.05226273532324128 /* j40.h:6313:21 */
-var W1 float32 = 0.20345139757231578 /* j40.h:6313:48 */
-var W2 float32 = 0.0334829185968739  /* j40.h:6313:75 */
+var W0 float32 = 0.05226273532324128
+var W1 float32 = 0.20345139757231578
+var W2 float32 = 0.0334829185968739
 
-func j40__lf_quant(tls *libc.TLS, st uintptr, extra_prec Int32_t, m uintptr, gg uintptr, outlfquant uintptr) J40_err { /* j40.h:6364:29: */
+func j40__lf_quant(tls *libc.TLS, st uintptr, extra_prec Int32_t, m uintptr, gg uintptr, outlfquant uintptr) J40_err {
 	bp := tls.Alloc(120)
 	defer tls.Free(120)
-	// TODO spec bug: this reordering is missing
 
 	var f uintptr
 	var ggw8 Int32_t
 	var ggh8 Int32_t
-	// var channel [3]uintptr at bp+96, 24
-
-	// var lfquant [3]J40__plane at bp, 72
-
-	// var lfindices J40__plane at bp+72, 24
 
 	var c Int32_t
-	// TODO spec bug: missing 2^16 scaling
+
 	var mult_lf float32
 	f = (*J40__st)(unsafe.Pointer(st)).Frame
 	ggw8 = (*J40__lf_group_st)(unsafe.Pointer(gg)).Width8
 	ggh8 = (*J40__lf_group_st)(unsafe.Pointer(gg)).Height8
-	*(*[3]J40__plane)(unsafe.Pointer(bp /* lfquant */)) = [3]J40__plane{0: {}}
-	*(*J40__plane)(unsafe.Pointer(bp + 72 /* lfindices */)) = J40__plane{}
+	*(*[3]J40__plane)(unsafe.Pointer(bp)) = [3]J40__plane{0: {}}
+	*(*J40__plane)(unsafe.Pointer(bp + 72)) = J40__plane{}
 
 	c = 0
 __1:
@@ -19921,14 +16356,12 @@ __9:
 	goto __10
 __10:
 	;
-
-	// extract LfQuant from m and populate lfindices
 	c = 0
 __12:
 	if !(c < 3) {
 		goto __14
 	}
-	// TODO spec bug: missing 2^16 scaling
+
 	mult_lf = *(*float32)(unsafe.Pointer(f + 304 + uintptr(c)*4)) / float32((*J40__frame_st)(unsafe.Pointer(f)).Global_scale*(*J40__frame_st)(unsafe.Pointer(f)).Quant_lf) * float32(int32(65536)>>extra_prec)
 	*(*uintptr)(unsafe.Pointer(bp + 96 + uintptr(c)*8)) = (*J40__modular)(unsafe.Pointer(m)).Channel + uintptr(YXB2XYB[c])*24
 	J40__dequant_lf(tls, *(*uintptr)(unsafe.Pointer(bp + 96 + uintptr(c)*8)), mult_lf, bp+uintptr(c)*24)
@@ -19945,7 +16378,6 @@ __14:
 	j40__multiply_each_u8(tls, bp+72, *(*Int32_t)(unsafe.Pointer(f + 796 + 2*4))+1)
 	J40__add_thresholds(tls, bp+72, *(*uintptr)(unsafe.Pointer(bp + 96 + 1*8)), f+556+1*60, *(*Int32_t)(unsafe.Pointer(f + 796 + 1*4)))
 
-	// apply smoothing to LfQuant
 	if !!((*J40__frame_st)(unsafe.Pointer(f)).Skip_adapt_lf_smooth != 0) {
 		goto __15
 	}
@@ -19966,9 +16398,8 @@ __18:
 	;
 __15:
 	;
-
 	libc.Xmemcpy(tls, outlfquant, bp, uint64(unsafe.Sizeof(J40__plane{}))*uint64(3))
-	(*J40__lf_group_st)(unsafe.Pointer(gg)).Lfindices = *(*J40__plane)(unsafe.Pointer(bp + 72 /* lfindices */))
+	(*J40__lf_group_st)(unsafe.Pointer(gg)).Lfindices = *(*J40__plane)(unsafe.Pointer(bp + 72))
 	return J40_err(0)
 
 J40__ON_ERROR:
@@ -19989,21 +16420,15 @@ __22:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-var YXB2XYB = [3]Int32_t{1, 0, 2} /* j40.h:6367:23 */
+var YXB2XYB = [3]Int32_t{1, 0, 2}
 
-func j40__hf_metadata(tls *libc.TLS, st uintptr, nb_varblocks Int32_t, m uintptr, lfquant uintptr, gg uintptr) J40_err { /* j40.h:6405:29: */
+func j40__hf_metadata(tls *libc.TLS, st uintptr, nb_varblocks Int32_t, m uintptr, lfquant uintptr, gg uintptr) J40_err {
 	bp := tls.Alloc(4192)
 	defer tls.Free(4192)
 
 	var f uintptr
-	// var blocks J40__plane at bp, 24
 
 	var varblocks uintptr
-	// var coeffs [3]uintptr at bp+48, 24
-
-	// var llfcoeffs [3]uintptr at bp+24, 24
-
-	// var coeffs_misalign [3]Size_t at bp+72, 24
 
 	var log_gsize8 Int32_t
 	var ggw8 Int32_t
@@ -20024,7 +16449,6 @@ func j40__hf_metadata(tls *libc.TLS, st uintptr, nb_varblocks Int32_t, m uintptr
 	var blockrow uintptr
 	var lfquantrow uintptr
 	var llfcoeffs_c uintptr
-	// var scratch [1024]float32 at bp+96, 4096
 
 	var dctsel Int32_t
 	var log_vh Int32_t
@@ -20033,11 +16457,11 @@ func j40__hf_metadata(tls *libc.TLS, st uintptr, nb_varblocks Int32_t, m uintptr
 	var vw8 Int32_t
 	var dct uintptr
 	f = (*J40__st)(unsafe.Pointer(st)).Frame
-	*(*J40__plane)(unsafe.Pointer(bp /* blocks */)) = J40__plane{}
+	*(*J40__plane)(unsafe.Pointer(bp)) = J40__plane{}
 	varblocks = uintptr(0)
-	*(*[3]uintptr)(unsafe.Pointer(bp + 48 /* coeffs */)) = [3]uintptr{0: uintptr(0)}
-	*(*[3]uintptr)(unsafe.Pointer(bp + 24 /* llfcoeffs */)) = [3]uintptr{0: uintptr(0)}
-	*(*[3]Size_t)(unsafe.Pointer(bp + 72 /* coeffs_misalign */)) = [3]Size_t{0: uint64(0)}
+	*(*[3]uintptr)(unsafe.Pointer(bp + 48)) = [3]uintptr{0: uintptr(0)}
+	*(*[3]uintptr)(unsafe.Pointer(bp + 24)) = [3]uintptr{0: uintptr(0)}
+	*(*[3]Size_t)(unsafe.Pointer(bp + 72)) = [3]Size_t{0: uint64(0)}
 	log_gsize8 = (*J40__frame_st)(unsafe.Pointer(f)).Group_size_shift - 3
 	ggw8 = (*J40__lf_group_st)(unsafe.Pointer(gg)).Width8
 	ggh8 = (*J40__lf_group_st)(unsafe.Pointer(gg)).Height8
@@ -20090,7 +16514,7 @@ __7:
 __10:
 	if !(c < 3) {
 		goto __12
-	} // TODO account for chroma subsampling
+	}
 __13:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __16
@@ -20155,8 +16579,6 @@ __11:
 	goto __12
 __12:
 	;
-
-	// temporarily use coeffoff_qfidx to store DctSelect
 	if !(int32((*J40__plane)(unsafe.Pointer((*J40__modular)(unsafe.Pointer(m)).Channel+2*24)).Type) == J40__PLANE_I16) {
 		goto __26
 	}
@@ -20204,8 +16626,6 @@ __33:
 	;
 __27:
 	;
-
-	// place varblocks
 	voff = libc.AssignInt32(&coeffoff, 0)
 	y0 = 0
 __34:
@@ -20225,7 +16645,6 @@ __37:
 	goto __38
 __40:
 	;
-
 __41:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __44
@@ -20247,7 +16666,7 @@ __42:
 	}
 	goto __43
 __43:
-	; // TODO spec issue: missing
+	;
 	dctsel = (*J40__varblock)(unsafe.Pointer(varblocks + uintptr(voff)*8)).Coeffoff_qfidx
 __46:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
@@ -20283,8 +16702,7 @@ __48:
 	vh8 = int32(1) << (log_vh - 3)
 	x1 = x0 + vw8 - 1
 	y1 = y0 + vh8 - 1
-	// SPEC the first available block in raster order SHOULD be the top-left corner of
-	// the next varblock, otherwise it's an error (no retry required)
+
 __51:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __54
@@ -20329,7 +16747,6 @@ __57:
 	goto __58
 __58:
 	;
-
 	i = 0
 __61:
 	if !(i < vh8) {
@@ -20362,7 +16779,6 @@ __63:
 		return uintptr((*J40__plane)(unsafe.Pointer(bp)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(bp)).Stride_bytes)*Size_t(y0))
 	}() + uintptr(x0)*4)) = (dctsel+2)<<20 | voff
 
-	// compute LLF coefficients from dequantized LF
 	if !(log_vw <= 3 && log_vh <= 3) {
 		goto __67
 	}
@@ -20382,7 +16798,7 @@ __70:
 __71:
 	;
 	goto __68
-__67: // DCT256x256 requires 32x32
+__67:
 	c = 0
 __72:
 	if !(c < 3) {
@@ -20417,8 +16833,6 @@ __76:
 	goto __77
 __77:
 	;
-	// TODO spec bug: DctSelect type IDENTIFY [sic] no longer exists
-	// TODO spec issue: DCT8x8 doesn't need this
 	j40__forward_dct2d_scaled_for_llf(tls, llfcoeffs_c, bp+96, log_vh-3, log_vw-3)
 	goto __73
 __73:
@@ -20429,7 +16843,6 @@ __74:
 	;
 __68:
 	;
-
 	coeffoff = coeffoff + int32(1)<<(log_vw+log_vh)
 	voff++
 	goto __38
@@ -20467,11 +16880,7 @@ __82:
 	}
 	goto __83
 __83:
-	; // TODO spec issue: missing
-	// TODO both libjxl and spec don't check for coeffoff == ggw8 * ggh8, but they probably should?
-
-	// compute qf_idx and hfmul.inv for later use
-
+	;
 	j = 0
 __86:
 	if !(j < (*J40__frame_st)(unsafe.Pointer(f)).Nb_qf_thr) {
@@ -20510,9 +16919,8 @@ __93:
 	goto __94
 __94:
 	;
-
 	(*J40__lf_group_st)(unsafe.Pointer(gg)).Nb_varblocks = nb_varblocks
-	(*J40__lf_group_st)(unsafe.Pointer(gg)).Blocks = *(*J40__plane)(unsafe.Pointer(bp /* blocks */))
+	(*J40__lf_group_st)(unsafe.Pointer(gg)).Blocks = *(*J40__plane)(unsafe.Pointer(bp))
 	(*J40__lf_group_st)(unsafe.Pointer(gg)).Varblocks = varblocks
 	c = 0
 __95:
@@ -20551,7 +16959,7 @@ __100:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__lf_group(tls *libc.TLS, st uintptr, gg uintptr) J40_err { /* j40.h:6542:29: */
+func j40__lf_group(tls *libc.TLS, st uintptr, gg uintptr) J40_err {
 	bp := tls.Alloc(264)
 	defer tls.Free(264)
 
@@ -20561,9 +16969,6 @@ func j40__lf_group(tls *libc.TLS, st uintptr, gg uintptr) J40_err { /* j40.h:654
 	var sidx1 Int64_t
 	_ = sidx1
 	var sidx2 Int64_t
-	// var lfquant [3]J40__plane at bp+192, 72
-
-	// var m J40__modular at bp+32, 160
 
 	var i Int32_t
 	var c Int32_t
@@ -20573,9 +16978,6 @@ func j40__lf_group(tls *libc.TLS, st uintptr, gg uintptr) J40_err { /* j40.h:654
 	var ggh8 Int32_t
 	var ggw64 Int32_t
 	var ggh64 Int32_t
-	// var w [4]Int32_t at bp, 16
-
-	// var h [4]Int32_t at bp+16, 16
 
 	var nb_varblocks Int32_t
 	f = (*J40__st)(unsafe.Pointer(st)).Frame
@@ -20583,10 +16985,9 @@ func j40__lf_group(tls *libc.TLS, st uintptr, gg uintptr) J40_err { /* j40.h:654
 	sidx0 = int64(1) + ggidx
 	sidx1 = int64(1) + (*J40__frame_st)(unsafe.Pointer(f)).Num_lf_groups + ggidx
 	sidx2 = int64(1) + int64(2)*(*J40__frame_st)(unsafe.Pointer(f)).Num_lf_groups + ggidx
-	*(*[3]J40__plane)(unsafe.Pointer(bp + 192 /* lfquant */)) = [3]J40__plane{0: {}}
-	*(*J40__modular)(unsafe.Pointer(bp + 32 /* m */)) = J40__modular{}
+	*(*[3]J40__plane)(unsafe.Pointer(bp + 192)) = [3]J40__plane{0: {}}
+	*(*J40__modular)(unsafe.Pointer(bp + 32)) = J40__modular{}
 
-	// TODO factor into j40__init_modular_for_lf_group
 	i = (*J40__frame_st)(unsafe.Pointer(f)).Num_gm_channels
 __1:
 	if !(i < (*J40__frame_st)(unsafe.Pointer(f)).Gmodular.Num_channels) {
@@ -20617,7 +17018,6 @@ __2:
 	goto __3
 __3:
 	;
-
 	if !!((*J40__frame_st)(unsafe.Pointer(f)).Is_modular != 0) {
 		goto __8
 	}
@@ -20626,7 +17026,6 @@ __3:
 	ggw64 = (*J40__lf_group_st)(unsafe.Pointer(gg)).Width64
 	ggh64 = (*J40__lf_group_st)(unsafe.Pointer(gg)).Height64
 
-	// LfQuant
 	if !!((*J40__frame_st)(unsafe.Pointer(f)).Use_lf_frame != 0) {
 		goto __9
 	}
@@ -20757,8 +17156,6 @@ __40:
 	goto __41
 __41:
 	;
-	// TODO spec issue: this modular image is independent of bpp/float_sample/etc.
-	// TODO spec bug: channels are in the YXB order
 __43:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__lf_quant(tls, st, extra_prec, bp+32, gg, bp+192) != 0)), int64(0)) != 0) {
 		goto __46
@@ -20790,16 +17187,13 @@ __49:
 	;
 __10:
 	;
-
-	// HF metadata
-	// SPEC nb_block is off by one
-	nb_varblocks = j40__u(tls, st, J40__ceil_lg32(tls, Uint32_t(ggw8*ggh8))) + 1 // at most 2^20
+	nb_varblocks = j40__u(tls, st, J40__ceil_lg32(tls, Uint32_t(ggw8*ggh8))) + 1
 	*(*Int32_t)(unsafe.Pointer(bp)) = libc.AssignPtrInt32(bp+1*4, ggw64)
-	*(*Int32_t)(unsafe.Pointer(bp + 16)) = libc.AssignPtrInt32(bp+16+1*4, ggh64) // XFromY, BFromY
+	*(*Int32_t)(unsafe.Pointer(bp + 16)) = libc.AssignPtrInt32(bp+16+1*4, ggh64)
 	*(*Int32_t)(unsafe.Pointer(bp + 2*4)) = nb_varblocks
-	*(*Int32_t)(unsafe.Pointer(bp + 16 + 2*4)) = 2 // BlockInfo
+	*(*Int32_t)(unsafe.Pointer(bp + 16 + 2*4)) = 2
 	*(*Int32_t)(unsafe.Pointer(bp + 3*4)) = ggw8
-	*(*Int32_t)(unsafe.Pointer(bp + 16 + 3*4)) = ggh8 // Sharpness
+	*(*Int32_t)(unsafe.Pointer(bp + 16 + 3*4)) = ggh8
 __50:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__init_modular(tls, st, 4, bp, bp+16, bp+32) != 0)), int64(0)) != 0) {
 		goto __53
@@ -20933,7 +17327,6 @@ __83:
 	;
 __8:
 	;
-
 	return J40_err(0)
 
 J40__ON_ERROR:
@@ -20960,7 +17353,7 @@ __87:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__free_lf_group(tls *libc.TLS, gg uintptr) { /* j40.h:6612:17: */
+func j40__free_lf_group(tls *libc.TLS, gg uintptr) {
 	var i Int32_t
 	for i = 0; i < 3; i++ {
 		j40__free(tls, *(*uintptr)(unsafe.Pointer(gg + 184 + uintptr(i)*8)))
@@ -20978,19 +17371,16 @@ func j40__free_lf_group(tls *libc.TLS, gg uintptr) { /* j40.h:6612:17: */
 }
 
 // reads both HfGlobal and HfPass (SPEC they form a single group)
-func j40__hf_global(tls *libc.TLS, st uintptr) J40_err { /* j40.h:6639:29: */
+func j40__hf_global(tls *libc.TLS, st uintptr) J40_err {
 	bp := tls.Alloc(96)
 	defer tls.Free(96)
 
 	var f uintptr
 	var sidx_base Int64_t
-	// var codespec J40__code_spec at bp, 56
-
-	// var code J40__code_st at bp+56, 40
 
 	var i Int32_t
 	var j Int32_t
-	var c Int32_t // SPEC not 11, should be 17
+	var c Int32_t
 	var dct J40__dct_params
 	var rows Int32_t
 	var columns Int32_t
@@ -20998,19 +17388,18 @@ func j40__hf_global(tls *libc.TLS, st uintptr) J40_err { /* j40.h:6639:29: */
 	var used_orders Int32_t
 	f = (*J40__st)(unsafe.Pointer(st)).Frame
 	sidx_base = int64(1) + int64(3)*(*J40__frame_st)(unsafe.Pointer(f)).Num_lf_groups
-	*(*J40__code_spec)(unsafe.Pointer(bp /* codespec */)) = J40__code_spec{}
-	*(*J40__code_st)(unsafe.Pointer(bp + 56 /* code */)) = J40__code_st{Spec: bp}
+	*(*J40__code_spec)(unsafe.Pointer(bp)) = J40__code_spec{}
+	*(*J40__code_st)(unsafe.Pointer(bp + 56)) = J40__code_st{Spec: bp}
 
-	// dequantization matrices
 	if !!(j40__u(tls, st, 1) != 0) {
 		goto __1
 	}
-	// TODO spec improvement: encoding mode 1..5 are only valid for 0-3/9-10 since it requires 8x8 matrix, explicitly note this
+
 	i = 0
 __2:
 	if !(i < J40__NUM_DCT_PARAMS) {
 		goto __4
-	} // SPEC not 11, should be 17
+	}
 	dct = sJ40__DCT_PARAMS[i]
 	rows = int32(1) << Int32_t(dct.Log_rows)
 	columns = int32(1) << Int32_t(dct.Log_columns)
@@ -21038,8 +17427,6 @@ __4:
 	;
 __1:
 	;
-
-	// TODO is it possible that num_hf_presets > num_groups? otherwise j40__at_most is better
 	(*J40__frame_st)(unsafe.Pointer(f)).Num_hf_presets = j40__u(tls, st, J40__ceil_lg32(tls, Uint32_t((*J40__frame_st)(unsafe.Pointer(f)).Num_groups))) + 1
 __9:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
@@ -21056,8 +17443,6 @@ __10:
 	goto __11
 __11:
 	;
-
-	// HfPass
 	i = 0
 __13:
 	if !(i < (*J40__frame_st)(unsafe.Pointer(f)).Num_passes) {
@@ -21097,7 +17482,7 @@ __21:
 __25:
 	if !(c < 3) {
 		goto __27
-	} // SPEC this loop is omitted
+	}
 __28:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__permutation(tls, st, bp+56, size, size/64, f+1152+uintptr(i)*312+uintptr(j)*24+uintptr(c)*8) != 0)), int64(0)) != 0) {
 		goto __31
@@ -21150,7 +17535,6 @@ __35:
 	j40__free_code_spec(tls, bp)
 __32:
 	;
-
 __37:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__read_code_spec(tls, st, 495*(*J40__frame_st)(unsafe.Pointer(f)).Nb_block_ctx*(*J40__frame_st)(unsafe.Pointer(f)).Num_hf_presets, f+4584+uintptr(i)*56) != 0)), int64(0)) != 0) {
 		goto __40
@@ -21173,14 +17557,13 @@ __14:
 	goto __15
 __15:
 	;
-
 J40__ON_ERROR:
 	j40__free_code(tls, bp+56)
 	j40__free_code_spec(tls, bp)
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__hf_coeffs(tls *libc.TLS, st uintptr, ctxoff Int32_t, pass Int32_t, gx_in_gg Int32_t, gy_in_gg Int32_t, gw Int32_t, gh Int32_t, gg uintptr) J40_err { /* j40.h:6705:29: */
+func j40__hf_coeffs(tls *libc.TLS, st uintptr, ctxoff Int32_t, pass Int32_t, gx_in_gg Int32_t, gy_in_gg Int32_t, gw Int32_t, gh Int32_t, gg uintptr) J40_err {
 	bp := tls.Alloc(40)
 	defer tls.Free(40)
 
@@ -21188,7 +17571,6 @@ func j40__hf_coeffs(tls *libc.TLS, st uintptr, ctxoff Int32_t, pass Int32_t, gx_
 	var gw8 Int32_t
 	var gh8 Int32_t
 	var nonzeros uintptr
-	// var code J40__code_st at bp, 40
 
 	var lfidx_size Int32_t
 	var x8 Int32_t
@@ -21197,20 +17579,19 @@ func j40__hf_coeffs(tls *libc.TLS, st uintptr, ctxoff Int32_t, pass Int32_t, gx_
 	var j Int32_t
 	var c_yxb Int32_t
 	var ctx Int32_t
-	// TODO spec question: can this overflow?
-	// unlike modular there is no guarantee about "buffers" or anything similar here
+
 	var ucoeff Int32_t
 	var c Int32_t
 	var coeffs uintptr
 	var order uintptr
-	var bctx Int32_t // BlockContext()
+	var bctx Int32_t
 	var nz Int32_t
 	var nzctx Int32_t
 	var cctx Int32_t
 	var qnz Int32_t
 	var prev Int32_t
 	var dct uintptr
-	// TODO spec issue: missing x and y (here called x8 and y8)
+
 	var ggx8 Int32_t
 	var ggy8 Int32_t
 	var nzpos Int32_t
@@ -21228,10 +17609,9 @@ func j40__hf_coeffs(tls *libc.TLS, st uintptr, ctxoff Int32_t, pass Int32_t, gx_
 	gw8 = J40__ceil_div32(tls, gw, 8)
 	gh8 = J40__ceil_div32(tls, gh, 8)
 	nonzeros = uintptr(0)
-	*(*J40__code_st)(unsafe.Pointer(bp /* code */)) = J40__code_st{Spec: f + 4584 + uintptr(pass)*56}
+	*(*J40__code_st)(unsafe.Pointer(bp)) = J40__code_st{Spec: f + 4584 + uintptr(pass)*56}
 	lfidx_size = (*(*Int32_t)(unsafe.Pointer(f + 796)) + 1) * (*(*Int32_t)(unsafe.Pointer(f + 796 + 1*4)) + 1) * (*(*Int32_t)(unsafe.Pointer(f + 796 + 2*4)) + 1)
 
-	// TODO spec bug: there are *three* NonZeros for each channel
 __1:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __4
@@ -21254,7 +17634,6 @@ __2:
 	goto __3
 __3:
 	;
-
 	y8 = 0
 __6:
 	if !(y8 < gh8) {
@@ -21265,7 +17644,7 @@ __9:
 	if !(x8 < gw8) {
 		goto __11
 	}
-	// TODO spec issue: missing x and y (here called x8 and y8)
+
 	ggx8 = x8 + gx_in_gg/8
 	ggy8 = y8 + gy_in_gg/8
 	nzpos = y8*gw8 + x8
@@ -21279,7 +17658,7 @@ __9:
 	}
 	goto __10
 __12:
-	; // not top-left block
+	;
 	dctsel = dctsel - 2
 	voff = voff & 0xfffff
 
@@ -21290,15 +17669,13 @@ __12:
 
 	coeffoff = (*J40__varblock)(unsafe.Pointer((*J40__lf_group_st)(unsafe.Pointer(gg)).Varblocks+uintptr(voff)*8)).Coeffoff_qfidx & libc.CplInt32(15)
 	qfidx = (*J40__varblock)(unsafe.Pointer((*J40__lf_group_st)(unsafe.Pointer(gg)).Varblocks+uintptr(voff)*8)).Coeffoff_qfidx & 15
-	// TODO spec improvement: explain why lf_idx is separately calculated
-	// (answer: can be efficiently precomputed via vectorization)
+
 	lfidx = Int32_t(*(*Uint8_t)(unsafe.Pointer(func() uintptr {
 		return uintptr((*J40__plane)(unsafe.Pointer(gg+240)).Pixels) + uintptr(Size_t((*J40__plane)(unsafe.Pointer(gg+240)).Stride_bytes)*Size_t(ggy8))
 	}() + uintptr(ggx8))))
 	bctx0 = (int32((*J40__dct_select)(unsafe.Pointer(dct)).Order_idx)*((*J40__frame_st)(unsafe.Pointer(f)).Nb_qf_thr+1)+qfidx)*lfidx_size + lfidx
 	bctxc = 13 * ((*J40__frame_st)(unsafe.Pointer(f)).Nb_qf_thr + 1) * lfidx_size
 
-	// unlike most places, this uses the YXB order
 	c_yxb = 0
 __13:
 	if !(c_yxb < 3) {
@@ -21310,9 +17687,6 @@ __13:
 	order = *(*uintptr)(unsafe.Pointer(f + 1152 + uintptr(pass)*312 + uintptr((*J40__dct_select)(unsafe.Pointer(dct)).Order_idx)*24 + uintptr(c)*8))
 	bctx = Int32_t(*(*Uint8_t)(unsafe.Pointer((*J40__frame_st)(unsafe.Pointer(f)).Block_ctx_map + uintptr(bctx0+bctxc*c_yxb))))
 
-	// orders should have been already converted from Lehmer code
-
-	// predict and read the number of non-zero coefficients
 	if x8 > 0 {
 		nz = func() int32 {
 			if y8 > 0 {
@@ -21328,9 +17702,6 @@ __13:
 			return 32
 		}()
 	}
-	// TODO spec improvement: `predicted` can never exceed 63 in NonZerosContext(),
-	// so better to make it a normative assertion instead of clamping
-	// TODO spec question: then why the predicted value of 64 is reserved in the contexts?
 
 	nzctx = ctxoff + bctx + func() int32 {
 		if nz < 8 {
@@ -21339,7 +17710,7 @@ __13:
 		return 4 + nz/2
 	}()*(*J40__frame_st)(unsafe.Pointer(f)).Nb_block_ctx
 	nz = j40__code(tls, st, nzctx, 0, bp)
-	// TODO spec issue: missing
+
 __16:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __19
@@ -21362,8 +17733,7 @@ __17:
 	goto __18
 __18:
 	;
-
-	qnz = J40__ceil_div32(tls, nz, int32(1)<<(log_size-6)) // [0, 64)
+	qnz = J40__ceil_div32(tls, nz, int32(1)<<(log_size-6))
 	i = 0
 __21:
 	if !(i < int32(1)<<(log_rows-3)) {
@@ -21391,20 +17761,19 @@ __23:
 	;
 	cctx = ctxoff + 458*bctx + 37*(*J40__frame_st)(unsafe.Pointer(f)).Nb_block_ctx
 
-	prev = libc.Bool32(nz <= int32(1)<<(log_size-4)) // TODO spec bug: swapped condition
-	// TODO spec issue: missing size (probably W*H)
+	prev = libc.Bool32(nz <= int32(1)<<(log_size-4))
+
 	i = int32(1) << (log_size - 6)
 __27:
 	if !(nz > 0 && i < int32(1)<<log_size) {
 		goto __29
 	}
 	ctx = cctx + Int32_t(TWICE_COEFF_NNZ_CTX[J40__ceil_div32(tls, nz, int32(1)<<(log_size-6))]) + Int32_t(TWICE_COEFF_FREQ_CTX[i>>(log_size-6)]) + prev
-	// TODO spec question: can this overflow?
-	// unlike modular there is no guarantee about "buffers" or anything similar here
+
 	ucoeff = j40__code(tls, st, ctx, 0, bp)
-	// TODO int-to-float conversion, is it okay?
+
 	*(*float32)(unsafe.Pointer(coeffs + uintptr(*(*Int32_t)(unsafe.Pointer(order + uintptr(i)*4)))*4)) += float32(J40__unpack_signed(tls, ucoeff))
-	// TODO spec issue: normative indicator has changed from [[...]] to a long comment
+
 	nz = nz - libc.AssignInt32(&prev, libc.Bool32(ucoeff != 0))
 	goto __28
 __28:
@@ -21434,7 +17803,7 @@ __31:
 	}
 	goto __32
 __32:
-	; // TODO spec issue: missing
+	;
 	goto __14
 __14:
 	c_yxb++
@@ -21456,7 +17825,6 @@ __7:
 	goto __8
 __8:
 	;
-
 __35:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__finish_and_free_code(tls, st, bp) != 0)), int64(0)) != 0) {
 		goto __38
@@ -21481,39 +17849,38 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-var YXB2XYB1 = [3]Int32_t{1, 0, 2}     /* j40.h:6748:25 */
-var TWICE_COEFF_FREQ_CTX = [64]Int8_t{ // pre-multiplied by 2, [0] is unused
+var YXB2XYB1 = [3]Int32_t{1, 0, 2}
+var TWICE_COEFF_FREQ_CTX = [64]Int8_t{
 	int8(-1), int8(0), int8(2), int8(4), int8(6), int8(8), int8(10), int8(12), int8(14), int8(16), int8(18), int8(20), int8(22), int8(24), int8(26), int8(28),
 	int8(30), int8(30), int8(32), int8(32), int8(34), int8(34), int8(36), int8(36), int8(38), int8(38), int8(40), int8(40), int8(42), int8(42), int8(44), int8(44),
 	int8(46), int8(46), int8(46), int8(46), int8(48), int8(48), int8(48), int8(48), int8(50), int8(50), int8(50), int8(50), int8(52), int8(52), int8(52), int8(52),
 	int8(54), int8(54), int8(54), int8(54), int8(56), int8(56), int8(56), int8(56), int8(58), int8(58), int8(58), int8(58), int8(60), int8(60), int8(60), int8(60),
-}                                      /* j40.h:6749:24 */
-var TWICE_COEFF_NNZ_CTX = [64]Int16_t{ // pre-multiplied by 2
+}
+var TWICE_COEFF_NNZ_CTX = [64]Int16_t{
 	int16(0), int16(0), int16(62), int16(124), int16(124), int16(186), int16(186), int16(186), int16(186), int16(246), int16(246), int16(246), int16(246), int16(304), int16(304), int16(304),
 	int16(304), int16(304), int16(304), int16(304), int16(304), int16(360), int16(360), int16(360), int16(360), int16(360), int16(360), int16(360), int16(360), int16(360), int16(360), int16(360),
 	int16(360), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412),
 	int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412), int16(412),
-} /* j40.h:6756:25 */
+}
 
-func j40__pass_group(tls *libc.TLS, st uintptr, pass Int32_t, gx_in_gg Int32_t, gy_in_gg Int32_t, gw Int32_t, gh Int32_t, gidx Int64_t, gg uintptr) J40_err { /* j40.h:6821:29: */
+func j40__pass_group(tls *libc.TLS, st uintptr, pass Int32_t, gx_in_gg Int32_t, gy_in_gg Int32_t, gw Int32_t, gh Int32_t, gidx Int64_t, gg uintptr) J40_err {
 	bp := tls.Alloc(160)
 	defer tls.Free(160)
 
 	var f uintptr
-	// SPEC "the number of tables" is fixed, no matter how many RAW quant tables are there
+
 	var sidx Int64_t
-	// var m J40__modular at bp, 160
 
 	var i Int32_t
 	var ctxoff Int32_t
 	f = (*J40__st)(unsafe.Pointer(st)).Frame
 	sidx = int64(1) + int64(3)*(*J40__frame_st)(unsafe.Pointer(f)).Num_lf_groups + J40__NUM_DCT_PARAMS + Int64_t(pass)*(*J40__frame_st)(unsafe.Pointer(f)).Num_groups + gidx
-	*(*J40__modular)(unsafe.Pointer(bp /* m */)) = J40__modular{}
+	*(*J40__modular)(unsafe.Pointer(bp)) = J40__modular{}
 
 	if !!((*J40__frame_st)(unsafe.Pointer(f)).Is_modular != 0) {
 		goto __1
 	}
-	// TODO spec issue: this offset is later referred so should be monospaced
+
 	ctxoff = 495 * (*J40__frame_st)(unsafe.Pointer(f)).Nb_block_ctx * j40__u(tls, st, J40__ceil_lg32(tls, Uint32_t((*J40__frame_st)(unsafe.Pointer(f)).Num_hf_presets)))
 __2:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__hf_coeffs(tls, st, ctxoff, pass, gx_in_gg, gy_in_gg, gw, gh, gg) != 0)), int64(0)) != 0) {
@@ -21532,7 +17899,6 @@ __4:
 	;
 __1:
 	;
-
 __6:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__init_modular_for_pass_group(tls, st, (*J40__frame_st)(unsafe.Pointer(f)).Num_gm_channels, gw, gh, 0, 3, f+384, bp) != 0)), int64(0)) != 0) {
 		goto __9
@@ -21643,7 +18009,6 @@ __32:
 	j40__free_modular(tls, bp)
 __10:
 	;
-
 	return J40_err(0)
 
 J40__ON_ERROR:
@@ -21651,7 +18016,7 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__dequant_hf(tls *libc.TLS, st uintptr, gg uintptr) { /* j40.h:6867:17: */
+func j40__dequant_hf(tls *libc.TLS, st uintptr, gg uintptr) {
 	bp := tls.Alloc(12)
 	defer tls.Free(12)
 
@@ -21661,7 +18026,7 @@ func j40__dequant_hf(tls *libc.TLS, st uintptr, gg uintptr) { /* j40.h:6867:17: 
 	var x_qm_scale float32
 	var b_qm_scale float32
 	var quant_bias_num float32 = (*J40__image_st1)(unsafe.Pointer((*J40__st)(unsafe.Pointer(st)).Image)).Quant_bias_num
-	var quant_bias uintptr = (*J40__st)(unsafe.Pointer(st)).Image + 196 /* &.quant_bias */
+	var quant_bias uintptr = (*J40__st)(unsafe.Pointer(st)).Image + 196
 	var x8 Int32_t
 	var y8 Int32_t
 	var c Int32_t
@@ -21679,40 +18044,37 @@ func j40__dequant_hf(tls *libc.TLS, st uintptr, gg uintptr) { /* j40.h:6867:17: 
 			}() + uintptr(x8)*4))
 			var dctsel Int32_t = voff >> 20
 			var size Int32_t
-			// var mult [3]float32 at bp, 12
 
 			if dctsel < 2 {
 				continue
-			} // not top-left block
+			}
 			voff = voff & 0xfffff
 			dct = uintptr(unsafe.Pointer(&sJ40__DCT_SELECT)) + uintptr(dctsel-2)*4
 			size = int32(1) << (int32((*J40__dct_select)(unsafe.Pointer(dct)).Log_rows) + int32((*J40__dct_select)(unsafe.Pointer(dct)).Log_columns))
-			// TODO spec bug: spec says mult[1] = HfMul, should be 2^16 / (global_scale * HfMul)
+
 			*(*float32)(unsafe.Pointer(bp + 1*4)) = 65536.0 / float32((*J40__frame_st)(unsafe.Pointer(f)).Global_scale) * *(*float32)(unsafe.Pointer((*J40__lf_group_st)(unsafe.Pointer(gg)).Varblocks + uintptr(voff)*8 + 4))
 			*(*float32)(unsafe.Pointer(bp)) = *(*float32)(unsafe.Pointer(bp + 1*4)) * x_qm_scale
 			*(*float32)(unsafe.Pointer(bp + 2*4)) = *(*float32)(unsafe.Pointer(bp + 1*4)) * b_qm_scale
 			dqmat = f + 872 + uintptr((*J40__dct_select)(unsafe.Pointer(dct)).Param_idx)*16
-			// should have been already loaded
 
 			for c = 0; c < 3; c++ {
 				var coeffs uintptr = *(*uintptr)(unsafe.Pointer(gg + 208 + uintptr(c)*8)) + uintptr((*J40__varblock)(unsafe.Pointer((*J40__lf_group_st)(unsafe.Pointer(gg)).Varblocks+uintptr(voff)*8)).Coeffoff_qfidx&libc.CplInt32(15))*4
-				for i = 0; i < size; i++ { // LLF positions are left unused and can be clobbered
-					// TODO spec issue: "quant" is a variable name and should be monospaced
+				for i = 0; i < size; i++ {
 					if -1.0 <= *(*float32)(unsafe.Pointer(coeffs + uintptr(i)*4)) && *(*float32)(unsafe.Pointer(coeffs + uintptr(i)*4)) <= 1.0 {
-						*(*float32)(unsafe.Pointer(coeffs + uintptr(i)*4)) *= *(*float32)(unsafe.Pointer(quant_bias + uintptr(c)*4)) // TODO coeffs[i] is integer at this point?
+						*(*float32)(unsafe.Pointer(coeffs + uintptr(i)*4)) *= *(*float32)(unsafe.Pointer(quant_bias + uintptr(c)*4))
 					} else {
 						*(*float32)(unsafe.Pointer(coeffs + uintptr(i)*4)) -= quant_bias_num / *(*float32)(unsafe.Pointer(coeffs + uintptr(i)*4))
 					}
-					*(*float32)(unsafe.Pointer(coeffs + uintptr(i)*4)) *= *(*float32)(unsafe.Pointer(bp + uintptr(c)*4)) / *(*float32)(unsafe.Pointer((*J40__dq_matrix)(unsafe.Pointer(dqmat)).Params + uintptr(i)*16 + uintptr(c)*4)) // TODO precompute this
+					*(*float32)(unsafe.Pointer(coeffs + uintptr(i)*4)) *= *(*float32)(unsafe.Pointer(bp + uintptr(c)*4)) / *(*float32)(unsafe.Pointer((*J40__dq_matrix)(unsafe.Pointer(dqmat)).Params + uintptr(i)*16 + uintptr(c)*4))
 				}
 			}
 		}
 	}
 }
 
-var QM_SCALE = [8]float32{1.5625, 1.25, 1.0, 0.8, 0.64, 0.512, 0.4096, 0.32768} /* j40.h:6869:21 */
+var QM_SCALE = [8]float32{1.5625, 1.25, 1.0, 0.8, 0.64, 0.512, 0.4096, 0.32768}
 
-func j40__combine_vardct_from_lf_group(tls *libc.TLS, st uintptr, gg uintptr) J40_err { /* j40.h:6913:29: */
+func j40__combine_vardct_from_lf_group(tls *libc.TLS, st uintptr, gg uintptr) J40_err {
 	bp := tls.Alloc(96)
 	defer tls.Free(96)
 
@@ -21724,11 +18086,9 @@ func j40__combine_vardct_from_lf_group(tls *libc.TLS, st uintptr, gg uintptr) J4
 	var ggh Int32_t
 	var kx_lf float32
 	var kb_lf float32
-	// var cbrt_opsin_bias [3]float32 at bp+72, 12
 
 	var scratch uintptr
 	var scratch2 uintptr
-	// var samples [3]uintptr at bp, 24
 
 	var x8 Int32_t
 	var y8 Int32_t
@@ -21746,15 +18106,11 @@ func j40__combine_vardct_from_lf_group(tls *libc.TLS, st uintptr, gg uintptr) J4
 	var vh8 Int32_t
 	var samplepos Int32_t
 	var coeffoff Int32_t
-	// var coeffs [3]uintptr at bp+24, 24
-
-	// var llfcoeffs [3]uintptr at bp+48, 24
 
 	var kx_hf float32
 	var kb_hf float32
 	var pp float32
 	var pos Int32_t
-	// var p [3]float32 at bp+84, 12
 
 	var itscale float32
 	var p1 Int32_t
@@ -21767,7 +18123,7 @@ func j40__combine_vardct_from_lf_group(tls *libc.TLS, st uintptr, gg uintptr) J4
 	ggw = (*J40__lf_group_st)(unsafe.Pointer(gg)).Width
 	ggh = (*J40__lf_group_st)(unsafe.Pointer(gg)).Height
 	scratch = uintptr(0)
-	*(*[3]uintptr)(unsafe.Pointer(bp /* samples */)) = [3]uintptr{}
+	*(*[3]uintptr)(unsafe.Pointer(bp)) = [3]uintptr{}
 
 	c = 0
 __1:
@@ -21803,7 +18159,6 @@ __2:
 	goto __3
 __3:
 	;
-	// TODO allocates the same amount of memory regardless of transformations used
 __9:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __12
@@ -21851,7 +18206,7 @@ __17:
 	}
 	goto __18
 __20:
-	; // not top-left block
+	;
 	dctsel = dctsel - 2
 	voff = voff & 0xfffff
 	dct = uintptr(unsafe.Pointer(&sJ40__DCT_SELECT)) + uintptr(dctsel)*4
@@ -21871,9 +18226,6 @@ __22:
 	goto __23
 __23:
 	;
-
-	// TODO spec bug: x_factor and b_factor (for HF) is constant in the same varblock,
-	// even when the varblock spans multiple 64x64 rectangles
 	kx_hf = (*J40__frame_st)(unsafe.Pointer(f)).Base_corr_x + (*J40__frame_st)(unsafe.Pointer(f)).Inv_colour_factor*func() float32 {
 		if int32((*J40__lf_group_st)(unsafe.Pointer(gg)).Xfromy.Type) == J40__PLANE_I16 {
 			return float32(*(*Int16_t)(unsafe.Pointer(func() uintptr {
@@ -21898,7 +18250,7 @@ __23:
 	effvh = J40__min32(tls, ggh-y8*8, int32(1)<<int32((*J40__dct_select)(unsafe.Pointer(dct)).Log_rows))
 	effvw = J40__min32(tls, ggw-x8*8, int32(1)<<int32((*J40__dct_select)(unsafe.Pointer(dct)).Log_columns))
 	samplepos = y8*8*ggw + x8*8
-	// this is for LLF coefficients, which may have been transposed
+
 	vh8 = int32(1) << (J40__min32(tls, int32((*J40__dct_select)(unsafe.Pointer(dct)).Log_rows), int32((*J40__dct_select)(unsafe.Pointer(dct)).Log_columns)) - 3)
 	vw8 = int32(1) << (J40__max32(tls, int32((*J40__dct_select)(unsafe.Pointer(dct)).Log_rows), int32((*J40__dct_select)(unsafe.Pointer(dct)).Log_columns)) - 3)
 
@@ -21907,8 +18259,7 @@ __24:
 	if !(c < 3) {
 		goto __26
 	}
-	// chroma from luma (CfL), overwrite LLF coefficients on the way
-	// TODO skip CfL if there's subsampled channel
+
 	switch c {
 	case 0:
 		goto __28
@@ -21920,7 +18271,7 @@ __24:
 		goto __31
 	}
 	goto __27
-__28: // X
+__28:
 	i = 0
 __32:
 	if !(i < size) {
@@ -21960,7 +18311,7 @@ __36:
 __37:
 	;
 	goto __27
-__29: // Y
+__29:
 	i = 0
 __41:
 	if !(i < size) {
@@ -22000,7 +18351,7 @@ __45:
 __46:
 	;
 	goto __27
-__30: // B
+__30:
 	i = 0
 __50:
 	if !(i < size) {
@@ -22044,67 +18395,64 @@ __31:
 	;
 __27:
 	;
-
-	// inverse DCT
 	switch dctsel {
 	case 1:
-		goto __60 // Hornuss
+		goto __60
 	case 2:
-		goto __61 // DCT11
+		goto __61
 	case 3:
-		goto __62 // DCT22
+		goto __62
 	case 12:
-		goto __63 // DCT23
+		goto __63
 	case 13:
-		goto __64 // DCT32
+		goto __64
 	case 14:
-		goto __65 // AFV0
+		goto __65
 	case 15:
-		goto __66 // AFV1
+		goto __66
 	case 16:
-		goto __67 // AFV2
+		goto __67
 	case 17:
-		goto __68 // AFV3
+		goto __68
 	default:
 		goto __69
 	}
 	goto __59
 __60:
 	j40__inverse_hornuss(tls, scratch)
-	goto __59 // Hornuss
+	goto __59
 __61:
 	j40__inverse_dct11(tls, scratch)
-	goto __59 // DCT11
+	goto __59
 __62:
 	j40__inverse_dct22(tls, scratch)
-	goto __59 // DCT22
+	goto __59
 __63:
 	j40__inverse_dct23(tls, scratch)
-	goto __59 // DCT23
+	goto __59
 __64:
 	j40__inverse_dct32(tls, scratch)
-	goto __59 // DCT32
+	goto __59
 __65:
 	j40__inverse_afv(tls, scratch, 0, 0)
-	goto __59 // AFV0
+	goto __59
 __66:
 	j40__inverse_afv(tls, scratch, 1, 0)
-	goto __59 // AFV1
+	goto __59
 __67:
 	j40__inverse_afv(tls, scratch, 0, 1)
-	goto __59 // AFV2
+	goto __59
 __68:
 	j40__inverse_afv(tls, scratch, 1, 1)
-	goto __59 // AFV3
-__69: // every other DCTnm where n, m >= 3
+	goto __59
+__69:
 	j40__inverse_dct2d(tls, scratch, scratch2, int32((*J40__dct_select)(unsafe.Pointer(dct)).Log_rows), int32((*J40__dct_select)(unsafe.Pointer(dct)).Log_columns))
 	goto __59
 __59:
 	;
-
 	if !(0 != 0) {
 		goto __70
-	} // TODO display borders for the debugging
+	}
 	x = 0
 __71:
 	if !(x < int32(1)<<int32((*J40__dct_select)(unsafe.Pointer(dct)).Log_columns)) {
@@ -22133,9 +18481,6 @@ __76:
 	;
 __70:
 	;
-
-	// reposition samples into the rectangular grid
-	// TODO spec issue: overflown samples (due to non-8n dimensions) are probably ignored
 	y = 0
 __77:
 	if !(y < effvh) {
@@ -22182,9 +18527,6 @@ __15:
 	goto __16
 __16:
 	;
-
-	// coeffs is now correctly positioned, copy to the modular buffer
-	// TODO this is highly ad hoc, should be moved to rendering
 	c = 0
 __83:
 	if !(c < 3) {
@@ -22209,7 +18551,7 @@ __89:
 		goto __91
 	}
 	pos = y*ggw + x
-	*(*[3]float32)(unsafe.Pointer(bp + 84 /* p */)) = [3]float32{
+	*(*[3]float32)(unsafe.Pointer(bp + 84)) = [3]float32{
 		*(*float32)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 1*8)) + uintptr(pos)*4)) + *(*float32)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)) + uintptr(pos)*4)),
 		*(*float32)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 1*8)) + uintptr(pos)*4)) - *(*float32)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)) + uintptr(pos)*4)),
 		*(*float32)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 2*8)) + uintptr(pos)*4)),
@@ -22267,14 +18609,14 @@ __103:
 	p1 = y*ggw + x
 	v =
 		*(*float32)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)) + uintptr(p1)*4))**(*float32)(unsafe.Pointer(im + 148 + uintptr(c)*12)) + *(*float32)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 1*8)) + uintptr(p1)*4))**(*float32)(unsafe.Pointer(im + 148 + uintptr(c)*12 + 1*4)) + *(*float32)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 2*8)) + uintptr(p1)*4))**(*float32)(unsafe.Pointer(im + 148 + uintptr(c)*12 + 2*4))
-	// TODO very, very slow; probably different approximations per bpp ranges may be needed
+
 	v = func() float32 {
 		if v <= 0.0031308 {
 			return 12.92 * v
 		}
 		return 1.055*powf(tls, v, float32(1.0)/2.4) - 0.055
-	}() // to sRGB
-	// TODO overflow check
+	}()
+
 	*(*Int16_t)(unsafe.Pointer(pixels + uintptr((*J40__lf_group_st)(unsafe.Pointer(gg)).Left+x)*2)) = libc.Int16FromFloat32(float32(int32(1)<<(*J40__image_st)(unsafe.Pointer(im)).Bpp-1)*v + 0.5)
 	goto __104
 __104:
@@ -22312,7 +18654,6 @@ __96:
 	goto __97
 __97:
 	;
-
 J40__ON_ERROR:
 	j40__free(tls, scratch)
 	c = 0
@@ -22331,7 +18672,7 @@ __111:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__mirror1d(tls *libc.TLS, coord Int32_t, size Int32_t) Int32_t { /* j40.h:7142:20: */
+func j40__mirror1d(tls *libc.TLS, coord Int32_t, size Int32_t) Int32_t {
 	for 1 != 0 {
 		if coord < 0 {
 			coord = -coord - 1
@@ -22346,7 +18687,7 @@ func j40__mirror1d(tls *libc.TLS, coord Int32_t, size Int32_t) Int32_t { /* j40.
 
 // computes out(x + 1, y + 1) = abs(in(x, y) - in(x + dx, y + dy)), up to mirroring.
 // used to compute DistanceStep* functions; an increased border is required for correctness.
-func j40__epf_distance(tls *libc.TLS, in uintptr, dx Int32_t, dy Int32_t, out uintptr) { /* j40.h:7152:17: */
+func j40__epf_distance(tls *libc.TLS, in uintptr, dx Int32_t, dy Int32_t, out uintptr) {
 	var width Int32_t = (*J40__plane)(unsafe.Pointer(in)).Width
 	var height Int32_t = (*J40__plane)(unsafe.Pointer(in)).Height
 	var x Int32_t
@@ -22366,9 +18707,6 @@ func j40__epf_distance(tls *libc.TLS, in uintptr, dx Int32_t, dy Int32_t, out ui
 		}
 		return width - dx
 	}()
-
-	// TODO spec issue: `[[(ix, iy) in coords]]` should be normative comments
-	// TODO spec issue: `ix` and `iy` not defined in DistanceStep2, should be 0
 
 	for y = -1; y <= height; y++ {
 		var refy Int32_t = j40__mirror1d(tls, y, height)
@@ -22395,19 +18733,18 @@ func j40__epf_distance(tls *libc.TLS, in uintptr, dx Int32_t, dy Int32_t, out ui
 	}
 }
 
-var sJ40__SIGMA_THRESHOLD float32 = 0.3 /* j40.h:7184:20 */
+var sJ40__SIGMA_THRESHOLD float32 = 0.3
 
 // computes f(sigma) for each block, where f(x) = 1/x if x >= J40__SIGMA_THRESHOLD and < 0 otherwise.
 // note that `inv_sigma` in the spec is not same to `1/sigma`, hence a different name.
-func j40__epf_recip_sigmas(tls *libc.TLS, st uintptr, gg uintptr, out uintptr) J40_err { /* j40.h:7188:29: */
+func j40__epf_recip_sigmas(tls *libc.TLS, st uintptr, gg uintptr, out uintptr) J40_err {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
 
 	var f uintptr
 	var ggw8 Int32_t
 	var ggh8 Int32_t
-	// var inv_quant_sharp_lut [8]float32 at bp, 32
-	// 1 / (epf_quant_mul * epf_sharp_lut[i])
+
 	var x8 Int32_t
 	var y8 Int32_t
 	var i Int32_t
@@ -22440,7 +18777,6 @@ __2:
 	goto __3
 __3:
 	;
-
 	i = 0
 __5:
 	if !(i < 8) {
@@ -22477,7 +18813,6 @@ __6:
 	goto __7
 __7:
 	;
-
 	if !(int32((*J40__lf_group_st)(unsafe.Pointer(gg)).Sharpness.Type) == J40__PLANE_I16) {
 		goto __13
 	}
@@ -22595,7 +18930,6 @@ __34:
 	;
 __14:
 	;
-
 	y8 = 0
 __37:
 	if !(y8 < ggh8) {
@@ -22634,7 +18968,6 @@ __38:
 	goto __39
 __39:
 	;
-
 	return J40_err(0)
 
 J40__ON_ERROR:
@@ -22642,13 +18975,12 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__epf_step(tls *libc.TLS, st uintptr, channels uintptr, sigma_scale float32, recip_sigmas uintptr, nkernels Int32_t, kernels uintptr, distances uintptr, dist_uses_cross int32, gg uintptr) J40_err { /* j40.h:7243:29: */
+func j40__epf_step(tls *libc.TLS, st uintptr, channels uintptr, sigma_scale float32, recip_sigmas uintptr, nkernels Int32_t, kernels uintptr, distances uintptr, dist_uses_cross int32, gg uintptr) J40_err {
 	bp := tls.Alloc(188)
 	defer tls.Free(188)
 
-	var distance_rows uintptr // j40.h:7311:9: array of array of 3 array of 3 pointer to float
+	var distance_rows uintptr
 	defer libc.Xfree(tls, distance_rows)
-	// except for the center
 
 	var f uintptr
 	var ggw8 Int32_t
@@ -22658,14 +18990,10 @@ func j40__epf_step(tls *libc.TLS, st uintptr, channels uintptr, sigma_scale floa
 	var height Int32_t
 	var stride Int32_t
 	var cstride Int32_t
-	// var borderx [4]Int32_t at bp+16, 16
-
-	// var mirrorx [4]Int32_t at bp, 16
 
 	var linebuf uintptr
-	// var lines [5][3]uintptr at bp+32, 120
-	// [y+2][c] for row y in the channel c, with mirrored borders
-	var recip_sigmas_for_modular uintptr // only used for modular
+
+	var recip_sigmas_for_modular uintptr
 	var border_sigma_scale float32
 	var x Int32_t
 	var y Int32_t
@@ -22685,11 +19013,9 @@ func j40__epf_step(tls *libc.TLS, st uintptr, channels uintptr, sigma_scale floa
 	var recip_sigma1 float32
 	var inv_sigma_times_pos_mult float32
 	var sum_weights float32
-	// var sum_channels [3]float32 at bp+176, 12
 
 	var y1 Int32_t
 	var y2 Int32_t
-	// var outline [3]uintptr at bp+152, 24
 
 	var recip_sigma_row uintptr
 	distance_rows = libc.Xrealloc(tls, distance_rows, types.Size_t(NKERNELS*72))
@@ -22700,7 +19026,7 @@ func j40__epf_step(tls *libc.TLS, st uintptr, channels uintptr, sigma_scale floa
 	height = (*J40__lf_group_st)(unsafe.Pointer(gg)).Height
 	stride = width + 4
 	cstride = stride * 3
-	*(*[4]Int32_t)(unsafe.Pointer(bp + 16 /* borderx */)) = [4]Int32_t{-2, -1, width, width + 1}
+	*(*[4]Int32_t)(unsafe.Pointer(bp + 16)) = [4]Int32_t{-2, -1, width, width + 1}
 	linebuf = uintptr(0)
 	recip_sigmas_for_modular = uintptr(0)
 
@@ -22732,15 +19058,12 @@ __4:
 	goto __5
 __5:
 	;
-
-	// sigma is fixed for modular, so if this is below the threshold no filtering happens
 	if !((*J40__frame_st)(unsafe.Pointer(f)).Epf.Sigma_for_modular < sJ40__SIGMA_THRESHOLD) {
 		goto __8
 	}
 	return J40_err(0)
 __8:
 	;
-
 __9:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __12
@@ -22779,8 +19102,7 @@ __16:
 	;
 __2:
 	;
-
-	sigma_scale = sigma_scale * 1.9330952441687859 // -1.65 * 4 * (sqrt(0.5) - 1)
+	sigma_scale = sigma_scale * 1.9330952441687859
 	border_sigma_scale = sigma_scale * (*J40__frame_st)(unsafe.Pointer(f)).Epf.Border_sad_mul
 
 	c = 0
@@ -22808,7 +19130,6 @@ __18:
 	goto __19
 __19:
 	;
-
 	i = 0
 __23:
 	if !(i < 4) {
@@ -22822,7 +19143,6 @@ __24:
 	goto __25
 __25:
 	;
-
 __26:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __29
@@ -22898,7 +19218,6 @@ __32:
 	goto __33
 __33:
 	;
-
 	y = 0
 __40:
 	if !(y < height) {
@@ -22912,7 +19231,7 @@ __40:
 		}()
 	} else {
 		recip_sigma_row = recip_sigmas_for_modular
-	} // [kernel_idx][dy+1][c]
+	}
 
 	c = 0
 __43:
@@ -22947,7 +19266,6 @@ __47:
 	goto __48
 __48:
 	;
-
 	k = 0
 __49:
 	if !(k < nkernels) {
@@ -22982,7 +19300,6 @@ __44:
 	goto __45
 __45:
 	;
-
 	x = 0
 __55:
 	if !(x < width) {
@@ -22993,13 +19310,10 @@ __55:
 	if !(recip_sigma1 < 0.0) {
 		goto __58
 	}
-	x = x + 7 // this and at most 7 subsequent pixels will be skipped anyway
+	x = x + 7
 	goto __56
 __58:
 	;
-
-	// TODO spec issue: "either coordinate" refers to both x and y (i.e. "borders")
-	// according to the source code
 	if !((x+1|(y+1))&7 < 2) {
 		goto __59
 	}
@@ -23009,8 +19323,6 @@ __59:
 	inv_sigma_times_pos_mult = recip_sigma1 * sigma_scale
 __60:
 	;
-
-	// kernels[*] do not include center, which distance is always 0
 	sum_weights = 1.0
 	c = 0
 __61:
@@ -23025,7 +19337,6 @@ __62:
 	goto __63
 __63:
 	;
-
 	if !(dist_uses_cross != 0) {
 		goto __64
 	}
@@ -23115,7 +19426,6 @@ __77:
 	;
 __65:
 	;
-
 	c = 0
 __84:
 	if !(c < 3) {
@@ -23143,17 +19453,13 @@ __41:
 	goto __42
 __42:
 	;
-
 J40__ON_ERROR:
 	j40__free(tls, recip_sigmas_for_modular)
 	j40__free(tls, linebuf)
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-var NKERNELS int32 = 12 /* j40.h:7248:19 */
-
-////////////////////////////////////////////////////////////////////////////////
-// frame parsing primitives
+var NKERNELS int32 = 12
 
 type J40__group_info1 = struct {
 	Ggidx    Int64_t
@@ -23161,15 +19467,15 @@ type J40__group_info1 = struct {
 	Gy_in_gg Int32_t
 	Gw       Int32_t
 	Gh       Int32_t
-} /* j40.h:7443:1 */
+}
 
 type J40__section_st = struct {
 	Parent uintptr
 	St     J40__st
 	Buffer J40__buffer_st
-} /* j40.h:7453:3 */
+}
 
-func j40__allocate_lf_groups(tls *libc.TLS, st uintptr, out uintptr) J40_err { /* j40.h:7473:29: */
+func j40__allocate_lf_groups(tls *libc.TLS, st uintptr, out uintptr) J40_err {
 	var f uintptr
 	var ggs uintptr
 	var ggsize Int32_t
@@ -23214,7 +19520,6 @@ __2:
 	goto __3
 __3:
 	;
-
 	ggy = 0
 __6:
 	if !(ggy < (*J40__frame_st)(unsafe.Pointer(f)).Height) {
@@ -23259,13 +19564,12 @@ __7:
 	goto __8
 __8:
 	;
-
 	*(*uintptr)(unsafe.Pointer(out)) = ggs
 J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__prepare_dq_matrices(tls *libc.TLS, st uintptr) J40_err { /* j40.h:7508:29: */
+func j40__prepare_dq_matrices(tls *libc.TLS, st uintptr) J40_err {
 	var f uintptr
 	var dct_select_not_loaded Int32_t
 	var i Int32_t
@@ -23318,7 +19622,7 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__prepare_orders(tls *libc.TLS, st uintptr) J40_err { /* j40.h:7525:29: */
+func j40__prepare_orders(tls *libc.TLS, st uintptr) J40_err {
 	bp := tls.Alloc(12)
 	defer tls.Free(12)
 
@@ -23329,9 +19633,6 @@ func j40__prepare_orders(tls *libc.TLS, st uintptr) J40_err { /* j40.h:7525:29: 
 	var c Int32_t
 	var log_rows Int32_t
 	var log_columns Int32_t
-	// var order uintptr at bp, 8
-
-	// var temp Int32_t at bp+8, 4
 
 	var skip Int32_t
 	f = (*J40__st)(unsafe.Pointer(st)).Frame
@@ -23380,7 +19681,7 @@ __14:
 	;
 	j40__apply_permutation(tls, *(*uintptr)(unsafe.Pointer(bp))+uintptr(skip)*4, bp+8, uint64(unsafe.Sizeof(Int32_t(0))), *(*uintptr)(unsafe.Pointer(f + 1152 + uintptr(pass)*312 + uintptr(i)*24 + uintptr(c)*8)))
 	j40__free(tls, *(*uintptr)(unsafe.Pointer(f + 1152 + uintptr(pass)*312 + uintptr(i)*24 + uintptr(c)*8)))
-	*(*uintptr)(unsafe.Pointer(f + 1152 + uintptr(pass)*312 + uintptr(i)*24 + uintptr(c)*8)) = *(*uintptr)(unsafe.Pointer(bp /* order */))
+	*(*uintptr)(unsafe.Pointer(f + 1152 + uintptr(pass)*312 + uintptr(i)*24 + uintptr(c)*8)) = *(*uintptr)(unsafe.Pointer(bp))
 	goto __10
 __10:
 	c++
@@ -23409,7 +19710,7 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func J40__group_info(tls *libc.TLS, f uintptr, gidx Int64_t) J40__group_info1 { /* j40.h:7548:42: */
+func J40__group_info(tls *libc.TLS, f uintptr, gidx Int64_t) J40__group_info1 {
 	var info J40__group_info1
 	var shift Int32_t = (*J40__frame_st)(unsafe.Pointer(f)).Group_size_shift
 	var row Int64_t
@@ -23428,14 +19729,12 @@ func J40__group_info(tls *libc.TLS, f uintptr, gidx Int64_t) J40__group_info1 { 
 // creates a new per-section state `sst` which is identical to `*stptr` except for `buffer`,
 // then ensures that only codestream offsets [codeoff, codeoff + size) are available to `sst`
 // and updates `stptr` to point to `sst`, which should be restored with `j40__finish_section_state`.
-func j40__init_section_state(tls *libc.TLS, stptr uintptr, sst uintptr, codeoff Int64_t, size Int32_t) J40_err { /* j40.h:7566:29: */
+func j40__init_section_state(tls *libc.TLS, stptr uintptr, sst uintptr, codeoff Int64_t, size Int32_t) J40_err {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
 
 	var st uintptr
-	// var fileoff Int64_t at bp, 8
 
-	// var codeoff_limit Int64_t at bp+8, 8
 	st = *(*uintptr)(unsafe.Pointer(stptr))
 
 	(*J40__section_st)(unsafe.Pointer(sst)).Parent = uintptr(0)
@@ -23477,7 +19776,6 @@ __6:
 	goto __7
 __7:
 	;
-
 __10:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__seek_from_source(tls, st, *(*Int64_t)(unsafe.Pointer(bp))) != 0)), int64(0)) != 0) {
 		goto __13
@@ -23492,8 +19790,7 @@ __11:
 	}
 	goto __12
 __12:
-	; // doesn't alter st->buffer
-
+	;
 	(*J40__section_st)(unsafe.Pointer(sst)).St = *(*J40__st)(unsafe.Pointer(st))
 	(*J40__section_st)(unsafe.Pointer(sst)).Buffer = BUFFER_INIT
 	(*J40__section_st)(unsafe.Pointer(sst)).St.Buffer = sst + 112
@@ -23512,16 +19809,15 @@ __15:
 	goto __16
 __16:
 	;
-
 J40__ON_ERROR:
 	(*J40__section_st)(unsafe.Pointer(sst)).Parent = st
 	*(*uintptr)(unsafe.Pointer(stptr)) = sst + 8
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-var BUFFER_INIT = J40__buffer_st{} /* j40.h:7569:30 */
+var BUFFER_INIT = J40__buffer_st{}
 
-func j40__finish_section_state(tls *libc.TLS, stptr uintptr, sst uintptr, err J40_err) J40_err { /* j40.h:7592:29: */
+func j40__finish_section_state(tls *libc.TLS, stptr uintptr, sst uintptr, err J40_err) J40_err {
 	var st uintptr
 
 	if !!(int32((*J40__section_st)(unsafe.Pointer(sst)).Parent) != 0) {
@@ -23530,7 +19826,6 @@ func j40__finish_section_state(tls *libc.TLS, stptr uintptr, sst uintptr, err J4
 	return err
 __1:
 	;
-
 	if !(err != 0) {
 		goto __2
 	}
@@ -23539,7 +19834,7 @@ __1:
 	(*J40__st)(unsafe.Pointer(st)).Err = err
 	(*J40__st)(unsafe.Pointer(st)).Saved_errno = (*J40__section_st)(unsafe.Pointer(sst)).St.Saved_errno
 	(*J40__st)(unsafe.Pointer(st)).Cannot_retry = (*J40__section_st)(unsafe.Pointer(sst)).St.Cannot_retry
-	// TODO `shrt` is not recoverable if this section is not the last section read
+
 	goto __3
 __2:
 	st = sst + 8
@@ -23561,12 +19856,10 @@ __6:
 	;
 __3:
 	;
-
 J40__ON_ERROR:
 	*(*uintptr)(unsafe.Pointer(stptr)) = libc.AssignUintptr(&st, (*J40__section_st)(unsafe.Pointer(sst)).Parent)
 	j40__free_buffer(tls, sst+112)
 
-	// ensure that other subsystems can't be accidentally deallocated
 	(*J40__section_st)(unsafe.Pointer(sst)).Parent = uintptr(0)
 	(*J40__section_st)(unsafe.Pointer(sst)).St.Source = uintptr(0)
 	(*J40__section_st)(unsafe.Pointer(sst)).St.Container = uintptr(0)
@@ -23577,13 +19870,12 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__lf_global_in_section(tls *libc.TLS, st uintptr, toc uintptr) J40_err { /* j40.h:7626:29: */
+func j40__lf_global_in_section(tls *libc.TLS, st uintptr, toc uintptr) J40_err {
 	bp := tls.Alloc(192)
 	defer tls.Free(192)
 	*(*uintptr)(unsafe.Pointer(bp)) = st
 
-	// var sst J40__section_st at bp+8, 184
-	*(*J40__section_st)(unsafe.Pointer(bp + 8 /* sst */)) = J40__section_st{}
+	*(*J40__section_st)(unsafe.Pointer(bp + 8)) = J40__section_st{}
 	if !!((*J40__toc)(unsafe.Pointer(toc)).Single_size != 0) {
 		goto __1
 	}
@@ -23620,16 +19912,15 @@ __7:
 __8:
 	;
 J40__ON_ERROR:
-	return (*J40__st)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp /* st */)))).Err
+	return (*J40__st)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Err
 }
 
-func j40__hf_global_in_section(tls *libc.TLS, st uintptr, toc uintptr) J40_err { /* j40.h:7636:29: */
+func j40__hf_global_in_section(tls *libc.TLS, st uintptr, toc uintptr) J40_err {
 	bp := tls.Alloc(192)
 	defer tls.Free(192)
 	*(*uintptr)(unsafe.Pointer(bp)) = st
 
-	// var sst J40__section_st at bp+8, 184
-	*(*J40__section_st)(unsafe.Pointer(bp + 8 /* sst */)) = J40__section_st{}
+	*(*J40__section_st)(unsafe.Pointer(bp + 8)) = J40__section_st{}
 	if !((*J40__frame_st1)(unsafe.Pointer((*J40__st)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Frame)).Is_modular != 0) {
 		goto __1
 	}
@@ -23643,7 +19934,7 @@ __6:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!!((*J40__toc)(unsafe.Pointer(toc)).Hf_global_size == 0)), int64(0)) != 0) {
 		goto __7
 	}
-	j40__set_error(tls, *(*uintptr)(unsafe.Pointer(bp /* st */)), Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 139))))<<24|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 139 + 1))))<<16|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 139 + 2))))<<8|Uint32_t(*(*int8)(unsafe.Pointer(ts + 139 + 3))))
+	j40__set_error(tls, *(*uintptr)(unsafe.Pointer(bp)), Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 139))))<<24|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 139 + 1))))<<16|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 139 + 2))))<<8|Uint32_t(*(*int8)(unsafe.Pointer(ts + 139 + 3))))
 	goto J40__ON_ERROR
 __7:
 	;
@@ -23695,26 +19986,25 @@ __15:
 __2:
 	;
 J40__ON_ERROR:
-	return (*J40__st)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp /* st */)))).Err
+	return (*J40__st)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Err
 }
 
-func j40__lf_or_pass_group_in_section(tls *libc.TLS, st uintptr, toc uintptr, ggs uintptr) J40_err { /* j40.h:7650:29: */
+func j40__lf_or_pass_group_in_section(tls *libc.TLS, st uintptr, toc uintptr, ggs uintptr) J40_err {
 	bp := tls.Alloc(192)
 	defer tls.Free(192)
 	*(*uintptr)(unsafe.Pointer(bp)) = st
 
 	var section J40__section
-	// var sst J40__section_st at bp+8, 184
-	// LF group
-	var gg uintptr // pass group
+
+	var gg uintptr
 	var info J40__group_info1
 	var gg1 uintptr
 	section = *(*J40__section)(unsafe.Pointer((*J40__toc)(unsafe.Pointer(toc)).Sections + uintptr((*J40__toc)(unsafe.Pointer(toc)).Nsections_read)*24))
-	*(*J40__section_st)(unsafe.Pointer(bp + 8 /* sst */)) = J40__section_st{}
+	*(*J40__section_st)(unsafe.Pointer(bp + 8)) = J40__section_st{}
 
 	if !(section.Pass < 0) {
 		goto __1
-	} // LF group
+	}
 	gg = ggs + uintptr(section.Idx)*272
 __3:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__init_section_state(tls, bp, bp+8, section.Codeoff, section.Size) != 0)), int64(0)) != 0) {
@@ -23778,10 +20068,10 @@ __16:
 __17:
 	;
 	goto __2
-__1: // pass group
-	info = J40__group_info(tls, (*J40__st)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp /* st */)))).Frame, section.Idx)
+__1:
+	info = J40__group_info(tls, (*J40__st)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Frame, section.Idx)
 	gg1 = ggs + uintptr(info.Ggidx)*272
-	// j40__read_toc should have taken care of this
+
 __19:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__init_section_state(tls, bp, bp+8, section.Codeoff, section.Size) != 0)), int64(0)) != 0) {
 		goto __22
@@ -23814,19 +20104,17 @@ __25:
 	;
 __2:
 	;
-
 	(*J40__toc)(unsafe.Pointer(toc)).Nsections_read++
 
 J40__ON_ERROR:
-	return (*J40__st)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp /* st */)))).Err
+	return (*J40__st)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Err
 }
 
-func j40__combine_vardct(tls *libc.TLS, st uintptr, ggs uintptr) J40_err { /* j40.h:7676:29: */
+func j40__combine_vardct(tls *libc.TLS, st uintptr, ggs uintptr) J40_err {
 	var f uintptr
 	var i Int64_t
 	f = (*J40__st)(unsafe.Pointer(st)).Frame
 
-	// TODO pretty incorrect to do this
 __1:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __4
@@ -23949,12 +20237,11 @@ __24:
 	goto __25
 __25:
 	;
-
 J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__end_of_frame(tls *libc.TLS, st uintptr, toc uintptr) J40_err { /* j40.h:7698:29: */
+func j40__end_of_frame(tls *libc.TLS, st uintptr, toc uintptr) J40_err {
 	var codeoff Int64_t
 __1:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(j40__zero_pad_to_byte(tls, st) != 0)), int64(0)) != 0) {
@@ -24039,15 +20326,12 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-func j40__render_to_u8x4_rgba(tls *libc.TLS, st uintptr, out uintptr) J40_err { /* j40.h:7724:29: */
+func j40__render_to_u8x4_rgba(tls *libc.TLS, st uintptr, out uintptr) J40_err {
 	bp := tls.Alloc(88)
 	defer tls.Free(88)
 
 	var im uintptr
 	var f uintptr
-	// var c [4]uintptr at bp, 32
-
-	// var rgba J40__plane at bp+32, 24
 
 	var maxpixel Int32_t
 	var maxpixel2 Int32_t
@@ -24055,14 +20339,13 @@ func j40__render_to_u8x4_rgba(tls *libc.TLS, st uintptr, out uintptr) J40_err { 
 	var x Int32_t
 	var y Int32_t
 	var ec uintptr
-	// TODO optimize
+
 	var p Int32_t
-	// var pixels [4]uintptr at bp+56, 32
 
 	var outpixels uintptr
 	im = (*J40__st)(unsafe.Pointer(st)).Image
 	f = (*J40__st)(unsafe.Pointer(st)).Frame
-	*(*J40__plane)(unsafe.Pointer(bp + 32 /* rgba */)) = J40__plane{}
+	*(*J40__plane)(unsafe.Pointer(bp + 32)) = J40__plane{}
 
 __1:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
@@ -24152,7 +20435,6 @@ __17:
 	goto __18
 __18:
 	;
-
 	i = 0
 __21:
 	if !(i < 3) {
@@ -24253,7 +20535,6 @@ __25:
 	goto __26
 __26:
 	;
-
 __43:
 	if !(libc.X__builtin_expect(tls, libc.BoolInt64(!!(int32((*J40__st)(unsafe.Pointer(st)).Err) != 0)), int64(0)) != 0) {
 		goto __46
@@ -24291,7 +20572,6 @@ __49:
 	goto __50
 __50:
 	;
-
 	maxpixel = int32(1)<<(*J40__image_st)(unsafe.Pointer(im)).Bpp - 1
 	maxpixel2 = int32(1) << ((*J40__image_st)(unsafe.Pointer(im)).Bpp - 1)
 	y = 0
@@ -24332,7 +20612,7 @@ __61:
 	if !(i < 4) {
 		goto __63
 	}
-	// TODO optimize
+
 	p = J40__min32(tls, J40__max32(tls, 0, func() int32 {
 		if *(*uintptr)(unsafe.Pointer(bp + 56 + uintptr(i)*8)) != 0 {
 			return int32(*(*Int16_t)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 56 + uintptr(i)*8)) + uintptr(x)*2)))
@@ -24361,8 +20641,7 @@ __53:
 	goto __54
 __54:
 	;
-
-	*(*J40__plane)(unsafe.Pointer(out)) = *(*J40__plane)(unsafe.Pointer(bp + 32 /* rgba */))
+	*(*J40__plane)(unsafe.Pointer(out)) = *(*J40__plane)(unsafe.Pointer(bp + 32))
 	return J40_err(0)
 
 J40__ON_ERROR:
@@ -24370,18 +20649,13 @@ J40__ON_ERROR:
 	return (*J40__st)(unsafe.Pointer(st)).Err
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// API utilities
-
-// we don't trust callers and do the basic check ourselves
-
-type J40__origin = uint32 /* j40.h:7809:3 */
+type J40__origin = uint32
 
 var sJ40__ORIGIN_NAMES = [10]uintptr{
 	ts + 1166,
 	uintptr(0),
 	ts + 1176, ts + 1186, ts + 1198, ts + 1212, ts + 1223, ts + 1237, ts + 1252, ts + 1265,
-} /* j40.h:7811:19 */
+}
 
 var sJ40__ERROR_STRINGS = [22]struct {
 	Err         [4]int8
@@ -24389,34 +20663,34 @@ var sJ40__ERROR_STRINGS = [22]struct {
 	Msg         uintptr
 	Suffix      uintptr
 }{
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1270 /* "Upt0" */)), Msg: ts + 1275 /* "`path` parameter..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1300 /* "Ubf0" */)), Msg: ts + 1305 /* "`buf` parameter ..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1329 /* "Uch?" */)), Msg: ts + 1334 /* "Bad `channel` pa..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1358 /* "Ufm?" */)), Msg: ts + 1363 /* "Bad `format` par..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1386 /* "Uof?" */)), Msg: ts + 1391 /* "Bad `channel` an..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1430 /* "Urnd" */)), Msg: ts + 1435 /* "Frame is not yet..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1461 /* "Ufre" */)), Msg: ts + 1466 /* "Trying to reuse ..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 5 /* "!mem" */)), Msg: ts + 1502 /* "Out of memory" */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 94 /* "!jxl" */)), Msg: ts + 1516 /* "The JPEG XL sign..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 74 /* "open" */)), Msg: ts + 1551 /* "Failed to open f..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 61 /* "bigg" */)), Msg: ts + 1571 /* "Image dimensions..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 66 /* "flen" */)), Msg: ts + 1612 /* "File is too leng..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts /* "shrt" */)), Msg: ts + 1642 /* "Premature end of..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 184 /* "slim" */)), Msg: ts + 1664 /* "Image size limit..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 213 /* "elim" */)), Msg: ts + 1689 /* "Extra channel nu..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 372 /* "xlim" */)), Msg: ts + 1724 /* "Modular transfor..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 314 /* "tlim" */)), Msg: ts + 1756 /* "Meta-adaptive tr..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 203 /* "fbpp" */)), Msg: ts + 1803 /* "Given bits per p..." */}, // "f" stands for "forbidden"
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 218 /* "fblk" */)), Msg: ts + 1844 /* "Black extra chan..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 208 /* "fm32" */)), Msg: ts + 1878 /* "32-bit buffers f..." */},
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1929 /* "TODO" */)), Msg: ts + 1934 /* "Unimplemented fe..." */}, // TODO remove this when ready
-	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1968 /* "TEST" */)), Msg: ts + 1973 /* "Testing-only err..." */},
-} /* j40.h:7818:64 */
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1270)), Msg: ts + 1275},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1300)), Msg: ts + 1305},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1329)), Msg: ts + 1334},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1358)), Msg: ts + 1363},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1386)), Msg: ts + 1391},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1430)), Msg: ts + 1435},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1461)), Msg: ts + 1466},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 5)), Msg: ts + 1502},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 94)), Msg: ts + 1516},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 74)), Msg: ts + 1551},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 61)), Msg: ts + 1571},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 66)), Msg: ts + 1612},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts)), Msg: ts + 1642},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 184)), Msg: ts + 1664},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 213)), Msg: ts + 1689},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 372)), Msg: ts + 1724},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 314)), Msg: ts + 1756},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 203)), Msg: ts + 1803},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 218)), Msg: ts + 1844},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 208)), Msg: ts + 1878},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1929)), Msg: ts + 1934},
+	{Err: *(*[4]int8)(unsafe.Pointer(ts + 1968)), Msg: ts + 1973},
+}
 
 // an API-level twin of `j40__st`; see `j40__st` documentation for the rationale for split.
-type J40__inner = J40__inner1 /* j40.h:7873:3 */
+type J40__inner = J40__inner1
 
-func j40__set_alt_magic(tls *libc.TLS, err J40_err, saved_errno int32, origin J40__origin, image uintptr) J40_err { /* j40.h:7896:29: */
+func j40__set_alt_magic(tls *libc.TLS, err J40_err, saved_errno int32, origin J40__origin, image uintptr) J40_err {
 	if err == Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 74))))<<24|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 74 + 1))))<<16|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 74 + 2))))<<8|Uint32_t(*(*int8)(unsafe.Pointer(ts + 74 + 3))) {
 		(*J40_image)(unsafe.Pointer(image)).Magic = Uint32_t(0x02c2eb6d) ^ origin
 		*(*int32)(unsafe.Pointer(image + 8)) = saved_errno
@@ -24428,14 +20702,14 @@ func j40__set_alt_magic(tls *libc.TLS, err J40_err, saved_errno int32, origin J4
 	return J40_err(0)
 }
 
-func j40__set_magic(tls *libc.TLS, inner uintptr, image uintptr) J40_err { /* j40.h:7909:29: */
+func j40__set_magic(tls *libc.TLS, inner uintptr, image uintptr) J40_err {
 	(*J40_image)(unsafe.Pointer(image)).Magic = Uint32_t(0x7867ae21)
 	*(*uintptr)(unsafe.Pointer(image + 8)) = inner
 	(*J40__inner)(unsafe.Pointer(inner)).Magic = Uint32_t(0x5009e1c4)
 	return J40_err(0)
 }
 
-func j40__check_image(tls *libc.TLS, image uintptr, neworigin J40__origin, outinner uintptr) J40_err { /* j40.h:7916:20: */
+func j40__check_image(tls *libc.TLS, image uintptr, neworigin J40__origin, outinner uintptr) J40_err {
 	*(*uintptr)(unsafe.Pointer(outinner)) = uintptr(0)
 	if !(image != 0) {
 		return Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2001))))<<24 | Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2001 + 1))))<<16 | Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2001 + 2))))<<8 | Uint32_t(*(*int8)(unsafe.Pointer(ts + 2001 + 3)))
@@ -24458,10 +20732,10 @@ func j40__check_image(tls *libc.TLS, image uintptr, neworigin J40__origin, outin
 		return Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2006))))<<24 | Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2006 + 1))))<<16 | Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2006 + 2))))<<8 | Uint32_t(*(*int8)(unsafe.Pointer(ts + 2006 + 3)))
 	}
 	*(*uintptr)(unsafe.Pointer(outinner)) = *(*uintptr)(unsafe.Pointer(image + 8))
-	return (*J40__inner1)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(image + 8)))).Err // TODO handle cannot_retry in a better way
+	return (*J40__inner1)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(image + 8)))).Err
 }
 
-func j40__init_state(tls *libc.TLS, st uintptr, inner uintptr) { /* j40.h:7934:17: */
+func j40__init_state(tls *libc.TLS, st uintptr, inner uintptr) {
 	(*J40__st)(unsafe.Pointer(st)).Err = J40_err(0)
 	(*J40__st)(unsafe.Pointer(st)).Saved_errno = 0
 	(*J40__st)(unsafe.Pointer(st)).Cannot_retry = 0
@@ -24475,31 +20749,18 @@ func j40__init_state(tls *libc.TLS, st uintptr, inner uintptr) { /* j40.h:7934:1
 }
 
 // TODO expose this with a proper interface
-func j40__advance(tls *libc.TLS, inner uintptr, origin J40__origin) J40_err { /* j40.h:7959:29: */
+func j40__advance(tls *libc.TLS, inner uintptr, origin J40__origin) J40_err {
 	bp := tls.Alloc(104)
 	defer tls.Free(104)
 
-	// var stbuf J40__st at bp, 104
-
-	var st uintptr = bp /* &stbuf */
+	var st uintptr = bp
 	var f uintptr
 
 	j40__init_state(tls, st, inner)
 
-	// a less-known coroutine hack with some tweak.
-	// see https://www.chiark.greenend.org.uk/~sgtatham/coroutines.html for basic concepts.
-	//
-	// it is EXTREMELY important that any `J40__YIELD_AFTER` call may fail, and the next call
-	// to `j40_advance` will restart after the last successful `J40__YIELD_AFTER` call.
-	// therefore any code between two `J40__YIELD_AFTER` can run multiple times!
-	// if you don't want this, you should move the code into a separate function.
-	// for the same reason, this block can't contain any variable declaration or assignment.
-	//#define J40__YIELD_AFTER(expr) 		//do { 			//j40_err err = (expr); 			//j40__save_state(st, inner, origin); 			//if (err) return err; 			//inner->state = __LINE__; [> thus each line can have at most one J40__YIELD() call <] 			//[> fall through <] 			//case __LINE__:; 		//} while (0)
-
 	f = (*J40__st)(unsafe.Pointer(st)).Frame
 	switch (*J40__inner)(unsafe.Pointer(inner)).State {
-	case 0: // initial state
-
+	case 0:
 		j40__init_buffer(tls, st, int64(0), 9223372036854775807)
 		j40__signature(tls, st)
 		j40__image_metadata(tls, st)
@@ -24508,7 +20769,7 @@ func j40__advance(tls *libc.TLS, inner uintptr, origin J40__origin) J40_err { /*
 			j40__icc(tls, st)
 		}
 
-		{ // TODO should really be a loop, should we support multiple frames
+		{
 			j40__frame_header(tls, st)
 			if !((*J40__frame_st)(unsafe.Pointer(f)).Is_last != 0) {
 				j40__set_error(tls, st, Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2011))))<<24|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2011 + 1))))<<16|Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2011 + 2))))<<8|Uint32_t(*(*int8)(unsafe.Pointer(ts + 2011 + 3))))
@@ -24524,7 +20785,6 @@ func j40__advance(tls *libc.TLS, inner uintptr, origin J40__origin) J40_err { /*
 			j40__allocate_lf_groups(tls, st, inner+5872)
 
 			if (*J40__inner)(unsafe.Pointer(inner)).Toc.Single_size != 0 {
-
 				j40__lf_group(tls, st, (*J40__inner)(unsafe.Pointer(inner)).Lf_groups)
 				j40__prepare_dq_matrices(tls, st)
 				j40__prepare_orders(tls, st)
@@ -24554,7 +20814,7 @@ func j40__advance(tls *libc.TLS, inner uintptr, origin J40__origin) J40_err { /*
 	return J40_err(0)
 }
 
-func j40__free_inner(tls *libc.TLS, inner uintptr) { /* j40.h:8034:17: */
+func j40__free_inner(tls *libc.TLS, inner uintptr) {
 	var i Int64_t
 	var num_lf_groups Int64_t = (*J40__inner)(unsafe.Pointer(inner)).Frame.Num_lf_groups
 	j40__free_source(tls, inner+312)
@@ -24573,20 +20833,14 @@ func j40__free_inner(tls *libc.TLS, inner uintptr) { /* j40.h:8034:17: */
 	j40__free(tls, inner)
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// public API (implementation)
-
-func J40_error(tls *libc.TLS, image uintptr) J40_err { /* j40.h:8057:17: */
+func J40_error(tls *libc.TLS, image uintptr) J40_err {
 	bp := tls.Alloc(8)
 	defer tls.Free(8)
 
-	// var inner uintptr at bp, 8
-	// ignored
-	// do not alter image->magic even for Ufre
 	return j40__check_image(tls, image, J40__ORIGIN_NONE, bp)
 }
 
-func J40_error_string(tls *libc.TLS, image uintptr) uintptr { /* j40.h:8063:20: */
+func J40_error_string(tls *libc.TLS, image uintptr) uintptr {
 	bp := tls.Alloc(96)
 	defer tls.Free(96)
 
@@ -24607,7 +20861,7 @@ func J40_error_string(tls *libc.TLS, image uintptr) uintptr { /* j40.h:8063:20: 
 		if *(*uintptr)(unsafe.Pointer(image + 8)) != 0 && (*J40__inner1)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(image + 8)))).Magic == Uint32_t(0x5009e1c4) {
 			origin = (*J40__inner1)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(image + 8)))).Origin
 			err = (*J40__inner1)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(image + 8)))).Err
-			buf = *(*uintptr)(unsafe.Pointer(image + 8)) + 20 /* &.errbuf */
+			buf = *(*uintptr)(unsafe.Pointer(image + 8)) + 20
 			saved_errno = (*J40__inner1)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(image + 8)))).Saved_errno
 		} else {
 			corrupted_image = 1
@@ -24618,7 +20872,7 @@ func J40_error_string(tls *libc.TLS, image uintptr) uintptr { /* j40.h:8063:20: 
 			err = *(*J40_err)(unsafe.Pointer(image + 8))
 			buf = uintptr(unsafe.Pointer(&static_errbuf))
 			saved_errno = 0
-			// do not alter image->magic even for Ufre, but the message will be altered accordingly
+
 			if origin == J40__ORIGIN_NEXT {
 				origin = J40__ORIGIN_error_string
 			}
@@ -24639,10 +20893,8 @@ func J40_error_string(tls *libc.TLS, image uintptr) uintptr { /* j40.h:8063:20: 
 		return uintptr(unsafe.Pointer(&static_errbuf))
 	}
 
-	// TODO acquire a spinlock for buf if threaded
-
 	msg = uintptr(0)
-	suffix = ts + 2168 /* "" */
+	suffix = ts + 2168
 	for i = 0; i < int32(uint64(unsafe.Sizeof(sJ40__ERROR_STRINGS))/uint64(unsafe.Sizeof(struct {
 		Err         [4]int8
 		__ccgo_pad1 [4]byte
@@ -24669,16 +20921,15 @@ func J40_error_string(tls *libc.TLS, image uintptr) uintptr { /* j40.h:8063:20: 
 	return buf
 }
 
-var static_errbuf [256]int8 /* j40.h:8064:14: */
+var static_errbuf [256]int8
 
-func J40_from_memory(tls *libc.TLS, image uintptr, buf uintptr, size Size_t, freefunc J40_memory_free_func) J40_err { /* j40.h:8133:17: */
+func J40_from_memory(tls *libc.TLS, image uintptr, buf uintptr, size Size_t, freefunc J40_memory_free_func) J40_err {
 	bp := tls.Alloc(104)
 	defer tls.Free(104)
 
 	var inner uintptr
-	// var stbuf J40__st at bp, 104
 
-	var st uintptr = bp /* &stbuf */
+	var st uintptr = bp
 
 	if !(image != 0) {
 		return Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2001))))<<24 | Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2001 + 1))))<<16 | Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2001 + 2))))<<8 | Uint32_t(*(*int8)(unsafe.Pointer(ts + 2001 + 3)))
@@ -24697,22 +20948,20 @@ func J40_from_memory(tls *libc.TLS, image uintptr, buf uintptr, size Size_t, fre
 		j40__free_inner(tls, inner)
 		return j40__set_alt_magic(tls, (*J40__st)(unsafe.Pointer(st)).Err, (*J40__st)(unsafe.Pointer(st)).Saved_errno, ORIGIN, image)
 	} else {
-
 		return j40__set_magic(tls, inner, image)
 	}
 	return J40_err(0)
 }
 
-var ORIGIN J40__origin = J40__ORIGIN_from_memory /* j40.h:8134:27 */
+var ORIGIN J40__origin = J40__ORIGIN_from_memory
 
-func J40_from_file(tls *libc.TLS, image uintptr, path uintptr) J40_err { /* j40.h:8154:17: */
+func J40_from_file(tls *libc.TLS, image uintptr, path uintptr) J40_err {
 	bp := tls.Alloc(104)
 	defer tls.Free(104)
 
 	var inner uintptr
-	// var stbuf J40__st at bp, 104
 
-	var st uintptr = bp /* &stbuf */
+	var st uintptr = bp
 
 	if !(image != 0) {
 		return Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2001))))<<24 | Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2001 + 1))))<<16 | Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 2001 + 2))))<<8 | Uint32_t(*(*int8)(unsafe.Pointer(ts + 2001 + 3)))
@@ -24731,19 +20980,16 @@ func J40_from_file(tls *libc.TLS, image uintptr, path uintptr) J40_err { /* j40.
 		j40__free_inner(tls, inner)
 		return j40__set_alt_magic(tls, (*J40__st)(unsafe.Pointer(st)).Err, (*J40__st)(unsafe.Pointer(st)).Saved_errno, ORIGIN1, image)
 	} else {
-
 		return j40__set_magic(tls, inner, image)
 	}
 	return J40_err(0)
 }
 
-var ORIGIN1 J40__origin = J40__ORIGIN_from_file /* j40.h:8155:27 */
+var ORIGIN1 J40__origin = J40__ORIGIN_from_file
 
-func J40_output_format(tls *libc.TLS, image uintptr, channel Int32_t, format Int32_t) J40_err { /* j40.h:8175:17: */
+func J40_output_format(tls *libc.TLS, image uintptr, channel Int32_t, format Int32_t) J40_err {
 	bp := tls.Alloc(8)
 	defer tls.Free(8)
-
-	// var inner uintptr at bp, 8
 
 	for __ccgo := true; __ccgo; __ccgo = 0 != 0 {
 		var err J40_err = j40__check_image(tls, image, ORIGIN2, bp)
@@ -24752,7 +20998,6 @@ func J40_output_format(tls *libc.TLS, image uintptr, channel Int32_t, format Int
 		}
 	}
 
-	// TODO implement multiple output formats
 	if channel != J40_RGBA {
 		return func() J40_err {
 			(*J40__inner)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Origin = ORIGIN2
@@ -24775,51 +21020,44 @@ func J40_output_format(tls *libc.TLS, image uintptr, channel Int32_t, format Int
 	return J40_err(0)
 }
 
-var ORIGIN2 J40__origin = J40__ORIGIN_output_format /* j40.h:8176:27 */
+var ORIGIN2 J40__origin = J40__ORIGIN_output_format
 
-func J40_next_frame(tls *libc.TLS, image uintptr) int32 { /* j40.h:8189:13: */
+func J40_next_frame(tls *libc.TLS, image uintptr) int32 {
 	bp := tls.Alloc(112)
 	defer tls.Free(112)
-
-	// var inner uintptr at bp, 8
-
-	// var stbuf J40__st at bp+8, 104
 
 	var err J40_err
 
 	err = j40__check_image(tls, image, ORIGIN3, bp)
 	if err != 0 {
 		return 0
-	} // does NOT return err!
+	}
 
-	err = j40__advance(tls, *(*uintptr)(unsafe.Pointer(bp /* inner */)), ORIGIN3)
+	err = j40__advance(tls, *(*uintptr)(unsafe.Pointer(bp)), ORIGIN3)
 	if err != 0 {
 		return 0
 	}
 
-	// we don't yet have multiple frames, so the second j40_next_frame call always returns 0
 	if (*J40__inner)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Rendered != 0 {
 		return 0
 	}
 
-	j40__init_state(tls, bp+8, *(*uintptr)(unsafe.Pointer(bp /* inner */)))
+	j40__init_state(tls, bp+8, *(*uintptr)(unsafe.Pointer(bp)))
 	err = j40__render_to_u8x4_rgba(tls, bp+8, *(*uintptr)(unsafe.Pointer(bp))+5952)
 	if err != 0 {
-		(*J40__inner)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp /* inner */)))).Origin = ORIGIN3
-		(*J40__inner)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp /* inner */)))).Err = err
+		(*J40__inner)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Origin = ORIGIN3
+		(*J40__inner)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Err = err
 		return 0
 	}
-	(*J40__inner)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp /* inner */)))).Rendered = 1
+	(*J40__inner)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Rendered = 1
 	return 1
 }
 
-var ORIGIN3 J40__origin = J40__ORIGIN_next_frame /* j40.h:8190:27 */
+var ORIGIN3 J40__origin = J40__ORIGIN_next_frame
 
-func J40_current_frame(tls *libc.TLS, image uintptr) J40_frame { /* j40.h:8215:19: */
+func J40_current_frame(tls *libc.TLS, image uintptr) J40_frame {
 	bp := tls.Alloc(8)
 	defer tls.Free(8)
-
-	// var inner uintptr at bp, 8
 
 	var frame J40_frame
 	var err J40_err
@@ -24827,16 +21065,16 @@ func J40_current_frame(tls *libc.TLS, image uintptr) J40_frame { /* j40.h:8215:1
 	err = j40__check_image(tls, image, ORIGIN4, bp)
 	frame.Magic = Uint32_t(0x16351564)
 	frame.Reserved = Uint32_t(0)
-	frame.Inner = *(*uintptr)(unsafe.Pointer(bp /* inner */))
+	frame.Inner = *(*uintptr)(unsafe.Pointer(bp))
 	if err != 0 {
 		return frame
 	}
 
 	if !((*J40__inner)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Rendered != 0) {
-		if !(J40_next_frame(tls, image) != 0) { // if j40_next_frame hasn't been called, implicity call it
+		if !(J40_next_frame(tls, image) != 0) {
 			if (*J40__inner)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Err != 0 {
 				return frame
-			} // at this point we are sure that inner exists
+			}
 		}
 	}
 
@@ -24844,9 +21082,9 @@ func J40_current_frame(tls *libc.TLS, image uintptr) J40_frame { /* j40.h:8215:1
 	return frame
 }
 
-var ORIGIN4 J40__origin = J40__ORIGIN_current_frame /* j40.h:8216:27 */
+var ORIGIN4 J40__origin = J40__ORIGIN_current_frame
 
-func J40_frame_pixels_u8x4(tls *libc.TLS, frame uintptr, channel Int32_t) J40_pixels_u8x4 { /* j40.h:8237:25: */
+func J40_frame_pixels_u8x4(tls *libc.TLS, frame uintptr, channel Int32_t) J40_pixels_u8x4 {
 	var inner uintptr
 	var pixels J40_pixels_u8x4
 
@@ -24858,12 +21096,10 @@ func J40_frame_pixels_u8x4(tls *libc.TLS, frame uintptr, channel Int32_t) J40_pi
 		return ERROR_PIXELS
 	}
 
-	// TODO support more channels
 	if channel != J40_RGBA {
 		return ERROR_PIXELS
 	}
 
-	// TODO this condition is impossible under the current API
 	if !((*J40__inner)(unsafe.Pointer(inner)).Rendered != 0) {
 		(*J40__inner)(unsafe.Pointer(inner)).Origin = ORIGIN5
 		(*J40__inner)(unsafe.Pointer(inner)).Err = Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 1430))))<<24 | Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 1430 + 1))))<<16 | Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 1430 + 2))))<<8 | Uint32_t(*(*int8)(unsafe.Pointer(ts + 1430 + 3)))
@@ -24877,7 +21113,7 @@ func J40_frame_pixels_u8x4(tls *libc.TLS, frame uintptr, channel Int32_t) J40_pi
 	return pixels
 }
 
-var ORIGIN5 J40__origin = J40__ORIGIN_frame_pixels /* j40.h:8238:27 */
+var ORIGIN5 J40__origin = J40__ORIGIN_frame_pixels
 var ERROR_PIXELS_DATA = [588]Uint8_t{
 	Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255),
 	Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255),
@@ -24886,41 +21122,27 @@ var ERROR_PIXELS_DATA = [588]Uint8_t{
 	Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255),
 	Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(0 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255),
 	Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255), Uint8_t(255), Uint8_t(0), Uint8_t(0), Uint8_t(1 * 255),
-}                                                                                       /* j40.h:8244:23 */
-var ERROR_PIXELS = J40_pixels_u8x4{Width: 21, Height: 7, Stride_bytes: 21 * 4, Data: 0} /* j40.h:8253:31 */
+}
+var ERROR_PIXELS = J40_pixels_u8x4{Width: 21, Height: 7, Stride_bytes: 21 * 4, Data: 0}
 
-func J40_row_u8x4(tls *libc.TLS, pixels J40_pixels_u8x4, y Int32_t) uintptr { /* j40.h:8276:24: */
-
+func J40_row_u8x4(tls *libc.TLS, pixels J40_pixels_u8x4, y Int32_t) uintptr {
 	return pixels.Data + uintptr(Size_t(pixels.Stride_bytes)*Size_t(y))
 }
 
-func J40_free(tls *libc.TLS, image uintptr) { /* j40.h:8283:14: */
+func J40_free(tls *libc.TLS, image uintptr) {
 	bp := tls.Alloc(8)
 	defer tls.Free(8)
 
-	// var inner uintptr at bp, 8
-
 	j40__check_image(tls, image, J40__ORIGIN_free, bp)
 	if *(*uintptr)(unsafe.Pointer(bp)) != 0 {
-		j40__free_inner(tls, *(*uintptr)(unsafe.Pointer(bp /* inner */)))
+		j40__free_inner(tls, *(*uintptr)(unsafe.Pointer(bp)))
 	}
 	(*J40_image)(unsafe.Pointer(image)).Magic = 0xb26a48aa ^ J40__ORIGIN_NEXT
 	*(*J40_err)(unsafe.Pointer(image + 8)) = Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 1461))))<<24 | Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 1461 + 1))))<<16 | Uint32_t(Uint32_t(*(*int8)(unsafe.Pointer(ts + 1461 + 2))))<<8 | Uint32_t(*(*int8)(unsafe.Pointer(ts + 1461 + 3)))
 }
 
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-// prevents double `#include`s---we can't really use `#pragma once` or simple `#ifndef` guards...
-
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////// end of file //////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-// vim: noet ts=4 st=4 sts=4 sw=4 list colorcolumn=100
-
 func init() {
-	*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&ERROR_PIXELS)) + 16 /* .data */)) = uintptr(unsafe.Pointer(&ERROR_PIXELS_DATA)) // j40.h:8253:62:
+	*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&ERROR_PIXELS)) + 16)) = uintptr(unsafe.Pointer(&ERROR_PIXELS_DATA))
 }
 
 var ts1 = "shrt\x00!mem\x00.--- %s:%d: %s (w=%d h=%d @%p)\x00\n|\x00 %f\x00\n'--- %s:%d\n\x00bigg\x00flen\x00rb\x00open\x00read\x00seek\x00boxx\x00!jxl\x00ftyp\x00box?\x00jxlp\x00brot\x00pad0\x00enum\x00!fin\x00rnge\x00excs\x00hufd\x00iovf\x00clst\x00ansd\x00ans?\x00bpp?\x00exp?\x00name\x00slim\x00TODO: preview\x00fbpp\x00fm32\x00elim\x00fblk\x00ect?\x00csp?\x00wpt?\x00prm?\x00gama\x00tfn?\x00itt?\x00tone\x00TODO: up2_weight\x00TODO: up4_weight\x00TODO: up8_weight\x00tlim\x00tree\x00usmp\x00TODO: upsampling is not yet supported\x00mtre\x00xlim\x00rctt\x00rctc\x00rtcd\x00palp\x00palc\x00pald\x00TODO: squeeze channel effects\x00xfm?\x00pred\x00trec\x00povf\x00TODO: squeeze inverse transformation\x00dqm0\x00dqm?\x00band\x00TODO: upsampling is not yet implemented\x00pass\x00perm\x00TODO: patches\x00TODO: splines\x00TODO: noise\x00hfbc\x00vblk\x00dct?\x00TODO: ModularLfGroup decoding should continue here\x00TODO: subimage w/h depends on jpeg_upsampling\x00TODO: persist lfquant and use it in later frames\x00coef\x00TODO: don't keep this here\x00epf0\x00shrp\x00TODO: we don't yet do YCbCr or gray\x00TODO: !modular_16bit_buffers\x00TODO: specialize for 32-bit\x00TODO: does not yet support <8bpp\x00TODO: float samples not yet supported\x00TODO: direct luma encoding not yet supported\x00TODO: alpha channel has different bpp or sample type from color channels\x00TODO: subsampled alpha not yet supported\x00TODO: associated alpha not yet supported\x00(unknown)\x00from_file\x00from_memory\x00output_format\x00next_frame\x00current_frame\x00frame_pixels_*\x00error_string\x00free\x00Upt0\x00`path` parameter is NULL\x00Ubf0\x00`buf` parameter is NULL\x00Uch?\x00Bad `channel` parameter\x00Ufm?\x00Bad `format` parameter\x00Uof?\x00Bad `channel` and `format` combination\x00Urnd\x00Frame is not yet rendered\x00Ufre\x00Trying to reuse already freed image\x00Out of memory\x00The JPEG XL signature is not found\x00Failed to open file\x00Image dimensions are too large to handle\x00File is too lengthy to handle\x00Premature end of file\x00Image size limit reached\x00Extra channel number limit reached\x00Modular transform limit reached\x00Meta-adaptive tree size or depth limit reached\x00Given bits per pixel value is disallowed\x00Black extra channel is disallowed\x0032-bit buffers for modular encoding are disallowed\x00TODO\x00Unimplemented feature encountered\x00TEST\x00Testing-only error occurred\x00Uim0\x00Uim?\x00TODO: multiple frames\x00TODO: non-regular frame\x00`image` parameter is NULL during j40_error_string\x00`image` parameter is found corrupted during j40_error_string\x00\x00Decoding failed (%c%c%c%c) during j40_%s\x00%s during j40_%s%s: %s\x00%s during j40_%s%s\x00"
