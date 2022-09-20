@@ -36,6 +36,11 @@ func decode(r io.Reader, configOnly bool) (image.Image, image.Config, error) {
 		frame := j40.CurrentFrame(&img)
 		pixels := j40.FramePixels(frame, j40.Rgba)
 
+		ret = j40.Error(&img)
+		if ret != 0 {
+			return nil, image.Config{}, fmt.Errorf("jxl: %s", j40.ErrorString(&img))
+		}
+
 		if configOnly {
 			cfg := image.Config{}
 			cfg.Width = int(pixels.Width)
@@ -48,11 +53,6 @@ func decode(r io.Reader, configOnly bool) (image.Image, image.Config, error) {
 		out := image.NewRGBA(b)
 		out.Pix = unsafe.Slice((*byte)(pixels.Data), pixels.Height*pixels.Stride)
 		out.Stride = int(pixels.Stride)
-
-		ret = j40.Error(&img)
-		if ret != 0 {
-			return nil, image.Config{}, fmt.Errorf("jxl: %s", j40.ErrorString(&img))
-		}
 
 		return out, image.Config{}, nil
 	}

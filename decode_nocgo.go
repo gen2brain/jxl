@@ -41,6 +41,11 @@ func decode(r io.Reader, configOnly bool) (image.Image, image.Config, error) {
 		frame := j40.J40_current_frame(tls, imgptr)
 		pixels := j40.J40_frame_pixels_u8x4(tls, uintptr(unsafe.Pointer(&frame)), j40.J40_RGBA)
 
+		ret = j40.J40_error(tls, imgptr)
+		if ret != 0 {
+			return nil, image.Config{}, fmt.Errorf("jxl: %s", libc.GoString(j40.J40_error_string(tls, imgptr)))
+		}
+
 		if configOnly {
 			cfg := image.Config{}
 			cfg.Width = int(pixels.Width)
@@ -53,11 +58,6 @@ func decode(r io.Reader, configOnly bool) (image.Image, image.Config, error) {
 		out := image.NewRGBA(b)
 		out.Pix = libc.GoBytes(pixels.Data, int(pixels.Height*pixels.Stride_bytes))
 		out.Stride = int(pixels.Stride_bytes)
-
-		ret = j40.J40_error(tls, imgptr)
-		if ret != 0 {
-			return nil, image.Config{}, fmt.Errorf("jxl: %s", libc.GoString(j40.J40_error_string(tls, imgptr)))
-		}
 
 		return out, image.Config{}, nil
 	}
