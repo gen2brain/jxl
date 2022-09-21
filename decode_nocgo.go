@@ -67,5 +67,5 @@ func decode(r io.Reader, configOnly bool) (image.Image, image.Config, error) {
 		return nil, image.Config{}, fmt.Errorf("jxl: %s", libc.GoString(j40.J40_error_string(tls, imgptr)))
 	}
 
-	return nil, image.Config{}, nil
+	return nil, image.Config{}, fmt.Errorf("jxl: image not decoded")
 }
