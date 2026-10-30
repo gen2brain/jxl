@@ -433,7 +433,7 @@ func FuzzDecode(f *testing.F) {
 	}
 
 	f.Fuzz(func(t *testing.T, data []byte) {
-		opt := Options{Threads: 1, FrameSizeLimit: 1 << 22}
+		opt := Options{Threads: 1, FrameSizeLimit: 1 << 21}
 
 		img, err := Decode(bytes.NewReader(data), opt)
 		if err == nil && img == nil {
