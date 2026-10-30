@@ -35,6 +35,9 @@ const DefaultLevel = 5
 // Options.FrameSizeLimit is zero.
 const DefaultFrameSizeLimit = min(16384*16384, math.MaxInt>>6)
 
+// DefaultMaxFrames bounds the frames a decode reads from a codestream.
+const DefaultMaxFrames = 1024
+
 // Options configure a decode.
 type Options struct {
 	// Level is the codestream level to accept. Zero means DefaultLevel.
@@ -46,6 +49,9 @@ type Options struct {
 	// hostile header cannot ask for an unbounded allocation. Zero means
 	// DefaultFrameSizeLimit; a negative value removes the limit.
 	FrameSizeLimit int
+	// MaxFrames bounds the frames a decode reads from a codestream. Zero
+	// means DefaultMaxFrames; a negative value removes the limit.
+	MaxFrames int
 }
 
 func options(opts []Options) Options {

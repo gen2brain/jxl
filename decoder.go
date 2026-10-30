@@ -28,6 +28,7 @@ type decoder struct {
 
 	visible    int
 	nonvisible int
+	frames     int
 	preview    bool
 }
 
@@ -133,6 +134,20 @@ func (d *decoder) checkFrameSize(w, h uint32) error {
 
 	if int64(w)*int64(h) > lim {
 		return ErrFrameTooLarge
+	}
+
+	return nil
+}
+
+func (d *decoder) checkFrameCount() error {
+	lim := d.opts.MaxFrames
+
+	if lim == 0 {
+		lim = DefaultMaxFrames
+	}
+
+	if lim > 0 && d.frames > lim {
+		return ErrUnsupported
 	}
 
 	return nil
@@ -439,6 +454,12 @@ func (d *decoder) nextFrame() (*frame, error) {
 
 			return nil, err
 		}
+	}
+
+	d.frames++
+
+	if err := d.checkFrameCount(); err != nil {
+		return nil, err
 	}
 
 	if err := d.decodeFrame(f, r); err != nil {

@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	"errors"
+	"image"
 	"io"
 	"os"
 	"path/filepath"
@@ -433,7 +434,7 @@ func FuzzDecode(f *testing.F) {
 	}
 
 	f.Fuzz(func(t *testing.T, data []byte) {
-		opt := Options{Threads: 1, FrameSizeLimit: 1 << 21}
+		opt := Options{Threads: 1, FrameSizeLimit: 1 << 21, MaxFrames: 5}
 
 		img, err := Decode(bytes.NewReader(data), opt)
 		if err == nil && img == nil {
@@ -481,6 +482,72 @@ func TestFrameSizeLimit(t *testing.T) {
 
 		if !errors.Is(err, tc.want) {
 			t.Fatalf("limit %d over %d pixels gave %v, want %v", tc.limit, area, err, tc.want)
+		}
+	}
+}
+
+func layeredStream(t *testing.T, n int) []byte {
+	t.Helper()
+
+	const w, h = 8, 8
+
+	src := imageSamples(image.NewGray(image.Rect(0, 0, w, h)))
+
+	var head fileHeader
+
+	head.size = sizeHeader{xsize: w, ysize: h}
+	head.meta = defaultImageMetadata()
+	head.meta.xybEncoded = false
+	head.meta.depth = bitDepth{bitsPerSample: src.bits}
+	head.transform = defaultCustomTransformData()
+
+	var out bitWriter
+
+	head.write(&out)
+
+	for i := range n {
+		f := newModularFrame(&head.meta, w, h)
+		f.hdr.isLast = i == n-1
+		f.setModularSamples(&src, w, h)
+
+		body, err := f.encodeModularSections()
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		f.encode(&out, &head.meta, w, h, body)
+	}
+
+	if err := out.err(); err != nil {
+		t.Fatal(err)
+	}
+
+	return out.bytes()
+}
+
+func TestMaxFrames(t *testing.T) {
+	const n = 6
+
+	data := layeredStream(t, n)
+
+	for _, tc := range []struct {
+		limit int
+		want  error
+	}{
+		{0, nil},
+		{n, nil},
+		{n - 1, ErrUnsupported},
+		{1, ErrUnsupported},
+		{-1, nil},
+	} {
+		opt := Options{MaxFrames: tc.limit}
+
+		if _, err := DecodeAll(bytes.NewReader(data), opt); !errors.Is(err, tc.want) {
+			t.Fatalf("DecodeAll of %d frames under a bound of %d gave %v, want %v", n, tc.limit, err, tc.want)
+		}
+
+		if _, err := DecodeFloat(bytes.NewReader(data), opt); !errors.Is(err, tc.want) {
+			t.Fatalf("DecodeFloat of %d frames under a bound of %d gave %v, want %v", n, tc.limit, err, tc.want)
 		}
 	}
 }
