@@ -443,6 +443,10 @@ func (h *frameHeader) check(r *bitReader, m *imageMetadata) {
 			return
 		}
 	}
+
+	if h.flags&flagUseLFFrame != 0 && h.lfLevel >= 4 {
+		r.setErr(ErrInvalid)
+	}
 }
 
 func (h *frameHeader) delay(a *animation) float64 {
