@@ -489,7 +489,7 @@ func TestFrameSizeLimit(t *testing.T) {
 	}
 }
 
-func layeredStream(t *testing.T, canvas uint32, n int) []byte {
+func layeredStream(t *testing.T, canvas uint32, n int, animated bool) []byte {
 	t.Helper()
 
 	const w, h = 8, 8
@@ -504,6 +504,11 @@ func layeredStream(t *testing.T, canvas uint32, n int) []byte {
 	head.meta.depth = bitDepth{bitsPerSample: src.bits}
 	head.transform = defaultCustomTransformData()
 
+	if animated {
+		head.meta.haveAnimation = true
+		head.meta.anim = animation{tpsNumerator: 100, tpsDenominator: 1}
+	}
+
 	var out bitWriter
 
 	head.write(&out)
@@ -513,6 +518,11 @@ func layeredStream(t *testing.T, canvas uint32, n int) []byte {
 		f.hdr.isLast = i == n-1
 		f.hdr.haveCrop = canvas != w
 		f.hdr.frameWidth, f.hdr.frameHeight = w, h
+
+		if animated {
+			f.hdr.duration = 1
+		}
+
 		f.setModularSamples(&src, w, h)
 
 		body, err := f.encodeModularSections()
@@ -533,7 +543,7 @@ func layeredStream(t *testing.T, canvas uint32, n int) []byte {
 func TestMaxFrames(t *testing.T) {
 	const n = 6
 
-	data := layeredStream(t, 8, n)
+	data := layeredStream(t, 8, n, false)
 
 	for _, tc := range []struct {
 		limit int
@@ -557,10 +567,32 @@ func TestMaxFrames(t *testing.T) {
 	}
 }
 
+func TestDecodeStopsAtFirstFrame(t *testing.T) {
+	const n = 4
+
+	data := layeredStream(t, 8, n, true)
+
+	all, err := DecodeAll(bytes.NewReader(data))
+	if err != nil || len(all.Image) != n || len(all.Delay) != n || all.Delay[0] != 0.01 {
+		t.Fatalf("DecodeAll of %d animation frames: %v", n, err)
+	}
+
+	opt := Options{MaxFrames: 1}
+
+	if _, err := DecodeAll(bytes.NewReader(data), opt); !errors.Is(err, ErrUnsupported) {
+		t.Fatalf("DecodeAll under a bound of one frame gave %v", err)
+	}
+
+	img, err := Decode(bytes.NewReader(data), opt)
+	if err != nil || img.Bounds().Dx() != 8 {
+		t.Fatalf("Decode under a bound of one frame gave %v", err)
+	}
+}
+
 func TestFrameSizeLimitCanvas(t *testing.T) {
 	const canvas = 64
 
-	data := layeredStream(t, canvas, 1)
+	data := layeredStream(t, canvas, 1, false)
 
 	for _, tc := range []struct {
 		limit int
@@ -613,7 +645,7 @@ func TestDecodeConfigMatchesDecode(t *testing.T) {
 
 	const side = 1<<18 + 8
 
-	data := layeredStream(t, side, 1)
+	data := layeredStream(t, side, 1, false)
 
 	cfg, err := DecodeConfig(bytes.NewReader(data))
 	if err != nil || cfg.Width != side || cfg.Height != side {
@@ -645,6 +677,7 @@ func TestImageAlpha(t *testing.T) {
 		}},
 	} {
 		d := &decoder{threads: 1}
+		d.hdr.size = sizeHeader{xsize: 3, ysize: 1}
 		d.hdr.meta = defaultImageMetadata()
 		d.hdr.meta.depth = bitDepth{bitsPerSample: 8}
 
@@ -653,7 +686,7 @@ func TestImageAlpha(t *testing.T) {
 		ec.alphaAssociated = tc.associated
 		d.hdr.meta.extraChannels = []extraChannelInfo{ec}
 
-		img, err := d.toImage(&Float{Width: 3, Height: 1, Channels: 4, Frames: [][]float32{samples}}, 0)
+		img, err := d.toImage(samples)
 		if err != nil {
 			t.Fatalf("%s: %v", tc.name, err)
 		}

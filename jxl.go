@@ -104,12 +104,7 @@ func Decode(r io.Reader, opts ...Options) (image.Image, error) {
 
 // DecodeColor reads a JPEG XL image and reports the color space it came from.
 func DecodeColor(r io.Reader, opts ...Options) (image.Image, ColorInfo, error) {
-	a, err := DecodeAll(r, opts...)
-	if err != nil {
-		return nil, ColorInfo{}, err
-	}
-
-	return a.Image[0], a.Color, nil
+	return decodeFirst(r, options(opts))
 }
 
 // DecodeAll reads every frame of a JPEG XL file. A still image gives one frame.

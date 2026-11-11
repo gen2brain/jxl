@@ -190,23 +190,44 @@ func decodeAll(r io.Reader, o Options) (*JXL, error) {
 		return nil, err
 	}
 
-	fl, delays, loops, err := d.decodeFrames()
+	out := &JXL{Loops: d.loops(), Color: d.colorInfo()}
+
+	err = d.decodeFrames(true, func(s []float32, delay float64) (bool, error) {
+		img, err := d.toImage(s)
+		if err != nil {
+			return false, err
+		}
+
+		out.Image = append(out.Image, img)
+		out.Delay = append(out.Delay, delay)
+
+		return true, nil
+	})
 	if err != nil {
 		return nil, err
 	}
 
-	out := &JXL{Delay: delays, Loops: loops, Color: d.colorInfo()}
+	return out, nil
+}
 
-	for i := range fl.Frames {
-		img, err := d.toImage(fl, i)
-		if err != nil {
-			return nil, err
-		}
-
-		out.Image = append(out.Image, img)
+func decodeFirst(r io.Reader, o Options) (image.Image, ColorInfo, error) {
+	d, err := newDecoder(r, o)
+	if err != nil {
+		return nil, ColorInfo{}, err
 	}
 
-	return out, nil
+	var img image.Image
+
+	err = d.decodeFrames(true, func(s []float32, _ float64) (bool, error) {
+		img, err = d.toImage(s)
+
+		return false, err
+	})
+	if err != nil {
+		return nil, ColorInfo{}, err
+	}
+
+	return img, d.colorInfo(), nil
 }
 
 func (d *decoder) colorInfo() ColorInfo {
@@ -249,12 +270,17 @@ func decodeFloatBytes(data []byte, o Options) (*Float, error) {
 }
 
 func (d *decoder) floats() (*Float, error) {
-	fl, _, _, err := d.decodeFrames()
+	w, h, channels := d.outputSize()
+	fl := &Float{Width: w, Height: h, Channels: channels, Color: d.colorInfo()}
+
+	err := d.decodeFrames(false, func(s []float32, _ float64) (bool, error) {
+		fl.Frames = append(fl.Frames, s)
+
+		return true, nil
+	})
 	if err != nil {
 		return nil, err
 	}
-
-	fl.Color = d.colorInfo()
 
 	return fl, nil
 }
@@ -292,39 +318,47 @@ func (d *decoder) skipPreview() error {
 	}
 }
 
-func (d *decoder) decodeFrames() (*Float, []float64, int, error) {
+func (d *decoder) outputSize() (int, int, int) {
+	m := &d.hdr.meta
+
+	w, h := int(d.hdr.size.xsize), int(d.hdr.size.ysize)
+	if m.orient.transposing() {
+		w, h = h, w
+	}
+
+	return w, h, m.colorChannels() + len(m.extraChannels)
+}
+
+func (d *decoder) loops() int {
+	if !d.hdr.meta.haveAnimation {
+		return 0
+	}
+
+	return int(d.hdr.meta.anim.numLoops)
+}
+
+func (d *decoder) decodeFrames(reuse bool, emit func(samples []float32, delay float64) (bool, error)) error {
 	m := &d.hdr.meta
 
 	if m.havePreview {
 		if err := d.skipPreview(); err != nil {
-			return nil, nil, 0, err
+			return err
 		}
 	}
-	channels := m.colorChannels() + len(m.extraChannels)
+
 	w, h := int(d.hdr.size.xsize), int(d.hdr.size.ysize)
+	ow, _, channels := d.outputSize()
 
 	b := d.newBlender()
 
-	ow, oh := w, h
-	if m.orient.transposing() {
-		ow, oh = h, w
-	}
+	var interleaved []float32
 
-	out := &Float{Width: ow, Height: oh, Channels: channels}
-
-	var (
-		delays []float64
-		loops  int
-	)
-
-	if m.haveAnimation {
-		loops = int(m.anim.numLoops)
-	}
+	emitted := 0
 
 	for {
 		f, err := d.nextFrame()
 		if err != nil {
-			return nil, nil, 0, err
+			return err
 		}
 
 		if f.hdr.isVisible() {
@@ -336,7 +370,7 @@ func (d *decoder) decodeFrames() (*Float, []float64, int, error) {
 
 		planes, err := d.renderFrame(f, channels)
 		if err != nil {
-			return nil, nil, 0, err
+			return err
 		}
 
 		if f.hdr.ftype == ftLF {
@@ -384,7 +418,9 @@ func (d *decoder) decodeFrames() (*Float, []float64, int, error) {
 		}
 
 		if f.hdr.isLast || f.hdr.duration > 0 {
-			interleaved := make([]float32, w*h*channels)
+			if !reuse || interleaved == nil {
+				interleaved = make([]float32, w*h*channels)
+			}
 
 			if m.orient == orIdentity {
 				overRows(d.threads, h, func(y0, y1 int) {
@@ -419,8 +455,20 @@ func (d *decoder) decodeFrames() (*Float, []float64, int, error) {
 				})
 			}
 
-			out.Frames = append(out.Frames, interleaved)
-			delays = append(delays, f.hdr.delay(&m.anim))
+			emitted++
+
+			more, err := emit(interleaved, f.hdr.delay(&m.anim))
+			if err != nil {
+				d.release(result, nil)
+
+				return err
+			}
+
+			if !more {
+				d.release(result, nil)
+
+				return nil
+			}
 		}
 
 		d.release(result, nil)
@@ -430,11 +478,11 @@ func (d *decoder) decodeFrames() (*Float, []float64, int, error) {
 		}
 	}
 
-	if len(out.Frames) == 0 {
-		return nil, nil, 0, ErrInvalid
+	if emitted == 0 {
+		return ErrInvalid
 	}
 
-	return out, delays, loops, nil
+	return nil
 }
 
 func (d *decoder) nextFrame() (*frame, error) {

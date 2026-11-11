@@ -16,10 +16,10 @@ func clamp01(v float32) float32 {
 	return v
 }
 
-func (d *decoder) renderSpot(f *Float, frame int) {
+func (d *decoder) renderSpot(src []float32) {
 	m := &d.hdr.meta
 	color := m.colorChannels()
-	src := f.Frames[frame]
+	w, h, n := d.outputSize()
 
 	for i, e := range m.extraChannels {
 		if e.ecType != ecSpotColor {
@@ -28,9 +28,9 @@ func (d *decoder) renderSpot(f *Float, frame int) {
 
 		scale := e.spotColor[3]
 
-		overRows(d.threads, f.Height, func(y0, y1 int) {
-			for j := y0 * f.Width; j < y1*f.Width; j++ {
-				o := j * f.Channels
+		overRows(d.threads, h, func(y0, y1 int) {
+			for j := y0 * w; j < y1*w; j++ {
+				o := j * n
 				mix := scale * src[o+color+i]
 
 				for c := range min(color, 3) {
@@ -68,19 +68,19 @@ func (m *imageMetadata) colorModel() color.Model {
 	return color.NRGBA64Model
 }
 
-func (d *decoder) toImage(f *Float, frame int) (image.Image, error) {
+func (d *decoder) toImage(src []float32) (image.Image, error) {
 	m := &d.hdr.meta
 	gray := m.color.space == csGray
 	alpha := m.alphaIndex()
 	color := m.colorChannels()
 
-	d.renderSpot(f, frame)
+	d.renderSpot(src)
 
 	deep := m.deepOutput()
 	premul := alpha >= 0 && m.extraChannels[alpha].alphaAssociated
 
-	rect := image.Rect(0, 0, f.Width, f.Height)
-	src := f.Frames[frame]
+	w, h, n := d.outputSize()
+	rect := image.Rect(0, 0, w, h)
 
 	ci := [3]int{0, 1, 2}
 	if gray {
@@ -92,18 +92,16 @@ func (d *decoder) toImage(f *Float, frame int) (image.Image, error) {
 		ai = color + alpha
 	}
 
-	n := f.Channels
-
 	switch {
 	case gray && alpha < 0 && !deep:
 		img := image.NewGray(rect)
 
-		overRows(d.threads, f.Height, func(y0, y1 int) {
+		overRows(d.threads, h, func(y0, y1 int) {
 			for y := y0; y < y1; y++ {
-				row := src[y*f.Width*n:]
+				row := src[y*w*n:]
 				p := img.Pix[y*img.Stride:]
 
-				for x := range f.Width {
+				for x := range w {
 					p[x] = to8(row[x*n])
 				}
 			}
@@ -114,12 +112,12 @@ func (d *decoder) toImage(f *Float, frame int) (image.Image, error) {
 	case gray && alpha < 0:
 		img := image.NewGray16(rect)
 
-		overRows(d.threads, f.Height, func(y0, y1 int) {
+		overRows(d.threads, h, func(y0, y1 int) {
 			for y := y0; y < y1; y++ {
-				row := src[y*f.Width*n:]
+				row := src[y*w*n:]
 				p := img.Pix[y*img.Stride:]
 
-				for x := range f.Width {
+				for x := range w {
 					v := to16(row[x*n])
 					p[x*2] = uint8(v >> 8)
 					p[x*2+1] = uint8(v)
@@ -132,12 +130,12 @@ func (d *decoder) toImage(f *Float, frame int) (image.Image, error) {
 	case !deep:
 		img := image.NewNRGBA(rect)
 
-		overRows(d.threads, f.Height, func(y0, y1 int) {
+		overRows(d.threads, h, func(y0, y1 int) {
 			for y := y0; y < y1; y++ {
-				row := src[y*f.Width*n:]
+				row := src[y*w*n:]
 				p := img.Pix[y*img.Stride:]
 
-				for x := range f.Width {
+				for x := range w {
 					o, q := x*n, p[x*4:]
 
 					k := float32(1)
@@ -162,12 +160,12 @@ func (d *decoder) toImage(f *Float, frame int) (image.Image, error) {
 
 	img := image.NewNRGBA64(rect)
 
-	overRows(d.threads, f.Height, func(y0, y1 int) {
+	overRows(d.threads, h, func(y0, y1 int) {
 		for y := y0; y < y1; y++ {
-			row := src[y*f.Width*n:]
+			row := src[y*w*n:]
 			p := img.Pix[y*img.Stride:]
 
-			for x := range f.Width {
+			for x := range w {
 				o, q := x*n, p[x*8:]
 
 				k := float32(1)
