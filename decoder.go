@@ -29,6 +29,7 @@ type decoder struct {
 	nonvisible int
 	frames     int
 	preview    bool
+	workers    []worker
 }
 
 func newDecoder(r io.Reader, o Options) (*decoder, error) {

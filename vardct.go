@@ -302,6 +302,11 @@ func (s *dctScratch) alloc(f *frame) {
 	dim := f.hdr.groupDim()
 	nb := dim >> 3
 
+	if len(s.coeffs[0]) == dim*dim && len(s.passes) == len(f.vardct.passes) &&
+		(len(s.nonzeros) == 0 || len(s.nonzeros[0][0]) == nb*nb) {
+		return
+	}
+
 	for c := range 3 {
 		s.coeffs[c] = make([]int32, dim*dim)
 		s.block[c] = make([]float32, maxCoeffArea)

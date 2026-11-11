@@ -41,6 +41,7 @@ type frame struct {
 	predictor  uint8
 	predictors []uint8
 	threads    int
+	workers    *[]worker
 }
 
 type rect struct {
@@ -48,7 +49,7 @@ type rect struct {
 }
 
 func (d *decoder) readFrameHeader(r *bitReader) (*frame, error) {
-	f := &frame{threads: d.threads}
+	f := &frame{threads: d.threads, workers: &d.workers}
 
 	w, h := d.hdr.size.xsize, d.hdr.size.ysize
 	if d.preview {
@@ -267,7 +268,7 @@ func (f *frame) decodeGroups(sections []*bitReader) error {
 		nw = min(f.threads, max(numLF, numGroups))
 	}
 
-	workers := make([]worker, nw)
+	workers := f.takeWorkers(nw)
 
 	lfDim := f.hdr.lfGroupDim()
 	lfx, _ := f.hdr.sizeLFGroups()
@@ -362,8 +363,22 @@ type worker struct {
 	readers []*bitReader
 }
 
+func (f *frame) takeWorkers(n int) []worker {
+	if f.workers == nil {
+		return make([]worker, n)
+	}
+
+	if len(*f.workers) < n {
+		*f.workers = append(*f.workers, make([]worker, n-len(*f.workers))...)
+	}
+
+	return (*f.workers)[:n]
+}
+
 func (w *worker) alloc(f *frame, passes int) {
-	w.readers = make([]*bitReader, passes)
+	if len(w.readers) != passes {
+		w.readers = make([]*bitReader, passes)
+	}
 
 	if f.vardct != nil {
 		w.dct.alloc(f)
