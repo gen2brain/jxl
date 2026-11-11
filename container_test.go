@@ -347,10 +347,12 @@ func (s *shortReader) Read(p []byte) (int, error) {
 func TestDecodeConfigReadsAHeader(t *testing.T) {
 	var paths []string
 
-	for _, g := range []string{
-		filepath.Join("testdata", "*", "*.jxl"),
-		filepath.Join(conformanceRoot(t), "testcases", "*", "input.jxl"),
-	} {
+	globs := []string{filepath.Join("testdata", "*", "*.jxl")}
+	if os.Getenv("CONFORMANCE_DIR") != "" {
+		globs = append(globs, filepath.Join(conformanceRoot(t), "testcases", "*", "input.jxl"))
+	}
+
+	for _, g := range globs {
 		m, err := filepath.Glob(g)
 		if err != nil {
 			t.Fatal(err)
@@ -577,6 +579,49 @@ func TestFrameSizeLimitCanvas(t *testing.T) {
 		if err == nil && (fl.Width != canvas || fl.Height != canvas) {
 			t.Fatalf("decoded %dx%d, want %dx%d", fl.Width, fl.Height, canvas, canvas)
 		}
+	}
+}
+
+func TestDecodeConfigMatchesDecode(t *testing.T) {
+	paths, err := filepath.Glob(filepath.Join("testdata", "*", "*.jxl"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	for _, p := range paths {
+		data, err := os.ReadFile(p)
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		cfg, err := DecodeConfig(bytes.NewReader(data))
+		if err != nil {
+			t.Fatalf("%s: %v", p, err)
+		}
+
+		img, err := Decode(bytes.NewReader(data), Options{Level: 10})
+		if err != nil {
+			t.Fatalf("%s: %v", p, err)
+		}
+
+		b := img.Bounds()
+		if cfg.Width != b.Dx() || cfg.Height != b.Dy() || cfg.ColorModel != img.ColorModel() {
+			t.Fatalf("%s: config %dx%d %T, image %dx%d %T",
+				p, cfg.Width, cfg.Height, cfg.ColorModel, b.Dx(), b.Dy(), img)
+		}
+	}
+
+	const side = 1<<18 + 8
+
+	data := layeredStream(t, side, 1)
+
+	cfg, err := DecodeConfig(bytes.NewReader(data))
+	if err != nil || cfg.Width != side || cfg.Height != side {
+		t.Fatalf("config of a level 10 header: %+v, %v", cfg, err)
+	}
+
+	if _, err := Decode(bytes.NewReader(data)); !errors.Is(err, ErrUnsupported) {
+		t.Fatalf("level 5 decode of a level 10 header: %v", err)
 	}
 }
 

@@ -2,6 +2,7 @@ package jxl
 
 import (
 	"image"
+	"image/color"
 )
 
 func clamp01(v float32) float32 {
@@ -40,6 +41,33 @@ func (d *decoder) renderSpot(f *Float, frame int) {
 	}
 }
 
+func (m *imageMetadata) deepOutput() bool {
+	deep := m.depth.bitsPerSample > 8 || m.depth.floatSample
+
+	if a := m.alphaIndex(); a >= 0 {
+		ec := &m.extraChannels[a]
+		deep = deep || ec.depth.bitsPerSample > 8 || ec.depth.floatSample
+	}
+
+	return deep
+}
+
+func (m *imageMetadata) colorModel() color.Model {
+	gray := m.color.space == csGray && m.alphaIndex() < 0
+	deep := m.deepOutput()
+
+	switch {
+	case gray && !deep:
+		return color.GrayModel
+	case gray:
+		return color.Gray16Model
+	case !deep:
+		return color.NRGBAModel
+	}
+
+	return color.NRGBA64Model
+}
+
 func (d *decoder) toImage(f *Float, frame int) (image.Image, error) {
 	m := &d.hdr.meta
 	gray := m.color.space == csGray
@@ -48,14 +76,8 @@ func (d *decoder) toImage(f *Float, frame int) (image.Image, error) {
 
 	d.renderSpot(f, frame)
 
-	deep := m.depth.bitsPerSample > 8 || m.depth.floatSample
-	premul := false
-
-	if alpha >= 0 {
-		ec := &m.extraChannels[alpha]
-		deep = deep || ec.depth.bitsPerSample > 8 || ec.depth.floatSample
-		premul = ec.alphaAssociated
-	}
+	deep := m.deepOutput()
+	premul := alpha >= 0 && m.extraChannels[alpha].alphaAssociated
 
 	rect := image.Rect(0, 0, f.Width, f.Height)
 	src := f.Frames[frame]

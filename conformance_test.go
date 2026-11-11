@@ -629,6 +629,11 @@ func TestCorpus(t *testing.T) {
 				continue
 			}
 
+			if cfg, err := decodeConfig(data); err != nil || cfg.ColorModel != got.ColorModel() ||
+				cfg.Width != got.Bounds().Dx() || cfg.Height != got.Bounds().Dy() {
+				t.Errorf("%s: config %+v, %v; image %T %v", name, cfg, err, got, got.Bounds())
+			}
+
 			ref := filepath.Join(root, "reference", sub,
 				strings.TrimSuffix(filepath.Base(path), ".jxl")+".png")
 

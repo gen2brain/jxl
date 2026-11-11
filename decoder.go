@@ -2,7 +2,6 @@ package jxl
 
 import (
 	"image"
-	"image/color"
 	"io"
 	"math"
 	"slices"
@@ -870,7 +869,7 @@ func (d *decoder) xybToRGB(planes [][]float32, w, h int) error {
 }
 
 func decodeConfig(data []byte) (image.Config, error) {
-	d, err := newSourceDecoder(newSource(nil, data), options(nil), true)
+	d, err := newSourceDecoder(newSource(nil, data), options([]Options{{Level: 10}}), true)
 	if err != nil {
 		return image.Config{}, err
 	}
@@ -880,10 +879,5 @@ func decodeConfig(data []byte) (image.Config, error) {
 		w, h = h, w
 	}
 
-	model := color.Model(color.NRGBAModel)
-	if d.hdr.meta.depth.bitsPerSample > 8 || d.hdr.meta.depth.floatSample {
-		model = color.NRGBA64Model
-	}
-
-	return image.Config{Width: w, Height: h, ColorModel: model}, nil
+	return image.Config{Width: w, Height: h, ColorModel: d.hdr.meta.colorModel()}, nil
 }
