@@ -49,6 +49,13 @@ func (d *decoder) toImage(f *Float, frame int) (image.Image, error) {
 	d.renderSpot(f, frame)
 
 	deep := m.depth.bitsPerSample > 8 || m.depth.floatSample
+	premul := false
+
+	if alpha >= 0 {
+		ec := &m.extraChannels[alpha]
+		deep = deep || ec.depth.bitsPerSample > 8 || ec.depth.floatSample
+		premul = ec.alphaAssociated
+	}
 
 	rect := image.Rect(0, 0, f.Width, f.Height)
 	src := f.Frames[frame]
@@ -111,9 +118,14 @@ func (d *decoder) toImage(f *Float, frame int) (image.Image, error) {
 				for x := range f.Width {
 					o, q := x*n, p[x*4:]
 
-					q[0] = to8(row[o+ci[0]])
-					q[1] = to8(row[o+ci[1]])
-					q[2] = to8(row[o+ci[2]])
+					k := float32(1)
+					if premul {
+						k = unpremul(row[o+ai])
+					}
+
+					q[0] = to8(row[o+ci[0]] * k)
+					q[1] = to8(row[o+ci[1]] * k)
+					q[2] = to8(row[o+ci[2]] * k)
 
 					q[3] = 255
 					if ai >= 0 {
@@ -136,8 +148,13 @@ func (d *decoder) toImage(f *Float, frame int) (image.Image, error) {
 			for x := range f.Width {
 				o, q := x*n, p[x*8:]
 
+				k := float32(1)
+				if premul {
+					k = unpremul(row[o+ai])
+				}
+
 				for c := range 3 {
-					v := to16(row[o+ci[c]])
+					v := to16(row[o+ci[c]] * k)
 					q[c*2] = uint8(v >> 8)
 					q[c*2+1] = uint8(v)
 				}
@@ -154,6 +171,10 @@ func (d *decoder) toImage(f *Float, frame int) (image.Image, error) {
 	})
 
 	return img, nil
+}
+
+func unpremul(a float32) float32 {
+	return 1 / max(1.0/(1<<26), a)
 }
 
 func to8(v float32) uint8 {

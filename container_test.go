@@ -5,6 +5,7 @@ import (
 	"encoding/binary"
 	"errors"
 	"image"
+	"image/color"
 	"io"
 	"os"
 	"path/filepath"
@@ -579,6 +580,47 @@ func TestFrameSizeLimitCanvas(t *testing.T) {
 	}
 }
 
+func TestImageAlpha(t *testing.T) {
+	samples := []float32{0.25, 0.5, 0.1, 0.5, 0.2, 0.2, 0.2, 0, 0.9, 0.3, 0.6, 1}
+
+	for _, tc := range []struct {
+		name       string
+		alphaBits  uint32
+		associated bool
+		want       [3]color.NRGBA64
+	}{
+		{"straight 8", 8, false, [3]color.NRGBA64{
+			{0x4040, 0x8080, 0x1a1a, 0x8080}, {0x3333, 0x3333, 0x3333, 0}, {0xe5e5, 0x4d4d, 0x9999, 0xffff},
+		}},
+		{"straight 16", 16, false, [3]color.NRGBA64{
+			{0x4000, 0x8000, 0x199a, 0x8000}, {0x3333, 0x3333, 0x3333, 0}, {0xe665, 0x4ccd, 0x9999, 0xffff},
+		}},
+		{"associated 16", 16, true, [3]color.NRGBA64{
+			{0x8000, 0xffff, 0x3333, 0x8000}, {0xffff, 0xffff, 0xffff, 0}, {0xe665, 0x4ccd, 0x9999, 0xffff},
+		}},
+	} {
+		d := &decoder{threads: 1}
+		d.hdr.meta = defaultImageMetadata()
+		d.hdr.meta.depth = bitDepth{bitsPerSample: 8}
+
+		ec := defaultExtraChannelInfo()
+		ec.depth = bitDepth{bitsPerSample: tc.alphaBits}
+		ec.alphaAssociated = tc.associated
+		d.hdr.meta.extraChannels = []extraChannelInfo{ec}
+
+		img, err := d.toImage(&Float{Width: 3, Height: 1, Channels: 4, Frames: [][]float32{samples}}, 0)
+		if err != nil {
+			t.Fatalf("%s: %v", tc.name, err)
+		}
+
+		for x, want := range tc.want {
+			if got := rawNRGBA64(img, x, 0); got != want {
+				t.Fatalf("%s: %T pixel %d is %v, want %v", tc.name, img, x, got, want)
+			}
+		}
+	}
+}
+
 type tiffTag struct {
 	tag, typ uint16
 	count    uint32
@@ -850,4 +892,17 @@ func TestExifMissing(t *testing.T) {
 	if _, err := DecodeExif(bytes.NewReader([]byte("not a jxl"))); err == nil {
 		t.Fatal("a file that is not JPEG XL was accepted")
 	}
+}
+
+func rawNRGBA64(img image.Image, x, y int) color.NRGBA64 {
+	switch m := img.(type) {
+	case *image.NRGBA:
+		c := m.NRGBAAt(x, y)
+
+		return color.NRGBA64{uint16(c.R) * 257, uint16(c.G) * 257, uint16(c.B) * 257, uint16(c.A) * 257}
+	case *image.NRGBA64:
+		return m.NRGBA64At(x, y)
+	}
+
+	return color.NRGBA64Model.Convert(img.At(x, y)).(color.NRGBA64)
 }

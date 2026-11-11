@@ -582,6 +582,17 @@ const corpusTolerance = 0.01
 var corpusSubdirs = []string{"conformance", "features", "photographic", "edge-cases"}
 
 // TestCorpus compares an external corpus against libjxl's own decodes.
+func associatedAlpha(data []byte) bool {
+	d, err := newBytesDecoder(data, Options{Level: 10})
+	if err != nil {
+		return false
+	}
+
+	a := d.hdr.meta.alphaIndex()
+
+	return a >= 0 && d.hdr.meta.extraChannels[a].alphaAssociated
+}
+
 func TestCorpus(t *testing.T) {
 	root := corpusRoot(t)
 
@@ -621,7 +632,7 @@ func TestCorpus(t *testing.T) {
 			ref := filepath.Join(root, "reference", sub,
 				strings.TrimSuffix(filepath.Base(path), ".jxl")+".png")
 
-			worst, err := peakAgainstPNG(got, ref)
+			worst, err := peakAgainstPNG(got, ref, associatedAlpha(data))
 			if err != nil {
 				t.Logf("%s: no reference (%v)", name, err)
 

@@ -9,6 +9,7 @@ import (
 	"errors"
 	"fmt"
 	"image"
+	"image/color"
 	"image/png"
 	"io"
 	"math"
@@ -278,7 +279,7 @@ func writeStreamRatchet(t *testing.T, res map[string]string) {
 	}
 }
 
-func peakAgainstPNG(got image.Image, path string) (float64, error) {
+func peakAgainstPNG(got image.Image, path string, premul bool) (float64, error) {
 	f, err := os.Open(path)
 	if err != nil {
 		return 0, err
@@ -301,6 +302,12 @@ func peakAgainstPNG(got image.Image, path string) (float64, error) {
 		for x := range gb.Dx() {
 			r1, g1, b1, a1 := got.At(gb.Min.X+x, gb.Min.Y+y).RGBA()
 			r2, g2, b2, a2 := ref.At(rb.Min.X+x, rb.Min.Y+y).RGBA()
+
+			if premul {
+				c := color.NRGBA64Model.Convert(ref.At(rb.Min.X+x, rb.Min.Y+y)).(color.NRGBA64)
+				a2 = uint32(c.A)
+				r2, g2, b2 = min(uint32(c.R), a2), min(uint32(c.G), a2), min(uint32(c.B), a2)
+			}
 
 			for _, d := range [4]float64{
 				math.Abs(float64(r1) - float64(r2)),
