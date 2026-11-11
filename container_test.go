@@ -486,7 +486,7 @@ func TestFrameSizeLimit(t *testing.T) {
 	}
 }
 
-func layeredStream(t *testing.T, n int) []byte {
+func layeredStream(t *testing.T, canvas uint32, n int) []byte {
 	t.Helper()
 
 	const w, h = 8, 8
@@ -495,7 +495,7 @@ func layeredStream(t *testing.T, n int) []byte {
 
 	var head fileHeader
 
-	head.size = sizeHeader{xsize: w, ysize: h}
+	head.size = sizeHeader{xsize: canvas, ysize: canvas}
 	head.meta = defaultImageMetadata()
 	head.meta.xybEncoded = false
 	head.meta.depth = bitDepth{bitsPerSample: src.bits}
@@ -508,6 +508,8 @@ func layeredStream(t *testing.T, n int) []byte {
 	for i := range n {
 		f := newModularFrame(&head.meta, w, h)
 		f.hdr.isLast = i == n-1
+		f.hdr.haveCrop = canvas != w
+		f.hdr.frameWidth, f.hdr.frameHeight = w, h
 		f.setModularSamples(&src, w, h)
 
 		body, err := f.encodeModularSections()
@@ -515,7 +517,7 @@ func layeredStream(t *testing.T, n int) []byte {
 			t.Fatal(err)
 		}
 
-		f.encode(&out, &head.meta, w, h, body)
+		f.encode(&out, &head.meta, canvas, canvas, body)
 	}
 
 	if err := out.err(); err != nil {
@@ -528,7 +530,7 @@ func layeredStream(t *testing.T, n int) []byte {
 func TestMaxFrames(t *testing.T) {
 	const n = 6
 
-	data := layeredStream(t, n)
+	data := layeredStream(t, 8, n)
 
 	for _, tc := range []struct {
 		limit int
@@ -548,6 +550,31 @@ func TestMaxFrames(t *testing.T) {
 
 		if _, err := DecodeFloat(bytes.NewReader(data), opt); !errors.Is(err, tc.want) {
 			t.Fatalf("DecodeFloat of %d frames under a bound of %d gave %v, want %v", n, tc.limit, err, tc.want)
+		}
+	}
+}
+
+func TestFrameSizeLimitCanvas(t *testing.T) {
+	const canvas = 64
+
+	data := layeredStream(t, canvas, 1)
+
+	for _, tc := range []struct {
+		limit int
+		want  error
+	}{
+		{canvas * canvas, nil},
+		{canvas*canvas - 1, ErrFrameTooLarge},
+		{8 * 8, ErrFrameTooLarge},
+	} {
+		fl, err := DecodeFloat(bytes.NewReader(data), Options{FrameSizeLimit: tc.limit})
+		if !errors.Is(err, tc.want) {
+			t.Fatalf("an 8x8 frame on a %dx%d canvas under a limit of %d gave %v, want %v",
+				canvas, canvas, tc.limit, err, tc.want)
+		}
+
+		if err == nil && (fl.Width != canvas || fl.Height != canvas) {
+			t.Fatalf("decoded %dx%d, want %dx%d", fl.Width, fl.Height, canvas, canvas)
 		}
 	}
 }

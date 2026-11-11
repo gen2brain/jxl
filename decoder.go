@@ -105,6 +105,12 @@ func newSourceDecoder(s *source, o Options, partial bool) (*decoder, error) {
 				return nil, ErrUnsupported
 			}
 
+			if !partial {
+				if err := d.checkFrameSize(d.hdr.size.xsize, d.hdr.size.ysize); err != nil {
+					return nil, err
+				}
+			}
+
 			d.src = s
 			d.used = br.pos()
 
