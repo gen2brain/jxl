@@ -222,6 +222,10 @@ func (d *decoder) colorInfo() ColorInfo {
 
 	if c.space == csGray {
 		info.Matrix = 2
+
+		if d.hdr.meta.xybEncoded && !c.wantICC && c.white != wpD65 {
+			info.Transfer = uint16(tfLinear)
+		}
 	}
 
 	return info
@@ -576,7 +580,9 @@ func (d *decoder) renderFrame(f *frame, channels int) ([][]float32, error) {
 	case f.hdr.doYCbCr:
 		ycbcrToRGB(planes, w, h, d.threads)
 	case m.xybEncoded:
-		d.xybToRGB(f, planes, w, h)
+		if err := d.xybToRGB(planes, w, h); err != nil {
+			return nil, err
+		}
 	}
 
 	if len(planes) != channels {
@@ -789,14 +795,22 @@ func ycbcrToRGB(planes [][]float32, w, h, threads int) {
 	})
 }
 
-func (d *decoder) xybToRGB(f *frame, planes [][]float32, w, h int) {
-	p := newXYBParams(&d.hdr.transform.opsin, d.hdr.meta.tone.intensityTarget)
-	c := &d.hdr.meta.color
+func (d *decoder) xybToRGB(planes [][]float32, w, h int) error {
+	intensity := d.hdr.meta.tone.intensityTarget
+	p := newXYBParams(&d.hdr.transform.opsin, intensity)
+
+	mat, out, ok := xybOutputFor(&d.hdr.meta.color, p.mat, intensity)
+	if !ok {
+		return ErrInvalid
+	}
+
+	p.mat = mat
 
 	n := w * h
 	x, y, b := planes[0][:n], planes[1][:n], planes[2][:n]
 
-	srgb := !c.wantICC && !c.tf.haveGamma && c.tf.tf == tfSRGB
+	linear := !out.tf.haveGamma && out.tf.tf == tfLinear
+	srgb := !out.tf.haveGamma && out.tf.tf == tfSRGB
 
 	var k *[29][8]float32
 
@@ -829,7 +843,7 @@ func (d *decoder) xybToRGB(f *frame, planes [][]float32, w, h int) {
 		}
 
 		switch {
-		case c.wantICC:
+		case linear:
 			for i := lo; i < hi; i++ {
 				x[i], y[i], b[i] = p.apply(x[i], y[i], b[i])
 			}
@@ -843,14 +857,16 @@ func (d *decoder) xybToRGB(f *frame, planes [][]float32, w, h int) {
 			}
 		default:
 			for i := lo; i < hi; i++ {
-				r, g, bb := p.apply(x[i], y[i], b[i])
+				r, g, bb := out.toScene(p.apply(x[i], y[i], b[i]))
 
-				x[i] = c.fromLinear(r)
-				y[i] = c.fromLinear(g)
-				b[i] = c.fromLinear(bb)
+				x[i] = out.encode(r)
+				y[i] = out.encode(g)
+				b[i] = out.encode(bb)
 			}
 		}
 	})
+
+	return nil
 }
 
 func decodeConfig(data []byte) (image.Config, error) {

@@ -1,8 +1,11 @@
 package jxl
 
 import (
+	"bytes"
 	"math"
 	"math/rand/v2"
+	"os"
+	"path/filepath"
 	"sync"
 	"testing"
 )
@@ -66,6 +69,31 @@ func TestSRGBToLinearInverts(t *testing.T) {
 	}
 
 	t.Logf("sRGB round trip within %g", worst)
+}
+
+func TestXYBOutputTransfer(t *testing.T) {
+	for _, tc := range []struct {
+		name string
+		want transferFunction
+	}{
+		{"xyb_gray_dci.jxl", tfLinear},
+		{"xyb_gray_pq.jxl", tfPQ},
+		{"xyb_pq.jxl", tfPQ},
+	} {
+		data, err := os.ReadFile(filepath.Join("testdata", "streams", tc.name))
+		if err != nil {
+			t.Skip(err)
+		}
+
+		_, info, err := DecodeColor(bytes.NewReader(data))
+		if err != nil {
+			t.Fatalf("%s: %v", tc.name, err)
+		}
+
+		if info.Transfer != uint16(tc.want) {
+			t.Fatalf("%s: transfer %d, want %d", tc.name, info.Transfer, tc.want)
+		}
+	}
 }
 
 func TestCbrt32MatchesMathCbrt(t *testing.T) {
